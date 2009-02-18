@@ -1,0 +1,46 @@
+.FastShot_default {
+   padding-top: 5px !important;
+   padding-left :15px
+}
+
+.FastShot_default a.imgThumb:link, .FastShot_default a.imgThumb:visited {
+}
+
+.FastShot_default a.imgThumb:hover {
+}
+
+.FastShot_default a.imgTitle:link, .FastShot_default a.imgTitle:visited {
+    padding-top: 5px !important;
+    font-family: Arial !important;
+    font-weight: bold !important;
+    font-size: 14px;
+    color: #356b88;
+    margin-top: 6px;
+}
+.FastShot_default a.imgTitle:hover {
+    padding-top: 5px !important;
+    font-family: Arial !important;
+    font-weight: bold !important;
+    font-size: 14px ;
+    color: #aa1212; 
+    margin-top: 6px; 
+}
+
+
+.FastShot_default_modify a:link, .FastShot_default_modify a:visited {
+    padding-bottom: 10px !important;
+    padding-top: 5px !important;
+    font-family: Verdana !important;
+    font-weight: bold !important;
+    font-size: 11px !important ;
+    color: #797d83;
+}
+
+.FastShot_default_modify a:hover {
+    padding-bottom: 10px !important;
+    padding-top: 5px !important;
+    font-family: Verdana !important;
+    font-size: 11px !important ;
+    font-weight: bold !important;
+    color: #953646;  
+}

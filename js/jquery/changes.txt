@@ -1,0 +1,17 @@
+1. replace 
+    uiDialog = (this.uiDialog = uiDialogContainer.parent())
+				.appendTo(document.body)
+with 
+    uiDialog = (this.uiDialog = uiDialogContainer.parent())
+				.appendTo($("#Form"))
+                
+This will make UpdatePanels work in jQuery Dialogs
+
+
+2. Remove ESC key
+
+    // allow closing by pressing the escape key
+    $(document).bind('keydown.dialog-overlay', function(e) {
+        var ESC = 27;
+        (e.keyCode && e.keyCode == ESC && dialog.close()); 
+    });

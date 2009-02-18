@@ -1,0 +1,432 @@
+
+/* Styles for the settings window */
+
+.FastShot_dlg {
+    border: 1px solid #424242;
+}
+
+.FastShot_dlg .ui-dialog-container {
+    background-color: Transparent;
+}
+
+.NavXpOverlayDisable {
+    background-color: #FEFEFE;
+}
+
+.NavXpOverlayDisable .ui-dialog-titlebar-close {
+    display: none;
+}
+
+.NavXpOverlayDisable .ui-dialog-titlebar {
+    display: none;
+}
+
+/* the whole dialog window */
+.FastShot_dlg .ui-dialog-container {
+    background-color: #FEFEFE;
+    font-size: 13px;
+}
+
+.FastShot_dlg .ui-dialog-container table {
+    font-size: small;
+    font-family: Verdana;
+}
+
+
+/* the titlebar */
+.FastShot_dlg .ui-dialog-titlebar {
+    cursor: default;
+    background-color: #424262;
+    height: 21px;
+    font-size: 13px;
+    font-weight: 800;
+    color: #FEFEFE;
+    padding: 5px 0 0 12px;
+    background-image: url(res/bg_dlg_titlebar.png);
+    background-repeat: repeat-x;
+}
+
+/* additional style for dialog contents */
+.FastShot_dlg .ui-dialog-content {
+    overflow: visible;
+    margin-right: 2px;
+    margin-bottom: 2px;
+}
+
+.FastShot_dlg .ui-dialog-content {
+    overflow: visible;
+    border-style: none;
+}
+
+.FastShot_dlg .ui-dialog-titlebar-close {
+    display: none;
+}
+
+.FastShot_dlg .ui-resizable-disabled .ui-resizable-handle { 
+    display: none;
+}
+
+
+
+/****************************************************************/
+/* TABS */
+
+.navxp_tabs {
+    background-image: url(res/bg_tabs.png);
+    background-repeat: repeat-x;
+    width: 100%;
+    padding-left: 4px;
+    margin-top: 4px;
+}
+
+a.navxp_tab:link, a.navxp_tab:visited {
+    float: left;
+    display: block;
+    background-color: #424246;
+    color: #EEEEEE;
+    margin-right: 2px;
+    padding: 2px 16px 0 16px;
+    height: 16px;
+    background-image: url(res/bg_tab_off.png);
+    background-repeat: repeat-x;
+    background-position: bottom;
+    border: 1px solid #424242;
+    overflow: hidden;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+a.navxp_tab:hover {
+    background-image: url(res/bg_tab_over.png);
+    background-repeat: repeat-x;
+    color: #FEFEFF;
+}
+
+a.navxp_tab_gray:link, a.navxp_tab_gray:visited {
+    float: left;
+    display: block;
+    background-color: #424246;
+    color: #000000;
+    margin-right: 2px;
+    padding: 2px 16px 1px 16px;
+    height: 16px;
+    background-image: url(res/bg_tab_gray_off.png);
+    background-repeat: repeat-x;
+    background-position: bottom;
+    border: 1px solid #424242;
+    overflow: hidden;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+a.navxp_tab_gray:hover {
+    background-image: url(res/bg_tab_over.png);
+    background-repeat: repeat-x;
+    color: #FEFEFF;
+}
+
+a.navxp_tab_sel:link, a.navxp_tab_sel:visited {
+    float: left;
+    display: block;
+    border-bottom: 0px;
+    background-color: #FEFEFE;
+    color: #424246;
+    margin-right: 2px;
+    padding: 5px 16px 0 16px;
+    overflow: hidden;
+    font-size: 13px;
+    height: 20px;
+    border: 2px solid #424242;
+    border-bottom: 0px;
+    font-weight: 900;
+    text-decoration: underline;
+}
+
+a.navxp_tab_sel:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+
+.navxp_flbl {
+    float: left;
+    margin: 2px 8px 0 10px;
+    text-align: right;
+    width: 160px;
+    font-weight: 700;
+    font-size: 13px;
+    color: #424246;
+}
+
+.navxp_ftxt {
+    width: 260px;
+}
+
+
+
+.navxp_vw_header {
+    background-image: url(res/bg_tab_off.png);
+    background-repeat: repeat-x;
+}
+
+.navxp_vw_header th {
+    padding: 2px 4px 4px 14px;
+    text-align: left;
+}
+
+.navxp_vw_header a:link, .navxp_vw_header a:visited {
+    font-size: 12px;
+    color: #FEFEFE;
+    font-weight: 900;
+}
+
+.navxp_vw_header a:hover {
+    text-decoration: underline;
+}
+
+.navxp_vw_row, .navxp_vw_row_alt {
+    font-size: 12px;
+    color: #424248;
+    
+}
+
+.navxp_vw_row td, .navxp_vw_row_alt td {
+    padding: 2px 2px 2px 4px;
+    
+}
+
+.navxp_vw_row_alt {
+    background-color: #F0F0FF;
+}
+
+.navxp_vw_pager {
+    border-top: 1px solid #626262;
+    border-bottom: 1px solid #424242;
+}
+    
+.navxp_vw_pager td {
+    background-color: #FDFDFD;
+    font-size: 11px;
+}
+
+.navxp_vw_pager span {
+    background-color: #6191aa;
+    /*border: 1px solid #424242;*/
+    font-size: 14px;
+    font-weight: 900;
+    color: #FEFEFE;
+    padding: 0px 2px 0px 2px;
+}
+
+.navxp_gray {
+    color: #646464;
+}
+
+.navxp_italic {
+    font-style: italic;
+}
+
+.navxp_loader {
+    text-align: center;
+    margin: auto;
+    background-color: #FEFEFE;
+}
+
+.NavXpError {
+    display: none; 
+    border: 1px solid #424242;
+    background-color: #fc3939;
+    height: 30px;
+    color: #FEFEFE;
+    font-weight: 900;
+    font-size: 12px;
+}
+
+.NavXpSuccess {
+    display: none; 
+    border: 1px solid #424242;
+    background-color: #64ff4f;
+    height: 30px;
+    color: #424242;
+    font-weight: 900;
+    font-size: 12px;
+}
+
+.NavXpNotification {
+    display: none; 
+    border: 1px solid #424242;
+    background-color: #686868;
+    height: 30px;
+    color: #FEFEFE;
+    font-weight: 900;
+    font-size: 12px;
+}
+
+.navxp_tree_container {
+    width: 220px;
+    height: 420px;
+    border: 1px solid #999999;
+    margin-left: 20px;
+    float: left;
+    overflow: auto;
+}
+
+.navxp_tree_container ul li {
+    list-style-type:none;
+}
+
+.themePropsTable {
+    font-family: Arial;
+    margin: 4px;
+}
+
+.themePropsTable td {
+    text-align: left;
+    vertical-align: top;
+    padding: 2px;
+    font-size: 11px;
+}
+
+.themePropsTable input, .themePropsTable textarea, .themePropsTable select {
+    background-color: #e0e9f5;
+    border: 1px solid #424242;
+    font-size: 11px;
+    font-weight: 800;
+    color: #272727;
+}
+
+.themePropsTable input[disabled], .themePropsTable textarea[disabled], .themePropsTable select[disabled] {
+    border: 1px solid #B4B4B4;
+    color: #A2A2A2;
+}
+
+.themePropsTable .themeprop_header {
+    background-color: #CCCCCC;
+    font-size: 12px;
+    font-weight: 900;
+    border: 1px solid #424242;
+}
+
+.themePropsTable .themeprop_desc {
+    border: 1px solid #424242;
+    background-color: #EEEEEE;
+}
+
+.themePropsTable .themeprop_name {
+    text-align: right;
+    vertical-align: middle;
+    font-size: 11px;
+    font-weight: 900;
+    padding-right: 4px;
+}
+
+.themePropsTable .themeprop_field {
+    vertical-align: middle;
+    text-align: left;
+}
+
+.themePropsTable .inpSmall {
+    width: 78px;
+    margin-right: 1px;
+}
+
+.themePropsTable .inpSmallRight {
+    width: 78px;
+    margin-right: 1px;
+    text-align: right;
+}
+
+.themePropsTable .inpSmallMedium {
+    width: 120px;
+    margin-right: 1px;
+}
+
+.themePropsTable .inpMedium {
+    width: 160px;
+}
+
+.themePropsTable .inpLarge {
+    width: 260px;
+}
+
+
+.navxp_confirm_text {
+    padding: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #424242;
+}
+
+
+
+
+/** FASTSHOT **/
+.FS_Form td.lbl {
+    vertical-align: top;
+    text-align: right;
+    padding-right: 7px;
+    padding-bottom: 6px;
+}
+
+.FS_Form td.fld {
+    width: 250px; 
+    vertical-align: top;
+    padding-bottom: 6px;
+}
+
+a.bluebtn:link, a.bluebtn:visited {
+    float: left;
+    display: block;
+    background-color: #424246;
+    color: #EEEEEE;
+    margin-right: 2px;
+    padding: 2px 16px 0 16px;
+    height: 16px;
+    background-image: url(res/bg_tab_off.png);
+    background-repeat: repeat-x;
+    background-position: bottom;
+    border: 1px solid #424242;
+    overflow: hidden;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+a.bluebtn:hover {
+    background-image: url(res/bg_tab_over.png);
+    background-repeat: repeat-x;
+    color: #FEFEFF;
+}
+
+.required {
+    color: #FF0000;
+    font-style: italic;
+    font-size: 10px;
+}
+
+
+.btnIcon:link, .btnIcon:visited {
+    display: block;
+    float: left;
+    padding: 2px;
+    padding-right: 4px;
+    border: 1px solid #d1d1d1;
+    background-color: #fafafa;
+    font-weight: bold;
+    color: #084d6b;
+    margin: 5px;
+}
+
+.btnIcon:hover, .btnIcon:active {
+    color: #ce0000;
+    font-weight: bold;
+    border-color: #ce0000;
+    margin: 5px;
+}
+
+.btnIcon img {
+    margin-right: 6px;
+    vertical-align: middle;
+}
