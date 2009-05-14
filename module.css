@@ -2,11 +2,13 @@
 /* Styles for the settings window */
 
 .FastShot_dlg {
-    border: 1px solid #424242;
+    background-color: #FEFEFE;
 }
 
 .FastShot_dlg .ui-dialog-container {
-    background-color: Transparent;
+    background-color: #FEFEFE;
+    text-align: left;
+    font-size: 13px;
 }
 
 .NavXpOverlayDisable {
@@ -22,10 +24,6 @@
 }
 
 /* the whole dialog window */
-.FastShot_dlg .ui-dialog-container {
-    background-color: #FEFEFE;
-    font-size: 13px;
-}
 
 .FastShot_dlg .ui-dialog-container table {
     font-size: small;
@@ -35,34 +33,84 @@
 
 /* the titlebar */
 .FastShot_dlg .ui-dialog-titlebar {
+    border: 1px solid #424242;
     cursor: default;
     background-color: #424262;
-    height: 21px;
-    font-size: 13px;
+    height: 26px;
+    font-size: 15px;
     font-weight: 800;
     color: #FEFEFE;
-    padding: 5px 0 0 12px;
+    padding: 7px 0 0 12px;
     background-image: url(res/bg_dlg_titlebar.png);
     background-repeat: repeat-x;
+}
+
+.dlg_small {
+    overflow: visible;
+}
+
+.dlg_small .ui-dialog-titlebar {
+    height: 18px;
+    font-size: 12px;
 }
 
 /* additional style for dialog contents */
 .FastShot_dlg .ui-dialog-content {
     overflow: visible;
-    margin-right: 2px;
-    margin-bottom: 2px;
+    width: 798px;
+    height: 543px;
+    border: 1px solid #424242;
+    /*margin-right: 2px;
+    margin-bottom: 2px;*/
+    /*overflow: hidden;*/
 }
 
-.FastShot_dlg .ui-dialog-content {
+.dlg_small .ui-dialog-content {
     overflow: visible;
-    border-style: none;
 }
 
 .FastShot_dlg .ui-dialog-titlebar-close {
     display: none;
 }
 
-.FastShot_dlg .ui-resizable-disabled .ui-resizable-handle { 
+.ui-resizable-disabled .ui-resizable-handle { 
+    display: none;
+}
+
+
+.FastShot_dlg a.sysBtn:link, .FastShot_dlg a.sysBtn:visited {
+    background-color: #424246;
+    display: inline-block;
+    color: #EEEEEE;
+    margin-right: 2px;
+    margin-bottom: 6px;
+    padding: 1px 16px 0px 16px;
+    height: 16px;
+    background-image: url(res/bg_tab_off.png);
+    background-repeat: repeat-x;
+    background-position: bottom;
+    border: 1px solid #424242;
+    overflow: hidden;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.FastShot_dlg a.sysBtn:hover, .FastShot_dlg a.sysBtn:active {
+    background-image: url(res/bg_tab_over.png);
+    background-repeat: repeat-x;
+    color: #FEFEFF;
+}
+
+
+.avtDisabled {
+    background-color: #FEFEFE;
+}
+
+.avtDisabled .ui-dialog-titlebar-close {
+    display: none;
+}
+
+.avtDisabled .ui-dialog-titlebar {
     display: none;
 }
 
@@ -101,51 +149,6 @@ a.navxp_tab:hover {
     background-repeat: repeat-x;
     color: #FEFEFF;
 }
-
-a.navxp_tab_gray:link, a.navxp_tab_gray:visited {
-    float: left;
-    display: block;
-    background-color: #424246;
-    color: #000000;
-    margin-right: 2px;
-    padding: 2px 16px 1px 16px;
-    height: 16px;
-    background-image: url(res/bg_tab_gray_off.png);
-    background-repeat: repeat-x;
-    background-position: bottom;
-    border: 1px solid #424242;
-    overflow: hidden;
-    font-size: 12px;
-    font-weight: 500;
-}
-
-a.navxp_tab_gray:hover {
-    background-image: url(res/bg_tab_over.png);
-    background-repeat: repeat-x;
-    color: #FEFEFF;
-}
-
-a.navxp_tab_sel:link, a.navxp_tab_sel:visited {
-    float: left;
-    display: block;
-    border-bottom: 0px;
-    background-color: #FEFEFE;
-    color: #424246;
-    margin-right: 2px;
-    padding: 5px 16px 0 16px;
-    overflow: hidden;
-    font-size: 13px;
-    height: 20px;
-    border: 2px solid #424242;
-    border-bottom: 0px;
-    font-weight: 900;
-    text-decoration: underline;
-}
-
-a.navxp_tab_sel:hover {
-    text-decoration: underline;
-}
-
 
 
 
@@ -361,20 +364,18 @@ a.navxp_tab_sel:hover {
 }
 
 
-
-
 /** FASTSHOT **/
 .FS_Form td.lbl {
     vertical-align: top;
     text-align: right;
     padding-right: 7px;
-    padding-bottom: 6px;
+    padding-top: 12px;
 }
 
 .FS_Form td.fld {
     width: 250px; 
     vertical-align: top;
-    padding-bottom: 6px;
+    padding-top: 12px;
 }
 
 a.bluebtn:link, a.bluebtn:visited {
@@ -411,6 +412,7 @@ a.bluebtn:hover {
     display: block;
     float: left;
     padding: 2px;
+    font-size: 13px;
     padding-right: 4px;
     border: 1px solid #d1d1d1;
     background-color: #fafafa;
@@ -429,4 +431,16 @@ a.bluebtn:hover {
 .btnIcon img {
     margin-right: 6px;
     vertical-align: middle;
+}
+
+.Help {
+    background-color: #fdfa08;
+    border: 1px solid #a2a2a2;
+    position: absolute;
+    left: 0px;
+    width: 164px;
+    text-align: left;
+    padding: 5px;
+    margin: 0 0 0 4px;
+    
 }

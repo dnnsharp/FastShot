@@ -59,19 +59,19 @@
     <Compile Include="..\..\App_Code\avt.FastShot\SqlDataProvider.cs">
       <Link>SqlDataProvider.cs</Link>
     </Compile>
-    <Compile Include="Activation.ascx.cs">
-      <DependentUpon>Activation.ascx</DependentUpon>
+    <Compile Include="Activation.aspx.cs">
+      <DependentUpon>Activation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Activation.ascx.designer.cs">
-      <DependentUpon>Activation.ascx</DependentUpon>
+    <Compile Include="Activation.aspx.designer.cs">
+      <DependentUpon>Activation.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AddEditItem.ascx.cs">
-      <DependentUpon>AddEditItem.ascx</DependentUpon>
+    <Compile Include="AddEditItem.aspx.cs">
+      <DependentUpon>AddEditItem.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AddEditItem.ascx.designer.cs">
-      <DependentUpon>AddEditItem.ascx</DependentUpon>
+    <Compile Include="AddEditItem.aspx.designer.cs">
+      <DependentUpon>AddEditItem.aspx</DependentUpon>
     </Compile>
     <Compile Include="Main.ascx.cs">
       <DependentUpon>Main.ascx</DependentUpon>
@@ -80,26 +80,38 @@
     <Compile Include="Main.ascx.designer.cs">
       <DependentUpon>Main.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="upload.aspx.cs">
-      <DependentUpon>upload.aspx</DependentUpon>
+    <Compile Include="MakeThumb.aspx.cs">
+      <DependentUpon>MakeThumb.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="upload.aspx.designer.cs">
-      <DependentUpon>upload.aspx</DependentUpon>
+    <Compile Include="MakeThumb.aspx.designer.cs">
+      <DependentUpon>MakeThumb.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.aspx.cs">
+      <DependentUpon>Settings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Settings.aspx.designer.cs">
+      <DependentUpon>Settings.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AddEditItem.ascx" />
     <Content Include="Main.ascx" />
     <Content Include="module.css" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Activation.ascx" />
-    <Content Include="App_LocalResources\AddEditItem.ascx.resx">
-      <SubType>Designer</SubType>
+    <Content Include="AddEditItem.aspx" />
+    <Content Include="Settings.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\AddEditItem.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Activation.aspx" />
+    <Content Include="App_LocalResources\Settings.aspx.resx">
     </Content>
-    <Content Include="upload.aspx" />
+    <Content Include="MakeThumb.aspx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
@@ -118,9 +130,9 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>3407</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/devx1/</IISUrl>
+          <IISUrl>http://localhost:8080/FastShot</IISUrl>
           <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
-          <IISAppRootUrl>http://devx.avt.2am.ro:8080</IISAppRootUrl>
+          <IISAppRootUrl>http://localhost:8080/devx/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

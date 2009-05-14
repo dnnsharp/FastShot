@@ -11,123 +11,132 @@
 namespace avt.FastShot {
     
     
-    public partial class Activation {
+    public partial class Settings {
         
         /// <summary>
-        /// pnlActivateDlg control.
+        /// Form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlActivateDlg;
+        protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
         
         /// <summary>
-        /// upnlActivate control.
+        /// ScrollTop control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upnlActivate;
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden ScrollTop;
         
         /// <summary>
-        /// triggerActivate control.
+        /// __dnnVariable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton triggerActivate;
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden @__dnnVariable;
         
         /// <summary>
-        /// pnlActivate control.
+        /// scriptManager control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlActivate;
+        protected global::System.Web.UI.ScriptManager scriptManager;
         
         /// <summary>
-        /// ddHosts control.
+        /// upnlAddEdit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddHosts;
+        protected global::System.Web.UI.UpdatePanel upnlAddEdit;
         
         /// <summary>
-        /// txtRegistrationCode control.
+        /// txtModuleId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRegistrationCode;
+        protected global::System.Web.UI.WebControls.Label txtModuleId;
         
         /// <summary>
-        /// validateActivation control.
+        /// lblTemplate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator validateActivation;
+        protected global::DotNetNuke.UI.UserControls.LabelControl lblTemplate;
         
         /// <summary>
-        /// btnActivate control.
+        /// ddTemplate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnActivate;
+        protected global::System.Web.UI.WebControls.DropDownList ddTemplate;
         
         /// <summary>
-        /// btnCloseAct control.
+        /// lblThumbWidth control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnCloseAct;
+        protected global::DotNetNuke.UI.UserControls.LabelControl lblThumbWidth;
         
         /// <summary>
-        /// pnlInvalidHost control.
+        /// txtThumbWidth control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlInvalidHost;
+        protected global::System.Web.UI.WebControls.TextBox txtThumbWidth;
         
         /// <summary>
-        /// LinkButton1 control.
+        /// lblThumbHeight control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        protected global::DotNetNuke.UI.UserControls.LabelControl lblThumbHeight;
         
         /// <summary>
-        /// pnlSuccess control.
+        /// txtThumbHeight control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlSuccess;
+        protected global::System.Web.UI.WebControls.TextBox txtThumbHeight;
         
         /// <summary>
-        /// btnClose control.
+        /// cmdUpdate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnClose;
+        protected global::System.Web.UI.WebControls.LinkButton cmdUpdate;
+        
+        /// <summary>
+        /// cmdCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton cmdCancel;
     }
 }

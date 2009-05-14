@@ -1,0 +1,1 @@
+<%@ Page language="c#" Inherits=" avt.FastShot.MakeThumb" CodeFile="MakeThumb.aspx.cs" %>

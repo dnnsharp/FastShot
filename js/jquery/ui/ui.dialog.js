@@ -1,11 +1,11 @@
 /*
- * jQuery UI Dialog
+ * avt_jQuery126 UI Dialog
  *
  * Copyright (c) 2008 Richard D. Worth (rdworth.org)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  * 
- * http://docs.jquery.com/UI/Dialog
+ * http://docs.avt_jQuery126.com/UI/Dialog
  *
  * Depends:
  *	ui.core.js
@@ -470,4 +470,4 @@ $.extend($.ui.dialog.overlay.prototype, {
 	}
 });
 
-})(jQuery);
+})(avt_jQuery126);

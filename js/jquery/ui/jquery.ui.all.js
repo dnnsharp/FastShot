@@ -1,11 +1,11 @@
 /*
- * jQuery UI 1.5.2
+ * avt_jQuery126 UI 1.5.2
  *
- * Copyright (c) 2008 Paul Bakaus (ui.jquery.com)
+ * Copyright (c) 2008 Paul Bakaus (ui.avt_jQuery126.com)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  *
- * http://docs.jquery.com/UI
+ * http://docs.avt_jQuery126.com/UI
  */
 ;(function($) {
 
@@ -61,7 +61,7 @@ $.ui = {
 };
 
 
-/** jQuery core modifications and additions **/
+/** avt_jQuery126 core modifications and additions **/
 
 var _remove = $.fn.remove;
 $.fn.remove = function() {
@@ -69,7 +69,7 @@ $.fn.remove = function() {
 	return _remove.apply(this, arguments );
 };
 
-// $.widget is a factory to create jQuery plugins
+// $.widget is a factory to create avt_jQuery126 plugins
 // taking some boilerplate code out of the plugin code
 // created by Scott González and Jörn Zaefferer
 function getter(namespace, plugin, method) {
@@ -288,15 +288,15 @@ $.ui.mouse.defaults = {
 	delay: 0
 };
 
-})(jQuery);
+})(avt_jQuery126);
 /*
- * jQuery UI Draggable
+ * avt_jQuery126 UI Draggable
  *
  * Copyright (c) 2008 Paul Bakaus
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  * 
- * http://docs.jquery.com/UI/Draggables
+ * http://docs.avt_jQuery126.com/UI/Draggables
  *
  * Depends:
  *	ui.core.js
@@ -850,15 +850,15 @@ $.ui.plugin.add("draggable", "stack", {
 	}
 });
 
-})(jQuery);
+})(avt_jQuery126);
 /*
- * jQuery UI Droppable
+ * avt_jQuery126 UI Droppable
  *
  * Copyright (c) 2008 Paul Bakaus
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  * 
- * http://docs.jquery.com/UI/Droppables
+ * http://docs.avt_jQuery126.com/UI/Droppables
  *
  * Depends:
  *	ui.core.js
@@ -1131,15 +1131,15 @@ $.ui.plugin.add("droppable", "hoverClass", {
 	}
 });
 
-})(jQuery);
+})(avt_jQuery126);
 /*
- * jQuery UI Resizable
+ * avt_jQuery126 UI Resizable
  *
  * Copyright (c) 2008 Paul Bakaus
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  * 
- * http://docs.jquery.com/UI/Resizables
+ * http://docs.avt_jQuery126.com/UI/Resizables
  *
  * Depends:
  *	ui.core.js
@@ -1901,15 +1901,15 @@ $.ui.plugin.add("resizable", "alsoResize", {
 	}
 });
 
-})(jQuery);
+})(avt_jQuery126);
 /*
- * jQuery UI Selectable
+ * avt_jQuery126 UI Selectable
  *
  * Copyright (c) 2008 Richard D. Worth (rdworth.org)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  * 
- * http://docs.jquery.com/UI/Selectables
+ * http://docs.avt_jQuery126.com/UI/Selectables
  *
  * Depends:
  *	ui.core.js
@@ -2165,15 +2165,15 @@ $.extend($.ui.selectable, {
 	}
 });
 
-})(jQuery);
+})(avt_jQuery126);
 /*
- * jQuery UI Sortable
+ * avt_jQuery126 UI Sortable
  *
  * Copyright (c) 2008 Paul Bakaus
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  * 
- * http://docs.jquery.com/UI/Sortables
+ * http://docs.avt_jQuery126.com/UI/Sortables
  *
  * Depends:
  *	ui.core.js
@@ -2908,15 +2908,15 @@ $.ui.plugin.add("sortable", "axis", {
 	}
 });
 
-})(jQuery);
+})(avt_jQuery126);
 /*
- * jQuery UI Effects 1.5.2
+ * avt_jQuery126 UI Effects 1.5.2
  *
  * Copyright (c) 2008 Aaron Eisenberger (aaronchi@gmail.com)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  * 
- * http://docs.jquery.com/UI/Effects/
+ * http://docs.avt_jQuery126.com/UI/Effects/
  */
 ;(function($) {
 
@@ -3023,7 +3023,7 @@ $.extend($.effects, {
 	}
 });
 
-//Extend the methods of jQuery
+//Extend the methods of avt_jQuery126
 $.fn.extend({
 	//Save old methods
 	_show: $.fn.show,
@@ -3087,14 +3087,14 @@ $.fn.extend({
 });
 
 /*
- * jQuery Color Animations
+ * avt_jQuery126 Color Animations
  * Copyright 2007 John Resig
  * Released under the MIT and GPL licenses.
  */
 
 // We override the animation for all of these color styles
-jQuery.each(['backgroundColor', 'borderBottomColor', 'borderLeftColor', 'borderRightColor', 'borderTopColor', 'color', 'outlineColor'], function(i,attr){
-		jQuery.fx.step[attr] = function(fx){
+avt_jQuery126.each(['backgroundColor', 'borderBottomColor', 'borderLeftColor', 'borderRightColor', 'borderTopColor', 'color', 'outlineColor'], function(i,attr){
+		avt_jQuery126.fx.step[attr] = function(fx){
 				if ( fx.state == 0 ) {
 						fx.start = getColor( fx.elem, attr );
 						fx.end = getRGB( fx.end );
@@ -3110,7 +3110,7 @@ jQuery.each(['backgroundColor', 'borderBottomColor', 'borderLeftColor', 'borderR
 
 // Color Conversion functions from highlightFade
 // By Blair Mitchelmore
-// http://jquery.offput.ca/highlightFade/
+// http://avt_jQuery126.offput.ca/highlightFade/
 
 // Parse strings looking for color tuples [255,255,255]
 function getRGB(color) {
@@ -3141,17 +3141,17 @@ function getRGB(color) {
 				return colors['transparent']
 
 		// Otherwise, we're most likely dealing with a named color
-		return colors[jQuery.trim(color).toLowerCase()];
+		return colors[avt_jQuery126.trim(color).toLowerCase()];
 }
 
 function getColor(elem, attr) {
 		var color;
 
 		do {
-				color = jQuery.curCSS(elem, attr);
+				color = avt_jQuery126.curCSS(elem, attr);
 
 				// Keep going until we find an element that has color, or we hit the body
-				if ( color != '' && color != 'transparent' || jQuery.nodeName(elem, "body") )
+				if ( color != '' && color != 'transparent' || avt_jQuery126.nodeName(elem, "body") )
 						break;
 
 				attr = "backgroundColor";
@@ -3212,12 +3212,12 @@ var colors = {
 };
 	
 /*
- * jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
+ * avt_jQuery126 Easing v1.3 - http://gsgd.co.uk/sandbox/avt_jQuery126/easing/
  *
- * Uses the built in easing capabilities added In jQuery 1.1
+ * Uses the built in easing capabilities added In avt_jQuery126 1.1
  * to offer multiple easing options
  *
- * TERMS OF USE - jQuery Easing
+ * TERMS OF USE - avt_jQuery126 Easing
  * 
  * Open source under the BSD License. 
  * 
@@ -3249,14 +3249,14 @@ var colors = {
 */
 
 // t: current time, b: begInnIng value, c: change In value, d: duration
-jQuery.easing['jswing'] = jQuery.easing['swing'];
+avt_jQuery126.easing['jswing'] = avt_jQuery126.easing['swing'];
 
-jQuery.extend( jQuery.easing,
+avt_jQuery126.extend( avt_jQuery126.easing,
 {
 	def: 'easeOutQuad',
 	swing: function (x, t, b, c, d) {
-		//alert(jQuery.easing.default);
-		return jQuery.easing[jQuery.easing.def](x, t, b, c, d);
+		//alert(avt_jQuery126.easing.default);
+		return avt_jQuery126.easing[avt_jQuery126.easing.def](x, t, b, c, d);
 	},
 	easeInQuad: function (x, t, b, c, d) {
 		return c*(t/=d)*t + b;
@@ -3365,7 +3365,7 @@ jQuery.extend( jQuery.easing,
 		return c/2*((t-=2)*t*(((s*=(1.525))+1)*t + s) + 2) + b;
 	},
 	easeInBounce: function (x, t, b, c, d) {
-		return c - jQuery.easing.easeOutBounce (x, d-t, 0, c, d) + b;
+		return c - avt_jQuery126.easing.easeOutBounce (x, d-t, 0, c, d) + b;
 	},
 	easeOutBounce: function (x, t, b, c, d) {
 		if ((t/=d) < (1/2.75)) {
@@ -3379,8 +3379,8 @@ jQuery.extend( jQuery.easing,
 		}
 	},
 	easeInOutBounce: function (x, t, b, c, d) {
-		if (t < d/2) return jQuery.easing.easeInBounce (x, t*2, 0, c, d) * .5 + b;
-		return jQuery.easing.easeOutBounce (x, t*2-d, 0, c, d) * .5 + c*.5 + b;
+		if (t < d/2) return avt_jQuery126.easing.easeInBounce (x, t*2, 0, c, d) * .5 + b;
+		return avt_jQuery126.easing.easeOutBounce (x, t*2-d, 0, c, d) * .5 + c*.5 + b;
 	}
 });
 
@@ -3417,15 +3417,15 @@ jQuery.extend( jQuery.easing,
  *
  */
 
-})(jQuery);
+})(avt_jQuery126);
 /*
- * jQuery UI Effects Blind
+ * avt_jQuery126 UI Effects Blind
  *
  * Copyright (c) 2008 Aaron Eisenberger (aaronchi@gmail.com)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  * 
- * http://docs.jquery.com/UI/Effects/Blind
+ * http://docs.avt_jQuery126.com/UI/Effects/Blind
  *
  * Depends:
  *	effects.core.js
@@ -3466,15 +3466,15 @@ $.effects.blind = function(o) {
 	
 };
 
-})(jQuery);
+})(avt_jQuery126);
 /*
- * jQuery UI Effects Bounce
+ * avt_jQuery126 UI Effects Bounce
  *
  * Copyright (c) 2008 Aaron Eisenberger (aaronchi@gmail.com)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  * 
- * http://docs.jquery.com/UI/Effects/Bounce
+ * http://docs.avt_jQuery126.com/UI/Effects/Bounce
  *
  * Depends:
  *	effects.core.js
@@ -3544,15 +3544,15 @@ $.effects.bounce = function(o) {
 	
 };
 
-})(jQuery);
+})(avt_jQuery126);
 /*
- * jQuery UI Effects Clip
+ * avt_jQuery126 UI Effects Clip
  *
  * Copyright (c) 2008 Aaron Eisenberger (aaronchi@gmail.com)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  * 
- * http://docs.jquery.com/UI/Effects/Clip
+ * http://docs.avt_jQuery126.com/UI/Effects/Clip
  *
  * Depends:
  *	effects.core.js
@@ -3598,15 +3598,15 @@ $.effects.clip = function(o) {
 	
 };
 
-})(jQuery);
+})(avt_jQuery126);
 /*
- * jQuery UI Effects Drop
+ * avt_jQuery126 UI Effects Drop
  *
  * Copyright (c) 2008 Aaron Eisenberger (aaronchi@gmail.com)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  * 
- * http://docs.jquery.com/UI/Effects/Drop
+ * http://docs.avt_jQuery126.com/UI/Effects/Drop
  *
  * Depends:
  *	effects.core.js
@@ -3648,15 +3648,15 @@ $.effects.drop = function(o) {
 	
 };
 
-})(jQuery);
+})(avt_jQuery126);
 /*
- * jQuery UI Effects Explode
+ * avt_jQuery126 UI Effects Explode
  *
- * Copyright (c) 2008 Paul Bakaus (ui.jquery.com)
+ * Copyright (c) 2008 Paul Bakaus (ui.avt_jQuery126.com)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  * 
- * http://docs.jquery.com/UI/Effects/Explode
+ * http://docs.avt_jQuery126.com/UI/Effects/Explode
  *
  * Depends:
  *	effects.core.js
@@ -3727,15 +3727,15 @@ $.effects.explode = function(o) {
 	
 };
 
-})(jQuery);
+})(avt_jQuery126);
 /*
- * jQuery UI Effects Fold
+ * avt_jQuery126 UI Effects Fold
  *
  * Copyright (c) 2008 Aaron Eisenberger (aaronchi@gmail.com)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  * 
- * http://docs.jquery.com/UI/Effects/Fold
+ * http://docs.avt_jQuery126.com/UI/Effects/Fold
  *
  * Depends:
  *	effects.core.js
@@ -3782,15 +3782,15 @@ $.effects.fold = function(o) {
 	
 };
 
-})(jQuery);
+})(avt_jQuery126);
 /*
- * jQuery UI Effects Highlight
+ * avt_jQuery126 UI Effects Highlight
  *
  * Copyright (c) 2008 Aaron Eisenberger (aaronchi@gmail.com)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  * 
- * http://docs.jquery.com/UI/Effects/Highlight
+ * http://docs.avt_jQuery126.com/UI/Effects/Highlight
  *
  * Depends:
  *	effects.core.js
@@ -3821,7 +3821,7 @@ $.effects.highlight = function(o) {
 		el.animate(animation, { queue: false, duration: o.duration, easing: o.options.easing, complete: function() {
 			if(mode == "hide") el.hide();
 			$.effects.restore(el, props);
-		if (mode == "show" && jQuery.browser.msie) this.style.removeAttribute('filter'); 
+		if (mode == "show" && avt_jQuery126.browser.msie) this.style.removeAttribute('filter'); 
 			if(o.callback) o.callback.apply(this, arguments);
 			el.dequeue();
 		}});
@@ -3830,15 +3830,15 @@ $.effects.highlight = function(o) {
 	
 };
 
-})(jQuery);
+})(avt_jQuery126);
 /*
- * jQuery UI Effects Pulsate
+ * avt_jQuery126 UI Effects Pulsate
  *
  * Copyright (c) 2008 Aaron Eisenberger (aaronchi@gmail.com)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  * 
- * http://docs.jquery.com/UI/Effects/Pulsate
+ * http://docs.avt_jQuery126.com/UI/Effects/Pulsate
  *
  * Depends:
  *	effects.core.js
@@ -3885,15 +3885,15 @@ $.effects.pulsate = function(o) {
 	
 };
 
-})(jQuery);
+})(avt_jQuery126);
 /*
- * jQuery UI Effects Scale
+ * avt_jQuery126 UI Effects Scale
  *
  * Copyright (c) 2008 Aaron Eisenberger (aaronchi@gmail.com)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  * 
- * http://docs.jquery.com/UI/Effects/Scale
+ * http://docs.avt_jQuery126.com/UI/Effects/Scale
  *
  * Depends:
  *	effects.core.js
@@ -4065,15 +4065,15 @@ $.effects.size = function(o) {
 
 };
 
-})(jQuery);
+})(avt_jQuery126);
 /*
- * jQuery UI Effects Shake
+ * avt_jQuery126 UI Effects Shake
  *
  * Copyright (c) 2008 Aaron Eisenberger (aaronchi@gmail.com)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  * 
- * http://docs.jquery.com/UI/Effects/Shake
+ * http://docs.avt_jQuery126.com/UI/Effects/Shake
  *
  * Depends:
  *	effects.core.js
@@ -4122,15 +4122,15 @@ $.effects.shake = function(o) {
 	
 };
 
-})(jQuery);
+})(avt_jQuery126);
 /*
- * jQuery UI Effects Slide
+ * avt_jQuery126 UI Effects Slide
  *
  * Copyright (c) 2008 Aaron Eisenberger (aaronchi@gmail.com)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  * 
- * http://docs.jquery.com/UI/Effects/Slide
+ * http://docs.avt_jQuery126.com/UI/Effects/Slide
  *
  * Depends:
  *	effects.core.js
@@ -4172,15 +4172,15 @@ $.effects.slide = function(o) {
 	
 };
 
-})(jQuery);
+})(avt_jQuery126);
 /*
- * jQuery UI Effects Transfer
+ * avt_jQuery126 UI Effects Transfer
  *
  * Copyright (c) 2008 Aaron Eisenberger (aaronchi@gmail.com)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  * 
- * http://docs.jquery.com/UI/Effects/Transfer
+ * http://docs.avt_jQuery126.com/UI/Effects/Transfer
  *
  * Depends:
  *	effects.core.js
@@ -4231,15 +4231,15 @@ $.effects.transfer = function(o) {
 	
 };
 
-})(jQuery);
+})(avt_jQuery126);
 /*
- * jQuery UI Accordion
+ * avt_jQuery126 UI Accordion
  * 
  * Copyright (c) 2007, 2008 Jörn Zaefferer
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  *
- * http://docs.jquery.com/UI/Accordion
+ * http://docs.avt_jQuery126.com/UI/Accordion
  *
  * Depends:
  *	ui.core.js
@@ -4361,7 +4361,7 @@ function toggle(toShow, toHide, data, clickedActive, down) {
 	if ( options.animated ) {
 		if ( !options.alwaysOpen && clickedActive ) {
 			$.ui.accordion.animations[options.animated]({
-				toShow: jQuery([]),
+				toShow: avt_jQuery126([]),
 				toHide: toHide,
 				complete: complete,
 				down: down,
@@ -4399,9 +4399,9 @@ function clickHandler(event) {
 		var toHide = options.active.next(),
 			data = {
 				options: options,
-				newHeader: jQuery([]),
+				newHeader: avt_jQuery126([]),
 				oldHeader: options.active,
-				newContent: jQuery([]),
+				newContent: avt_jQuery126([]),
 				oldContent: toHide
 			},
 			toShow = (options.active = $([]));
@@ -4526,15 +4526,15 @@ $.fn.activate = function(index) {
 	return this.accordion("activate", index);
 };
 
-})(jQuery);
+})(avt_jQuery126);
 /*
- * jQuery UI Datepicker
+ * avt_jQuery126 UI Datepicker
  *
  * Copyright (c) 2006, 2007, 2008 Marc Grabanski
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  * 
- * http://docs.jquery.com/UI/Datepicker
+ * http://docs.avt_jQuery126.com/UI/Datepicker
  *
  * Depends:
  *	ui.core.js
@@ -4596,7 +4596,7 @@ function Datepicker() {
 	this._defaults = { // Global defaults for all the date picker instances
 		showOn: 'focus', // 'focus' for popup on focus,
 			// 'button' for trigger button, or 'both' for either
-		showAnim: 'show', // Name of jQuery animation for popup
+		showAnim: 'show', // Name of avt_jQuery126 animation for popup
 		showOptions: {}, // Options for enhanced animations
 		defaultDate: null, // Used when field is blank: actual date,
 			// +/-number for offset from today, null for today
@@ -4667,7 +4667,7 @@ $.extend(Datepicker.prototype, {
 		return this;
 	},
 
-	/* Attach the date picker to a jQuery selection.
+	/* Attach the date picker to a avt_jQuery126 selection.
 	   @param  target    element - the target input field or division or span
 	   @param  settings  object - the new settings to use for this date picker instance (anonymous) */
 	_attachDatepicker: function(target, settings) {
@@ -4831,7 +4831,7 @@ $.extend(Datepicker.prototype, {
 			$target.removeClass(this.markerClassName).empty();
 	},
 
-	/* Enable the date picker to a jQuery selection.
+	/* Enable the date picker to a avt_jQuery126 selection.
 	   @param  target    element - the target input field or division or span */
 	_enableDatepicker: function(target) {
 		target.disabled = false;
@@ -4841,7 +4841,7 @@ $.extend(Datepicker.prototype, {
 			function(value) { return (value == target ? null : value); }); // delete entry
 	},
 
-	/* Disable the date picker to a jQuery selection.
+	/* Disable the date picker to a avt_jQuery126 selection.
 	   @param  target    element - the target input field or division or span */
 	_disableDatepicker: function(target) {
 		target.disabled = true;
@@ -4852,7 +4852,7 @@ $.extend(Datepicker.prototype, {
 		this._disabledInputs[this._disabledInputs.length] = target;
 	},
 
-	/* Is the first field in a jQuery collection disabled as a datepicker?
+	/* Is the first field in a avt_jQuery126 collection disabled as a datepicker?
 	   @param  target    element - the target input field or division or span
 	   @return boolean - true if disabled, false if enabled */
 	_isDisabledDatepicker: function(target) {
@@ -4882,7 +4882,7 @@ $.extend(Datepicker.prototype, {
 		}
 	},
 
-	/* Set the dates for a jQuery selection.
+	/* Set the dates for a avt_jQuery126 selection.
 	   @param  target   element - the target input field or division or span
 	   @param  date     Date - the new date
 	   @param  endDate  Date - the new end date for a range (optional) */
@@ -4894,7 +4894,7 @@ $.extend(Datepicker.prototype, {
 		}
 	},
 
-	/* Get the date(s) for the first entry in a jQuery selection.
+	/* Get the date(s) for the first entry in a avt_jQuery126 selection.
 	   @param  target  element - the target input field or division or span
 	   @return Date - the current date or
 	           Date[2] - the current dates for a range */
@@ -5702,11 +5702,11 @@ $.extend(Datepicker.prototype, {
 		var isRTL = this._get(inst, 'isRTL');
 		// build the date picker HTML
 		var clear = (this._get(inst, 'mandatory') ? '' :
-			'<div class="ui-datepicker-clear"><a onclick="jQuery.datepicker._clearDate(\'#' + inst.id + '\');"' +
+			'<div class="ui-datepicker-clear"><a onclick="avt_jQuery126.datepicker._clearDate(\'#' + inst.id + '\');"' +
 			(showStatus ? this._addStatus(inst, this._get(inst, 'clearStatus') || '&#xa0;') : '') + '>' +
 			this._get(inst, 'clearText') + '</a></div>');
 		var controls = '<div class="ui-datepicker-control">' + (isRTL ? '' : clear) +
-			'<div class="ui-datepicker-close"><a onclick="jQuery.datepicker._hideDatepicker();"' +
+			'<div class="ui-datepicker-close"><a onclick="avt_jQuery126.datepicker._hideDatepicker();"' +
 			(showStatus ? this._addStatus(inst, this._get(inst, 'closeStatus') || '&#xa0;') : '') + '>' +
 			this._get(inst, 'closeText') + '</a></div>' + (isRTL ? clear : '')  + '</div>';
 		var prompt = this._get(inst, 'prompt');
@@ -5739,14 +5739,14 @@ $.extend(Datepicker.prototype, {
 		prevText = (!navigationAsDateFormat ? prevText : this.formatDate(
 			prevText, new Date(drawYear, drawMonth - stepMonths, 1), this._getFormatConfig(inst)));
 		var prev = '<div class="ui-datepicker-prev">' + (this._canAdjustMonth(inst, -1, drawYear, drawMonth) ? 
-			'<a onclick="jQuery.datepicker._adjustDate(\'#' + inst.id + '\', -' + stepMonths + ', \'M\');"' +
+			'<a onclick="avt_jQuery126.datepicker._adjustDate(\'#' + inst.id + '\', -' + stepMonths + ', \'M\');"' +
 			(showStatus ? this._addStatus(inst, this._get(inst, 'prevStatus') || '&#xa0;') : '') + '>' + prevText + '</a>' :
 			(hideIfNoPrevNext ? '' : '<label>' + prevText + '</label>')) + '</div>';
 		var nextText = this._get(inst, 'nextText');
 		nextText = (!navigationAsDateFormat ? nextText : this.formatDate(
 			nextText, new Date(drawYear, drawMonth + stepMonths, 1), this._getFormatConfig(inst)));
 		var next = '<div class="ui-datepicker-next">' + (this._canAdjustMonth(inst, +1, drawYear, drawMonth) ?
-			'<a onclick="jQuery.datepicker._adjustDate(\'#' + inst.id + '\', +' + stepMonths + ', \'M\');"' +
+			'<a onclick="avt_jQuery126.datepicker._adjustDate(\'#' + inst.id + '\', +' + stepMonths + ', \'M\');"' +
 			(showStatus ? this._addStatus(inst, this._get(inst, 'nextStatus') || '&#xa0;') : '') + '>' + nextText + '</a>' :
 			(hideIfNoPrevNext ? '' : '<label>' + nextText + '</label>')) + '</div>';
 		var currentText = this._get(inst, 'currentText');
@@ -5757,7 +5757,7 @@ $.extend(Datepicker.prototype, {
 			'<div class="ui-datepicker-links">' + (isRTL ? next : prev) +
 			(this._isInRange(inst, (this._get(inst, 'gotoCurrent') && inst.currentDay ?
 			currentDate : today)) ? '<div class="ui-datepicker-current">' +
-			'<a onclick="jQuery.datepicker._gotoToday(\'#' + inst.id + '\');"' +
+			'<a onclick="avt_jQuery126.datepicker._gotoToday(\'#' + inst.id + '\');"' +
 			(showStatus ? this._addStatus(inst, this._get(inst, 'currentStatus') || '&#xa0;') : '') + '>' +
 			currentText + '</a></div>' : '') + (isRTL ? prev : next) + '</div>';
 		var firstDay = this._get(inst, 'firstDay');
@@ -5789,7 +5789,7 @@ $.extend(Datepicker.prototype, {
 						status.replace(/D/, dayNamesShort[day]));
 					html += '<td' + ((dow + firstDay + 6) % 7 >= 5 ? ' class="ui-datepicker-week-end-cell"' : '') + '>' +
 						(!changeFirstDay ? '<span' :
-						'<a onclick="jQuery.datepicker._changeFirstDay(\'#' + inst.id + '\', ' + day + ');"') + 
+						'<a onclick="avt_jQuery126.datepicker._changeFirstDay(\'#' + inst.id + '\', ' + day + ');"') + 
 						(showStatus ? this._addStatus(inst, dayStatus) : '') + ' title="' + dayNames[day] + '">' +
 						dayNamesMin[day] + (changeFirstDay ? '</a>' : '</span>') + '</td>';
 				}
@@ -5820,17 +5820,17 @@ $.extend(Datepicker.prototype, {
 							' ' + this._currentClass : '') + // highlight selected day
 							(printDate.getTime() == today.getTime() ? ' ui-datepicker-today' : '')) + '"' + // highlight today (if different)
 							((!otherMonth || showOtherMonths) && daySettings[2] ? ' title="' + daySettings[2] + '"' : '') + // cell title
-							(unselectable ? (highlightWeek ? ' onmouseover="jQuery(this).parent().addClass(\'ui-datepicker-week-over\');"' + // highlight selection week
-							' onmouseout="jQuery(this).parent().removeClass(\'ui-datepicker-week-over\');"' : '') : // unhighlight selection week
-							' onmouseover="jQuery(this).addClass(\'ui-datepicker-days-cell-over\')' + // highlight selection
+							(unselectable ? (highlightWeek ? ' onmouseover="avt_jQuery126(this).parent().addClass(\'ui-datepicker-week-over\');"' + // highlight selection week
+							' onmouseout="avt_jQuery126(this).parent().removeClass(\'ui-datepicker-week-over\');"' : '') : // unhighlight selection week
+							' onmouseover="avt_jQuery126(this).addClass(\'ui-datepicker-days-cell-over\')' + // highlight selection
 							(highlightWeek ? '.parent().addClass(\'ui-datepicker-week-over\')' : '') + ';' + // highlight selection week
-							(!showStatus || (otherMonth && !showOtherMonths) ? '' : 'jQuery(\'#ui-datepicker-status-' +
+							(!showStatus || (otherMonth && !showOtherMonths) ? '' : 'avt_jQuery126(\'#ui-datepicker-status-' +
 							inst.id + '\').html(\'' + (dateStatus.apply((inst.input ? inst.input[0] : null),
 							[printDate, inst]) || '&#xa0;') +'\');') + '"' +
-							' onmouseout="jQuery(this).removeClass(\'ui-datepicker-days-cell-over\')' + // unhighlight selection
+							' onmouseout="avt_jQuery126(this).removeClass(\'ui-datepicker-days-cell-over\')' + // unhighlight selection
 							(highlightWeek ? '.parent().removeClass(\'ui-datepicker-week-over\')' : '') + ';' + // unhighlight selection week
-							(!showStatus || (otherMonth && !showOtherMonths) ? '' : 'jQuery(\'#ui-datepicker-status-' +
-							inst.id + '\').html(\'&#xa0;\');') + '" onclick="jQuery.datepicker._selectDay(\'#' +
+							(!showStatus || (otherMonth && !showOtherMonths) ? '' : 'avt_jQuery126(\'#ui-datepicker-status-' +
+							inst.id + '\').html(\'&#xa0;\');') + '" onclick="avt_jQuery126.datepicker._selectDay(\'#' +
 							inst.id + '\',' + drawMonth + ',' + drawYear + ', this);"') + '>' + // actions
 							(otherMonth ? (showOtherMonths ? printDate.getDate() : '&#xa0;') : // display for other months
 							(unselectable ? printDate.getDate() : '<a>' + printDate.getDate() + '</a>')) + '</td>'; // display for this month
@@ -5866,8 +5866,8 @@ $.extend(Datepicker.prototype, {
 			var inMinYear = (minDate && minDate.getFullYear() == drawYear);
 			var inMaxYear = (maxDate && maxDate.getFullYear() == drawYear);
 			html += '<select class="ui-datepicker-new-month" ' +
-				'onchange="jQuery.datepicker._selectMonthYear(\'#' + inst.id + '\', this, \'M\');" ' +
-				'onclick="jQuery.datepicker._clickMonthYear(\'#' + inst.id + '\');"' +
+				'onchange="avt_jQuery126.datepicker._selectMonthYear(\'#' + inst.id + '\', this, \'M\');" ' +
+				'onclick="avt_jQuery126.datepicker._clickMonthYear(\'#' + inst.id + '\');"' +
 				(showStatus ? this._addStatus(inst, this._get(inst, 'monthStatus') || '&#xa0;') : '') + '>';
 			for (var month = 0; month < 12; month++) {
 				if ((!inMinYear || month >= minDate.getMonth()) &&
@@ -5900,8 +5900,8 @@ $.extend(Datepicker.prototype, {
 			year = (minDate ? Math.max(year, minDate.getFullYear()) : year);
 			endYear = (maxDate ? Math.min(endYear, maxDate.getFullYear()) : endYear);
 			html += '<select class="ui-datepicker-new-year" ' +
-				'onchange="jQuery.datepicker._selectMonthYear(\'#' + inst.id + '\', this, \'Y\');" ' +
-				'onclick="jQuery.datepicker._clickMonthYear(\'#' + inst.id + '\');"' +
+				'onchange="avt_jQuery126.datepicker._selectMonthYear(\'#' + inst.id + '\', this, \'Y\');" ' +
+				'onclick="avt_jQuery126.datepicker._clickMonthYear(\'#' + inst.id + '\');"' +
 				(showStatus ? this._addStatus(inst, this._get(inst, 'yearStatus') || '&#xa0;') : '') + '>';
 			for (; year <= endYear; year++) {
 				html += '<option value="' + year + '"' +
@@ -5916,8 +5916,8 @@ $.extend(Datepicker.prototype, {
 
 	/* Provide code to set and clear the status panel. */
 	_addStatus: function(inst, text) {
-		return ' onmouseover="jQuery(\'#ui-datepicker-status-' + inst.id + '\').html(\'' + text + '\');" ' +
-			'onmouseout="jQuery(\'#ui-datepicker-status-' + inst.id + '\').html(\'&#xa0;\');"';
+		return ' onmouseover="avt_jQuery126(\'#ui-datepicker-status-' + inst.id + '\').html(\'' + text + '\');" ' +
+			'onmouseout="avt_jQuery126(\'#ui-datepicker-status-' + inst.id + '\').html(\'&#xa0;\');"';
 	},
 
 	/* Adjust one of the date sub-fields. */
@@ -6019,7 +6019,7 @@ $.extend(Datepicker.prototype, {
 	}
 });
 
-/* jQuery extend now ignores nulls! */
+/* avt_jQuery126 extend now ignores nulls! */
 function extendRemove(target, props) {
 	$.extend(target, props);
 	for (var name in props)
@@ -6037,7 +6037,7 @@ function isArray(a) {
 /* Invoke the datepicker functionality.
    @param  options  string - a command, optionally followed by additional parameters or
                     Object - settings for attaching new datepicker functionality
-   @return  jQuery object */
+   @return  avt_jQuery126 object */
 $.fn.datepicker = function(options){
 	var otherArgs = Array.prototype.slice.call(arguments, 1);
 	if (typeof options == 'string' && (options == 'isDisabled' || options == 'getDate'))
@@ -6059,15 +6059,15 @@ $(document).ready(function() {
 		mousedown($.datepicker._checkExternalClick);
 });
 
-})(jQuery);
+})(avt_jQuery126);
 /*
- * jQuery UI Dialog
+ * avt_jQuery126 UI Dialog
  *
  * Copyright (c) 2008 Richard D. Worth (rdworth.org)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  * 
- * http://docs.jquery.com/UI/Dialog
+ * http://docs.avt_jQuery126.com/UI/Dialog
  *
  * Depends:
  *	ui.core.js
@@ -6587,15 +6587,15 @@ $.extend($.ui.dialog.overlay.prototype, {
 	}
 });
 
-})(jQuery);
+})(avt_jQuery126);
 /*
- * jQuery UI Slider
+ * avt_jQuery126 UI Slider
  *
  * Copyright (c) 2008 Paul Bakaus
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  * 
- * http://docs.jquery.com/UI/Slider
+ * http://docs.avt_jQuery126.com/UI/Slider
  *
  * Depends:
  *	ui.core.js
@@ -7027,15 +7027,15 @@ $.ui.slider.defaults = {
 	animate: false
 };
 
-})(jQuery);
+})(avt_jQuery126);
 /*
- * jQuery UI Tabs
+ * avt_jQuery126 UI Tabs
  *
  * Copyright (c) 2007, 2008 Klaus Hartl (stilbuero.de)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  *
- * http://docs.jquery.com/UI/Tabs
+ * http://docs.avt_jQuery126.com/UI/Tabs
  *
  * Depends:
  *	ui.core.js
@@ -7325,7 +7325,7 @@ $.widget("ui.tabs", {
 				}, 0);*/
 
 			} else
-				throw 'jQuery UI Tabs: Mismatching fragment identifier.';
+				throw 'avt_jQuery126 UI Tabs: Mismatching fragment identifier.';
 
 			// Prevent IE from keeping other link focussed when using the back button
 			// and remove dotted border from clicked link. This is controlled in modern
@@ -7550,7 +7550,7 @@ $.ui.tabs.defaults = {
 	unselect: false,
 	event: 'click',
 	disabled: [],
-	cookie: null, // e.g. { expires: 7, path: '/', domain: 'jquery.com', secure: true }
+	cookie: null, // e.g. { expires: 7, path: '/', domain: 'avt_jQuery126.com', secure: true }
 	// TODO history: false,
 
 	// Ajax
@@ -7626,4 +7626,4 @@ $.extend($.ui.tabs.prototype, {
 	}
 });
 
-})(jQuery);
+})(avt_jQuery126);

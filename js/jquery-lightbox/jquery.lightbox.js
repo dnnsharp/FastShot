@@ -1,5 +1,5 @@
 /**
- * jQuery Lightbox
+ * avt_jQuery_1_3_2 Lightbox
  * Version 0.5 - 11/29/2007
  * @author Warren Krewenki
  *
@@ -14,14 +14,14 @@
  *  - added support for displayHelp setting
  *  - added support for fitToScreen setting (ported Lightbox VinDSL hack)
  *    (see http://www.huddletogether.com/forum/comments.php?DiscussionID=307)
- *  - plugin now uses jQuery.width() and jQuery.height()
+ *  - plugin now uses avt_jQuery_1_3_2.width() and avt_jQuery_1_3_2.height()
  *  - removed eval() calls
- *  - removed destroyElement - uses jQuery.remove()
+ *  - removed destroyElement - uses avt_jQuery_1_3_2.remove()
  *  - use of prevLinkText, nextLinkText and help
  *  - all strings are now placed in opts.strings to allow for customization/translation
  *
  * Based on Lightbox 2 by Lokesh Dhakar (http://www.huddletogether.com/projects/lightbox2/)
- * Originally written to make use of the Prototype framework, and Script.acalo.us, now altered to use jQuery.
+ * Originally written to make use of the Prototype framework, and Script.acalo.us, now altered to use avt_jQuery_1_3_2.
  *
  **/
 
@@ -328,7 +328,7 @@
 		// if new and old image are same size and no scaling transition is necessary,
 		// do a quick pause to prevent image flicker.
 		if((hDiff == 0) && (wDiff == 0)){
-			if (jQuery.browser.msie){ $.fn.lightbox.pause(250); } else { $.fn.lightbox.pause(100);}
+			if (avt_jQuery_1_3_2.browser.msie){ $.fn.lightbox.pause(250); } else { $.fn.lightbox.pause(100);}
 		}
 
 		$('#prevLink').height(imgHeight);
@@ -439,4 +439,4 @@
 		},
 		fitToScreen: false		// resize images if they are bigger than window
 	};
-})(jQuery);
+})(avt_jQuery_1_3_2);

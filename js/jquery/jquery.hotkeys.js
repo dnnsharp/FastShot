@@ -3,7 +3,7 @@
 
 Original idea by by Binny V A, http://www.openjs.com/scripts/events/keyboard_shortcuts/
  
-jQuery Plugin by Tzury Bar Yochay 
+avt_jQuery126 Plugin by Tzury Bar Yochay 
 tzury.by@gmail.com
 http://evalinux.wordpress.com
 http://facebook.com/profile.php?id=513676303
@@ -12,7 +12,7 @@ Project's sites:
 http://code.google.com/p/js-hotkeys/
 http://github.com/tzuryby/hotkeys/tree/master
 
-License: same as jQuery license. 
+License: same as avt_jQuery126 license. 
 
 USAGE:
     // simple usage
@@ -22,16 +22,16 @@ USAGE:
     $(document).bind('keydown', {combi:'Ctrl+x', disableInInput: true} , function() {});
     
 Note:
-    This plugin wraps the following jQuery methods: $.fn.find, $.fn.bind and $.fn.unbind
+    This plugin wraps the following avt_jQuery126 methods: $.fn.find, $.fn.bind and $.fn.unbind
     
 */
 
 
-(function (jQuery){
+(function (avt_jQuery126){
     // keep reference to the original $.fn.bind and $.fn.unbind
-    jQuery.fn.__bind__ = jQuery.fn.bind;
-    jQuery.fn.__unbind__ = jQuery.fn.unbind;
-    jQuery.fn.__find__ = jQuery.fn.find;
+    avt_jQuery126.fn.__bind__ = avt_jQuery126.fn.bind;
+    avt_jQuery126.fn.__unbind__ = avt_jQuery126.fn.unbind;
+    avt_jQuery126.fn.__find__ = avt_jQuery126.fn.find;
     
     var hotkeys = {
         version: '0.7.8',
@@ -57,20 +57,20 @@ Note:
         }
     };
     // add firefox num pad char codes
-    if (jQuery.browser.mozilla){
-        hotkeys.specialKeys = jQuery.extend(hotkeys.specialKeys, { 96: '0', 97:'1', 98: '2', 99: 
+    if (avt_jQuery126.browser.mozilla){
+        hotkeys.specialKeys = avt_jQuery126.extend(hotkeys.specialKeys, { 96: '0', 97:'1', 98: '2', 99: 
             '3', 100: '4', 101: '5', 102: '6', 103: '7', 104: '8', 105: '9' });
     }
     
     // a wrapper around of $.fn.find 
-    // see more at: http://groups.google.com/group/jquery-en/browse_thread/thread/18f9825e8d22f18d
-    jQuery.fn.find = function( selector ) {
+    // see more at: http://groups.google.com/group/avt_jQuery126-en/browse_thread/thread/18f9825e8d22f18d
+    avt_jQuery126.fn.find = function( selector ) {
         this.query=selector;
-        return jQuery.fn.__find__.apply(this, arguments);
+        return avt_jQuery126.fn.__find__.apply(this, arguments);
 	};
     
-    jQuery.fn.unbind = function (type, combi, fn){
-        if (jQuery.isFunction(combi)){
+    avt_jQuery126.fn.unbind = function (type, combi, fn){
+        if (avt_jQuery126.isFunction(combi)){
             fn = combi;
             combi = null;
         }
@@ -81,27 +81,27 @@ Note:
                 delete hotkeys.triggersMap[selectorId][hkTypes[x]][combi];
             }
         }
-        // call jQuery original unbind
+        // call avt_jQuery126 original unbind
         return  this.__unbind__(type, fn);
     };
     
-    jQuery.fn.bind = function(type, data, fn){
+    avt_jQuery126.fn.bind = function(type, data, fn){
         // grab keyup,keydown,keypress
         var handle = type.match(hotkeys.override);
         
-        if (jQuery.isFunction(data) || !handle){
-            // call jQuery.bind only
+        if (avt_jQuery126.isFunction(data) || !handle){
+            // call avt_jQuery126.bind only
             return this.__bind__(type, data, fn);
         }
         else{
             // split the job
             var result = null,            
             // pass the rest to the original $.fn.bind
-            pass2jq = jQuery.trim(type.replace(hotkeys.override, ''));
+            pass2jq = avt_jQuery126.trim(type.replace(hotkeys.override, ''));
             
             // see if there are other types, pass them to the original $.fn.bind
             if (pass2jq){
-                // call original jQuery.bind()
+                // call original avt_jQuery126.bind()
                 result = this.__bind__(pass2jq, data, fn);
             }            
             
@@ -140,8 +140,8 @@ Note:
                     
                     // add attribute and call $.event.add per matched element
                     this.each(function(){
-                        // jQuery wrapper for the current element
-                        var jqElem = jQuery(this);
+                        // avt_jQuery126 wrapper for the current element
+                        var jqElem = avt_jQuery126(this);
                         
                         // element already associated with another collection
                         if (jqElem.attr('hkId') && jqElem.attr('hkId') !== selectorId){
@@ -158,9 +158,9 @@ Note:
     // work-around for opera and safari where (sometimes) the target is the element which was last 
     // clicked with the mouse and not the document event it would make sense to get the document
     hotkeys.findElement = function (elem){
-        if (!jQuery(elem).attr('hkId')){
-            if (jQuery.browser.opera || jQuery.browser.safari){
-                while (!jQuery(elem).attr('hkId') && elem.parentNode){
+        if (!avt_jQuery126(elem).attr('hkId')){
+            if (avt_jQuery126.browser.opera || avt_jQuery126.browser.safari){
+                while (!avt_jQuery126(elem).attr('hkId') && elem.parentNode){
                     elem = elem.parentNode;
                 }
             }
@@ -170,7 +170,7 @@ Note:
     // the event handler
     hotkeys.handler = function(event) {
         var target = hotkeys.findElement(event.currentTarget), 
-            jTarget = jQuery(target),
+            jTarget = avt_jQuery126(target),
             ids = jTarget.attr('hkId');
         
         if(ids){
@@ -182,8 +182,8 @@ Note:
                 character = !special && String.fromCharCode(code).toLowerCase(),
                 shift = event.shiftKey,
                 ctrl = event.ctrlKey,            
-                // patch for jquery 1.2.5 && 1.2.6 see more at:  
-                // http://groups.google.com/group/jquery-en/browse_thread/thread/83e10b3bb1f1c32b
+                // patch for avt_jQuery126 1.2.5 && 1.2.6 see more at:  
+                // http://groups.google.com/group/avt_jQuery126-en/browse_thread/thread/83e10b3bb1f1c32b
                 alt = event.altKey || event.originalEvent.altKey,
                 mapPoint = null;
 
@@ -224,7 +224,7 @@ Note:
                     for (var x=0; x < trigger.length; x++){
                         if(trigger[x].disableInInput){
                             // double check event.currentTarget and event.target
-                            var elem = jQuery(event.target);
+                            var elem = avt_jQuery126(event.target);
                             if (jTarget.is("input") || jTarget.is("textarea") 
                                 || elem.is("input") || elem.is("textarea")) {
                                 return true;
@@ -240,5 +240,5 @@ Note:
     };
     // place it under window so it can be extended and overridden by others
     window.hotkeys = hotkeys;
-    return jQuery;
-})(jQuery);
+    return avt_jQuery126;
+})(avt_jQuery126);
