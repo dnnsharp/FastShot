@@ -46,8 +46,8 @@ namespace avt.FastShot
             
             this.LocalResourceFile = TemplateSourceDirectory + "/App_LocalResources/AddEditItem.aspx.resx";
 
-            
-
+            pnlTitleSA.Visible = (Request.QueryString["rurl"] != null);
+            pnlStandAloneBtns.Visible = (Request.QueryString["rurl"] != null);
 
             //cmdUpdate.OnClientClick = "return avt.FastShot.core.onSaveItem('" + cmdUpdate.UniqueID + "', " + (hdnItemId.Value.Length > 0 ? "true" : "false") + ");";
             //cmdCancel.OnClientClick = "avt.FastShot.$('#newItem').dialog('destroy').find(':input').val(''); avt.FastShot.$('.ui-dialog-overlay').remove(); document.getElementById('" + sThumbName.ClientID + "').innerHTML = ''; document.getElementById('" + sImageName.ClientID + "').innerHTML = ''; Page_ValidationActive = false; return false;";
@@ -57,8 +57,6 @@ namespace avt.FastShot
 
             //iUploadImageFrame.Attributes["src"] = TemplateSourceDirectory + "/upload.aspx?moduleId=" + PMod;
             //iUploadImageFrame.Attributes["onload"] = "avt.FastShot.core.imageUploaded('" + hdnImageFileName.ClientID + "');";
-
-
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -102,6 +100,7 @@ namespace avt.FastShot
             }
 
             ScriptManager.RegisterStartupScript(this, this.GetType(), "initAutoGenerate", "onAutoGenerate(document.getElementById('"+ cbAutoGenerate.ClientID +"'));", true);
+            ScriptManager.RegisterStartupScript(upnlAddEdit, upnlAddEdit.GetType(), "avtFsInit", "avt.fs.$$.init({appPath:'" + Request.ApplicationPath + "', loaderIcon : '" + TemplateSourceDirectory + "/res/loader.gif'});", true);
         }
 
         private void NewItem()
@@ -148,6 +147,11 @@ namespace avt.FastShot
             reqThumb.Visible = false;
 
             cmdUpdate.OnClientClick = "return avt.FastShot.core.onSaveItem('" + cmdUpdate.UniqueID + "', " + (hdnItemId.Value.Length > 0 ? "true" : "false") + ");";
+        }
+
+        protected void OnCloseSA(object sender, EventArgs e)
+        {
+            Response.Redirect(Server.UrlDecode(Request.QueryString["rurl"]));
         }
 
         protected void OnSave(object sender, EventArgs e)
@@ -219,17 +223,8 @@ namespace avt.FastShot
                 fsCtrl.AddItem(PMod, txtTitle.Text, txtDesc.Text, thumbUrl, imageUrl, Convert.ToInt32(viewOrder), cbAutoGenerate.Checked);
             }
 
-
-            //if (RenderProc != null) {
-            //    RenderProc();
-            //}
-            //ScriptManager.RegisterStartupScript(upnlAddEdit, upnlAddEdit.GetType(), "closeConf", "avt.FastShot.$('#newItem').dialog('close').find(':input').val(''); avt.FastShot.$('.ui-dialog-overlay').remove(); document.getElementById('" + sThumbName.ClientID + "').innerHTML = ''; document.getElementById('" + sImageName.ClientID + "').innerHTML = '';", true);
-            //ScriptManager.RegisterStartupScript(upnlAddEdit, upnlAddEdit.GetType(), "reinitLighbox", "avt.FastShot.core.init();", true);
-            
-            //ScriptManager.RegisterStartupScript(upnlAddEdit, upnlAddEdit.GetType(), "a21", "alert('done" + Parent.Parent.Parent.GetType() + "');", true);
-            //((IMain)Parent.Parent.Parent).RenderItems();
-            //((UpdatePanel)Parent.FindControl("upnlRender")).Update();
-            //this.Visible = false;
+            if (Request.QueryString["rurl"] != null)
+                Response.Redirect(Server.UrlDecode(Request.QueryString["rurl"]));
         }
 
         protected void OnCancel(object sender, EventArgs e)

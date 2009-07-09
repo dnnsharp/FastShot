@@ -32,6 +32,42 @@ namespace avt.FastShot {
         protected global::System.Web.UI.UpdatePanel upnlRender;
         
         /// <summary>
+        /// pnlDragOrdering control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pnlDragOrdering;
+        
+        /// <summary>
+        /// hdnItemOrder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnItemOrder;
+        
+        /// <summary>
+        /// fsOrderingCapabilities control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl fsOrderingCapabilities;
+        
+        /// <summary>
+        /// fsOrderingChanged control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl fsOrderingChanged;
+        
+        /// <summary>
         /// triggerRender control.
         /// </summary>
         /// <remarks>
@@ -39,6 +75,33 @@ namespace avt.FastShot {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton triggerRender;
+        
+        /// <summary>
+        /// triggerSave control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton triggerSave;
+        
+        /// <summary>
+        /// triggerSaveSettings control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton triggerSaveSettings;
+        
+        /// <summary>
+        /// triggerOrderChange control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton triggerOrderChange;
         
         /// <summary>
         /// itemContainer control.
@@ -77,13 +140,22 @@ namespace avt.FastShot {
         protected global::System.Web.UI.WebControls.LinkButton triggerDelete;
         
         /// <summary>
-        /// pnlManage control.
+        /// pnlSettings control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pnlManage;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pnlSettings;
+        
+        /// <summary>
+        /// btnFsSettings control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor btnFsSettings;
         
         /// <summary>
         /// btnAddNewItem control.
@@ -95,6 +167,15 @@ namespace avt.FastShot {
         protected global::System.Web.UI.WebControls.LinkButton btnAddNewItem;
         
         /// <summary>
+        /// btnAddNewItemNewWnd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnAddNewItemNewWnd;
+        
+        /// <summary>
         /// btnSettings control.
         /// </summary>
         /// <remarks>
@@ -104,6 +185,15 @@ namespace avt.FastShot {
         protected global::System.Web.UI.WebControls.LinkButton btnSettings;
         
         /// <summary>
+        /// btnSettingsNewWnd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnSettingsNewWnd;
+        
+        /// <summary>
         /// btnActivate control.
         /// </summary>
         /// <remarks>
@@ -111,5 +201,14 @@ namespace avt.FastShot {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnActivate;
+        
+        /// <summary>
+        /// btnActivateNewWnd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnActivateNewWnd;
     }
 }

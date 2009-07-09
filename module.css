@@ -370,6 +370,7 @@ a.navxp_tab:hover {
     text-align: right;
     padding-right: 7px;
     padding-top: 12px;
+    width: 160px;
 }
 
 .FS_Form td.fld {
@@ -443,4 +444,46 @@ a.bluebtn:hover {
     padding: 5px;
     margin: 0 0 0 4px;
     
+}
+
+ul.FastShot_grid {
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0;
+}
+
+ul.FastShot_grid li {
+    margin: 3px 3px 3px 0;
+    list-style-type: none;
+    padding: 6px;
+    float: left;
+    text-align: center;
+}
+
+ul.FastShot_grid .ui-sortable-placeholder {
+    margin: 3px 3px 3px 0;
+    visibility: visible !important;
+    background-color: #e9e9e9;
+    border: 1px dashed #929292;
+    padding: 4px !important; /* compensate for border */
+    list-style-type: none;
+    float: left;
+}
+
+.fs_pending_changes {
+    color: #fefefe;
+    background-color: #dd4444;
+    padding: 2px;
+    border: 1px solid #424242;
+}
+
+.fs_pending_changes a, .fs_pending_changes a:link, .fs_pending_changes a:visited {
+    color: #fefefe;
+    font-weight: bold;
+}
+
+.fs_pending_changes a:hover, .fs_pending_changes a:active {
+    color: #fefefe;
+    font-weight: bold;
+    text-decoration: underline;
 }

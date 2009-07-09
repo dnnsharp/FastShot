@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using System.Xml;
 using System.Xml.Xsl;
 using System.Xml.XPath;
+using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -59,12 +60,27 @@ namespace avt.FastShot
 
             if (PortalSettings.UserMode == DotNetNuke.Entities.Portals.PortalSettings.Mode.Edit &&
                 PortalSecurity.HasNecessaryPermission(SecurityAccessLevel.Edit, PortalSettings, ModuleConfiguration)) {
-                pnlManage.Visible = true;
+                pnlSettings.Visible = true;
 
-                btnAddNewItem.OnClientClick = "avt.fastshot.$$.showDlg('/DesktopModules/avt.FastShot/AddEditItem.aspx?pmod=" + ModuleId.ToString() + "', { width: 450, height: 500, cssClass : 'FastShot_dlg', title : 'FastShot - Add/Edit Item', rightText : '" + FastShotController.FastShotVersionAll + "', postbackid_onsave : '" + triggerRender.UniqueID +"'}); return false;";
-                btnSettings.OnClientClick = "avt.fastshot.$$.showDlg('/DesktopModules/avt.FastShot/Settings.aspx?pmod=" + ModuleId.ToString() + "', { width: 450, height: 500, cssClass : 'FastShot_dlg', title : 'FastShot - Settings', rightText : '" + FastShotController.FastShotVersionAll + "', postbackid_onsave : '" + triggerRender.UniqueID + "'}); return false;";
-                btnActivate.OnClientClick = "avt.fastshot.$$.showDlg('/DesktopModules/avt.FastShot/Activation.aspx', { width: 550, height: 400, cssClass : 'FastShot_dlg', title : 'FastShot - Activation', rightText : '" + FastShotController.FastShotVersionAll + "', postbackid_onsave : '" + triggerRender.UniqueID + "', show_save : false, cancel_text : 'Close', refresh_onsave : true}); return false;";
+                btnAddNewItem.OnClientClick = "avt.fastshot.$$.showDlg('" + TemplateSourceDirectory + "/AddEditItem.aspx?pmod=" + ModuleId.ToString() + "', { width: 450, height: 500, cssClass : 'FastShot_dlg', title : 'FastShot - Add/Edit Item', rightText : '" + FastShotController.FastShotVersionAll + "', postbackid_onsave : '" + triggerSave.UniqueID + "'}); return false;";
+                btnSettings.OnClientClick = "avt.fastshot.$$.showDlg('" + TemplateSourceDirectory + "/Settings.aspx?pmod=" + ModuleId.ToString() + "', { width: 450, height: 500, cssClass : 'FastShot_dlg', title : 'FastShot - Settings', rightText : '" + FastShotController.FastShotVersionAll + "', postbackid_onsave : '" + triggerSaveSettings.UniqueID + "'}); return false;";
+                btnSettingsNewWnd.OnClientClick = "window.open('" + TemplateSourceDirectory + "/Settings.aspx?pmod=" + ModuleId.ToString() + "&rurl=" + Server.UrlEncode(Request.RawUrl) + "', '_self', ''); return false;";
+                btnActivate.OnClientClick = "avt.fastshot.$$.showDlg('" + TemplateSourceDirectory + "/Activation.aspx', { width: 550, height: 400, cssClass : 'FastShot_dlg', title : 'FastShot - Activation', rightText : '" + FastShotController.FastShotVersionAll + "', postbackid_onsave : '" + triggerRender.UniqueID + "', show_save : false, cancel_text : 'Close', refresh_onsave : true}); return false;";
+                btnActivateNewWnd.OnClientClick = "window.open('" + TemplateSourceDirectory + "/Activation.aspx', '_blank', 'width=540'); return false;";
+                btnAddNewItemNewWnd.OnClientClick = "window.open('" + TemplateSourceDirectory + "/AddEditItem.aspx?pmod=" + ModuleId.ToString() + "&rurl=" + Server.UrlEncode(Request.RawUrl) + "', '_self', ''); return false;";
+                //triggerDelete.OnClientClick = "avt.fs.$('#" + upnlRender.ClientID + "').find('.fsOrderingChanged').html('Deleting, please wait...').show('slide', {direction: 'up'});";
+
+                pnlDragOrdering.Visible = true;
+
+                ScriptManager.RegisterStartupScript(upnlRender, upnlRender.GetType(), "initSortable" + ModuleId.ToString(), "avt.fastshot.$('#" + upnlRender.ClientID + "').find('.FastShot_grid').sortable({revert: true}); avt.fastshot.$('#" + upnlRender.ClientID + "').find('.FastShot_grid').find('li').bind('mouseup', function() { if (avt.fastshot.$(this).css('position') == 'absolute') { avt.fastshot.$('#" + fsOrderingChanged.ClientID + ":hidden').show('slide', {direction: 'up'}); avt.fastshot.$(this).find('a').children('').bind('click', function() {return false; }); } }).bind('mousedown', function() { avt.fastshot.$(this).find('a').children('').unbind('click'); });", true);
+            } else {
+                pnlSettings.Visible = false;
             }
+
+
+            ScriptManager.RegisterStartupScript(upnlRender, upnlRender.GetType(), "initProdMenu" + ModuleId.ToString(), "initProductMenu" + ModuleId.ToString() + "();", true);
+            ScriptManager.RegisterStartupScript(upnlRender, upnlRender.GetType(), "initGrid" + ModuleId.ToString(), "avt.fs.$(document).ready(function() { avt.fs.initGrid(avt.fs.$('#" + upnlRender.ClientID + "').find('.FastShot_grid')); });", true);
+            ScriptManager.RegisterStartupScript(upnlRender, upnlRender.GetType(), "avtFsInit", "avt.fs.$$.init({appPath:'" + Request.ApplicationPath + "', loaderIcon : '" + TemplateSourceDirectory + "/res/loader.gif'});", true);
         }
 
         public void RenderItems()
@@ -92,6 +108,7 @@ namespace avt.FastShot
             if (PortalSettings.UserMode == DotNetNuke.Entities.Portals.PortalSettings.Mode.Edit &&
                 PortalSecurity.HasNecessaryPermission(SecurityAccessLevel.Edit, PortalSettings, ModuleConfiguration)) {
                 btnActivate.Visible = !isActivated;
+                btnActivateNewWnd.Visible = !isActivated;
             }
             
             ArrayList items = fShotCtrl.GetItems(ModuleId);
@@ -107,9 +124,28 @@ namespace avt.FastShot
             Writer.WriteElementString("mid", ModuleId.ToString());
             
             if (!isActivated) {
-                if (items.Count > 2) {
-                    items.RemoveRange(2, items.Count - 2);
+                
+                //if (items.Count > 2) {
+                //    items.RemoveRange(2, items.Count - 2);
+                //}
+
+                // randomly replace an image with FastShot logo
+                if (items.Count > 1) {
+                    Random rand = new Random();
+
+                    int iImgRepl = rand.Next(0, items.Count - 1);
+                    ((ItemInfo)items[iImgRepl]).ImageUrl = "http://www.avatar-soft.ro/portals/0/product_logo/fastshot_large.png";
+                    ((ItemInfo)items[iImgRepl]).Title = "FastShot Demo";
+                    ((ItemInfo)items[iImgRepl]).Description = "This copy of FastShot is not activated! Visit <a href = 'http://www.avatar-soft.ro' style = 'font-weight: bold;'>www.avatar-soft.ro</a> to read more about FastShot.";
+
+                    if (items.Count > 6) {
+                        iImgRepl = rand.Next(0, items.Count - 1);
+                        ((ItemInfo)items[iImgRepl]).ImageUrl = "http://www.avatar-soft.ro/portals/0/product_logo/fastshot_large.png";
+                        ((ItemInfo)items[iImgRepl]).Title = "FastShot Demo";
+                        ((ItemInfo)items[iImgRepl]).Description = "This copy of FastShot is not activated! Visit <a href = 'http://www.avatar-soft.ro' style = 'font-weight: bold;'>www.avatar-soft.ro</a> to read more about FastShot.";
+                    }
                 }
+
                 //ItemInfo demoItem = new ItemInfo();
                 //demoItem.ItemId = -1;
                 //demoItem.ModuleId = ModuleId;
@@ -127,14 +163,35 @@ namespace avt.FastShot
                 Writer.WriteElementString("desc", item.Description);
                 if (!item.AutoGenerateThumb && item.ThumbnailUrl != null && item.ThumbnailUrl.Length > 0) {
                     Writer.WriteElementString("thumburl", item.ThumbnailUrl);
+                    System.Drawing.Image image;
+                    try {
+                        image = System.Drawing.Image.FromFile(Server.MapPath(item.ThumbnailUrl));
+                        Writer.WriteElementString("thumb_width", image.Width.ToString());
+                        Writer.WriteElementString("thumb_height", image.Height.ToString());
+                    } catch {
+                        Writer.WriteElementString("thumb_width", "10");
+                        Writer.WriteElementString("thumb_height", "10");
+                    }
+                    
                 } else {
-                    Writer.WriteElementString("thumburl", TemplateSourceDirectory + "/MakeThumb.aspx?file=" + Server.UrlEncode(item.ImageUrl) + "&height=" + FsSettings.ThumbHeight.ToString() + "&width=" + FsSettings.ThumbWidth.ToString());
+                    string thumbUrl = TemplateSourceDirectory + "/MakeThumb.aspx?file=" + Server.UrlEncode(item.ImageUrl) + "&height=" + FsSettings.ThumbHeight.ToString() + "&width=" + FsSettings.ThumbWidth.ToString();
+                    Writer.WriteElementString("thumburl", thumbUrl);
+                    
+                    try {
+                    System.Drawing.Image image = LoadImageFromURL("http://" + Request.Url.Host + ":" + Request.Url.Port + thumbUrl);
+                        Writer.WriteElementString("thumb_width", image.Width.ToString());
+                        Writer.WriteElementString("thumb_height", image.Height.ToString());
+                    } catch {
+                        Writer.WriteElementString("thumb_width", "10");
+                        Writer.WriteElementString("thumb_height", "10");
+                    }
                 }
                 Writer.WriteElementString("imgurl", item.ImageUrl);
 
                 if (PortalSettings.UserMode == DotNetNuke.Entities.Portals.PortalSettings.Mode.Edit &&
                     PortalSecurity.HasNecessaryPermission(SecurityAccessLevel.Edit, PortalSettings, ModuleConfiguration)) {
-                    Writer.WriteElementString("editurl", "javascript: avt.fastshot.$$.showDlg('/DesktopModules/avt.FastShot/AddEditItem.aspx?pmod=" + ModuleId.ToString() + "&itemid=" + item.ItemId.ToString() + "', { width: 450, height: 500, cssClass : 'FastShot_dlg', title : 'FastShot - Add/Edit Item', rightText : '" + FastShotController.FastShotVersionAll + "', postbackid_onsave : '" + triggerRender.UniqueID + "'});");
+                    Writer.WriteElementString("editurl", "javascript: avt.fastshot.$$.showDlg('"+TemplateSourceDirectory+"/AddEditItem.aspx?pmod=" + ModuleId.ToString() + "&itemid=" + item.ItemId.ToString() + "', { width: 450, height: 500, cssClass : 'FastShot_dlg', title : 'FastShot - Add/Edit Item', rightText : '" + FastShotController.FastShotVersionAll + "', postbackid_onsave : '" + triggerSave.UniqueID + "'});");
+                    Writer.WriteElementString("editurl_comp", TemplateSourceDirectory + "/AddEditItem.aspx?pmod=" + ModuleId.ToString() + "&itemid=" + item.ItemId.ToString() + "&rurl=" + Server.UrlEncode(Request.RawUrl));
                     Writer.WriteElementString("deleteurl", "javascript: avt.fastshot.$$.confirm('Confirm Delete', 'Are you sure you want to delete this item?', '" + triggerDelete.UniqueID + "', '" + item.ItemId.ToString() + "', 'FastShot_dlg');");
                 }
 
@@ -164,11 +221,29 @@ namespace avt.FastShot
 
             transform.Transform(doc, null, output);
             itemContainer.InnerHtml = "";
-            if (!isActivated)
-                itemContainer.InnerHtml += "<div style = 'float: left; margin: 20px;'><a href = 'http://www.avatar-soft.ro'><img border = '0' src = '" + TemplateSourceDirectory + "/res/fastshot_medium.png" + "' class = 'pngFix' alt = 'Visit http://www.avatar-soft.ro for more information about FastShot...' title = 'Visit http://www.avatar-soft.ro for more information about FastShot...' /></a></div>"; 
+            //if (!isActivated)
+            //    itemContainer.InnerHtml += "<div style = 'float: left; margin: 20px;'><a href = 'http://www.avatar-soft.ro'><img border = '0' src = '" + TemplateSourceDirectory + "/res/fastshot_medium.png" + "' class = 'pngFix' alt = 'Visit http://www.avatar-soft.ro for more information about FastShot...' title = 'Visit http://www.avatar-soft.ro for more information about FastShot...' /></a></div>"; 
             itemContainer.InnerHtml += output.ToString();
 
             btnActivate.Visible = !isActivated;
+        }
+
+        private System.Drawing.Image LoadImageFromURL(string URL)
+        {
+            const int BYTESTOREAD = 10000;
+            WebRequest myRequest = WebRequest.Create(URL);
+            WebResponse myResponse = myRequest.GetResponse();
+            System.IO.Stream ReceiveStream = myResponse.GetResponseStream();
+            System.IO.BinaryReader br = new System.IO.BinaryReader(ReceiveStream);
+            System.IO.MemoryStream memstream = new System.IO.MemoryStream();
+            byte[] bytebuffer = new byte[BYTESTOREAD];
+            int BytesRead = br.Read(bytebuffer, 0, BYTESTOREAD);
+            while (BytesRead > 0) {
+                memstream.Write(bytebuffer, 0, BytesRead);
+                BytesRead = br.Read(bytebuffer, 0, BYTESTOREAD);
+            }
+
+            return System.Drawing.Image.FromStream(memstream);
         }
 
 
@@ -183,29 +258,79 @@ namespace avt.FastShot
                 Page.ClientScript.RegisterClientScriptInclude("avt_jQueryUi_1_6", TemplateSourceDirectory + "/js/jquery/jquery-ui-1.6.js");
             }
 
-            if (!Page.ClientScript.IsClientScriptIncludeRegistered("avt_core_1_0")) {
-                Page.ClientScript.RegisterClientScriptInclude("avt_core_1_0", TemplateSourceDirectory + "/js/avt.core-1.0.js");
+            if (!Page.ClientScript.IsClientScriptIncludeRegistered("avt_core_1_2")) {
+                Page.ClientScript.RegisterClientScriptInclude("avt_core_1_2", TemplateSourceDirectory + "/js/avt.core-1.2.js");
             }
 
             if (!Page.ClientScript.IsClientScriptIncludeRegistered("jQueryLightbox")) {
                 Page.ClientScript.RegisterClientScriptInclude("jQueryLightbox", TemplateSourceDirectory + "/js/jquery-lightbox/jquery.lightbox.js");
             }
 
+            if (!Page.ClientScript.IsClientScriptIncludeRegistered("jQuery.jGrowl-1.2.0")) {
+                Page.ClientScript.RegisterClientScriptInclude("jQuery.jGrowl-1.2.0", TemplateSourceDirectory + "/js/jGrowl-1.2.0/jquery.jgrowl.js");
+            }
+
             if (!Page.ClientScript.IsClientScriptIncludeRegistered("avtFastShot")) {
                 Page.ClientScript.RegisterClientScriptInclude("avtFastShot", TemplateSourceDirectory + "/js/avtFastShot.js");
             }
 
+            if (!Page.ClientScript.IsClientScriptIncludeRegistered("jQuery.fg-menu")) {
+                Page.ClientScript.RegisterClientScriptInclude("jQuery.fg-menu", TemplateSourceDirectory + "/js/fg-menu/fg-menu/fg.menu.js");
+            }
+
             CDefault defaultPage = (CDefault)Page;
             defaultPage.AddStyleSheet("skinLightbox", TemplateSourceDirectory + "/js/jquery-lightbox/css/lightbox.css");
+            defaultPage.AddStyleSheet("theme.jquery.ui", TemplateSourceDirectory + "/js/ui-themes/smoothness/jquery-ui-1.7.1.css");
+            defaultPage.AddStyleSheet("skin.jGrowl-1.2.0", TemplateSourceDirectory + "/js/jGrowl-1.2.0/jquery.jgrowl.css");
 
             base.OnPreRender(e);
         }
 
 
+        protected void OnSaveSuccess(object sender, EventArgs e)
+        {
+            ScriptManager.RegisterStartupScript(upnlRender, upnlRender.GetType(), "addEditSuccess", "avt.fs.$(document).ready(function() {avt.fs.$.jGrowl('Image successfully updated!', {header: 'Add/Edit Succesfull', life: 5000})});", true);
+            RenderItems();
+        }
+
+        protected void OnSaveSettingsSuccess(object sender, EventArgs e)
+        {
+            ScriptManager.RegisterStartupScript(upnlRender, upnlRender.GetType(), "saveSuccess", "avt.fs.$(document).ready(function() {avt.fs.$.jGrowl('Settings successfully updated!', {header: 'Save Succesfull', life: 5000})});", true);
+            RenderItems();
+        }
+        
+
         protected void OnRender(object sender, EventArgs e)
         {
             RenderItems();
             //upnlRender.Update();
+        }
+
+        protected void OnChangeOrder(object sender, EventArgs e)
+        {
+            FastShotController fsCtrl = new FastShotController();
+
+            int orderIndex = 0; // TODO: recalc for pagination
+            string[] itemIds = hdnItemOrder.Value.Split(new char[] { ',' });
+            foreach (string strItemId in itemIds) {
+                int itemId;
+                try {
+                    itemId = Convert.ToInt32(strItemId);
+                } catch {
+                    continue; // something went wrong?
+                }
+
+                ItemInfo itemInfo = fsCtrl.GetItemById(itemId);
+                if (itemInfo == null) {
+                    continue; // something else went wrong?
+                }
+
+                fsCtrl.UpdateItem(itemInfo.ItemId, ModuleId, itemInfo.Title, itemInfo.Description, itemInfo.ThumbnailUrl, itemInfo.ImageUrl, orderIndex,itemInfo.AutoGenerateThumb);
+                orderIndex++;
+            }
+            RenderItems();
+
+            ScriptManager.RegisterStartupScript(upnlConf, upnlRender.GetType(), "saveSuccess", "avt.fs.$(document).ready(function() {avt.fs.$.jGrowl('FastShot succesfully updated items order!', {header: 'Save Succesfull', life: 5000})});", true);
         }
 
 
@@ -260,6 +385,7 @@ namespace avt.FastShot
             upnlRender.Update();
             
             ScriptManager.RegisterStartupScript(upnlConf, upnlConf.GetType(), "updateImages", "__doPostBack('" + triggerRender.UniqueID + "','');", true);
+            ScriptManager.RegisterStartupScript(upnlConf, upnlRender.GetType(), "deleteSuccess", "avt.fs.$(document).ready(function() {avt.fs.$.jGrowl('FastShot succesfully deleted image <b>" + itemInfo.Title + "</b>!', {header: 'Delete Succesfull', life: 5000})});", true);
         }
         
         

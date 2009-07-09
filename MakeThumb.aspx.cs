@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml;
+using System.Net;
 using System.Xml.Xsl;
 using System.Xml.XPath;
 using System.Text;
@@ -26,11 +27,16 @@ namespace avt.FastShot
     {
         private void Page_Load(object sender, System.EventArgs e)
         {
+            //System.Threading.Thread.Sleep(1000);
 
             // create an image object, using the filename we just retrieved
             System.Drawing.Image image; 
             try {
-                image = System.Drawing.Image.FromFile(Server.MapPath(Server.UrlDecode(Request.QueryString["file"])));
+                if (Server.UrlDecode(Request.QueryString["file"]) == "http://www.avatar-soft.ro/portals/0/product_logo/fastshot_large.png") {
+                    image = LoadImageFromURL(Server.UrlDecode(Request.QueryString["file"]));
+                } else {
+                    image = System.Drawing.Image.FromFile(Server.MapPath(Server.UrlDecode(Request.QueryString["file"])));
+                }
             } catch {
                 Response.Write("File not found");
                 return;
@@ -59,10 +65,12 @@ namespace avt.FastShot
             } else if (width <= 0) {
                 width = height * image.Width / image.Height;
             }
-
+            //Response.Write(width.ToString() + ":" + height.ToString());
+            //return;
 
             // create the actual thumbnail image
-            System.Drawing.Image thumbnailImage = image.GetThumbnailImage(width, height, new System.Drawing.Image.GetThumbnailImageAbort(ThumbnailCallback), IntPtr.Zero);
+            System.Drawing.Bitmap thumbnailImage = new System.Drawing.Bitmap(image, width, height);
+            //System.Drawing.Image thumbnailImage = image.GetThumbnailImage(width, height, new System.Drawing.Image.GetThumbnailImageAbort(ThumbnailCallback), IntPtr.Zero);
 
             // make a memory stream to work with the image bytes
             MemoryStream imageStream = new MemoryStream();
@@ -87,6 +95,24 @@ namespace avt.FastShot
         public bool ThumbnailCallback()
         {
             return true;
+        }
+
+        private System.Drawing.Image LoadImageFromURL(string URL)
+        {
+            const int BYTESTOREAD = 10000;
+            WebRequest myRequest = WebRequest.Create(URL);
+            WebResponse myResponse = myRequest.GetResponse();
+            System.IO.Stream ReceiveStream = myResponse.GetResponseStream();
+            System.IO.BinaryReader br = new System.IO.BinaryReader(ReceiveStream);
+            System.IO.MemoryStream memstream = new System.IO.MemoryStream();
+            byte[] bytebuffer = new byte[BYTESTOREAD];
+            int BytesRead = br.Read(bytebuffer, 0, BYTESTOREAD);
+            while (BytesRead > 0) {
+                memstream.Write(bytebuffer, 0, BytesRead);
+                BytesRead = br.Read(bytebuffer, 0, BYTESTOREAD);
+            }
+
+            return System.Drawing.Image.FromStream(memstream);
         }
     }
 

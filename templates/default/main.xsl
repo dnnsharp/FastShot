@@ -5,12 +5,16 @@
 
 <xsl:template match="/">
     <xsl:if test = "/fastshot/img">
-    <div class = "FastShot_default">
+    <ul class = "FastShot_grid FastShot_default">
         <xsl:for-each select = "/fastshot/img">
-            <div style = "float: left; margin: 6px;">
+            <li style = "">
+                <input type = "hidden">
+                    <xsl:attribute name="value"><xsl:value-of select="id" /></xsl:attribute>
+                </input>
                 <xsl:if test = "/fastshot/mng">
                     <div class = "FastShot_default_modify" style = "text-align: center; margin-bottom: 4px;">
-                        <a><xsl:attribute name="href"><xsl:value-of select="editurl" /></xsl:attribute>edit</a> | 
+                        <a><xsl:attribute name="href"><xsl:value-of select="editurl" /></xsl:attribute>edit </a>
+                        <a alt = "edit in compatibility mode" title = "edit in compatibility mode"><xsl:attribute name="href"><xsl:value-of select="editurl_comp" /></xsl:attribute>&gt;</a> | 
                         <a><xsl:attribute name="href"><xsl:value-of select="deleteurl" /></xsl:attribute>delete</a>
                     </div>
                 </xsl:if>
@@ -19,19 +23,22 @@
                     <xsl:attribute name="href"><xsl:value-of select="imgurl" /></xsl:attribute>
                     <xsl:attribute name="alt"><xsl:value-of select="desc" /></xsl:attribute>
                     <xsl:attribute name="title"><xsl:value-of select="desc" /></xsl:attribute>
-                    <img border = "0" align = "" style = "" class = "pngFix">
+                    <img border = "0" class = "pngFix">
+                        <xsl:attribute name="alt"><xsl:value-of select="desc" /></xsl:attribute>
                         <xsl:attribute name="src"><xsl:value-of select="thumburl" /></xsl:attribute>
+                        <xsl:attribute name="width"><xsl:value-of select="thumb_width" /></xsl:attribute>
+                        <xsl:attribute name="height"><xsl:value-of select="thumb_height" /></xsl:attribute>
                     </img>
                 </a>
                 <a class="lightbox imgTitle" style = "text-align: center; display: block;">
                     <xsl:attribute name="rel"><xsl:value-of select="/fastshot/mid" /></xsl:attribute>
                     <xsl:attribute name="href"><xsl:value-of select="imgurl" /></xsl:attribute>
-                    <xsl:value-of select="title" />
+                    <xsl:value-of select="title" disable-output-escaping="yes" />
                 </a>
-            </div>
+            </li>
         </xsl:for-each>
-    </div>
+        <div style = "clear: both"></div>
+    </ul>
     </xsl:if>
-    <div style = "clear: both"></div>
 </xsl:template>
 </xsl:stylesheet>

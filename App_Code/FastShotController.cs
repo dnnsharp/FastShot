@@ -57,11 +57,19 @@ namespace avt.FastShot
             }
 
             if (modSettings.ContainsKey("thumb_width")) {
-                ThumbWidth = Convert.ToInt32(modSettings["thumb_width"]);
+                try {
+                    ThumbWidth = Convert.ToInt32(modSettings["thumb_width"]);
+                } catch {
+                    ThumbWidth = 0;
+                }
             }
 
             if (modSettings.ContainsKey("thumb_height")) {
-                ThumbHeight = Convert.ToInt32(modSettings["thumb_height"]);
+                try {
+                    ThumbHeight = Convert.ToInt32(modSettings["thumb_height"]);
+                } catch {
+                    ThumbHeight = 0;
+                }
             }
         }
     }
@@ -365,9 +373,12 @@ namespace avt.FastShot
     {
         static public string RegSrv = "http://www.avatar-soft.ro/RegCoreApi2.aspx";
         //static public string RegSrv = "http://devx.avt.2am.ro:8080/RegCoreApi.aspx";
-        static public string BuyLink = "http://www.snowcovered.com/snowcovered2/Default.aspx?tabid=242&PackageID=14359&r=bf0821d1ea";
-        static public string FastShotVersion = "1.2";
-        static public string FastShotVersionAll = "1.2.0";
+        //static public string BuyLink = "http://www.snowcovered.com/snowcovered2/Default.aspx?tabid=242&PackageID=14359&r=bf0821d1ea";
+        static public string FastShotVersion = "1.3";
+        static public string FastShotVersionAll = "1.3.0";
+
+        static public string BuyLink = RegSrv + "?cmd=buy&product=FastShot&version=1.3";
+        static public string DocLink = RegSrv + "?cmd=doc&product=FastShot&version=1.3";
 
         public int AddItem(int moduleId, string title, string description, string thumbUrl, string imageUrl, int viewOrder, bool autoGenerateThumb)
         {
@@ -554,8 +565,11 @@ namespace avt.FastShot
             //installationKey += ((Guid)SqlHelper.ExecuteScalar(DotNetNuke.Common.Utilities.Config.GetConnectionString(), CommandType.Text, "SELECT ApplicationId FROM aspnet_Applications WHERE ApplicationName = 'DotNetNuke'")).ToString() + ":";
             installationKey += DotNetNuke.Entities.Portals.PortalController.GetCurrentPortalSettings().HostSettings["GUID"].ToString() + ":";
 
-            System.IO.DirectoryInfo dirInfo = new System.IO.DirectoryInfo(HttpContext.Current.Server.MapPath("/Portals"));
-            installationKey += dirInfo.CreationTime.Ticks.ToString();
+            try {
+                System.IO.DirectoryInfo dirInfo = new System.IO.DirectoryInfo(HttpContext.Current.Server.MapPath(DotNetNuke.Entities.Portals.PortalController.GetCurrentPortalSettings().HomeDirectory));
+                installationKey += dirInfo.CreationTime.Ticks.ToString();
+            } catch {
+            }
 
             System.Text.ASCIIEncoding enc = new System.Text.ASCIIEncoding();
             SHA1 sha1 = new SHA1CryptoServiceProvider();

@@ -348,7 +348,9 @@
 
 		if(opts.imageArray[opts.activeImage][1]){
 			$('#caption').html(opts.imageArray[opts.activeImage][1]).show();
-		}
+		} else {
+            $('#caption').hide();
+        }
 
 		// if image is part of set display 'Image x of x'
 		if(opts.imageArray.length > 1){
@@ -366,7 +368,9 @@
 			}
 
 			$('#numberDisplay').html(nav_html).show();
-		}
+		} else {
+            $('#numberDisplay').hide();
+        }
 
 		if (opts.slideNavBar) {
 		    $("#imageData").slideDown(opts.navBarSlideSpeed);

@@ -12,7 +12,7 @@
     <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/../../js/dnncore.js"></script>
     <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/jQuery/jQuery-1.3.2.js"></script>
     <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/jquery/jquery-ui-1.6.js"></script>
-    <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/avt.core-1.0.js"></script>
+    <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/avt.core-1.2.js"></script>
     <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/avtFastShot.js"></script>
     <link type = "text/css" rel = "stylesheet" href = "<%=TemplateSourceDirectory %>/module.css" />
 
@@ -24,7 +24,7 @@ if (!window.console) {
 
 <style type = "text/css">
     body {
-        margin: 0; padding: 0; width: 430px;
+        margin: 0; padding: 0;
     }
 </style>
 
@@ -38,11 +38,15 @@ if (!window.console) {
 
 <asp:ScriptManager runat = "server" ID = "scriptManager"></asp:ScriptManager>
 
+<div runat = "server"  id = "pnlTitleSA" style = "border: 1px solid #828282; background-color: #e9e9e9; padding: 6px; font-size: 20px; margin: 0 0 10px 0;">
+    FastShot - Module Settings
+</div>
+
 <asp:UpdatePanel id = "upnlAddEdit" runat = "server">
 <ContentTemplate>
 
 
-<table class = "FS_Form" cellpadding = "0" cellspacing = "0" border = "0" style = "width: 100%; margin-top: 12px;">
+<table class = "FS_Form" cellpadding = "0" cellspacing = "0" border = "0" style = "margin-top: 12px;">
     <tr>
         <td class = "lbl" style = "background-color: #efefef; border: 1px solid #dadada; font-weight: bold;">
             ModuleId: <b><asp:Label runat = "server" id = "txtModuleId" style = ""></asp:Label>
@@ -88,6 +92,11 @@ if (!window.console) {
 
 </ContentTemplate>
 </asp:UpdatePanel>
+
+<div runat = "server" id = "pnlStandAloneBtns" style = "margin-left: 200px; margin-top: 40px;">
+    <asp:LinkButton runat = "server" id = "btnSave" class = "bluebtn" OnClick = "OnSave" CausesValidation = "true">Save</asp:LinkButton>
+    <asp:LinkButton runat = "server" id = "btnCancel" class = "bluebtn" OnClick = "OnCloseSA" CausesValidation = "false">Cancel</asp:LinkButton>
+</div>
 
 <script type ="text/javascript">
 

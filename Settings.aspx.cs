@@ -43,6 +43,9 @@ namespace avt.FastShot
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            pnlTitleSA.Visible = (Request.QueryString["rurl"] != null);
+            pnlStandAloneBtns.Visible = (Request.QueryString["rurl"] != null);
+
             try {
                 PMod = Convert.ToInt32(Request.QueryString["pmod"]);
 
@@ -91,6 +94,12 @@ namespace avt.FastShot
                 }
             }
             //ScriptManager.RegisterStartupScript(upnlAddEdit, upnlAddEdit.GetType(), "enableInput", "avt.Common.enableInput();", true);
+            ScriptManager.RegisterStartupScript(upnlAddEdit, upnlAddEdit.GetType(), "avtFsInit", "avt.fs.$$.init({appPath:'" + Request.ApplicationPath + "', loaderIcon : '" + TemplateSourceDirectory + "/res/loader.gif'});", true);
+        }
+
+        protected void OnCloseSA(object sender, EventArgs e)
+        {
+            Response.Redirect(Server.UrlDecode(Request.QueryString["rurl"]));
         }
 
         protected void OnSave(object sender, EventArgs e)
@@ -99,6 +108,10 @@ namespace avt.FastShot
             modCtrl.UpdateModuleSetting(PMod, "template", ddTemplate.SelectedItem.Text);
             modCtrl.UpdateModuleSetting(PMod, "thumb_width", txtThumbWidth.Text);
             modCtrl.UpdateModuleSetting(PMod, "thumb_height", txtThumbHeight.Text);
+
+            if (Request.QueryString["rurl"] != null) {
+                Response.Redirect(Server.UrlDecode(Request.QueryString["rurl"]));
+            }
         }
 
         protected void OnCancel(object sender, EventArgs e)

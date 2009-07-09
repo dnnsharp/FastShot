@@ -8,7 +8,7 @@
     <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/../../js/dnncore.js"></script>
     <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/jQuery/jQuery-1.3.2.js"></script>
     <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/jquery/jquery-ui-1.6.js"></script>
-    <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/avt.core-1.0.js"></script>
+    <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/avt.core-1.2.js"></script>
     <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/avtFastShot.js"></script>
     <link type = "text/css" rel = "stylesheet" href = "<%=TemplateSourceDirectory %>/module.css" />
     
