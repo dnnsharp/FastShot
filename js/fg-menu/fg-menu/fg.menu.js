@@ -4,7 +4,7 @@ Version: 3.0, 03.31.2009
 
 By: Maggie Costello Wachs (maggie@filamentgroup.com) and Scott Jehl (scott@filamentgroup.com)
 	http://www.filamentgroup.com
-	* reference articles: http://www.filamentgroup.com/lab/avt_jQuery_1_3_2_ipod_style_drilldown_menu/
+	* reference articles: http://www.filamentgroup.com/lab/avt_jQuery_1_3_2_av1_ipod_style_drilldown_menu/
 		
 Copyright (c) 2009 Filament Group
 Dual licensed under the MIT (filamentgroup.com/examples/mit-license.txt) and GPL (filamentgroup.com/examples/gpl-license.txt) licenses.
@@ -13,13 +13,13 @@ Dual licensed under the MIT (filamentgroup.com/examples/mit-license.txt) and GPL
 
 var allUIMenus = [];
 
-avt_jQuery_1_3_2.fn.menu = function(options){
+avt_jQuery_1_3_2_av1.fn.menu = function(options){
 	var caller = this;
 	var options = options;
 	var m = new Menu(caller, options);	
 	allUIMenus.push(m);
 	
-	avt_jQuery_1_3_2(this)
+	avt_jQuery_1_3_2_av1(this)
 	.mousedown(function(){
 		if (!m.menuOpen) { m.showLoading(); };
 	})	
@@ -32,13 +32,13 @@ avt_jQuery_1_3_2.fn.menu = function(options){
 
 function Menu(caller, options){
 	var menu = this;
-	var caller = avt_jQuery_1_3_2(caller);
-	var container = avt_jQuery_1_3_2('<div class="fg-menu-container ui-widget ui-widget-content ui-corner-all">'+options.content+'</div>');
+	var caller = avt_jQuery_1_3_2_av1(caller);
+	var container = avt_jQuery_1_3_2_av1('<div class="fg-menu-container ui-widget ui-widget-content ui-corner-all">'+options.content+'</div>');
 	
 	this.menuOpen = false;
 	this.menuExists = false;
 	
-	var options = avt_jQuery_1_3_2.extend({
+	var options = avt_jQuery_1_3_2_av1.extend({
 		content: null,
 		width: 180, // width of menu container, must be set or passed in to calculate widths of child menus
 		maxHeight: 180, // max height of menu (if a drilldown: height does not include breadcrumb)
@@ -71,7 +71,7 @@ function Menu(caller, options){
 	}, options);
 	
 	var killAllMenus = function(){
-		avt_jQuery_1_3_2.each(allUIMenus, function(i){
+		avt_jQuery_1_3_2_av1.each(allUIMenus, function(i){
 			if (allUIMenus[i].menuOpen) { allUIMenus[i].kill(); };
 		});
 	};
@@ -88,8 +88,8 @@ function Menu(caller, options){
 		if (container.is('.fg-menu-flyout')) { menu.resetFlyoutMenu(); };	
 		container.parent().hide();	
 		menu.menuOpen = false;
-		avt_jQuery_1_3_2(document).unbind('click', killAllMenus);
-		avt_jQuery_1_3_2(document).unbind('keydown');
+		avt_jQuery_1_3_2_av1(document).unbind('click', killAllMenus);
+		avt_jQuery_1_3_2_av1(document).unbind('keydown');
 	};
 	
 	this.showLoading = function(){
@@ -106,40 +106,40 @@ function Menu(caller, options){
 		container.hide().slideDown(options.showSpeed).find('.fg-menu:eq(0)');
 		menu.menuOpen = true;
 		caller.removeClass(options.loadingState);
-		avt_jQuery_1_3_2(document).click(killAllMenus);
+		avt_jQuery_1_3_2_av1(document).click(killAllMenus);
 		
 		// assign key events
-		avt_jQuery_1_3_2(document).keydown(function(event){
+		avt_jQuery_1_3_2_av1(document).keydown(function(event){
 			var e;
 			if (event.which !="") { e = event.which; }
 			else if (event.charCode != "") { e = event.charCode; }
 			else if (event.keyCode != "") { e = event.keyCode; }
 			
-			var menuType = (avt_jQuery_1_3_2(event.target).parents('div').is('.fg-menu-flyout')) ? 'flyout' : 'ipod' ;
+			var menuType = (avt_jQuery_1_3_2_av1(event.target).parents('div').is('.fg-menu-flyout')) ? 'flyout' : 'ipod' ;
 			
 			switch(e) {
 				case 37: // left arrow 
 					if (menuType == 'flyout') {
-						avt_jQuery_1_3_2(event.target).trigger('mouseout');
-						if (avt_jQuery_1_3_2('.'+options.flyOutOnState).size() > 0) { avt_jQuery_1_3_2('.'+options.flyOutOnState).trigger('mouseover'); };
+						avt_jQuery_1_3_2_av1(event.target).trigger('mouseout');
+						if (avt_jQuery_1_3_2_av1('.'+options.flyOutOnState).size() > 0) { avt_jQuery_1_3_2_av1('.'+options.flyOutOnState).trigger('mouseover'); };
 					};
 					
 					if (menuType == 'ipod') {
-						avt_jQuery_1_3_2(event.target).trigger('mouseout');
-						if (avt_jQuery_1_3_2('.fg-menu-footer').find('a').size() > 0) { avt_jQuery_1_3_2('.fg-menu-footer').find('a').trigger('click'); };
-						if (avt_jQuery_1_3_2('.fg-menu-header').find('a').size() > 0) { avt_jQuery_1_3_2('.fg-menu-current-crumb').prev().find('a').trigger('click'); };
-						if (avt_jQuery_1_3_2('.fg-menu-current').prev().is('.fg-menu-indicator')) {
-							avt_jQuery_1_3_2('.fg-menu-current').prev().trigger('mouseover');							
+						avt_jQuery_1_3_2_av1(event.target).trigger('mouseout');
+						if (avt_jQuery_1_3_2_av1('.fg-menu-footer').find('a').size() > 0) { avt_jQuery_1_3_2_av1('.fg-menu-footer').find('a').trigger('click'); };
+						if (avt_jQuery_1_3_2_av1('.fg-menu-header').find('a').size() > 0) { avt_jQuery_1_3_2_av1('.fg-menu-current-crumb').prev().find('a').trigger('click'); };
+						if (avt_jQuery_1_3_2_av1('.fg-menu-current').prev().is('.fg-menu-indicator')) {
+							avt_jQuery_1_3_2_av1('.fg-menu-current').prev().trigger('mouseover');							
 						};						
 					};
 					return false;
 					break;
 					
 				case 38: // up arrow 
-					if (avt_jQuery_1_3_2(event.target).is('.' + options.linkHover)) {	
-						var prevLink = avt_jQuery_1_3_2(event.target).parent().prev().find('a:eq(0)');						
+					if (avt_jQuery_1_3_2_av1(event.target).is('.' + options.linkHover)) {	
+						var prevLink = avt_jQuery_1_3_2_av1(event.target).parent().prev().find('a:eq(0)');						
 						if (prevLink.size() > 0) {
-							avt_jQuery_1_3_2(event.target).trigger('mouseout');
+							avt_jQuery_1_3_2_av1(event.target).trigger('mouseout');
 							prevLink.trigger('mouseover');
 						};						
 					}
@@ -148,14 +148,14 @@ function Menu(caller, options){
 					break;
 					
 				case 39: // right arrow 
-					if (avt_jQuery_1_3_2(event.target).is('.fg-menu-indicator')) {						
+					if (avt_jQuery_1_3_2_av1(event.target).is('.fg-menu-indicator')) {						
 						if (menuType == 'flyout') {
-							avt_jQuery_1_3_2(event.target).next().find('a:eq(0)').trigger('mouseover');
+							avt_jQuery_1_3_2_av1(event.target).next().find('a:eq(0)').trigger('mouseover');
 						}
 						else if (menuType == 'ipod') {
-							avt_jQuery_1_3_2(event.target).trigger('click');						
+							avt_jQuery_1_3_2_av1(event.target).trigger('click');						
 							setTimeout(function(){
-								avt_jQuery_1_3_2(event.target).next().find('a:eq(0)').trigger('mouseover');
+								avt_jQuery_1_3_2_av1(event.target).next().find('a:eq(0)').trigger('mouseover');
 							}, options.crossSpeed);
 						};				
 					}; 
@@ -163,10 +163,10 @@ function Menu(caller, options){
 					break;
 					
 				case 40: // down arrow 
-					if (avt_jQuery_1_3_2(event.target).is('.' + options.linkHover)) {
-						var nextLink = avt_jQuery_1_3_2(event.target).parent().next().find('a:eq(0)');						
+					if (avt_jQuery_1_3_2_av1(event.target).is('.' + options.linkHover)) {
+						var nextLink = avt_jQuery_1_3_2_av1(event.target).parent().next().find('a:eq(0)');						
 						if (nextLink.size() > 0) {							
-							avt_jQuery_1_3_2(event.target).trigger('mouseout');
+							avt_jQuery_1_3_2_av1(event.target).trigger('mouseout');
 							nextLink.trigger('mouseover');
 						};				
 					}
@@ -179,10 +179,10 @@ function Menu(caller, options){
 					break;
 					
 				case 13: // enter
-					if (avt_jQuery_1_3_2(event.target).is('.fg-menu-indicator') && menuType == 'ipod') {							
-						avt_jQuery_1_3_2(event.target).trigger('click');						
+					if (avt_jQuery_1_3_2_av1(event.target).is('.fg-menu-indicator') && menuType == 'ipod') {							
+						avt_jQuery_1_3_2_av1(event.target).trigger('click');						
 						setTimeout(function(){
-							avt_jQuery_1_3_2(event.target).next().find('a:eq(0)').trigger('mouseover');
+							avt_jQuery_1_3_2_av1(event.target).next().find('a:eq(0)').trigger('mouseover');
 						}, options.crossSpeed);					
 					}; 
 					break;
@@ -216,12 +216,12 @@ function Menu(caller, options){
 			var allLinks = container.find('.fg-menu li a');
 			allLinks.hover(
 				function(){
-					var menuitem = avt_jQuery_1_3_2(this);
-					avt_jQuery_1_3_2('.'+options.linkHover).removeClass(options.linkHover).blur().parent().removeAttr('id');
-					avt_jQuery_1_3_2(this).addClass(options.linkHover).focus().parent().attr('id','active-menuitem');
+					var menuitem = avt_jQuery_1_3_2_av1(this);
+					avt_jQuery_1_3_2_av1('.'+options.linkHover).removeClass(options.linkHover).blur().parent().removeAttr('id');
+					avt_jQuery_1_3_2_av1(this).addClass(options.linkHover).focus().parent().attr('id','active-menuitem');
 				},
 				function(){
-					avt_jQuery_1_3_2(this).removeClass(options.linkHover).blur().parent().removeAttr('id');
+					avt_jQuery_1_3_2_av1(this).removeClass(options.linkHover).blur().parent().removeAttr('id');
 				}
 			);
 		};
@@ -229,11 +229,11 @@ function Menu(caller, options){
 		if (options.linkHoverSecondary) {
 			container.find('.fg-menu li').hover(
 				function(){
-					avt_jQuery_1_3_2(this).siblings('li').removeClass(options.linkHoverSecondary);
-					if (options.flyOutOnState) { avt_jQuery_1_3_2(this).siblings('li').find('a').removeClass(options.flyOutOnState); }
-					avt_jQuery_1_3_2(this).addClass(options.linkHoverSecondary);
+					avt_jQuery_1_3_2_av1(this).siblings('li').removeClass(options.linkHoverSecondary);
+					if (options.flyOutOnState) { avt_jQuery_1_3_2_av1(this).siblings('li').find('a').removeClass(options.flyOutOnState); }
+					avt_jQuery_1_3_2_av1(this).addClass(options.linkHoverSecondary);
 				},
-				function(){ avt_jQuery_1_3_2(this).removeClass(options.linkHoverSecondary); }
+				function(){ avt_jQuery_1_3_2_av1(this).removeClass(options.linkHoverSecondary); }
 			);
 		};	
 		
@@ -244,15 +244,17 @@ function Menu(caller, options){
 	this.chooseItem = function(item){
 		menu.kill();
 		// edit this for your own custom function/callback:
-		avt_jQuery_1_3_2('#menuSelection').text(avt_jQuery_1_3_2(item).text());	
-        if (!avt_jQuery_1_3_2(item).attr('onclick') || avt_jQuery_1_3_2(item).attr('onclick').length == 0) {
-
-            if (avt_jQuery_1_3_2(item).attr('href').indexOf("javascript:") == -1) {
-                location.href = avt_jQuery_1_3_2(item).attr('href');
-            } else {
-                eval(avt_jQuery_1_3_2(item).attr('href').substring(avt_jQuery_1_3_2(item).attr('href').indexOf("javascript:")));
-            }
+		avt_jQuery_1_3_2_av1('#menuSelection').text(avt_jQuery_1_3_2_av1(item).text());	
+        if (avt_jQuery_1_3_2_av1(item).attr('href').indexOf("javascript:") == -1) {
+            location.href = avt_jQuery_1_3_2_av1(item).attr('href');
         }
+        // if (!avt_jQuery_1_3_2_av1(item).attr('onclick') || avt_jQuery_1_3_2_av1(item).attr('onclick').length == 0) {
+            // if (avt_jQuery_1_3_2_av1(item).attr('href').indexOf("javascript:") == -1) {
+                // location.href = avt_jQuery_1_3_2_av1(item).attr('href');
+            // } else {
+                // eval(avt_jQuery_1_3_2_av1(item).attr('href').substring(avt_jQuery_1_3_2_av1(item).attr('href').indexOf("javascript:")));
+            // }
+        // }
 	};
 };
 
@@ -267,34 +269,34 @@ Menu.prototype.flyout = function(container, options) {
 	container.addClass('fg-menu-flyout').find('li:has(ul)').each(function(){
 		var linkWidth = container.width();
 		var showTimer, hideTimer;
-		var allSubLists = avt_jQuery_1_3_2(this).find('ul');		
+		var allSubLists = avt_jQuery_1_3_2_av1(this).find('ul');		
 		
 		allSubLists.css({ left: linkWidth, width: linkWidth }).hide();
 			
-		avt_jQuery_1_3_2(this).find('a:eq(0)').addClass('fg-menu-indicator').html('<span>' + avt_jQuery_1_3_2(this).find('a:eq(0)').text() + '</span><span class="ui-icon '+options.nextMenuLink+'"></span>').hover(
+		avt_jQuery_1_3_2_av1(this).find('a:eq(0)').addClass('fg-menu-indicator').html('<span>' + avt_jQuery_1_3_2_av1(this).find('a:eq(0)').text() + '</span><span class="ui-icon '+options.nextMenuLink+'"></span>').hover(
 			function(){
 				clearTimeout(hideTimer);
-				var subList = avt_jQuery_1_3_2(this).next();
-				if (!fitVertical(subList, avt_jQuery_1_3_2(this).offset().top)) { subList.css({ top: 'auto', bottom: 0 }); };
-				if (!fitHorizontal(subList, avt_jQuery_1_3_2(this).offset().left + 100)) { subList.css({ left: 'auto', right: linkWidth, 'z-index': 999 }); };
+				var subList = avt_jQuery_1_3_2_av1(this).next();
+				if (!fitVertical(subList, avt_jQuery_1_3_2_av1(this).offset().top)) { subList.css({ top: 'auto', bottom: 0 }); };
+				if (!fitHorizontal(subList, avt_jQuery_1_3_2_av1(this).offset().left + 100)) { subList.css({ left: 'auto', right: linkWidth, 'z-index': 999 }); };
 				showTimer = setTimeout(function(){
 					subList.addClass('ui-widget-content').show(options.showSpeed).attr('aria-expanded', 'true');	
 				}, 300);	
 			},
 			function(){
 				clearTimeout(showTimer);
-				var subList = avt_jQuery_1_3_2(this).next();
+				var subList = avt_jQuery_1_3_2_av1(this).next();
 				hideTimer = setTimeout(function(){
 					subList.removeClass('ui-widget-content').hide(options.showSpeed).attr('aria-expanded', 'false');
 				}, 400);	
 			}
 		);
 
-		avt_jQuery_1_3_2(this).find('ul a').hover(
+		avt_jQuery_1_3_2_av1(this).find('ul a').hover(
 			function(){
 				clearTimeout(hideTimer);
-				if (avt_jQuery_1_3_2(this).parents('ul').prev().is('a.fg-menu-indicator')) {
-					avt_jQuery_1_3_2(this).parents('ul').prev().addClass(options.flyOutOnState);
+				if (avt_jQuery_1_3_2_av1(this).parents('ul').prev().is('a.fg-menu-indicator')) {
+					avt_jQuery_1_3_2_av1(this).parents('ul').prev().addClass(options.flyOutOnState);
 				}
 			},
 			function(){
@@ -316,13 +318,13 @@ Menu.prototype.flyout = function(container, options) {
 Menu.prototype.drilldown = function(container, options) {
 	var menu = this;	
 	var topList = container.find('.fg-menu');	
-	var breadcrumb = avt_jQuery_1_3_2('<ul class="fg-menu-breadcrumb ui-widget-header ui-corner-all ui-helper-clearfix"></ul>');
-	var crumbDefaultHeader = avt_jQuery_1_3_2('<li class="fg-menu-breadcrumb-text">'+options.crumbDefaultText+'</li>');
+	var breadcrumb = avt_jQuery_1_3_2_av1('<ul class="fg-menu-breadcrumb ui-widget-header ui-corner-all ui-helper-clearfix"></ul>');
+	var crumbDefaultHeader = avt_jQuery_1_3_2_av1('<li class="fg-menu-breadcrumb-text">'+options.crumbDefaultText+'</li>');
 	var firstCrumbText = (options.backLink) ? options.backLinkText : options.topLinkText;
 	var firstCrumbClass = (options.backLink) ? 'fg-menu-prev-list' : 'fg-menu-all-lists';
 	var firstCrumbLinkClass = (options.backLink) ? 'ui-state-default ui-corner-all' : '';
 	var firstCrumbIcon = (options.backLink) ? '<span class="ui-icon ui-icon-triangle-1-w"></span>' : '';
-	var firstCrumb = avt_jQuery_1_3_2('<li class="'+firstCrumbClass+'"><a href="#" class="'+firstCrumbLinkClass+'">'+firstCrumbIcon+firstCrumbText+'</a></li>');
+	var firstCrumb = avt_jQuery_1_3_2_av1('<li class="'+firstCrumbClass+'"><a href="#" class="'+firstCrumbLinkClass+'">'+firstCrumbIcon+firstCrumbText+'</a></li>');
 	
 	container.addClass('fg-menu-ipod');
 	
@@ -338,17 +340,17 @@ Menu.prototype.drilldown = function(container, options) {
 	var resetChildMenu = function(el){ el.removeClass('fg-menu-scroll').removeClass('fg-menu-current').height('auto'); };
 	
 	this.resetDrilldownMenu = function(){
-		avt_jQuery_1_3_2('.fg-menu-current').removeClass('fg-menu-current');
+		avt_jQuery_1_3_2_av1('.fg-menu-current').removeClass('fg-menu-current');
 		topList.animate({ left: 0 }, options.crossSpeed, function(){
-			avt_jQuery_1_3_2(this).find('ul').each(function(){
-				avt_jQuery_1_3_2(this).hide();
-				resetChildMenu(avt_jQuery_1_3_2(this));				
+			avt_jQuery_1_3_2_av1(this).find('ul').each(function(){
+				avt_jQuery_1_3_2_av1(this).hide();
+				resetChildMenu(avt_jQuery_1_3_2_av1(this));				
 			});
 			topList.addClass('fg-menu-current');			
 		});		
-		avt_jQuery_1_3_2('.fg-menu-all-lists').find('span').remove();	
+		avt_jQuery_1_3_2_av1('.fg-menu-all-lists').find('span').remove();	
 		breadcrumb.empty().append(crumbDefaultHeader);		
-		avt_jQuery_1_3_2('.fg-menu-footer').empty().hide();	
+		avt_jQuery_1_3_2_av1('.fg-menu-footer').empty().hide();	
 		checkMenuHeight(topList);		
 	};
 	
@@ -363,16 +365,16 @@ Menu.prototype.drilldown = function(container, options) {
 	
 	topList.find('a').each(function(){
 		// if the link opens a child menu:
-		if (avt_jQuery_1_3_2(this).next().is('ul')) {
-			avt_jQuery_1_3_2(this)
+		if (avt_jQuery_1_3_2_av1(this).next().is('ul')) {
+			avt_jQuery_1_3_2_av1(this)
 				.addClass('fg-menu-indicator')
-				.each(function(){ avt_jQuery_1_3_2(this).html('<span>' + avt_jQuery_1_3_2(this).text() + '</span><span class="ui-icon '+options.nextMenuLink+'"></span>'); })
+				.each(function(){ avt_jQuery_1_3_2_av1(this).html('<span>' + avt_jQuery_1_3_2_av1(this).text() + '</span><span class="ui-icon '+options.nextMenuLink+'"></span>'); })
 				.click(function(){ // ----- show the next menu			
-					var nextList = avt_jQuery_1_3_2(this).next();
-		    		var parentUl = avt_jQuery_1_3_2(this).parents('ul:eq(0)');   		
+					var nextList = avt_jQuery_1_3_2_av1(this).next();
+		    		var parentUl = avt_jQuery_1_3_2_av1(this).parents('ul:eq(0)');   		
 		    		var parentLeft = (parentUl.is('.fg-menu-content')) ? 0 : parseFloat(topList.css('left'));    		
 		    		var nextLeftVal = Math.round(parentLeft - parseFloat(container.width()));
-		    		var footer = avt_jQuery_1_3_2('.fg-menu-footer');
+		    		var footer = avt_jQuery_1_3_2_av1('.fg-menu-footer');
 		    		
 		    		// show next menu   		
 		    		resetChildMenu(parentUl);
@@ -382,7 +384,7 @@ Menu.prototype.drilldown = function(container, options) {
 		    		
 		    		var setPrevMenu = function(backlink){
 		    			var b = backlink;
-		    			var c = avt_jQuery_1_3_2('.fg-menu-current');
+		    			var c = avt_jQuery_1_3_2_av1('.fg-menu-current');
 			    		var prevList = c.parents('ul:eq(0)');
 			    		c.hide().attr('aria-expanded', 'false');
 		    			resetChildMenu(c);
@@ -395,10 +397,10 @@ Menu.prototype.drilldown = function(container, options) {
 					if (options.backLink) {
 						if (footer.find('a').size() == 0) {
 							footer.show();
-							avt_jQuery_1_3_2('<a href="#"><span class="ui-icon ui-icon-triangle-1-w"></span> <span>Back</span></a>')
+							avt_jQuery_1_3_2_av1('<a href="#"><span class="ui-icon ui-icon-triangle-1-w"></span> <span>Back</span></a>')
 								.appendTo(footer)
 								.click(function(){ // ----- show the previous menu
-									var b = avt_jQuery_1_3_2(this);
+									var b = avt_jQuery_1_3_2_av1(this);
 						    		var prevLeftVal = parseFloat(topList.css('left')) + container.width();		    						    		
 						    		topList.animate({ left: prevLeftVal },  options.crossSpeed, function(){
 						    			setPrevMenu(b);
@@ -416,24 +418,24 @@ Menu.prototype.drilldown = function(container, options) {
 								return false;
 							});
 						}
-						avt_jQuery_1_3_2('.fg-menu-current-crumb').removeClass('fg-menu-current-crumb');
-						var crumbText = avt_jQuery_1_3_2(this).find('span:eq(0)').text();
-						var newCrumb = avt_jQuery_1_3_2('<li class="fg-menu-current-crumb"><a href="javascript://" class="fg-menu-crumb">'+crumbText+'</a></li>');	
+						avt_jQuery_1_3_2_av1('.fg-menu-current-crumb').removeClass('fg-menu-current-crumb');
+						var crumbText = avt_jQuery_1_3_2_av1(this).find('span:eq(0)').text();
+						var newCrumb = avt_jQuery_1_3_2_av1('<li class="fg-menu-current-crumb"><a href="javascript://" class="fg-menu-crumb">'+crumbText+'</a></li>');	
 						newCrumb
 							.appendTo(breadcrumb)
 							.find('a').click(function(){
-								if (avt_jQuery_1_3_2(this).parent().is('.fg-menu-current-crumb')){
+								if (avt_jQuery_1_3_2_av1(this).parent().is('.fg-menu-current-crumb')){
 									menu.chooseItem(this);
 								}
 								else {
-									var newLeftVal = - (avt_jQuery_1_3_2('.fg-menu-current').parents('ul').size() - 1) * 180;
+									var newLeftVal = - (avt_jQuery_1_3_2_av1('.fg-menu-current').parents('ul').size() - 1) * 180;
 									topList.animate({ left: newLeftVal }, options.crossSpeed, function(){
 										setPrevMenu();
 									});
 								
 									// make this the current crumb, delete all breadcrumbs after this one, and navigate to the relevant menu
-									avt_jQuery_1_3_2(this).parent().addClass('fg-menu-current-crumb').find('span').remove();
-									avt_jQuery_1_3_2(this).parent().nextAll().remove();									
+									avt_jQuery_1_3_2_av1(this).parent().addClass('fg-menu-current-crumb').find('span').remove();
+									avt_jQuery_1_3_2_av1(this).parent().nextAll().remove();									
 								};
 								return false;
 							});
@@ -444,7 +446,7 @@ Menu.prototype.drilldown = function(container, options) {
 		}
 		// if the link is a leaf node (doesn't open a child menu)
 		else {
-			avt_jQuery_1_3_2(this).click(function(){
+			avt_jQuery_1_3_2_av1(this).click(function(){
 				menu.chooseItem(this);
 				return false;
 			});
@@ -478,7 +480,7 @@ Menu.prototype.setPosition = function(widget, caller, options) {
 	var options = options;
 	var xVal, yVal;
 	
-	var helper = avt_jQuery_1_3_2('<div class="positionHelper"></div>');
+	var helper = avt_jQuery_1_3_2_av1('<div class="positionHelper"></div>');
 	helper.css({ position: 'absolute', left: dims.refX, top: dims.refY, width: dims.refW, height: dims.refH });
 	el.wrap(helper);
 	
@@ -553,12 +555,12 @@ Menu.prototype.setPosition = function(widget, caller, options) {
 
 function sortBigToSmall(a, b) { return b - a; };
 
-avt_jQuery_1_3_2.fn.getTotalWidth = function(){
-	return avt_jQuery_1_3_2(this).width() + parseInt(avt_jQuery_1_3_2(this).css('paddingRight')) + parseInt(avt_jQuery_1_3_2(this).css('paddingLeft')) + parseInt(avt_jQuery_1_3_2(this).css('borderRightWidth')) + parseInt(avt_jQuery_1_3_2(this).css('borderLeftWidth'));
+avt_jQuery_1_3_2_av1.fn.getTotalWidth = function(){
+	return avt_jQuery_1_3_2_av1(this).width() + parseInt(avt_jQuery_1_3_2_av1(this).css('paddingRight')) + parseInt(avt_jQuery_1_3_2_av1(this).css('paddingLeft')) + parseInt(avt_jQuery_1_3_2_av1(this).css('borderRightWidth')) + parseInt(avt_jQuery_1_3_2_av1(this).css('borderLeftWidth'));
 };
 
-avt_jQuery_1_3_2.fn.getTotalHeight = function(){
-	return avt_jQuery_1_3_2(this).height() + parseInt(avt_jQuery_1_3_2(this).css('paddingTop')) + parseInt(avt_jQuery_1_3_2(this).css('paddingBottom')) + parseInt(avt_jQuery_1_3_2(this).css('borderTopWidth')) + parseInt(avt_jQuery_1_3_2(this).css('borderBottomWidth'));
+avt_jQuery_1_3_2_av1.fn.getTotalHeight = function(){
+	return avt_jQuery_1_3_2_av1(this).height() + parseInt(avt_jQuery_1_3_2_av1(this).css('paddingTop')) + parseInt(avt_jQuery_1_3_2_av1(this).css('paddingBottom')) + parseInt(avt_jQuery_1_3_2_av1(this).css('borderTopWidth')) + parseInt(avt_jQuery_1_3_2_av1(this).css('borderBottomWidth'));
 };
 
 function getScrollTop(){
@@ -585,13 +587,13 @@ function getWindowWidth(){
 	leftOffset / topOffset = optional parameter if the offset cannot be calculated (i.e., if the object is in the DOM but is set to display: 'none') */
 	
 function fitHorizontal(el, leftOffset){
-	var leftVal = parseInt(leftOffset) || avt_jQuery_1_3_2(el).offset().left;
-	return (leftVal + avt_jQuery_1_3_2(el).width() <= getWindowWidth() + getScrollLeft() && leftVal - getScrollLeft() >= 0);
+	var leftVal = parseInt(leftOffset) || avt_jQuery_1_3_2_av1(el).offset().left;
+	return (leftVal + avt_jQuery_1_3_2_av1(el).width() <= getWindowWidth() + getScrollLeft() && leftVal - getScrollLeft() >= 0);
 };
 
 function fitVertical(el, topOffset){
-	var topVal = parseInt(topOffset) || avt_jQuery_1_3_2(el).offset().top;
-	return (topVal + avt_jQuery_1_3_2(el).height() <= getWindowHeight() + getScrollTop() && topVal - getScrollTop() >= 0);
+	var topVal = parseInt(topOffset) || avt_jQuery_1_3_2_av1(el).offset().top;
+	return (topVal + avt_jQuery_1_3_2_av1(el).height() <= getWindowHeight() + getScrollTop() && topVal - getScrollTop() >= 0);
 };
 
 /*-------------------------------------------------------------------- 
@@ -609,9 +611,9 @@ function fitVertical(el, topOffset){
  * Demo: http://www.filamentgroup.com/examples/pxToEm/	 	
  *							
  * Options:  	 								
- 		scope: string or avt_jQuery_1_3_2 selector for font-size scoping
+ 		scope: string or avt_jQuery_1_3_2_av1 selector for font-size scoping
  		reverse: Boolean, true reverses the conversion to em-px
- * Dependencies: avt_jQuery_1_3_2 library						  
+ * Dependencies: avt_jQuery_1_3_2_av1 library						  
  * Usage Example: myPixelValue.pxToEm(); or myPixelValue.pxToEm({'scope':'#navigation', reverse: true});
  *
  * Version: 2.0, 08.01.2008 
@@ -622,7 +624,7 @@ function fitVertical(el, topOffset){
 
 Number.prototype.pxToEm = String.prototype.pxToEm = function(settings){
 	//set defaults
-	settings = avt_jQuery_1_3_2.extend({
+	settings = avt_jQuery_1_3_2_av1.extend({
 		scope: 'body',
 		reverse: false
 	}, settings);
@@ -639,13 +641,13 @@ Number.prototype.pxToEm = String.prototype.pxToEm = function(settings){
 		When this happens, we calculate the correct body font-size (%) and multiply it by 16 (the standard browser font size) 
 		to get an accurate em value. */
 				
-	if (settings.scope == 'body' && avt_jQuery_1_3_2.browser.msie && (parseFloat(avt_jQuery_1_3_2('body').css('font-size')) / getWindowWidth()).toFixed(1) > 0.0) {
+	if (settings.scope == 'body' && avt_jQuery_1_3_2_av1.browser.msie && (parseFloat(avt_jQuery_1_3_2_av1('body').css('font-size')) / getWindowWidth()).toFixed(1) > 0.0) {
 		var calcFontSize = function(){		
-			return (parseFloat(avt_jQuery_1_3_2('body').css('font-size'))/getWindowWidth()).toFixed(3) * 16;
+			return (parseFloat(avt_jQuery_1_3_2_av1('body').css('font-size'))/getWindowWidth()).toFixed(3) * 16;
 		};
 		scopeVal = calcFontSize();
 	}
-	else { scopeVal = parseFloat(avt_jQuery_1_3_2(settings.scope).css("font-size")); };
+	else { scopeVal = parseFloat(avt_jQuery_1_3_2_av1(settings.scope).css("font-size")); };
 			
 	var result = (settings.reverse == true) ? (pxVal * scopeVal).toFixed(2) + 'px' : (pxVal / scopeVal).toFixed(2) + 'em';
 	return result;

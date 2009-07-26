@@ -1,11 +1,11 @@
 
 if (!avt) { var avt = {}; }
 if (!avt.Common) { avt.Common = {}; }
-if (!avt.FastShot) { avt.FastShot = { $ : avt_jQuery_1_3_2}; }
+if (!avt.FastShot) { avt.FastShot = { $ : avt_jQuery_1_3_2_av1}; }
 
 avt.fs = avt.fastshot = { 
-    $$ : avt.core_1_2, 
-    $  : avt_jQuery_1_3_2,
+    $$ : avt.core_1_4, 
+    $  : avt_jQuery_1_3_2_av1,
     
     init : function() {
    
@@ -31,6 +31,7 @@ avt.fs = avt.fastshot = {
         });
 
         avt.fs.$(grid).find("li").css("width", maxWidth + "px").css("height", maxHeight + "px");
+        avt.fs.$("head").append("<style>#"+ avt.fs.$(grid).parent().attr("id") +" ul.FastShot_grid .ui-sortable-placeholder { height: " + maxHeight + "px !important; } </style>");
     }
 }
 

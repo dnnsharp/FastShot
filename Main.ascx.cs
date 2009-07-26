@@ -66,7 +66,7 @@ namespace avt.FastShot
                 btnSettings.OnClientClick = "avt.fastshot.$$.showDlg('" + TemplateSourceDirectory + "/Settings.aspx?pmod=" + ModuleId.ToString() + "', { width: 450, height: 500, cssClass : 'FastShot_dlg', title : 'FastShot - Settings', rightText : '" + FastShotController.FastShotVersionAll + "', postbackid_onsave : '" + triggerSaveSettings.UniqueID + "'}); return false;";
                 btnSettingsNewWnd.OnClientClick = "window.open('" + TemplateSourceDirectory + "/Settings.aspx?pmod=" + ModuleId.ToString() + "&rurl=" + Server.UrlEncode(Request.RawUrl) + "', '_self', ''); return false;";
                 btnActivate.OnClientClick = "avt.fastshot.$$.showDlg('" + TemplateSourceDirectory + "/Activation.aspx', { width: 550, height: 400, cssClass : 'FastShot_dlg', title : 'FastShot - Activation', rightText : '" + FastShotController.FastShotVersionAll + "', postbackid_onsave : '" + triggerRender.UniqueID + "', show_save : false, cancel_text : 'Close', refresh_onsave : true}); return false;";
-                btnActivateNewWnd.OnClientClick = "window.open('" + TemplateSourceDirectory + "/Activation.aspx', '_blank', 'width=540'); return false;";
+                btnActivateNewWnd.OnClientClick = "window.open('" + TemplateSourceDirectory + "/Activation.aspx', '_self'); return false;";
                 btnAddNewItemNewWnd.OnClientClick = "window.open('" + TemplateSourceDirectory + "/AddEditItem.aspx?pmod=" + ModuleId.ToString() + "&rurl=" + Server.UrlEncode(Request.RawUrl) + "', '_self', ''); return false;";
                 //triggerDelete.OnClientClick = "avt.fs.$('#" + upnlRender.ClientID + "').find('.fsOrderingChanged').html('Deleting, please wait...').show('slide', {direction: 'up'});";
 
@@ -78,7 +78,8 @@ namespace avt.FastShot
             }
 
 
-            ScriptManager.RegisterStartupScript(upnlRender, upnlRender.GetType(), "initProdMenu" + ModuleId.ToString(), "initProductMenu" + ModuleId.ToString() + "();", true);
+            if (pnlSettings.Visible)
+                ScriptManager.RegisterStartupScript(upnlRender, upnlRender.GetType(), "initProdMenu" + ModuleId.ToString(), "initProductMenu" + ModuleId.ToString() + "();", true);
             ScriptManager.RegisterStartupScript(upnlRender, upnlRender.GetType(), "initGrid" + ModuleId.ToString(), "avt.fs.$(document).ready(function() { avt.fs.initGrid(avt.fs.$('#" + upnlRender.ClientID + "').find('.FastShot_grid')); });", true);
             ScriptManager.RegisterStartupScript(upnlRender, upnlRender.GetType(), "avtFsInit", "avt.fs.$$.init({appPath:'" + Request.ApplicationPath + "', loaderIcon : '" + TemplateSourceDirectory + "/res/loader.gif'});", true);
         }
@@ -250,35 +251,36 @@ namespace avt.FastShot
         protected override void OnPreRender(EventArgs e)
         {
             // doing this at another stage will break things work on IE
-            if (!Page.ClientScript.IsClientScriptIncludeRegistered("avt_jQuery_1_3_2")) {
-                Page.ClientScript.RegisterClientScriptInclude("avt_jQuery_1_3_2", TemplateSourceDirectory + "/js/jquery/jquery-1.3.2.js");
+            if (!Page.ClientScript.IsClientScriptIncludeRegistered("avt_jQuery_1_3_2_av1")) {
+                Page.ClientScript.RegisterClientScriptInclude("avt_jQuery_1_3_2_av1", TemplateSourceDirectory + "/js/jquery-1.3.2.av1.js");
             }
 
-            if (!Page.ClientScript.IsClientScriptIncludeRegistered("avt_jQueryUi_1_6")) {
-                Page.ClientScript.RegisterClientScriptInclude("avt_jQueryUi_1_6", TemplateSourceDirectory + "/js/jquery/jquery-ui-1.6.js");
+            if (!Page.ClientScript.IsClientScriptIncludeRegistered("avt_jQueryUi_1_7_2_av1")) {
+                Page.ClientScript.RegisterClientScriptInclude("avt_jQueryUi_1_7_2_av1", TemplateSourceDirectory + "/js/jquery-ui-1.7.2.av1.js");
             }
 
-            if (!Page.ClientScript.IsClientScriptIncludeRegistered("avt_core_1_2")) {
-                Page.ClientScript.RegisterClientScriptInclude("avt_core_1_2", TemplateSourceDirectory + "/js/avt.core-1.2.js");
+            if (!Page.ClientScript.IsClientScriptIncludeRegistered("avt_core_1_4")) {
+                Page.ClientScript.RegisterClientScriptInclude("avt_core_1_4", TemplateSourceDirectory + "/js/avt.core-1.4.js");
             }
 
-            if (!Page.ClientScript.IsClientScriptIncludeRegistered("jQueryLightbox")) {
-                Page.ClientScript.RegisterClientScriptInclude("jQueryLightbox", TemplateSourceDirectory + "/js/jquery-lightbox/jquery.lightbox.js");
+            if (!Page.ClientScript.IsClientScriptIncludeRegistered("jQueryLightbox_av1")) {
+                Page.ClientScript.RegisterClientScriptInclude("jQueryLightbox_av1", TemplateSourceDirectory + "/js/jquery-lightbox/jquery.lightbox.js");
             }
 
-            if (!Page.ClientScript.IsClientScriptIncludeRegistered("jQuery.jGrowl-1.2.0")) {
-                Page.ClientScript.RegisterClientScriptInclude("jQuery.jGrowl-1.2.0", TemplateSourceDirectory + "/js/jGrowl-1.2.0/jquery.jgrowl.js");
+            if (!Page.ClientScript.IsClientScriptIncludeRegistered("jQuery.jGrowl-1.2.0_av1")) {
+                Page.ClientScript.RegisterClientScriptInclude("jQuery.jGrowl-1.2.0_av1", TemplateSourceDirectory + "/js/jGrowl-1.2.0/jquery.jgrowl.js");
             }
 
             if (!Page.ClientScript.IsClientScriptIncludeRegistered("avtFastShot")) {
                 Page.ClientScript.RegisterClientScriptInclude("avtFastShot", TemplateSourceDirectory + "/js/avtFastShot.js");
             }
 
-            if (!Page.ClientScript.IsClientScriptIncludeRegistered("jQuery.fg-menu")) {
-                Page.ClientScript.RegisterClientScriptInclude("jQuery.fg-menu", TemplateSourceDirectory + "/js/fg-menu/fg-menu/fg.menu.js");
+            if (!Page.ClientScript.IsClientScriptIncludeRegistered("jQuery.fg-menu_av1")) {
+                Page.ClientScript.RegisterClientScriptInclude("jQuery.fg-menu_av1", TemplateSourceDirectory + "/js/fg-menu/fg-menu/fg.menu.js");
             }
 
             CDefault defaultPage = (CDefault)Page;
+            defaultPage.AddStyleSheet("skinFg", TemplateSourceDirectory + "/js/fg-menu/fg-menu/fg.menu.css");
             defaultPage.AddStyleSheet("skinLightbox", TemplateSourceDirectory + "/js/jquery-lightbox/css/lightbox.css");
             defaultPage.AddStyleSheet("theme.jquery.ui", TemplateSourceDirectory + "/js/ui-themes/smoothness/jquery-ui-1.7.1.css");
             defaultPage.AddStyleSheet("skin.jGrowl-1.2.0", TemplateSourceDirectory + "/js/jGrowl-1.2.0/jquery.jgrowl.css");

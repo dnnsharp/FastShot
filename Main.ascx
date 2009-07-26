@@ -45,7 +45,7 @@
                 </asp:UpdatePanel>
             </div>
 
-            <div id = "pnlSettings" runat = "server">
+            <div id = "pnlSettings" runat = "server" style = "clear: both;">
                 <a href="javascript: void(0)" class="fg-button fg-button-icon-right ui-widget ui-state-default ui-corner-all" runat = "server" id = "btnFsSettings"><span class="ui-icon ui-icon-triangle-1-s"></span><img src = '<%=TemplateSourceDirectory %>/res/fastshot_small.png' border = "0" style = "margin-right: 6px;" align = "absmiddle" class = "pngFix" height = "20" /> FastShot</a>
                 <div style = "position:absolute; top:0; left:-9999px; width:1px; height:1px; overflow:hidden">
                     <ul style = "font-size: 12px;" class = "nobullets">

@@ -30,12 +30,26 @@ namespace avt.FastShot
             //System.Threading.Thread.Sleep(1000);
 
             // create an image object, using the filename we just retrieved
-            System.Drawing.Image image; 
+            System.Drawing.Image image;
+            string file = null;
             try {
                 if (Server.UrlDecode(Request.QueryString["file"]) == "http://www.avatar-soft.ro/portals/0/product_logo/fastshot_large.png") {
                     image = LoadImageFromURL(Server.UrlDecode(Request.QueryString["file"]));
                 } else {
-                    image = System.Drawing.Image.FromFile(Server.MapPath(Server.UrlDecode(Request.QueryString["file"])));
+                    file = Server.UrlDecode(Request.QueryString["file"]);
+                    try {
+                        image = System.Drawing.Image.FromFile(Server.MapPath(file));
+                        file = Server.MapPath(file);
+                    } catch (Exception ex) {
+                        // give it another chance
+                        if (file[0] != '~') {
+                            file = "~" + file;
+                            image = System.Drawing.Image.FromFile(Server.MapPath(file));
+                            file = Server.MapPath(file);
+                        } else {
+                            throw ex;
+                        }
+                    }
                 }
             } catch {
                 Response.Write("File not found");
@@ -88,6 +102,14 @@ namespace avt.FastShot
             imageStream.Read(imageContent, 0, (int)imageStream.Length);
 
             // return byte array to caller with image type
+            Response.Cache.SetCacheability(HttpCacheability.Public);
+            if (file != null) {
+                Response.AddFileDependency(file);
+                Response.Cache.SetLastModifiedFromFileDependencies();
+            }
+
+            Response.Cache.SetCacheability(HttpCacheability.Public);
+            Response.Cache.SetExpires(DateTime.Now.AddDays(365));
             Response.ContentType = "image/jpeg";
             Response.BinaryWrite(imageContent);
         }

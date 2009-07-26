@@ -6,9 +6,9 @@
 <head>
     <title>FastShot Activation</title>
     <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/../../js/dnncore.js"></script>
-    <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/jQuery/jQuery-1.3.2.js"></script>
-    <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/jquery/jquery-ui-1.6.js"></script>
-    <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/avt.core-1.2.js"></script>
+    <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/jQuery-1.3.2.av1.js"></script>
+    <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/jquery-ui-1.7.2.av1.js"></script>
+    <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/avt.core-1.4.js"></script>
     <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/avtFastShot.js"></script>
     <link type = "text/css" rel = "stylesheet" href = "<%=TemplateSourceDirectory %>/module.css" />
     

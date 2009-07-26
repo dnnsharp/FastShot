@@ -37,8 +37,8 @@
                 </a>
             </li>
         </xsl:for-each>
-        <div style = "clear: both"></div>
     </ul>
+    <div style = "clear: both"></div>
     </xsl:if>
 </xsl:template>
 </xsl:stylesheet>
