@@ -114,10 +114,10 @@ namespace avt.FastShot
             Response.BinaryWrite(imageContent);
         }
 
-        public bool ThumbnailCallback()
-        {
-            return true;
-        }
+        //public bool ThumbnailCallback()
+        //{
+        //    return true;
+        //}
 
         private System.Drawing.Image LoadImageFromURL(string URL)
         {

@@ -8,28 +8,28 @@
 	<div class = "FastShot_grid_general">
 		<ul class = "FastShot_grid ">
 			<xsl:for-each select = "/fastshot/img">
-			   <li style = " border: 3px black ;" >
+				<li style = "">
 					<input type = "hidden">
 						<xsl:attribute name="value"><xsl:value-of select="id" /></xsl:attribute>
 					</input>
-					<xsl:if test = "/fastshot/mng">
-						<div class = "FastShot_default_modify" style = "text-align: center; margin-bottom: 4px;">
-							<a><xsl:attribute name="href"><xsl:value-of select="editurl" /></xsl:attribute>edit </a>
-							<a alt = "edit in compatibility mode" title = "edit in compatibility mode"><xsl:attribute name="href"><xsl:value-of select="editurl_comp" /></xsl:attribute>&gt;</a> | 
-							<a><xsl:attribute name="href"><xsl:value-of select="deleteurl" /></xsl:attribute>delete</a>
-						</div>
-					</xsl:if>
-					<a class="lightbox imgThumb" style = "text-align: center; display: block;">
+					<a class="lightbox imgThumb">
 						<xsl:attribute name="rel"><xsl:value-of select="/fastshot/mid" /></xsl:attribute>
 						<xsl:attribute name="href"><xsl:value-of select="imgurl" /></xsl:attribute>
 						<xsl:attribute name="alt"><xsl:value-of select="desc" /></xsl:attribute>
 						<xsl:attribute name="title"><xsl:value-of select="desc" /></xsl:attribute>
-						<img class = "pngFix" style = " border: 3px black ;">
-							<xsl:attribute name="alt"><xsl:value-of select="desc" /></xsl:attribute>
+						<xsl:attribute name="style">text-align: center; display: block; width: <xsl:value-of select="/fastshot/max_thumb_width" />px; height: <xsl:value-of select="/fastshot/max_thumb_height" />px;</xsl:attribute>
+						<img border = "0" class = "pngFix">
+							<xsl:attribute name="alt"><xsl:value-of select="title" /></xsl:attribute>
+							<xsl:attribute name="title"><xsl:value-of select="title" /></xsl:attribute>
 							<xsl:attribute name="src"><xsl:value-of select="thumburl" /></xsl:attribute>
 							<xsl:attribute name="width"><xsl:value-of select="thumb_width" /></xsl:attribute>
 							<xsl:attribute name="height"><xsl:value-of select="thumb_height" /></xsl:attribute>
 						</img>
+					</a>
+					<a class="lightbox imgTitle" style = "text-align: center; display: block;">
+						<xsl:attribute name="rel"><xsl:value-of select="/fastshot/mid" /></xsl:attribute>
+						<xsl:attribute name="href"><xsl:value-of select="imgurl" /></xsl:attribute>
+						<xsl:value-of select="title" disable-output-escaping="yes" />
 					</a>
 				</li>
 			</xsl:for-each>

@@ -7,7 +7,7 @@
  * Written by Stan Lemon <stanlemon@mac.com>
  * Last updated: 2009.05.11
  *
- * jGrowl is a avt_jQuery_1_3_2_av1 plugin implementing unobtrusive userland notifications.  These 
+ * jGrowl is a avt_jQuery_1_3_2_av3 plugin implementing unobtrusive userland notifications.  These 
  * notifications function similarly to the Growl Framework available for
  * Mac OS X (http://growl.info).
  *
@@ -222,7 +222,7 @@
 		startup:	function(e) {
 			this.element = $(e).addClass('jGrowl').append('<div class="jGrowl-notification"></div>');
 			this.interval = setInterval( function() { 
-				avt_jQuery_1_3_2_av1(e).data('jGrowl.instance').update(); 
+				avt_jQuery_1_3_2_av3(e).data('jGrowl.instance').update(); 
 			}, this.defaults.check);
 			
 			if ($.browser.msie && parseInt($.browser.version) < 7 ) $(this.element).addClass('ie6');
@@ -238,4 +238,4 @@
 	/** Reference the Defaults Object for compatibility with older versions of jGrowl **/
 	$.jGrowl.defaults = $.fn.jGrowl.prototype.defaults;
 
-})(avt_jQuery_1_3_2_av1);
+})(avt_jQuery_1_3_2_av3);
