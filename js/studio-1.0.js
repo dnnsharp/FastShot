@@ -286,8 +286,21 @@ avt.fs.studio = {
                 } else {
                     avt.fs.items = data;
                     
+                    // check we have at least one element
+                    var bEmpty = true;
+                    for (var i in avt.fs.items) {
+                        bEmpty = false;
+                        break;
+                    }
+                    
+                    if (bEmpty === true) {
+                        avt.fs.items = {};
+                        avt.fs.ordItems = [];
+                        return; // nothing to populate
+                    }
+                    
                     // create ordering array
-                    avt.fs.ordItems = new Array(avt.fs.items.length);
+                    avt.fs.ordItems = [];//new Array(avt.fs.items.length);
                     for (var id in avt.fs.items) {
                         avt.fs.ordItems[avt.fs.items[id].order] = id;
                     }
@@ -412,7 +425,19 @@ avt.fs.studio = {
         }
         avt.fs.$("#sbmTabs").tabs("select",1);
         var _c = avt.fs.$("#newItem_Container");
-        _c.find("#tbImageUrl").val(avt.fs.$(obj).parents("li").find(".fileLink").attr("href"));
+        var filePath = avt.fs.$(obj).parents("li").find(".fileLink").attr("href");
+        _c.find("#tbImageUrl").val(filePath);
+        
+        // check if title is empty, and put the filename in there
+        if (avt.fs.$.trim(_c.find("#newItem_Title").val()) == "") {
+        
+            if (filePath.indexOf('/') > -1)
+                filePath = filePath.substring(filePath.lastIndexOf('/')+1,filePath.length);
+            else if (filePath.indexOf('\\') > -1)
+                filePath = filePath.substring(filePath.lastIndexOf('\\')+1,filePath.length);
+
+            _c.find("#newItem_Title").val(filePath);
+        }
     },
     
     useAsThumb: function(obj) {
@@ -437,16 +462,19 @@ avt.fs.studio = {
         var title = avt.fs.$.trim(_c.find("#newItem_Title").val());
         if (title.length == 0) {
             _c.find("#newItem_TitleErr").text("Title is required!").show();
+            return;
         }
         
         var imageUrl = avt.fs.$.trim(_c.find("#tbImageUrl").val());
         if (imageUrl.length == 0) {
             _c.find("#newItem_ImageUrlErr").text("Image Url is required!").show();
+            return;
         }
         
         var thumbUrl = avt.fs.$.trim(_c.find("#tbThumbUrl").val());
         if (_c.find("#cbAutoGenerate")[0].checked === false && imageUrl.length == 0) {
             _c.find("#newItem_ThumbUrlErr").text("Image Thumb is required when Auto Generate is not set!").show();
+            return;
         }
         
         // ready to save
@@ -626,501 +654,6 @@ avt.fs.studio = {
                     avt.fs.$.jGrowl("Settings succesfully updated.", {header: 'Success', life: 5000});
                 }
         }, "json");
-    },
-
-    
-    reindex: function() {
-        avt.fs.studio.loading(true);
-        avt.fs.$.get(avt.fs.pageUrl, { fn: "reindex" },
-            function(data){
-                avt.fs.$.jGrowl("Search Index succesfully rebuilt!", {header: 'Success', life: 5000});
-                avt.fs.studio.loading(false);
-        }, "text");
-    },
-    
-    
-    getRules: function() {
-        avt.fs.studio.loading(true);
-        avt.fs.$.get(avt.fs.pageUrl, { fn: "get_rules" },
-            function(data){
-                avt.fs.targets = data;
-                // populate screen
-                avt.fs.studio.loading(false);
-                avt.fs.studio.populateSearchTargets();
-        }, "json");
-    },
-    
-    populateSearchTargets: function() {
-
-        var dd = avt.fs.$("#list_search_targets");
-        dd.empty();
-        for (var id in avt.fs.targets) {
-            dd.append("<li><a href = 'javascript: void(0);' onclick = 'avt.fs.wizt.editSearchTarget("+ id +");'>"+ avt.fs.targets[id].title +"</a> <a href = 'javascript: avt.fs.studio.deleteRule("+ avt.fs.targets[id].id +")' onclick = 'return confirm(\"Are you sure you want to delete custome rule "+ avt.fs.targets[id].title +"?\");'><img src = '"+ avt.fs.modRoot +"res/delete.gif' border = '0' /></a></li>");
-        }
-    },
-    
-    populateSearchInstances: function() {
-        var dd = avt.fs.$("#list_inst_cportal");
-        var ddTest = avt.fs.$("#ddTestInst");
-        ddTest.append("<option value = '-1'>-- All content on current portal --</option>");
-        for (var i in avt.fs.inst.cPortal) {
-            dd.append("<li><a href = 'javascript: void(0);' onclick = 'avt.fs.studio.editSearchInst(\""+ avt.fs.inst.cPortal[i].inst +"\");'>"+ avt.fs.inst.cPortal[i].caption +"</a></li>");
-            ddTest.append("<option value = '"+ avt.fs.inst.cPortal[i].inst +"'>"+ avt.fs.inst.cPortal[i].caption +"</option>");
-        }
-        
-        
-        if (avt.fs.isSuperUser) {
-
-            // init all portals listing
-            var _ddAll = avt.fs.$("#list_inst_all");
-            for (var instId in avt.fs.inst) {
-                if (instId == 'cPortal' || instId == 'byPortal') continue;
-                _ddAll.append("<li><a href = 'javascript: void(0);' onclick = 'avt.fs.studio.editSearchInst(\""+ instId +"\");'>"+ avt.fs.inst[instId].caption +"</a></li>");
-            }
-            
-            // init filter by portal
-            var _ddPortals = avt.fs.$("#ddFilterByPortal");
-            for (var pId in avt.fs.inst.byPortal) {
-                _ddPortals.append("<option value = '"+ pId +"'>"+ avt.fs.inst.byPortal[pId].caption +"</option>");
-            }
-            avt.fs.studio.populateByPortal(_ddPortals.val());
-            
-        } else {
-            avt.fs.$("#noAccessAll, #noAccessFilter").show();
-            avt.fs.$("#instFilterByPortal, #instAllPortals").hide();
-        }
-    },
-    
-    populateByPortal: function(pId) {
-        var _dd = avt.fs.$("#list_inst_byportal").empty();
-        for (var i in avt.fs.inst.byPortal[pId].data) {
-            _dd.append("<li><a href = 'javascript: void(0);' onclick = 'avt.fs.studio.editSearchInst(\""+ avt.fs.inst.byPortal[pId].data[i].inst +"\");'>"+ avt.fs.inst.byPortal[pId].data[i].caption +"</a></li>");
-        }
-    },
-    
-    
-    editSearchInst: function(inst) {
-        // check if instance fully loaded
-        if (!avt.fs.inst[inst].targets) {
-            avt.fs.studio.loading(true);
-            avt.fs.$.get(avt.fs.pageUrl, { fn: "get_inst_targets_json", data: inst},
-                function(data){
-                    avt.fs.inst[inst].targets = data;
-                    avt.fs.studio.loading(false);
-                    avt.fs.studio.searchInst_loadData(inst);
-            }, "json");
-        } else {
-            avt.fs.studio.searchInst_loadData(inst);
-        }
-    },
-    
-    searchInst_loadData: function(inst) {
-        avt.fs.$(".no_instance_sel").hide();
-        
-        var _s = avt.fs.$(".instance_summary");
-        _s.find(".inst_name").text(avt.fs.inst[inst].caption);
-        
-        // searchin
-        var _sin = _s.find(".inst_searchin");
-        _sin.empty();
-        avt.fs.studio.searchInst_showData(_sin, avt.fs.inst[inst].targets);
-        
-        if (avt.fs.inst[inst].pagesize <= 0)
-            avt.fs.inst[inst].pagesize = 10;
-        
-        _s.find(".inst_respage").text(avt.fs.inst[inst].resTabName);
-        _s.find(".inst_pagesize").text(avt.fs.inst[inst].pagesize);
-        _s.find(".inst_textempty").text(avt.fs.inst[inst].empty);
-        _s.find(".inst_getparam").text(avt.fs.inst[inst].getparam);
-        
-        _s.show();
-
-        avt.fs.$("#sbmTabs").tabs('enable', 1);
-        avt.fs.$("#sbmTabs").tabs('enable', 2);
-        avt.fs.$("#sbmTabs").tabs('select', 0);
-        
-        avt.fs.current = inst;
-    },
-
-    
-    searchInst_showData: function(list, data) {
-        for (var i in data) {
-            var _li = avt.fs.$("<li>"+ data[i].caption +"</li>");
-            if (data[i].children && data[i].children.length > 0) {
-                var _ul = avt.fs.$("<ul style = 'margin: 0 0 0 20px; padding: 0px;'></ul>");
-                avt.fs.studio.searchInst_showData(_ul, data[i].children);
-                _li.append(_ul);
-            }
-            list.append(_li);
-        }
-    },
-    
-    
-    // Instance Search Target
-    // -------------------------------------------------------------------------------------------------------
-    
-    loadInputSettings: function() {
-    
-        if (avt.fs.studio.treeLoadedFor != avt.fs.current) {
-            // first, check we have portals json
-            if (!avt.fs.portals) {
-                avt.fs.studio.loading(true);
-                
-                // load portals json for the trees
-                avt.fs.$.get(avt.fs.pageUrl, { fn: "get_portal_items_json"},
-                function(data){
-                    avt.fs.portals = data;
-                    avt.fs.studio.loading(false);
-                    
-                    // populate dropdown
-                    var _ddPortals = avt.fs.$("#si_ddPortal");
-                    for (var pid in avt.fs.portals) {
-                        _ddPortals.append("<option value = '"+ pid +"'>"+ avt.fs.portals[pid].name +"</option>");
-                    }
-                    
-                    avt.fs.studio.initSearchTargetTrees();
-                    
-                    // load selection from current instance
-                    avt.fs.studio.loadSelItemsIntoTrees();
-                }, "json");
-            } else {
-                // load selection from current instance
-                avt.fs.studio.loadSelItemsIntoTrees();
-            }
-        }
-    },
-    
-    resetSearchTargetTrees: function() {
-        delete avt.fs.portals;
-        delete avt.fs.studio.treeLoadedFor;
-        avt.fs.$("#srcSiTreeContainer").empty();
-        avt.fs.$("#si_ddPortal").empty();
-    },
-    
-    initSearchTargetTrees: function() {
-
-        var _treeContainer = avt.fs.$("#srcSiTreeContainer");
-        for (var pid in avt.fs.portals) {
-            var _tree = avt.fs.$("<div class = 'src_target_tree' id = 'srcSiTree"+ pid +"'></div>");
-            _treeContainer.append(_tree);
-            
-            _tree.tree({
-                data: {
-                    type: "json",
-                    asynch: "false",
-                    json: avt.fs.portals[pid].tree
-                },
-                ui: {
-                    animation: 300,
-                    context: false,
-                    rtl: false,
-                    dots: true,
-                    theme_path: avt.fs.modRoot + "js/jsTree/source/themes/",
-                    theme_name: "checkbox"
-                },
-
-                rules: {
-                    clickable: "all"
-                },
-
-                callback: {
-
-                    onrgtclk: function(NODE, TREE_OBJ, event) {
-                        //event.preventDefault(); event.stopPropagation(); return false;
-                    },
-
-                    ondblclk: function(NODE, TREE_OBJ) {
-                    },
-                    
-                    beforeclose: function(NODE, TREE_OBJ) {
-                        // freeze checkbox changes
-                        TREE_OBJ.freezeCb = true;
-                    },
-                    
-                    onclose: function(NODE, TREE_OBJ) {
-                        TREE_OBJ.freezeCb = false;
-                    },
-                    
-                    beforeopen : function(NODE, TREE_OBJ) {
-    //                    var _this = avt.fs.$(NODE).is("a") ? avt.fs.$(NODE).is("a") : avt.fs.$(NODE).parent();
-    //                    if (_this.hasClass("checked")) {
-    //                        _this.find("a").removeClass("unchecked").addClass("checked");
-    //                    }
-                    },
-
-                    onchange: function(NODE, TREE_OBJ) {
-                        if (TREE_OBJ.freezeCb) {
-                            return;
-                        }
-                        
-                        var $this = avt.fs.$(NODE).is("li") ? avt.fs.$(NODE) : avt.fs.$(NODE).parent();
-                        if ($this.children("a.unchecked").size() == 0) {
-                            TREE_OBJ.container.find("a").not(".checked").not(".unchecked").not(".undetermined").addClass("unchecked");
-                        }
-                        //$this.children("a").removeClass("clicked");
-                        var state;
-                        if ($this.children("a").hasClass("checked")) {
-                            $this.find("li").andSelf().children("a").removeClass("checked").removeClass("undetermined").addClass("unchecked");
-                            state = 0;
-                        }
-                        else {
-                            $this.find("li").andSelf().children("a").removeClass("unchecked").removeClass("undetermined").addClass("checked");
-                            state = 1;
-                        }
-                        $this.parents("li").each(function() {
-                            if (state == 1) {
-                                if (avt.fs.$(this).find("a.unchecked, a.undetermined").size() - 1 > 0) {
-                                    avt.fs.$(this).parents("li").andSelf().children("a").removeClass("unchecked").removeClass("checked").addClass("undetermined");
-                                    return false;
-                                }
-                                else avt.fs.$(this).children("a").removeClass("unchecked").removeClass("undetermined").addClass("checked");
-                            }
-                            else {
-                                if (avt.fs.$(this).find("a.checked, a.undetermined").size() - 1 > 0) {
-                                    avt.fs.$(this).parents("li").andSelf().children("a").removeClass("unchecked").removeClass("checked").addClass("undetermined");
-                                    return false;
-                                }
-                                else avt.fs.$(this).children("a").removeClass("checked").removeClass("undetermined").addClass("unchecked");
-                            }
-                        });
-                    }
-                }
-            });
-        }
-        // show first portal
-        _treeContainer.find("div:first").show();
-    },
-    
-    loadSelItemsIntoTrees: function() {
-        var _st = avt.fs.$("#st_Container");
-        var _treeContainer = avt.fs.$("#srcSiTreeContainer");
-
-        // reset to first portal in the dropdown
-        avt.fs.$("#si_ddPortal")[0].selectedIndex = 0;
-        _treeContainer.children("div").hide();
-        _treeContainer.children("div:first").show();
-        
-        // reset selected items
-        _treeContainer.find("a").removeClass("checked undetermined clicked");
-        _treeContainer.find("li").removeClass("open").addClass("closed");
-        _treeContainer.find("[rel='root']").removeClass("closed").addClass("open");
-        
-        // select instance items
-        _st.find(".wizerror").hide();
-        avt.fs.studio._loadSelItemsIntoTrees(avt.fs.inst[avt.fs.current].targets, _treeContainer);
-
-        avt.fs.studio.treeLoadedFor = avt.fs.current;
-    },
-    
-    _loadSelItemsIntoTrees: function(data, tc) {
-        for (var i in data) {
-            
-            if (data[i].children && data[i].children.length > 0 && data[i].children && data[i].children[0].id != 'all') {
-                tc.find("#" + data[i].id + ">a").addClass("undetermined");
-                avt.fs.studio._loadSelItemsIntoTrees(data[i].children, tc);
-            } else {
-                tc.find("#" + data[i].id + " a").addClass("checked");
-                if (data[i].id.indexOf("asb_mod") >= 0) { // also set Tab Modules to undetermined
-                    tc.find("#" + data[i].id + " a").parents("li[rel=mods]").children("a:first").addClass("undetermined");
-                }
-            }
-        }
-    },
-    
-    switchSiPortal: function(pid) {
-        var _treeContainer = avt.fs.$("#srcSiTreeContainer");
-        _treeContainer.children("div").hide();
-        _treeContainer.find("#srcSiTree"+ pid).show();
-    },
-    
-    
-    
-    savePortalTabs: function() {
-
-        var _treeContainer = avt.fs.$("#srcSiTreeContainer");
-        var _ddPortals = avt.fs.$("#si_ddPortal");
-        var postParams = {
-            fn: "save_search_targets",
-            inst: avt.fs.current
-        }
-        
-        avt.fs.studio.loading(true);
-        
-        var i = 0;
-        _treeContainer.children("div").each(function() {
-            if (avt.fs.$(this).find("#asb_custom").length > 0) {
-                postParams["cstm"] = JSON.stringify(avt.fs.$$.tree_component.inst[this.getAttribute("id")].getJSON(null, null, ["class"]));
-            } else {
-                postParams["portal" + _ddPortals.find("option").eq(i++).attr("value")] = JSON.stringify(avt.fs.$$.tree_component.inst[this.getAttribute("id")].getJSON(null, null, ["class"]));
-            }
-        });
-        
-        
-        // now, post this to the server
-        avt.fs.$.post(avt.fs.pageUrl, postParams,
-            function(data){
-                var _st = avt.fs.$("#st_Container");
-                if (data == "success") {
-                
-                    // reload targets so we're in sync
-                    avt.fs.$.get(avt.fs.pageUrl, { fn: "get_inst_targets_json", data: avt.fs.current},
-                        function(data){
-                            avt.fs.inst[avt.fs.current].targets = data;
-                            avt.fs.studio.loading(false);
-                            avt.fs.$.jGrowl("Search Target succesfully saved!", {header: 'Success', life: 5000});
-                            avt.fs.studio.searchInst_loadData(avt.fs.current);
-                    }, "json");
-                    
-                    
-                    // propagate changes
-                    //avt.fs.inst[avt.fs.current].resTabId = _so.find("#so_ResultsPageTabId").val().length > 0 ? _so.find("#so_ResultsPageTabId").val() : _so.find("#so_ResultsPage").val();
-                    //avt.fs.inst[avt.fs.current].pagesize = _so.find("#so_PageSize").val();
-                    //avt.fs.inst[avt.fs.current].empty = _so.find("#so_emptyBox").val();
-                    //avt.fs.inst[avt.fs.current].getparam = _so.find("#so_getParam").val();
-                    
-                    // TODO: sync with local copeis
-
-                    _st.find(".wizerror").hide();
-
-                } else {
-                    avt.fs.studio.loading(false);
-                    _st.find(".wizerror").text(data).show();
-                }
-                
-            }, "text");
-    },
-    
-    testSearch: function() {
-        var txt = avt.fs.$("#testSearchInput").val();
-        var inst = avt.fs.$("#ddTestInst").val();
-        if (txt.length == 0) {
-             avt.fs.$("#testSearchResults").html("Empty input...");
-             return;
-        }
-        avt.fs.$("#testSearchResults").html("Searching... please wait...");
-        // get response from server via AJAX
-        avt.fs.$.post(avt.fs.pageUrl, { fn: "test_search", data: txt, inst: inst },
-            function(data){
-                avt.fs.$("#testSearchResults").html(data);
-        }, "text");
-
-    },
-    
-    // Instance UI Settings
-    // -------------------------------------------------------------------------------------------------------
-    
-    loadOutputSettings: function() {
-        //check if we have results pages loaded
-        if (!avt.fs.resultPages) {
-            // load them via ajax
-            avt.fs.studio.loading(true);
-            avt.fs.$.get(avt.fs.pageUrl, { fn: "get_result_pages_json" },
-                function(data){
-                    avt.fs.resultPages = data;
-
-                    // populate dropdown
-                    var _ddResPages = avt.fs.$("#so_ResultsPage");
-                    for (var i in avt.fs.resultPages) {
-                        _ddResPages.append("<option value = '"+ avt.fs.resultPages[i].id +"'>"+ avt.fs.resultPages[i].name +"</option>");
-                    }
-                    
-                    avt.fs.studio.loading(false);
-                    avt.fs.studio._loadOutputSettings();
-            }, "json");
-        
-        } else {
-            avt.fs.studio._loadOutputSettings();
-        }
-    },
-    
-    _loadOutputSettings: function() {
-        if (avt.fs.studio.soLoadedFor != avt.fs.current) {
-            var _so = avt.fs.$("#so_Container");
-            if (_so.find("#so_ResultsPage").find("[value="+ avt.fs.inst[avt.fs.current].resTabId +"]").length > 0) {
-                _so.find("#so_ResultsPage").val(avt.fs.inst[avt.fs.current].resTabId);
-                _so.find("#so_ResultsPageTabId").val("");
-            } else{
-                _so.find("#so_ResultsPage")[0].selectedIndex = 0;
-                if (avt.fs.inst[avt.fs.current].resTabId > 0)
-                    _so.find("#so_ResultsPageTabId").val(avt.fs.inst[avt.fs.current].resTabId);
-            }
-
-            _so.find("#so_PageSize").val(avt.fs.inst[avt.fs.current].pagesize);
-            _so.find("#so_emptyBox").val(avt.fs.inst[avt.fs.current].empty);
-            _so.find("#so_getParam").val(avt.fs.inst[avt.fs.current].getparam);
-            
-            avt.fs.studio.soLoadedFor = avt.fs.current;
-        }
-    },
-    
-    saveOutputSettings: function() {
-        var _so = avt.fs.$("#so_Container");
-        avt.fs.$.post(avt.fs.pageUrl, { 
-                fn: "save_output_settings",
-                inst: avt.fs.current,
-                resTabId: _so.find("#so_ResultsPageTabId").val().length > 0 ? _so.find("#so_ResultsPageTabId").val() : _so.find("#so_ResultsPage").val(),
-                pageSize: _so.find("#so_PageSize").val(),
-                empty: _so.find("#so_emptyBox").val(),
-                getParam: _so.find("#so_getParam").val()
-            },
-            function(data){
-                var _so = avt.fs.$("#so_Container"); // so we don't create a closure
-                if (data == "success") {
-                    avt.fs.$.jGrowl("UI Settings succesfully saved!", {header: 'Success', life: 5000});
-                    // propagate changes
-                    avt.fs.inst[avt.fs.current].resTabId = _so.find("#so_ResultsPageTabId").val().length > 0 ? _so.find("#so_ResultsPageTabId").val() : _so.find("#so_ResultsPage").val();
-                    avt.fs.inst[avt.fs.current].pagesize = _so.find("#so_PageSize").val();
-                    avt.fs.inst[avt.fs.current].empty = _so.find("#so_emptyBox").val();
-                    avt.fs.inst[avt.fs.current].getparam = _so.find("#so_getParam").val();
-
-                    _so.find("#so_Error").hide();
-                    avt.fs.studio.searchInst_loadData(avt.fs.current);
-
-                } else {
-                    _so.find("#so_Error").text(data).show();
-                }
-            }, "text");
-    },
-    
-    
-    deleteRule: function(ruleId) {
-        avt.fs.studio.loading(true);
-        avt.fs.$.get(avt.fs.pageUrl, { fn: "delete_rule", data: ruleId },
-            function(data){
-                
-                // sync
-                delete avt.fs.targets[ruleId];
-                avt.fs.studio.populateSearchTargets();
-                
-                // also, invalidate targets for all instances
-                for (var inst in avt.fs.inst)
-                    delete avt.fs.inst[inst].targets;
-                
-                // reload current
-                if (avt.fs.current)
-                    avt.fs.studio.editSearchInst(avt.fs.current);
-                    
-                // if edit is opened for deleted rule, close it
-                if (avt.fs.wizt.current && avt.fs.wizt.current.id == ruleId) {
-                    avt.fs.wizt.hide_new_source();
-                }
-                
-                // invalidate json
-                avt.fs.studio.resetSearchTargetTrees();
-                
-                avt.fs.studio.loading(false);
-                avt.fs.$.jGrowl("Search Rule succesfully deleted!", {header: 'Success', life: 5000});
-        }, "text");
-    },
-    
-    isScrolledIntoView: function (elem) {
-        var docViewTop = avt.fs.$(window).scrollTop();
-        var docViewBottom = docViewTop + avt.fs.$(window).height();
-
-        var elemTop = avt.fs.$(elem).offset().top;
-        var elemBottom = elemTop + avt.fs.$(elem).height();
-
-        return ((elemBottom >= docViewTop) && (elemTop <= docViewBottom));
     }
 
 }

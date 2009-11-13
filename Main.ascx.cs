@@ -44,7 +44,7 @@ namespace avt.FastShot
         protected void Page_Load(object sender, EventArgs e)
         {
             AJAX.RegisterScriptManager();
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "initLightbox", "avt.fastshot.init();", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "initLightbox", "avt.fs.init();", true);
 
             if (PortalSettings.UserMode == DotNetNuke.Entities.Portals.PortalSettings.Mode.Edit &&
                 PortalSecurity.HasNecessaryPermission(SecurityAccessLevel.Edit, PortalSettings, ModuleConfiguration)) {
@@ -94,7 +94,8 @@ namespace avt.FastShot
                         Title = "FastShot Demo",
                         Description = "This copy of FastShot is not activated! Visit <a href = 'http://www.avatar-soft.ro' style = 'font-weight: bold;'>www.avatar-soft.ro</a> to read more about FastShot.",
                         ThumbWidth = 115,
-                        ThumbHeight = 110
+                        ThumbHeight = 110,
+                        AutoGenerateThumb = false
                     });
                 }
             }
@@ -114,8 +115,8 @@ namespace avt.FastShot
                 Writer.WriteElementString("id", item.ItemId.ToString());
                 Writer.WriteElementString("title", item.Title);
                 Writer.WriteElementString("desc", item.Description);
-                Writer.WriteElementString("thumburl", item.ThumbnailUrl);
-                Writer.WriteElementString("imgurl", item.ImageUrl);
+                Writer.WriteElementString("thumburl", ResolveUrl(item.ThumbnailUrl));
+                Writer.WriteElementString("imgurl", ResolveUrl(item.ImageUrl));
                 Writer.WriteElementString("thumb_width", item.ThumbWidth.ToString());
                 Writer.WriteElementString("thumb_height", item.ThumbHeight.ToString());
                 Writer.WriteEndElement(); //img
@@ -158,17 +159,22 @@ namespace avt.FastShot
         protected override void OnPreRender(EventArgs e)
         {
             // doing this at another stage will break things work on IE
-            if (!Page.ClientScript.IsClientScriptIncludeRegistered("avt_jQuery_1_3_2_av1")) {
-                Page.ClientScript.RegisterClientScriptInclude("avt_jQuery_1_3_2_av1", TemplateSourceDirectory + "/js/jquery-1.3.2.av1.js");
+            if (!Page.ClientScript.IsClientScriptIncludeRegistered("avt_jQuery_1_3_2_av3")) {
+                Page.ClientScript.RegisterClientScriptInclude("avt_jQuery_1_3_2_av3", TemplateSourceDirectory + "/js/jQuery-1.3.2.av3.js");
             }
 
-            if (!Page.ClientScript.IsClientScriptIncludeRegistered("jQueryLightbox_av1")) {
-                Page.ClientScript.RegisterClientScriptInclude("jQueryLightbox_av1", TemplateSourceDirectory + "/js/jquery-lightbox/jquery.lightbox.js");
+            if (!Page.ClientScript.IsClientScriptIncludeRegistered("avt_jQueryUi_1_7_2_av3")) {
+                Page.ClientScript.RegisterClientScriptInclude("avt_jQueryUi_1_7_2_av3", TemplateSourceDirectory + "/js/jquery-ui-1.7.2.av3.js");
             }
 
-            if (!Page.ClientScript.IsClientScriptIncludeRegistered("avtFastShot")) {
-                Page.ClientScript.RegisterClientScriptInclude("avtFastShot", TemplateSourceDirectory + "/js/avtFastShot.js");
+            if (!Page.ClientScript.IsClientScriptIncludeRegistered("avtFastShot_1_4")) {
+                Page.ClientScript.RegisterClientScriptInclude("avtFastShot_1_4", TemplateSourceDirectory + "/js/avt.FastShot-1.4.js");
             }
+
+            if (!Page.ClientScript.IsClientScriptIncludeRegistered("jQueryLightbox_av3")) {
+                Page.ClientScript.RegisterClientScriptInclude("jQueryLightbox_av3", TemplateSourceDirectory + "/js/jquery-lightbox/jquery.lightbox-av3.js");
+            }
+
 
             CDefault defaultPage = (CDefault)Page;
             defaultPage.AddStyleSheet("skinLightbox", TemplateSourceDirectory + "/js/jquery-lightbox/css/lightbox.css");

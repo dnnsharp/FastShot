@@ -34,7 +34,8 @@ namespace avt.FastShot
 
 
         public abstract int AddItem(int moduleId, string title, string description, string thumbUrl, string imageUrl, int viewOrder, bool autoGenerateThumb);
-        public abstract void UpdateItem(int itemId, int moduleId, string title, string description, string thumbUrl, string imageUrl, int viewOrder, bool autoGenerateThumb);
+        public abstract void UpdateItem(int itemId, int moduleId, string title, string description, string thumbUrl, string imageUrl, int viewOrder, bool autoGenerateThumb, int imageWidth, int imageHeight, int thumbWidth, int thumbHeight, long lastWriteTime);
+        public abstract void UpdateItemOrder(int itemId, int viewOrder);
         public abstract IDataReader GetItems(int moduleId);
         public abstract IDataReader GetItemById(int itemId);
         public abstract void DeleteItem(int itemId);

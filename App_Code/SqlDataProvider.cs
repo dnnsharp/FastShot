@@ -86,13 +86,17 @@ namespace avt.FastShot
 
         public override int AddItem(int moduleId, string title, string description, string thumbUrl, string imageUrl, int viewOrder, bool autoGenerateThumb)
         {
-            SqlHelper.ExecuteScalar(ConnectionString, DatabaseOwner + ObjectQualifier + "avtFastShot_InsertItem", moduleId, title, description, thumbUrl, imageUrl, viewOrder, autoGenerateThumb);
-            return 0;
+            return Convert.ToInt32(SqlHelper.ExecuteScalar(ConnectionString, DatabaseOwner + ObjectQualifier + "avtFastShot_InsertItem", moduleId, title, description, thumbUrl, imageUrl, viewOrder, autoGenerateThumb));
         }
 
-        public override void UpdateItem(int itemId, int moduleId, string title, string description, string thumbUrl, string imageUrl, int viewOrder, bool autoGenerateThumb)
+        public override void UpdateItem(int itemId, int moduleId, string title, string description, string thumbUrl, string imageUrl, int viewOrder, bool autoGenerateThumb, int imageWidth, int imageHeight, int thumbWidth, int thumbHeight, long lastWriteTime)
         {
-            SqlHelper.ExecuteNonQuery(ConnectionString, DatabaseOwner + ObjectQualifier + "avtFastShot_UpdateItem", itemId, moduleId, title, description, thumbUrl, imageUrl, viewOrder, autoGenerateThumb);
+            SqlHelper.ExecuteNonQuery(ConnectionString, DatabaseOwner + ObjectQualifier + "avtFastShot_UpdateItem", itemId, moduleId, title, description, thumbUrl, imageUrl, viewOrder, autoGenerateThumb, imageWidth, imageHeight, thumbWidth, thumbHeight, lastWriteTime);
+        }
+
+        public override void UpdateItemOrder(int itemId, int viewOrder)
+        {
+            SqlHelper.ExecuteNonQuery(ConnectionString, DatabaseOwner + ObjectQualifier + "avtFastShot_UpdateItemOrder", itemId, viewOrder);
         }
 
         public override IDataReader GetItems(int moduleId)

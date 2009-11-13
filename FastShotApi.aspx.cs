@@ -71,10 +71,10 @@ namespace avt.FastShot
                     "id", item.ItemId, false, 
                     "title", item.Title, true,
                     "desc", item.Description, true,
-                    "thumb",  item.ThumbnailUrl, true,
+                    "thumb", ResolveUrl(item.ThumbnailUrl), true,
                     "thumb_w", item.ThumbWidth, false,
                     "thumb_h", item.ThumbHeight, false,
-                    "image", item.ImageUrl, true,
+                    "image", ResolveUrl(item.ImageUrl), true,
                     "image_w", item.ImageWidth, false,
                     "image_h", item.ImageHeight, false,
                     "order", viewOrder++, false
@@ -94,7 +94,13 @@ namespace avt.FastShot
             if (imageUrl.IndexOf("portal://") == 0) {
                 PortalController portalCtrl = new PortalController();
                 PortalInfo portal = portalCtrl.GetPortal(api.Module.PortalID);
-                imageUrl = "/" + portal.HomeDirectory + "/" + imageUrl.Substring("portal://".Length);
+                imageUrl = "~/" +  portal.HomeDirectory + "/" + imageUrl.Substring("portal://".Length);
+            }
+
+            if (thumbUrl.IndexOf("portal://") == 0) {
+                PortalController portalCtrl = new PortalController();
+                PortalInfo portal = portalCtrl.GetPortal(api.Module.PortalID);
+                thumbUrl = "~/" + portal.HomeDirectory + "/" + thumbUrl.Substring("portal://".Length);
             }
 
             FastShotController fsCtrl = new FastShotController();
@@ -104,10 +110,10 @@ namespace avt.FastShot
                     "id", item.ItemId, false,
                     "title", item.Title, true,
                     "desc", item.Description, true,
-                    "thumb", item.ThumbnailUrl, true,
+                    "thumb", ResolveUrl(item.ThumbnailUrl), true,
                     "thumb_w", item.ThumbWidth, false,
                     "thumb_h", item.ThumbHeight, false,
-                    "image", item.ImageUrl, true,
+                    "image", ResolveUrl(item.ImageUrl), true,
                     "image_w", item.ImageWidth, false,
                     "image_h", item.ImageHeight, false,
                     "order", item.ViewOrder, false

@@ -63,19 +63,19 @@ avt.core_1_5b = {
 }
 
 
-avt.fs = avt.fastshot = { 
+avt.fs = { 
     $$ : avt.core_1_5b, 
     $  : avt_jQuery_1_3_2_av3,
     
     init : function() {
    
-        avt.fastshot.$(document).ready(function() {
-           avt.fastshot.$(".lightbox").lightbox({
-                fileLoadingImage : '/DesktopModules/avt.FastShot/js/jquery-lightbox/images/loading.gif',
-                fileBottomNavCloseImage : '/DesktopModules/avt.FastShot/js/jquery-lightbox/images/closelabel.gif'
+        avt.fs.$(document).ready(function() {
+           avt.fs.$(".lightbox").lightbox({
+                fileLoadingImage : '/DesktopModules/avt.fs/js/jquery-lightbox/images/loading.gif',
+                fileBottomNavCloseImage : '/DesktopModules/avt.fs/js/jquery-lightbox/images/closelabel.gif'
             });
             
-            avt.fastshot.$$.fixPng();
+            avt.fs.$$.fixPng();
         });
     },
     

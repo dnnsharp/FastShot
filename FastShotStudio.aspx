@@ -131,16 +131,7 @@
                     .sortable({ axis: 'x', zIndex: 2 });
 
         avt.fs.$("#sbmTabs")
-                .tabs({
-                    show: function(event, ui) {
-                        if (ui.index == 1) { // we're on Search Target tab, load portals json if not loaded
-                            avt.fs.studio.loadInputSettings();
-                        } else if (ui.index == 2) { // we're on UI Settings tab, load result pages json if not loaded
-                            avt.fs.studio.loadOutputSettings();
-                        }
-                        
-                    }
-                })
+                .tabs()
                 .find(".ui-tabs-nav")
                     .sortable({ axis: 'x', zIndex: 2 })
             ;
@@ -178,11 +169,6 @@
         
         // initalize tooltips
         initAllTooltips();
-
-        // check if we need to load an instance
-        if (avt.fs.current) {
-            avt.fs.studio.editSearchInst(avt.fs.current);
-        }
     });
 
 
@@ -221,49 +207,6 @@
               positions: pos
             });
     }
-
-
-
-    function unselect_token() {
-        avt.fs.current = undefined;
-        avt.fs.$("#sbmTabs").tabs('disable', 1);
-        avt.fs.$(".instance_summary").hide();
-        avt.fs.$(".current_token").hide();
-        avt.fs.$(".no_instance_sel").show();
-    }
-
-
-    function clear_cache_current() {
-        
-        if (avt.fs.current.cache == 0) { // no cache, just display the message
-            avt.fs.$.jGrowl("Cache for token <b>"+ avt.fs.current.name +"</b> successfully cleared!", {header: 'Success', life: 5000});
-            return; 
-        }
-
-        // do it via ajax
-        avt.fs.$.post('<%= Request.Url.OriginalString %>', { fn: "clear_token_cache", data: avt.fs.current.id },
-            function(data){
-                avt.fs.$.jGrowl("Cache for token <b>"+ avt.fs.current.name +"</b> successfully cleared!", {header: 'Success', life: 5000});
-        }, "text");
-    }
-
-
-    function delete_current()
-    {
-        // do it via ajax
-        avt.fs.$.post('<%= Request.Url.OriginalString %>', { fn: "delete_token", data: avt.fs.current.id },
-            function(data){
-                if (data == "success") {
-                    avt.fs.$.jGrowl("Token <b>"+ avt.fs.current.name +"</b> successfully deleted!", {header: 'Success', life: 5000});
-                    // also remove the node
-                    avt.fs.$("[rel='inst_"+ avt.fs.current.id +"']").parent().remove();
-                    unselect_token();
-                } else {
-                    avt.fs.$.jGrowl(data, {header: 'Error', life: 5000});
-                }
-        }, "text");
-    }
-
 
 
 var layoutSettings_Outer = {
@@ -619,7 +562,7 @@ var layoutSettings_Outer = {
                         <div id = "pnlOrderingChanges" style = "position: absolute; margin-top: -10px; padding: 3px; border: 1px solid #885555; color: #fafafa; background-color: #ee6666; font-size: 11px; display: none;">
                             <a href = "javascript: avt.fs.studio.saveOrdering();" style = "color: #fafafa; font-weight: bold;">Click here to Save New Ordering</a> when done...
                         </div>
-                        <ul id = "imgContainer" class = "FastShot_grid" style = "width: 70%; height: 100%; overflow: auto;"></ul>
+                        <ul id = "imgContainer" class = "FastShot_grid" style = "width: 65%; height: 100%; overflow: auto;"></ul>
                         <div style = "clear: both;"></div>
                     </div>
                 </div>
