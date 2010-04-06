@@ -5,7 +5,7 @@
 
 <xsl:template match="/">
     <xsl:if test = "/fastshot/img">
-    <ul class = "FastShot_grid FastShot_default">
+    <ul class = "FastShot_grid FastShot_default" style = "margin: auto;">
         <xsl:for-each select = "/fastshot/img">
             <li style = "">
                 <input type = "hidden">
