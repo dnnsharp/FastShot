@@ -15,20 +15,20 @@
     <link rel="stylesheet" type="text/css" href="<%=TemplateSourceDirectory %>/js/jGrowl-1.2.0/jquery.jgrowl.css" />
 
 
-    <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/jQuery-1.3.2.av3.js"></script>
-    <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/jquery-ui-1.7.2.av3.js"></script>
-    <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/jquery-ui.accordion-1.7.2.js"></script>
-    <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/jquery-ui.tabs-1.7.2.js"></script>
-    <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/layout/jquery.layout.js"></script>
-    <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/beautytips/bt-0.9.5-rc1/jquery.bt.js"></script>
-    <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/jGrowl-1.2.0/jquery.jgrowl.js"></script>
-    <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/excanvas_r3/excanvas.js"></script>
-    <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/scrollTo/jquery.scrollTo.js"></script>
+    <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/jquery-1.3.2.js?v=<%= avt.FastShot.FastShotController.Build %>"></script>
+    <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/jquery-ui-1.7.2.js?v=<%= avt.FastShot.FastShotController.Build %>"></script>
+<%--    <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/jquery-ui.accordion-1.7.2.js"></script>
+    <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/jquery-ui.tabs-1.7.2.js"></script>--%>
+    <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/layout/jquery.layout.js?v=<%= avt.FastShot.FastShotController.Build %>"></script>
+    <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/beautytips/bt-0.9.5-rc1/jquery.bt.js?v=<%= avt.FastShot.FastShotController.Build %>"></script>
+    <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/jGrowl-1.2.0/jquery.jgrowl.js?v=<%= avt.FastShot.FastShotController.Build %>"></script>
+    <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/excanvas_r3/excanvas.js?v=<%= avt.FastShot.FastShotController.Build %>"></script>
+    <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/scrollTo/jquery.scrollTo.js?v=<%= avt.FastShot.FastShotController.Build %>"></script>
 
-    <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/avt.FastShot-1.4.js"></script>
-    <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/studio-1.0.js"></script>
+    <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/avt.FastShot-1.5.js?v=<%= avt.FastShot.FastShotController.Build %>"></script>
+    <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/studio-1.0.js?v=<%= avt.FastShot.FastShotController.Build %>"></script>
     
-    <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/json2.js"></script>
+    <script type = "text/javascript" src = "<%=TemplateSourceDirectory %>/js/json2.js?v=<%= avt.FastShot.FastShotController.Build %>"></script>
 
     <style type = "text/css">
     
@@ -233,6 +233,7 @@ var layoutSettings_Outer = {
         ,    fxSpeed_close:            1500
         ,    fxSettings_open:        { easing: "easeInQuint" }
         ,    fxSettings_close:        { easing: "easeOutQuint" }
+        , enableCursorHotkey: false
     }
     ,    north: {
             spacing_open:            1            // cosmetic spacing
@@ -324,7 +325,7 @@ var layoutSettings_Outer = {
                     <br />
                     
                     <div class = "label_blue">Template:</b></div>
-                    <select id = "ddTemplates" class = "wizTextInputSmall tooltip_hover" title = "Template determines how images are rendered on front-end." size = "5"></select>
+                    <select id = "ddTemplates" class = "wizTextInputMedium tooltip_hover" title = "Template determines how images are rendered on front-end." size = "5"></select>
                     <div class = "grayed_desc">
                         Template selection only reflects on front-end.
                     </div>
@@ -399,25 +400,30 @@ var layoutSettings_Outer = {
                 
                 <div class = "label_blue">Title: </div><br />
                 <input type = "text" class = "propsItemName wizTextInputSmall" style = "width: 95%;"/>
-                <br />
+                <div class = "grayed_desc">Can contain <a href = "http://www.avatar-soft.ro/Products/MyTokens/tabid/148/Default.aspx">MyTokens</a> if installed...</div>
                 <span class = "wizerror" id = "errEditTitle"></span>
                 <br />
                 
                 <div class = "label_blue">Description: </div><br />
                 <textarea class = "propsItemDesc wizTextInputSmall" style = "width: 95%;"></textarea>
-                <br /><br />
+                <div class = "grayed_desc">Can contain <a href = "http://www.avatar-soft.ro/Products/MyTokens/tabid/148/Default.aspx">MyTokens</a> if installed...</div>
+                <br />
                 
                 <div class = "grayed_desc">
                     To change image or thumbnail, create new item and delete this one.<br /><br />
                 </div>
                 
-                <div class = "label_blue">Image Url: </div><br />
+                <div class = "label_blue" style = "float: none; text-align:left;">Image Url: </div>
                 <div class = "propsItemImage" style = ""></div>
-                <br /><br />
+                <br />
                 
-                <div class = "label_blue">Thumb Url: </div><br />
+                <div class = "label_blue" style = "float: none; text-align:left;">Thumb Url: </div>
                 <div class = "propsItemThumb" style = ""></div>
-                <br /><br /><br />
+                <br />
+                
+                <div class = "label_blue">Template Params: </div><br />
+                <input type = "text" class = "propsItemParams wizTextInputSmall" style = "width: 95%;"/>
+                <br /><br />
                 
                 <a href = "javascript: avt.fs.studio.updateItem();" class = "blue btn_border">
                     <img src = "<%=TemplateSourceDirectory %>/res/edit.gif" border = "0" align = "absmiddle" style = "padding: 3px;"/>Update

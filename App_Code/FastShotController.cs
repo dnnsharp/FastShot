@@ -30,6 +30,13 @@ using DotNetNuke.Security.Permissions;
 using DotNetNuke.Security.Roles;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.Reflection;
+using System.Globalization;
+using System.Web.UI;
+using DotNetNuke.Framework;
 
 
 namespace avt.FastShot
@@ -39,163 +46,6 @@ namespace avt.FastShot
         void RenderItems();
     }
 
-    public class FastShotSettings
-    {
-        public int ModuleId = -1;
-        public string Template = "default";
-        public int ThumbWidth = 0;
-        public int ThumbHeight = 100;
-
-
-        public void Load(int moduleId)
-        {
-            ModuleController modCtrl = new ModuleController();
-            Hashtable modSettings = modCtrl.GetModuleSettings(moduleId);
-
-            ModuleId = moduleId;
-            
-            if (modSettings.ContainsKey("template")) {
-                Template = modSettings["template"].ToString();
-            }
-
-            if (modSettings.ContainsKey("thumb_width")) {
-                try {
-                    ThumbWidth = Convert.ToInt32(modSettings["thumb_width"]);
-                } catch {
-                    ThumbWidth = 0;
-                }
-            }
-
-            if (modSettings.ContainsKey("thumb_height")) {
-                try {
-                    ThumbHeight = Convert.ToInt32(modSettings["thumb_height"]);
-                } catch {
-                    ThumbHeight = 0;
-                }
-            }
-        }
-    }
-
-
-
-    public class ItemInfo
-    {
-        int _ItemId;
-        int _ModuleId;
-        string _ItemTitle;
-        string _ItemDescription;
-        string _ThumbUrl;
-        string _ImageUrl;
-        int _ViewOrder;
-        bool _AutoGenerateThumb;
-
-        int _ThumbWidth;
-        int _ThumbHeight;
-        int _ImageWidth;
-        int _ImageHeight;
-        long _FileTime;
-
-        public ItemInfo()
-        {
-            ItemId = -1;
-        }
-
-        public int ItemId {
-            get { return _ItemId; }
-            set { _ItemId = value; }
-        }
-
-        public int ModuleId {
-            get { return _ModuleId; }
-            set { _ModuleId = value; }
-        }
-
-        public string Title {
-            get { return _ItemTitle; }
-            set { _ItemTitle = value; }
-        }
-
-        public string Description {
-            get { return _ItemDescription; }
-            set { _ItemDescription = value; }
-        }
-
-        public string ThumbnailUrl {
-            get {
-                if (AutoGenerateThumb || string.IsNullOrEmpty(_ThumbUrl)) {
-                    FastShotController fsCtrl = new FastShotController();
-                    _ThumbUrl = fsCtrl.GenerateThumb(this);
-                } else {
-                    if (ItemId > 0 && (ThumbHeight <= 0 || ThumbWidth <= 0)) {
-                        FastShotController ctrl = new FastShotController();
-                        try {
-                            ModuleController modCtrl = new ModuleController();
-                            int portalId = ((ModuleInfo) modCtrl.GetModuleTabs(_ModuleId)[0]).PortalID;
-                            PortalController portalCtrl = new PortalController();
-                            PortalInfo portal = portalCtrl.GetPortal(portalId);
-                            string url = _ThumbUrl;
-                            if (url.IndexOf("http") != 0) {
-                                url = HttpContext.Current.Request.MapPath(url);
-                            }
-                            System.Drawing.Image thumbImg = ctrl.LoadImageFromURL(url);
-                            ctrl.UpdateItem(_ItemId, _ModuleId, _ItemTitle, _ItemDescription, _ThumbUrl, _ImageUrl, _ViewOrder, _AutoGenerateThumb, _ImageWidth, _ImageHeight, thumbImg.Width, thumbImg.Height, _FileTime);
-                        } catch {
-                            // set to -1 to flag error?
-                            ctrl.UpdateItem(_ItemId, _ModuleId, _ItemTitle, _ItemDescription, _ThumbUrl, _ImageUrl, _ViewOrder, _AutoGenerateThumb, _ImageWidth, _ImageHeight, -1, -1, _FileTime);
-                        }
-                    }
-                }
-                return _ThumbUrl;
-            }
-            set { _ThumbUrl = value; }
-        }
-
-        public string ImageUrl {
-            get { return _ImageUrl; }
-            set { _ImageUrl = value; }
-        }
-
-        public int ViewOrder {
-            get { return _ViewOrder; }
-            set { _ViewOrder = value; }
-        }
-
-        public bool AutoGenerateThumb {
-            get { return _AutoGenerateThumb; }
-            set { _AutoGenerateThumb = value; }
-        }
-
-        public int ThumbWidth
-        {
-            get { return _ThumbWidth; }
-            set { _ThumbWidth = value; }
-        }
-
-        public int ThumbHeight
-        {
-            get { return _ThumbHeight; }
-            set { _ThumbHeight = value; }
-        }
-
-        public int ImageWidth
-        {
-            get { return _ImageWidth; }
-            set { _ImageWidth = value; }
-        }
-
-        public int ImageHeight
-        {
-            get { return _ImageHeight; }
-            set { _ImageHeight = value; }
-        }
-
-        public long FileTime
-        {
-            get { return _FileTime; }
-            set { _FileTime = value; }
-        }
-    }
-    
 
     public class FastShotController
     {
@@ -206,11 +56,12 @@ namespace avt.FastShot
         static public string RegSrv = "http://www.avatar-soft.ro/DesktopModules/avt.RegCore4/Api.aspx";
 
         static public string ProductCode = "FSHOT";
-        static public string Version = "1.4";
-        static public string VersionAll = "1.4.0";
+        static public string Version = "1.5";
+        static public string VersionAll = "1.5.0";
+        static public string Build = VersionAll + "_001";
 
-        static public string DocSrv = RegSrv + "?cmd=doc&product=FastShot&version=" + Version;
-        static public string BuyLink = RegSrv + "?cmd=buy&product=FastShot&version=" + Version;
+        static public string DocSrv = RegSrv + "?cmd=doc&product=" + ProductCode + "&version=" + Version;
+        static public string BuyLink = RegSrv + "?cmd=buy&product=" + ProductCode + "&version=" + Version;
 
         static public string ProductKey = "<RSAKeyValue><Modulus>zkBeCaywWL1J38zEmy7+0gysKNb0EwikvxRThOSvHOcLKD/qF4GIwldf+7LS3sFEFlnCGjRq+bOmWfYhogre2er+NWjmWXuCxaHvnYg9DH1KJyE0sGg5hzkaRLxZe54fnHYmwt/HP/frOY7rWut97ZQMBhItX0JNaMwGlYgVxGk=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>";
 
@@ -263,15 +114,14 @@ namespace avt.FastShot
 
 
 
-
-        public int AddItem(int moduleId, string title, string description, string thumbUrl, string imageUrl, int viewOrder, bool autoGenerateThumb)
+        public int AddItem(int moduleId, string title, string description, string thumbUrl, string imageUrl, int viewOrder, bool autoGenerateThumb, string tplParams)
         {
-            return DataProvider.Instance().AddItem(moduleId, title, description, thumbUrl, imageUrl, viewOrder, autoGenerateThumb);
+            return DataProvider.Instance().AddItem(moduleId, title, description, thumbUrl, imageUrl, viewOrder, autoGenerateThumb, tplParams);
         }
 
-        public void UpdateItem(int itemId, int moduleId, string title, string description, string thumbUrl, string imageUrl, int viewOrder, bool autoGenerateThumb, int imageWidth, int imageHeight, int thumbWidth, int thumbHeight, long lastWriteTime)
+        public void UpdateItem(int itemId, int moduleId, string title, string description, string thumbUrl, string imageUrl, int viewOrder, bool autoGenerateThumb, int imageWidth, int imageHeight, int thumbWidth, int thumbHeight, long lastWriteTime, string tplParams)
         {
-            DataProvider.Instance().UpdateItem(itemId, moduleId, title, description, thumbUrl, imageUrl, viewOrder, autoGenerateThumb, imageWidth, imageHeight, thumbWidth, thumbHeight, lastWriteTime);
+            DataProvider.Instance().UpdateItem(itemId, moduleId, title, description, thumbUrl, imageUrl, viewOrder, autoGenerateThumb, imageWidth, imageHeight, thumbWidth, thumbHeight, lastWriteTime, tplParams);
         }
 
         public void UpdateItemOrder(int itemId, int viewOrder)
@@ -353,14 +203,14 @@ namespace avt.FastShot
                     try {
                         image = LoadImageFromURL(item.ImageUrl);
                     } catch {
-                        UpdateItem(item.ItemId, item.ModuleId, item.Title, item.Description, "", item.ImageUrl, item.ViewOrder, true, 0, 0, 0, 0, 0); 
+                        UpdateItem(item.ItemId, item.ModuleId, item.Title, item.Description, "", item.ImageUrl, item.ViewOrder, true, 0, 0, 0, 0, 0, item.TplParams); 
                         return "";
                     }
                 } else {
                     try {
                         image = System.Drawing.Image.FromFile(HttpContext.Current.Server.MapPath(item.ImageUrl));
-                    } catch { 
-                        UpdateItem(item.ItemId, item.ModuleId, item.Title, item.Description, "", item.ImageUrl, item.ViewOrder, true, 0, 0, fsSettings.ThumbWidth, fsSettings.ThumbHeight, 0); 
+                    } catch {
+                        UpdateItem(item.ItemId, item.ModuleId, item.Title, item.Description, "", item.ImageUrl, item.ViewOrder, true, 0, 0, fsSettings.ThumbWidth, fsSettings.ThumbHeight, 0, item.TplParams); 
                         return ""; 
                     }
                 }
@@ -378,7 +228,7 @@ namespace avt.FastShot
                         item.ImageHeight = image.Height;
                         item.ThumbWidth = sz.Width;
                         item.ThumbHeight = sz.Height;
-                        UpdateItem(item.ItemId, item.ModuleId, item.Title, item.Description, "", item.ImageUrl, item.ViewOrder, true, item.ImageWidth, item.ImageHeight, item.ThumbWidth, item.ThumbHeight, File.GetLastWriteTime(thumbFolder + thumbName).ToFileTime());
+                        UpdateItem(item.ItemId, item.ModuleId, item.Title, item.Description, "", item.ImageUrl, item.ViewOrder, true, item.ImageWidth, item.ImageHeight, item.ThumbWidth, item.ThumbHeight, File.GetLastWriteTime(thumbFolder + thumbName).ToFileTime(), item.TplParams);
                     //}
                 //}
 
@@ -400,12 +250,285 @@ namespace avt.FastShot
                 width = height * image.Width / image.Height;
             }
 
-            System.Drawing.Bitmap thumbnailImage = new System.Drawing.Bitmap(image, width, height);
-            thumbnailImage.Save(thumbUrl);
+            Bitmap thumbnailImage = new Bitmap(width, height);
+            using (Graphics graphics = Graphics.FromImage(thumbnailImage)) {
+                graphics.CompositingQuality = CompositingQuality.HighSpeed;
+                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                graphics.CompositingMode = CompositingMode.SourceCopy;
+                graphics.DrawImage(image, 0, 0, width, height);
+                thumbnailImage.Save(thumbUrl, ImageFormat.Png);
+                thumbnailImage.Dispose();
+            }
+
+            //System.Drawing.Bitmap thumbnailImage = new System.Drawing.Bitmap(image, width, height);
+            //thumbnailImage.Save(thumbUrl);
+            //thumbnailImage.Dispose();
             return new System.Drawing.Size(width, height);
         }
 
 
+
+        public string Tokenize(string strContent, ModuleInfo modInfo)
+        {
+            bool bMyTokensInstalled = false;
+            MethodInfo methodReplace = null;
+            MethodInfo methodReplaceWMod = null;
+
+            // first, determine if MyTokens is installed
+            if (HttpRuntime.Cache.Get("avt.MyTokens.Installed") != null) {
+                bMyTokensInstalled = Convert.ToBoolean(HttpRuntime.Cache.Get("avt.MyTokens.Installed"));
+                if (bMyTokensInstalled == true) {
+                    methodReplace = (MethodInfo)HttpRuntime.Cache.Get("avt.MyTokens.MethodReplace");
+                    methodReplaceWMod = (MethodInfo)HttpRuntime.Cache.Get("avt.MyTokens.MethodReplaceWMod");
+                }
+            } else {
+                // it's not in cache, let's determine if it's installed
+                try {
+                    Type myTokensRepl = DotNetNuke.Framework.Reflection.CreateType("avt.MyTokens.MyTokensReplacer");
+                    if (myTokensRepl == null)
+                        throw new Exception(); // handled in catch
+
+                    bMyTokensInstalled = true;
+
+                    // we now know MyTokens is installed, get ReplaceTokensAll methods
+
+                    methodReplace = myTokensRepl.GetMethod(
+                        "ReplaceTokensAll",
+                        BindingFlags.Public | BindingFlags.Static,
+                        null,
+                         CallingConventions.Any,
+                        new Type[] { 
+                            typeof(string), 
+                            typeof(DotNetNuke.Entities.Users.UserInfo), 
+                            typeof(bool) 
+                        },
+                        null
+                    );
+
+                    methodReplaceWMod = myTokensRepl.GetMethod(
+                        "ReplaceTokensAll",
+                        BindingFlags.Public | BindingFlags.Static,
+                        null,
+                         CallingConventions.Any,
+                        new Type[] { 
+                            typeof(string), 
+                            typeof(DotNetNuke.Entities.Users.UserInfo), 
+                            typeof(bool),
+                            typeof(ModuleInfo)
+                        },
+                        null
+                    );
+
+                    if (methodReplace == null || methodReplaceWMod == null) {
+                        // this shouldn't really happen, we know MyTokens is installed
+                        throw new Exception();
+                    }
+
+                } catch {
+                    bMyTokensInstalled = false;
+                }
+
+                // cache values so next time the funciton is called the reflection logic is skipped
+                HttpRuntime.Cache.Insert("avt.MyTokens.Installed", bMyTokensInstalled);
+                if (bMyTokensInstalled) {
+                    HttpRuntime.Cache.Insert("avt.MyTokens.MethodReplace", methodReplace);
+                    HttpRuntime.Cache.Insert("avt.MyTokens.MethodReplaceWMod", methodReplaceWMod);
+                }
+            }
+
+
+            // revert to standard DNN Token Replacement if MyTokens is not installed
+
+            if (!bMyTokensInstalled) {
+                DotNetNuke.Services.Tokens.TokenReplace dnnTknRepl = new DotNetNuke.Services.Tokens.TokenReplace();
+                dnnTknRepl.AccessingUser = DotNetNuke.Entities.Users.UserController.GetCurrentUserInfo();
+                dnnTknRepl.DebugMessages = !DotNetNuke.Common.Globals.IsTabPreview();
+                if (modInfo != null)
+                    dnnTknRepl.ModuleInfo = modInfo;
+
+                // MyTokens is not installed, execution ends here
+                return dnnTknRepl.ReplaceEnvironmentTokens(strContent);
+            }
+
+            // we have MyTokens installed, proceed to token replacement
+            // Note that we could be using only the second overload and pass null to the ModuleInfo parameter,
+            //  but this will break compatibility with integrations made before the second overload was added
+            if (modInfo == null) {
+                return (string)methodReplace.Invoke(
+                    null,
+                    new object[] {
+                        strContent,
+                        DotNetNuke.Entities.Users.UserController.GetCurrentUserInfo(),
+                        !DotNetNuke.Common.Globals.IsTabPreview()
+                    }
+                );
+            } else {
+                return (string)methodReplaceWMod.Invoke(
+                    null,
+                    new object[] {
+                        strContent,
+                        DotNetNuke.Entities.Users.UserController.GetCurrentUserInfo(),
+                        !DotNetNuke.Common.Globals.IsTabPreview(),
+                        modInfo
+                    }
+                );
+            }
+        }
+
+
+
+        public XmlDocument MyTokens_GetDefinition()
+        {
+            // since token descriptors are static,
+            // let MyTokens cache it for a reasonable amount of time;
+            // if namespace info would be dynamic (for example, token definitions would change
+            // based on current user roles). then set it to 0 (which is the default).
+            // note this only affects retrieval of token definitions, caching values 
+            // returned from tokens is treaded separately in MyTokens_Replace method
+            //cacheTimeSeconds = 86400; // 1 day
+
+            string xml = @"
+                <mytokens><!-- namespace is Module Name -->
+                    <receiveOnlyKnownTokens>true</receiveOnlyKnownTokens>
+                    <cacheTimeSeconds>86400</cacheTimeSeconds><!-- instructs MyTokens to cache this token definition for specified amount of time; set to 0 to disable caching if token definitions are dynamic (for example, changes based on roles of current user or based on time events) -->
+                    <docurl>http://docs.avatar-soft.ro</docurl>
+                    <token>
+                        <name>Random</name><!-- case insensitive -->
+                        <desc>Returns a random image from the specified module.</desc>
+                        <cacheTimeSeconds>0</cacheTimeSeconds>
+                        <docurl>http://doc.avatar-soft.ro</docurl>
+                        <param>
+                            <name>ModuleId</name><!-- case insensitive -->
+                            <desc>
+                                Id of the module to extract random image from.
+                            </desc>
+                            <type>int</type>
+                            <values></values><!-- only for enums, comma separated list -->
+                            <required>true</required>
+                        </param>
+                        <example>
+                            <codeSnippet>[FastShot:Random(ModuleId=100)]</codeSnippet>
+                            <desc>Returns random image from the FastShot module with id 100.</desc>
+                        </example>
+                    </token>
+
+                    <token>
+                        <name>ByName</name><!-- case insensitive -->
+                        <desc>Returns a image identified by name from the specified module.</desc>
+                        <cacheTimeSeconds>0</cacheTimeSeconds>
+                        <docurl>http://doc.avatar-soft.ro</docurl>
+                        <param>
+                            <name>ModuleId</name><!-- case insensitive -->
+                            <desc>
+                                Id of the module to extract the image from.
+                            </desc>
+                            <type>int</type>
+                            <values></values><!-- only for enums, comma separated list -->
+                            <required>true</required>
+                        </param>
+                        <param>
+                            <name>Name</name><!-- case insensitive -->
+                            <desc>
+                                Name of the image to retrieve.
+                            </desc>
+                            <type>string</type>
+                            <values></values><!-- only for enums, comma separated list -->
+                            <required>true</required>
+                        </param>
+                        <example>
+                            <codeSnippet>[FastShot:ByName(ModuleId=100,Name='Sunset Image')]</codeSnippet>
+                            <desc>Returns image with name <i>Sunset Image</i> from the FastShot module with id 100.</desc>
+                        </example>
+                    </token>
+                    <token>
+                        <name>Latest</name><!-- case insensitive -->
+                        <desc>Returns latest added image from the specified module.</desc>
+                        <cacheTimeSeconds>0</cacheTimeSeconds>
+                        <docurl>http://doc.avatar-soft.ro</docurl>
+                        <param>
+                            <name>ModuleId</name><!-- case insensitive -->
+                            <desc>
+                                Id of the module to return latest image from.
+                            </desc>
+                            <type>int</type>
+                            <values></values><!-- only for enums, comma separated list -->
+                            <required>true</required>
+                        </param>
+                        <example>
+                            <codeSnippet>[FastShot:Latest(ModuleId=100)]</codeSnippet>
+                            <desc>Returns last added image from the FastShot module with id 100.</desc>
+                        </example>
+                    </token>
+                </mytokens>
+            ";
+
+            XmlDocument xmlTknNs = new XmlDocument();
+            xmlTknNs.LoadXml(xml);
+            return xmlTknNs;
+
+            //return new string[] { "Faqs", "LatestFaq" };
+        }
+
+
+        public string MyTokens_ReplaceToken(string tokenNamespace, string tokenName, IDictionary<string, object> tokenParams, CultureInfo formatProvider, UserInfo AccessingUser, ref bool PropertyNotFound, ref bool bRecursivelyReplaceTokens, ref int cacheTimeSeconds)
+        {
+            //string tmp = "";
+            //foreach (string key in tokenParams.Keys) {
+            //    tmp += key + ":"+ tokenParams[key] + ", ";
+            //}
+            //return tmp;
+
+            List<ItemInfo> images = GetItems((int)tokenParams["ModuleId".ToLower()]);
+            if (images.Count == 0) {
+                return "";
+            }
+
+            ItemInfo retItem = null;
+            switch (tokenName) {
+                case "Random":
+                    Random r = new Random();
+                    retItem = images[r.Next(0, images.Count - 1)];
+                    break;
+                case "ByName":
+                    foreach (ItemInfo item in images) {
+                        if (item.Title.ToLower() == tokenParams["Name".ToLower()].ToString().ToLower()) {
+                            retItem = item;
+                            break;
+                        }
+                    }
+                    break;
+                case "Latest":
+                    retItem = images[images.Count - 1];
+                    break;
+                
+                default:
+                    PropertyNotFound = true;
+                    return "";
+            }
+
+            if (retItem == null) {
+                return "";
+            }
+
+            // good to go
+            
+            // add includes
+            CDefault p = (CDefault)HttpContext.Current.Handler;
+            p.ClientScript.RegisterClientScriptInclude("avt_jQuery_1_3_2_av3", HttpContext.Current.Request.ApplicationPath + "DesktopModules/avt.FastShot/js/jQuery-1.3.2.js?v=" + avt.FastShot.FastShotController.Build);
+            p.ClientScript.RegisterClientScriptInclude("avtFastShot_1_5", HttpContext.Current.Request.ApplicationPath + "DesktopModules/avt.FastShot/js/avt.FastShot-1.5.js?v=" + avt.FastShot.FastShotController.Build);
+            p.ClientScript.RegisterClientScriptInclude("jQueryLightbox_av3", HttpContext.Current.Request.ApplicationPath + "DesktopModules/avt.FastShot/js/jquery-lightbox/jquery.lightbox-av3.js?v=" + avt.FastShot.FastShotController.Build);
+            p.ClientScript.RegisterClientScriptBlock(this.GetType(), "initLightbox", "avt.fs.initLightBox('" + HttpContext.Current.Request.ApplicationPath + "DesktopModules/avt.FastShot');", true);
+            p.AddStyleSheet("skinLightbox", HttpContext.Current.Request.ApplicationPath + "DesktopModules/avt.FastShot/js/jquery-lightbox/css/lightbox.css");
+
+            // build token
+            return
+                string.Format("<a class = 'lightbox' href = '{0}' alt = '{4}' title = '{4}'><img src = '{1}' width = '{2}' height = '{3}' title = '{4}' alt = '{4}' /></a>",
+                    p.ResolveUrl(retItem.ImageUrl),
+                    p.ResolveUrl(retItem.ThumbnailUrl),
+                    retItem.ThumbWidth, retItem.ThumbHeight,
+                    retItem.Title
+                );
+        }
 
     }
 

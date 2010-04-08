@@ -1,0 +1,76 @@
+
+.fss3Slider_default .slider1Content {
+    /*width: 720px;  important to be same as image width or wider */
+    /* position: absolute; */
+	top: 0;
+	margin-left: 0;
+}
+.fss3Slider_default .slider1Image {
+    float: left;
+    position: relative;
+	/* display: none; */
+    visibility: hidden;
+}
+
+.fss3Slider_default .slider1Image img {
+    vertical-align: top;
+}
+
+.fss3Slider_default .slider1Image span {
+    position: absolute;
+	font: 10px/15px Arial, Helvetica, sans-serif;
+    padding: 10px 13px;
+    /* width: 694px; */
+    background-color: #000;
+    filter: alpha(opacity=70);
+    -moz-opacity: 0.7;
+	-khtml-opacity: 0.7;
+    opacity: 0.7;
+    color: #fff;
+    display: none;
+}
+.fss3Slider_default .clear {
+	clear: both;
+}
+.fss3Slider_default .slider1Image span strong {
+    font-size: 14px;
+}
+.fss3Slider_default .leftSlideText {
+	top: 0;
+    left: 0;
+	width: 110px;
+}
+.fss3Slider_default .rightSlideText {
+    top: auto;
+    left: auto;
+	right: 0;
+	bottom: 2px;
+	width: 90px;
+    height: auto;
+}
+.fss3Slider_default .leftSlideText {
+	top: 0;
+    left: 0;
+	width: 110px;
+}
+.fss3Slider_default .rightSlideText {
+    top: auto;
+    left: auto;
+	right: 0;
+	bottom: 0px;
+	width: 90px;
+    height: auto;
+}
+.fss3Slider_default .topSlideText {
+	top: 0;
+    left: 0;
+    width: auto;
+}
+.fss3Slider_default .bottomSlideText {
+    top: auto;
+    left: auto;
+	right: 0;
+	bottom: 0px;
+    width: auto;
+}
+.fss3Slider_default ul li { list-style-type: none;}

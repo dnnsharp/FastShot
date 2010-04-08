@@ -1,11 +1,11 @@
 /*
- * avt_jQuery_1_3_2 UI 1.6rc6
+ * avt_jQuery_1_3_2_av3 UI 1.6rc6
  *
- * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2.com/about)
+ * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2_av3.com/about)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  *
- * http://docs.avt_jQuery_1_3_2.com/UI
+ * http://docs.avt_jQuery_1_3_2_av3.com/UI
  */
 ;(function($) {
 
@@ -151,7 +151,7 @@ if (isFF2) {
 	};
 }
 
-//avt_jQuery_1_3_2 plugins
+//avt_jQuery_1_3_2_av3 plugins
 $.fn.extend({
 	remove: function() {
 		// Safari has a native remove event which actually removes DOM elements,
@@ -219,7 +219,7 @@ $.extend($.expr[':'], {
 });
 
 
-// $.widget is a factory to create avt_jQuery_1_3_2 plugins
+// $.widget is a factory to create avt_jQuery_1_3_2_av3 plugins
 // taking some boilerplate code out of the plugin code
 function getter(namespace, plugin, method, args) {
 	function getMethods(type) {
@@ -531,15 +531,15 @@ $.ui.mouse.defaults = {
 	delay: 0
 };
 
-})(avt_jQuery_1_3_2);
+})(avt_jQuery_1_3_2_av3);
 /*
- * avt_jQuery_1_3_2 UI Draggable 1.6rc6
+ * avt_jQuery_1_3_2_av3 UI Draggable 1.6rc6
  *
- * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2.com/about)
+ * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2_av3.com/about)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  *
- * http://docs.avt_jQuery_1_3_2.com/UI/Draggables
+ * http://docs.avt_jQuery_1_3_2_av3.com/UI/Draggables
  *
  * Depends:
  *	ui.core.js
@@ -1279,15 +1279,15 @@ $.ui.plugin.add("draggable", "zIndex", {
 	}
 });
 
-})(avt_jQuery_1_3_2);
+})(avt_jQuery_1_3_2_av3);
 /*
- * avt_jQuery_1_3_2 UI Droppable 1.6rc6
+ * avt_jQuery_1_3_2_av3 UI Droppable 1.6rc6
  *
- * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2.com/about)
+ * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2_av3.com/about)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  *
- * http://docs.avt_jQuery_1_3_2.com/UI/Droppables
+ * http://docs.avt_jQuery_1_3_2_av3.com/UI/Droppables
  *
  * Depends:
  *	ui.core.js
@@ -1561,15 +1561,15 @@ $.ui.ddmanager = {
 	}
 };
 
-})(avt_jQuery_1_3_2);
+})(avt_jQuery_1_3_2_av3);
 /*
- * avt_jQuery_1_3_2 UI Resizable 1.6rc6
+ * avt_jQuery_1_3_2_av3 UI Resizable 1.6rc6
  *
- * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2.com/about)
+ * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2_av3.com/about)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  *
- * http://docs.avt_jQuery_1_3_2.com/UI/Resizables
+ * http://docs.avt_jQuery_1_3_2_av3.com/UI/Resizables
  *
  * Depends:
  *	ui.core.js
@@ -1783,7 +1783,7 @@ $.widget("ui.resizable", $.extend({}, $.ui.mouse, {
 		this.resizing = true;
 		this.documentScroll = { top: $(document).scrollTop(), left: $(document).scrollLeft() };
 
-		// bugfix for http://dev.avt_jQuery_1_3_2.com/ticket/1749
+		// bugfix for http://dev.avt_jQuery_1_3_2_av3.com/ticket/1749
 		if (el.is('.ui-draggable') || (/absolute/).test(el.css('position'))) {
 			el.css({ position: 'absolute', top: iniPos.top, left: iniPos.left });
 		}
@@ -2356,15 +2356,15 @@ var num = function(v) {
 	return parseInt(v, 10) || 0;
 };
 
-})(avt_jQuery_1_3_2);
+})(avt_jQuery_1_3_2_av3);
 /*
- * avt_jQuery_1_3_2 UI Selectable 1.6rc6
+ * avt_jQuery_1_3_2_av3 UI Selectable 1.6rc6
  *
- * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2.com/about)
+ * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2_av3.com/about)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  *
- * http://docs.avt_jQuery_1_3_2.com/UI/Selectables
+ * http://docs.avt_jQuery_1_3_2_av3.com/UI/Selectables
  *
  * Depends:
  *	ui.core.js
@@ -2613,15 +2613,15 @@ $.extend($.ui.selectable, {
 	}
 });
 
-})(avt_jQuery_1_3_2);
+})(avt_jQuery_1_3_2_av3);
 /*
- * avt_jQuery_1_3_2 UI Sortable 1.6rc6
+ * avt_jQuery_1_3_2_av3 UI Sortable 1.6rc6
  *
- * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2.com/about)
+ * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2_av3.com/about)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  *
- * http://docs.avt_jQuery_1_3_2.com/UI/Sortables
+ * http://docs.avt_jQuery_1_3_2_av3.com/UI/Sortables
  *
  * Depends:
  *	ui.core.js
@@ -2953,7 +2953,7 @@ $.widget("ui.sortable", $.extend({}, $.ui.mouse, {
 
 		}
 
-		//$(this.placeholder[0]).remove(); would have been the avt_jQuery_1_3_2 way - unfortunately, it unbinds ALL events from the original node!
+		//$(this.placeholder[0]).remove(); would have been the avt_jQuery_1_3_2_av3 way - unfortunately, it unbinds ALL events from the original node!
 		if(this.placeholder[0].parentNode) this.placeholder[0].parentNode.removeChild(this.placeholder[0]);
 		if(this.options.helper != "original" && this.helper && this.helper[0].parentNode) this.helper.remove();
 
@@ -2976,7 +2976,7 @@ $.widget("ui.sortable", $.extend({}, $.ui.mouse, {
 
 	serialize: function(o) {
 
-		var items = this._getItemsAsavt_jQuery_1_3_2(o && o.connected);
+		var items = this._getItemsAsavt_jQuery_1_3_2_av3(o && o.connected);
 		var str = []; o = o || {};
 
 		$(items).each(function() {
@@ -2990,7 +2990,7 @@ $.widget("ui.sortable", $.extend({}, $.ui.mouse, {
 
 	toArray: function(o) {
 
-		var items = this._getItemsAsavt_jQuery_1_3_2(o && o.connected);
+		var items = this._getItemsAsavt_jQuery_1_3_2_av3(o && o.connected);
 		var ret = []; o = o || {};
 
 		items.each(function() { ret.push($(o.item || this).attr(o.attribute || 'id') || ''); });
@@ -3078,7 +3078,7 @@ $.widget("ui.sortable", $.extend({}, $.ui.mouse, {
 		this.refreshPositions();
 	},
 
-	_getItemsAsavt_jQuery_1_3_2: function(connected) {
+	_getItemsAsavt_jQuery_1_3_2_av3: function(connected) {
 
 		var self = this;
 		var items = [];
@@ -3560,7 +3560,7 @@ $.widget("ui.sortable", $.extend({}, $.ui.mouse, {
 
 		if(!noPropagation) this._trigger("beforeStop", event, this._uiHash());
 
-		//$(this.placeholder[0]).remove(); would have been the avt_jQuery_1_3_2 way - unfortunately, it unbinds ALL events from the original node!
+		//$(this.placeholder[0]).remove(); would have been the avt_jQuery_1_3_2_av3 way - unfortunately, it unbinds ALL events from the original node!
 		this.placeholder[0].parentNode.removeChild(this.placeholder[0]);
 
 		if(this.helper[0] != this.currentItem[0]) this.helper.remove(); this.helper = null;
@@ -3624,15 +3624,15 @@ $.extend($.ui.sortable, {
 	}
 });
 
-})(avt_jQuery_1_3_2);
+})(avt_jQuery_1_3_2_av3);
 /*
- * avt_jQuery_1_3_2 UI Dialog 1.6rc6
+ * avt_jQuery_1_3_2_av3 UI Dialog 1.6rc6
  *
- * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2.com/about)
+ * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2_av3.com/about)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  *
- * http://docs.avt_jQuery_1_3_2.com/UI/Dialog
+ * http://docs.avt_jQuery_1_3_2_av3.com/UI/Dialog
  *
  * Depends:
  *	ui.core.js
@@ -3819,7 +3819,7 @@ $.widget("ui.dialog", {
 		(this.shadow && this.shadow.css('z-index', ++maxZ));
 
 		//Save and then restore scroll since Opera 9.5+ resets when parent z-Index is changed.
-		//  http://ui.avt_jQuery_1_3_2.com/bugs/ticket/3193
+		//  http://ui.avt_jQuery_1_3_2_av3.com/bugs/ticket/3193
 		var saveScroll = { scrollTop: this.element.attr('scrollTop'), scrollLeft: this.element.attr('scrollLeft') };
 		this.uiDialog.css('z-index', ++maxZ);
 		this.element.attr(saveScroll);
@@ -4316,15 +4316,15 @@ $.extend($.ui.dialog.overlay.prototype, {
 	}
 });
 
-})(avt_jQuery_1_3_2);
+})(avt_jQuery_1_3_2_av3);
 /*
- * avt_jQuery_1_3_2 UI Effects 1.6rc6
+ * avt_jQuery_1_3_2_av3 UI Effects 1.6rc6
  *
- * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2.com/about)
+ * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2_av3.com/about)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  *
- * http://docs.avt_jQuery_1_3_2.com/UI/Effects/
+ * http://docs.avt_jQuery_1_3_2_av3.com/UI/Effects/
  */
 ;(function($) {
 
@@ -4463,7 +4463,7 @@ function _normalizeArguments(a, m) {
 	
 }
 
-//Extend the methods of avt_jQuery_1_3_2
+//Extend the methods of avt_jQuery_1_3_2_av3
 $.fn.extend({
 
 	//Save old methods
@@ -4531,7 +4531,7 @@ $.fn.extend({
 });
 
 /*
- * avt_jQuery_1_3_2 Color Animations
+ * avt_jQuery_1_3_2_av3 Color Animations
  * Copyright 2007 John Resig
  * Released under the MIT and GPL licenses.
  */
@@ -4554,7 +4554,7 @@ $.each(['backgroundColor', 'borderBottomColor', 'borderLeftColor', 'borderRightC
 
 // Color Conversion functions from highlightFade
 // By Blair Mitchelmore
-// http://avt_jQuery_1_3_2.offput.ca/highlightFade/
+// http://avt_jQuery_1_3_2_av3.offput.ca/highlightFade/
 
 // Parse strings looking for color tuples [255,255,255]
 function getRGB(color) {
@@ -4656,12 +4656,12 @@ var colors = {
 };
 
 /*
- * avt_jQuery_1_3_2 Easing v1.3 - http://gsgd.co.uk/sandbox/avt_jQuery_1_3_2/easing/
+ * avt_jQuery_1_3_2_av3 Easing v1.3 - http://gsgd.co.uk/sandbox/avt_jQuery_1_3_2_av3/easing/
  *
- * Uses the built in easing capabilities added In avt_jQuery_1_3_2 1.1
+ * Uses the built in easing capabilities added In avt_jQuery_1_3_2_av3 1.1
  * to offer multiple easing options
  *
- * TERMS OF USE - avt_jQuery_1_3_2 Easing
+ * TERMS OF USE - avt_jQuery_1_3_2_av3 Easing
  *
  * Open source under the BSD License.
  *
@@ -4861,15 +4861,15 @@ $.extend($.easing,
  *
  */
 
-})(avt_jQuery_1_3_2);
+})(avt_jQuery_1_3_2_av3);
 /*
- * avt_jQuery_1_3_2 UI Effects Blind 1.6rc6
+ * avt_jQuery_1_3_2_av3 UI Effects Blind 1.6rc6
  *
- * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2.com/about)
+ * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2_av3.com/about)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  *
- * http://docs.avt_jQuery_1_3_2.com/UI/Effects/Blind
+ * http://docs.avt_jQuery_1_3_2_av3.com/UI/Effects/Blind
  *
  * Depends:
  *	effects.core.js
@@ -4910,15 +4910,15 @@ $.effects.blind = function(o) {
 
 };
 
-})(avt_jQuery_1_3_2);
+})(avt_jQuery_1_3_2_av3);
 /*
- * avt_jQuery_1_3_2 UI Effects Bounce 1.6rc6
+ * avt_jQuery_1_3_2_av3 UI Effects Bounce 1.6rc6
  *
- * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2.com/about)
+ * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2_av3.com/about)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  *
- * http://docs.avt_jQuery_1_3_2.com/UI/Effects/Bounce
+ * http://docs.avt_jQuery_1_3_2_av3.com/UI/Effects/Bounce
  *
  * Depends:
  *	effects.core.js
@@ -4988,15 +4988,15 @@ $.effects.bounce = function(o) {
 
 };
 
-})(avt_jQuery_1_3_2);
+})(avt_jQuery_1_3_2_av3);
 /*
- * avt_jQuery_1_3_2 UI Effects Clip 1.6rc6
+ * avt_jQuery_1_3_2_av3 UI Effects Clip 1.6rc6
  *
- * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2.com/about)
+ * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2_av3.com/about)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  *
- * http://docs.avt_jQuery_1_3_2.com/UI/Effects/Clip
+ * http://docs.avt_jQuery_1_3_2_av3.com/UI/Effects/Clip
  *
  * Depends:
  *	effects.core.js
@@ -5042,15 +5042,15 @@ $.effects.clip = function(o) {
 
 };
 
-})(avt_jQuery_1_3_2);
+})(avt_jQuery_1_3_2_av3);
 /*
- * avt_jQuery_1_3_2 UI Effects Drop 1.6rc6
+ * avt_jQuery_1_3_2_av3 UI Effects Drop 1.6rc6
  *
- * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2.com/about)
+ * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2_av3.com/about)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  *
- * http://docs.avt_jQuery_1_3_2.com/UI/Effects/Drop
+ * http://docs.avt_jQuery_1_3_2_av3.com/UI/Effects/Drop
  *
  * Depends:
  *	effects.core.js
@@ -5092,15 +5092,15 @@ $.effects.drop = function(o) {
 
 };
 
-})(avt_jQuery_1_3_2);
+})(avt_jQuery_1_3_2_av3);
 /*
- * avt_jQuery_1_3_2 UI Effects Explode 1.6rc6
+ * avt_jQuery_1_3_2_av3 UI Effects Explode 1.6rc6
  *
- * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2.com/about)
+ * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2_av3.com/about)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  *
- * http://docs.avt_jQuery_1_3_2.com/UI/Effects/Explode
+ * http://docs.avt_jQuery_1_3_2_av3.com/UI/Effects/Explode
  *
  * Depends:
  *	effects.core.js
@@ -5171,15 +5171,15 @@ $.effects.explode = function(o) {
 
 };
 
-})(avt_jQuery_1_3_2);
+})(avt_jQuery_1_3_2_av3);
 /*
- * avt_jQuery_1_3_2 UI Effects Fold 1.6rc6
+ * avt_jQuery_1_3_2_av3 UI Effects Fold 1.6rc6
  *
- * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2.com/about)
+ * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2_av3.com/about)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  *
- * http://docs.avt_jQuery_1_3_2.com/UI/Effects/Fold
+ * http://docs.avt_jQuery_1_3_2_av3.com/UI/Effects/Fold
  *
  * Depends:
  *	effects.core.js
@@ -5227,15 +5227,15 @@ $.effects.fold = function(o) {
 
 };
 
-})(avt_jQuery_1_3_2);
+})(avt_jQuery_1_3_2_av3);
 /*
- * avt_jQuery_1_3_2 UI Effects Highlight 1.6rc6
+ * avt_jQuery_1_3_2_av3 UI Effects Highlight 1.6rc6
  *
- * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2.com/about)
+ * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2_av3.com/about)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  *
- * http://docs.avt_jQuery_1_3_2.com/UI/Effects/Highlight
+ * http://docs.avt_jQuery_1_3_2_av3.com/UI/Effects/Highlight
  *
  * Depends:
  *	effects.core.js
@@ -5275,15 +5275,15 @@ $.effects.highlight = function(o) {
 
 };
 
-})(avt_jQuery_1_3_2);
+})(avt_jQuery_1_3_2_av3);
 /*
- * avt_jQuery_1_3_2 UI Effects Pulsate 1.6rc6
+ * avt_jQuery_1_3_2_av3 UI Effects Pulsate 1.6rc6
  *
- * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2.com/about)
+ * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2_av3.com/about)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  *
- * http://docs.avt_jQuery_1_3_2.com/UI/Effects/Pulsate
+ * http://docs.avt_jQuery_1_3_2_av3.com/UI/Effects/Pulsate
  *
  * Depends:
  *	effects.core.js
@@ -5331,15 +5331,15 @@ $.effects.pulsate = function(o) {
 
 };
 
-})(avt_jQuery_1_3_2);
+})(avt_jQuery_1_3_2_av3);
 /*
- * avt_jQuery_1_3_2 UI Effects Scale 1.6rc6
+ * avt_jQuery_1_3_2_av3 UI Effects Scale 1.6rc6
  *
- * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2.com/about)
+ * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2_av3.com/about)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  *
- * http://docs.avt_jQuery_1_3_2.com/UI/Effects/Scale
+ * http://docs.avt_jQuery_1_3_2_av3.com/UI/Effects/Scale
  *
  * Depends:
  *	effects.core.js
@@ -5511,15 +5511,15 @@ $.effects.size = function(o) {
 
 };
 
-})(avt_jQuery_1_3_2);
+})(avt_jQuery_1_3_2_av3);
 /*
- * avt_jQuery_1_3_2 UI Effects Shake 1.6rc6
+ * avt_jQuery_1_3_2_av3 UI Effects Shake 1.6rc6
  *
- * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2.com/about)
+ * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2_av3.com/about)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  *
- * http://docs.avt_jQuery_1_3_2.com/UI/Effects/Shake
+ * http://docs.avt_jQuery_1_3_2_av3.com/UI/Effects/Shake
  *
  * Depends:
  *	effects.core.js
@@ -5568,15 +5568,15 @@ $.effects.shake = function(o) {
 
 };
 
-})(avt_jQuery_1_3_2);
+})(avt_jQuery_1_3_2_av3);
 /*
- * avt_jQuery_1_3_2 UI Effects Slide 1.6rc6
+ * avt_jQuery_1_3_2_av3 UI Effects Slide 1.6rc6
  *
- * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2.com/about)
+ * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2_av3.com/about)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  *
- * http://docs.avt_jQuery_1_3_2.com/UI/Effects/Slide
+ * http://docs.avt_jQuery_1_3_2_av3.com/UI/Effects/Slide
  *
  * Depends:
  *	effects.core.js
@@ -5618,15 +5618,15 @@ $.effects.slide = function(o) {
 
 };
 
-})(avt_jQuery_1_3_2);
+})(avt_jQuery_1_3_2_av3);
 /*
- * avt_jQuery_1_3_2 UI Effects Transfer 1.6rc6
+ * avt_jQuery_1_3_2_av3 UI Effects Transfer 1.6rc6
  *
- * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2.com/about)
+ * Copyright (c) 2009 AUTHORS.txt (http://ui.avt_jQuery_1_3_2_av3.com/about)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  *
- * http://docs.avt_jQuery_1_3_2.com/UI/Effects/Transfer
+ * http://docs.avt_jQuery_1_3_2_av3.com/UI/Effects/Transfer
  *
  * Depends:
  *	effects.core.js
@@ -5677,4 +5677,4 @@ $.effects.transfer = function(o) {
 
 };
 
-})(avt_jQuery_1_3_2);
+})(avt_jQuery_1_3_2_av3);

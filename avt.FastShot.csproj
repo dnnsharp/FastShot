@@ -51,16 +51,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\App_Code\avt.FastShot\DataProvider.cs">
-      <Link>DataProvider.cs</Link>
+      <Link>App_Code\DataProvider.cs</Link>
     </Compile>
     <Compile Include="..\..\App_Code\avt.FastShot\FastShotController.cs">
-      <Link>FastShotController.cs</Link>
+      <Link>App_Code\FastShotController.cs</Link>
+    </Compile>
+    <Compile Include="..\..\App_Code\avt.FastShot\Settings.cs">
+      <Link>App_Code\Settings.cs</Link>
+    </Compile>
+    <Compile Include="..\..\App_Code\avt.FastShot\ImageInfo.cs">
+      <Link>App_Code\ImageInfo.cs</Link>
     </Compile>
     <Compile Include="..\..\App_Code\avt.FastShot\SqlDataProvider.cs">
-      <Link>SqlDataProvider.cs</Link>
+      <Link>App_Code\SqlDataProvider.cs</Link>
     </Compile>
     <Compile Include="Activation.aspx.cs">
       <DependentUpon>Activation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Activation.aspx.designer.cs">
       <DependentUpon>Activation.aspx</DependentUpon>

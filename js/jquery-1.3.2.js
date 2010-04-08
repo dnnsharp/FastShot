@@ -1,10 +1,10 @@
 /*!
- * avt_jQuery_1_3_2 JavaScript Library v1.3.2
- * http://avt_jQuery_1_3_2.com/
+ * avt_jQuery_1_3_2_av3 JavaScript Library v1.3.2
+ * http://avt_jQuery_1_3_2_av3.com/
  *
  * Copyright (c) 2009 John Resig
  * Dual licensed under the MIT and GPL licenses.
- * http://docs.avt_jQuery_1_3_2.com/License
+ * http://docs.avt_jQuery_1_3_2_av3.com/License
  *
  * Date: 2009-02-19 17:34:21 -0500 (Thu, 19 Feb 2009)
  * Revision: 6246
@@ -16,14 +16,14 @@ var
 	window = this,
 	// Will speed up references to undefined, and allows munging its name.
 	undefined,
-	// Map over avt_jQuery_1_3_2 in case of overwrite
-	_avt_jQuery_1_3_2 = window.avt_jQuery_1_3_2,
+	// Map over avt_jQuery_1_3_2_av3 in case of overwrite
+	_avt_jQuery_1_3_2_av3 = window.avt_jQuery_1_3_2_av3,
 	// Map over the $ in case of overwrite
 	_$ = window.$,
 
-	avt_jQuery_1_3_2 = window.avt_jQuery_1_3_2 = window.$ = function( selector, context ) {
-		// The avt_jQuery_1_3_2 object is actually just the init constructor 'enhanced'
-		return new avt_jQuery_1_3_2.fn.init( selector, context );
+	avt_jQuery_1_3_2_av3 = window.avt_jQuery_1_3_2_av3 = window.$ = function( selector, context ) {
+		// The avt_jQuery_1_3_2_av3 object is actually just the init constructor 'enhanced'
+		return new avt_jQuery_1_3_2_av3.fn.init( selector, context );
 	},
 
 	// A simple way to check for HTML strings or ID strings
@@ -32,7 +32,7 @@ var
 	// Is it a simple selector
 	isSimple = /^.[^:#\[\.,]*$/;
 
-avt_jQuery_1_3_2.fn = avt_jQuery_1_3_2.prototype = {
+avt_jQuery_1_3_2_av3.fn = avt_jQuery_1_3_2_av3.prototype = {
 	init: function( selector, context ) {
 		// Make sure that a selection was provided
 		selector = selector || document;
@@ -54,7 +54,7 @@ avt_jQuery_1_3_2.fn = avt_jQuery_1_3_2.prototype = {
 
 				// HANDLE: $(html) -> $(array)
 				if ( match[1] )
-					selector = avt_jQuery_1_3_2.clean( [ match[1] ], context );
+					selector = avt_jQuery_1_3_2_av3.clean( [ match[1] ], context );
 
 				// HANDLE: $("#id")
 				else {
@@ -63,10 +63,10 @@ avt_jQuery_1_3_2.fn = avt_jQuery_1_3_2.prototype = {
 					// Handle the case where IE and Opera return items
 					// by name instead of ID
 					if ( elem && elem.id != match[3] )
-						return avt_jQuery_1_3_2().find( selector );
+						return avt_jQuery_1_3_2_av3().find( selector );
 
-					// Otherwise, we inject the element directly into the avt_jQuery_1_3_2 object
-					var ret = avt_jQuery_1_3_2( elem || [] );
+					// Otherwise, we inject the element directly into the avt_jQuery_1_3_2_av3 object
+					var ret = avt_jQuery_1_3_2_av3( elem || [] );
 					ret.context = document;
 					ret.selector = selector;
 					return ret;
@@ -75,12 +75,12 @@ avt_jQuery_1_3_2.fn = avt_jQuery_1_3_2.prototype = {
 			// HANDLE: $(expr, [context])
 			// (which is just equivalent to: $(content).find(expr)
 			} else
-				return avt_jQuery_1_3_2( context ).find( selector );
+				return avt_jQuery_1_3_2_av3( context ).find( selector );
 
 		// HANDLE: $(function)
 		// Shortcut for document ready
-		} else if ( avt_jQuery_1_3_2.isFunction( selector ) )
-			return avt_jQuery_1_3_2( document ).ready( selector );
+		} else if ( avt_jQuery_1_3_2_av3.isFunction( selector ) )
+			return avt_jQuery_1_3_2_av3( document ).ready( selector );
 
 		// Make sure that old selector state is passed along
 		if ( selector.selector && selector.context ) {
@@ -88,16 +88,16 @@ avt_jQuery_1_3_2.fn = avt_jQuery_1_3_2.prototype = {
 			this.context = selector.context;
 		}
 
-		return this.setArray(avt_jQuery_1_3_2.isArray( selector ) ?
+		return this.setArray(avt_jQuery_1_3_2_av3.isArray( selector ) ?
 			selector :
-			avt_jQuery_1_3_2.makeArray(selector));
+			avt_jQuery_1_3_2_av3.makeArray(selector));
 	},
 
 	// Start with an empty selector
 	selector: "",
 
-	// The current version of avt_jQuery_1_3_2 being used
-	avt_jQuery_1_3_2: "1.3.2",
+	// The current version of avt_jQuery_1_3_2_av3 being used
+	avt_jQuery_1_3_2_av3: "1.3.2",
 
 	// The number of elements contained in the matched element set
 	size: function() {
@@ -119,8 +119,8 @@ avt_jQuery_1_3_2.fn = avt_jQuery_1_3_2.prototype = {
 	// Take an array of elements and push it onto the stack
 	// (returning the new matched element set)
 	pushStack: function( elems, name, selector ) {
-		// Build a new avt_jQuery_1_3_2 matched element set
-		var ret = avt_jQuery_1_3_2( elems );
+		// Build a new avt_jQuery_1_3_2_av3 matched element set
+		var ret = avt_jQuery_1_3_2_av3( elems );
 
 		// Add the old object onto the stack (as a reference)
 		ret.prevObject = this;
@@ -152,16 +152,16 @@ avt_jQuery_1_3_2.fn = avt_jQuery_1_3_2.prototype = {
 	// (You can seed the arguments with an array of args, but this is
 	// only used internally.)
 	each: function( callback, args ) {
-		return avt_jQuery_1_3_2.each( this, callback, args );
+		return avt_jQuery_1_3_2_av3.each( this, callback, args );
 	},
 
 	// Determine the position of an element within
 	// the matched set of elements
 	index: function( elem ) {
 		// Locate the position of the desired element
-		return avt_jQuery_1_3_2.inArray(
-			// If it receives a avt_jQuery_1_3_2 object, the first element is used
-			elem && elem.avt_jQuery_1_3_2 ? elem[0] : elem
+		return avt_jQuery_1_3_2_av3.inArray(
+			// If it receives a avt_jQuery_1_3_2_av3 object, the first element is used
+			elem && elem.avt_jQuery_1_3_2_av3 ? elem[0] : elem
 		, this );
 	},
 
@@ -171,7 +171,7 @@ avt_jQuery_1_3_2.fn = avt_jQuery_1_3_2.prototype = {
 		// Look for the case where we're accessing a style value
 		if ( typeof name === "string" )
 			if ( value === undefined )
-				return this[0] && avt_jQuery_1_3_2[ type || "attr" ]( this[0], name );
+				return this[0] && avt_jQuery_1_3_2_av3[ type || "attr" ]( this[0], name );
 
 			else {
 				options = {};
@@ -182,11 +182,11 @@ avt_jQuery_1_3_2.fn = avt_jQuery_1_3_2.prototype = {
 		return this.each(function(i){
 			// Set all the styles
 			for ( name in options )
-				avt_jQuery_1_3_2.attr(
+				avt_jQuery_1_3_2_av3.attr(
 					type ?
 						this.style :
 						this,
-					name, avt_jQuery_1_3_2.prop( this, options[ name ], type, i, name )
+					name, avt_jQuery_1_3_2_av3.prop( this, options[ name ], type, i, name )
 				);
 		});
 	},
@@ -204,12 +204,12 @@ avt_jQuery_1_3_2.fn = avt_jQuery_1_3_2.prototype = {
 
 		var ret = "";
 
-		avt_jQuery_1_3_2.each( text || this, function(){
-			avt_jQuery_1_3_2.each( this.childNodes, function(){
+		avt_jQuery_1_3_2_av3.each( text || this, function(){
+			avt_jQuery_1_3_2_av3.each( this.childNodes, function(){
 				if ( this.nodeType != 8 )
 					ret += this.nodeType != 1 ?
 						this.nodeValue :
-						avt_jQuery_1_3_2.fn.text( [ this ] );
+						avt_jQuery_1_3_2_av3.fn.text( [ this ] );
 			});
 		});
 
@@ -219,7 +219,7 @@ avt_jQuery_1_3_2.fn = avt_jQuery_1_3_2.prototype = {
 	wrapAll: function( html ) {
 		if ( this[0] ) {
 			// The elements to wrap the target around
-			var wrap = avt_jQuery_1_3_2( html, this[0].ownerDocument ).clone();
+			var wrap = avt_jQuery_1_3_2_av3( html, this[0].ownerDocument ).clone();
 
 			if ( this[0].parentNode )
 				wrap.insertBefore( this[0] );
@@ -239,13 +239,13 @@ avt_jQuery_1_3_2.fn = avt_jQuery_1_3_2.prototype = {
 
 	wrapInner: function( html ) {
 		return this.each(function(){
-			avt_jQuery_1_3_2( this ).contents().wrapAll( html );
+			avt_jQuery_1_3_2_av3( this ).contents().wrapAll( html );
 		});
 	},
 
 	wrap: function( html ) {
 		return this.each(function(){
-			avt_jQuery_1_3_2( this ).wrapAll( html );
+			avt_jQuery_1_3_2_av3( this ).wrapAll( html );
 		});
 	},
 
@@ -276,11 +276,11 @@ avt_jQuery_1_3_2.fn = avt_jQuery_1_3_2.prototype = {
 	},
 
 	end: function() {
-		return this.prevObject || avt_jQuery_1_3_2( [] );
+		return this.prevObject || avt_jQuery_1_3_2_av3( [] );
 	},
 
 	// For internal use only.
-	// Behaves like an Array's method, not like a avt_jQuery_1_3_2 method.
+	// Behaves like an Array's method, not like a avt_jQuery_1_3_2_av3 method.
 	push: [].push,
 	sort: [].sort,
 	splice: [].splice,
@@ -289,11 +289,11 @@ avt_jQuery_1_3_2.fn = avt_jQuery_1_3_2.prototype = {
 		if ( this.length === 1 ) {
 			var ret = this.pushStack( [], "find", selector );
 			ret.length = 0;
-			avt_jQuery_1_3_2.find( selector, this[0], ret );
+			avt_jQuery_1_3_2_av3.find( selector, this[0], ret );
 			return ret;
 		} else {
-			return this.pushStack( avt_jQuery_1_3_2.unique(avt_jQuery_1_3_2.map(this, function(elem){
-				return avt_jQuery_1_3_2.find( selector, elem );
+			return this.pushStack( avt_jQuery_1_3_2_av3.unique(avt_jQuery_1_3_2_av3.map(this, function(elem){
+				return avt_jQuery_1_3_2_av3.find( selector, elem );
 			})), "find", selector );
 		}
 	},
@@ -301,7 +301,7 @@ avt_jQuery_1_3_2.fn = avt_jQuery_1_3_2.prototype = {
 	clone: function( events ) {
 		// Do the clone
 		var ret = this.map(function(){
-			if ( !avt_jQuery_1_3_2.support.noCloneEvent && !avt_jQuery_1_3_2.isXMLDoc(this) ) {
+			if ( !avt_jQuery_1_3_2_av3.support.noCloneEvent && !avt_jQuery_1_3_2_av3.isXMLDoc(this) ) {
 				// IE copies events bound via attachEvent when
 				// using cloneNode. Calling detachEvent on the
 				// clone will also remove the events from the orignal
@@ -317,7 +317,7 @@ avt_jQuery_1_3_2.fn = avt_jQuery_1_3_2.prototype = {
 					html = div.innerHTML;
 				}
 
-				return avt_jQuery_1_3_2.clean([html.replace(/ avt_jQuery_1_3_2\d+="(?:\d+|null)"/g, "").replace(/^\s*/, "")])[0];
+				return avt_jQuery_1_3_2_av3.clean([html.replace(/ avt_jQuery_1_3_2_av3\d+="(?:\d+|null)"/g, "").replace(/^\s*/, "")])[0];
 			} else
 				return this.cloneNode(true);
 		});
@@ -330,11 +330,11 @@ avt_jQuery_1_3_2.fn = avt_jQuery_1_3_2.prototype = {
 				if ( this.nodeName !== orig[i].nodeName )
 					return;
 
-				var events = avt_jQuery_1_3_2.data( orig[i], "events" );
+				var events = avt_jQuery_1_3_2_av3.data( orig[i], "events" );
 
 				for ( var type in events ) {
 					for ( var handler in events[ type ] ) {
-						avt_jQuery_1_3_2.event.add( this, type, events[ type ][ handler ], events[ type ][ handler ].data );
+						avt_jQuery_1_3_2_av3.event.add( this, type, events[ type ][ handler ], events[ type ][ handler ].data );
 					}
 				}
 
@@ -348,25 +348,25 @@ avt_jQuery_1_3_2.fn = avt_jQuery_1_3_2.prototype = {
 
 	filter: function( selector ) {
 		return this.pushStack(
-			avt_jQuery_1_3_2.isFunction( selector ) &&
-			avt_jQuery_1_3_2.grep(this, function(elem, i){
+			avt_jQuery_1_3_2_av3.isFunction( selector ) &&
+			avt_jQuery_1_3_2_av3.grep(this, function(elem, i){
 				return selector.call( elem, i );
 			}) ||
 
-			avt_jQuery_1_3_2.multiFilter( selector, avt_jQuery_1_3_2.grep(this, function(elem){
+			avt_jQuery_1_3_2_av3.multiFilter( selector, avt_jQuery_1_3_2_av3.grep(this, function(elem){
 				return elem.nodeType === 1;
 			}) ), "filter", selector );
 	},
 
 	closest: function( selector ) {
-		var pos = avt_jQuery_1_3_2.expr.match.POS.test( selector ) ? avt_jQuery_1_3_2(selector) : null,
+		var pos = avt_jQuery_1_3_2_av3.expr.match.POS.test( selector ) ? avt_jQuery_1_3_2_av3(selector) : null,
 			closer = 0;
 
 		return this.map(function(){
 			var cur = this;
 			while ( cur && cur.ownerDocument ) {
-				if ( pos ? pos.index(cur) > -1 : avt_jQuery_1_3_2(cur).is(selector) ) {
-					avt_jQuery_1_3_2.data(cur, "closest", closer);
+				if ( pos ? pos.index(cur) > -1 : avt_jQuery_1_3_2_av3(cur).is(selector) ) {
+					avt_jQuery_1_3_2_av3.data(cur, "closest", closer);
 					return cur;
 				}
 				cur = cur.parentNode;
@@ -379,27 +379,27 @@ avt_jQuery_1_3_2.fn = avt_jQuery_1_3_2.prototype = {
 		if ( typeof selector === "string" )
 			// test special case where just one selector is passed in
 			if ( isSimple.test( selector ) )
-				return this.pushStack( avt_jQuery_1_3_2.multiFilter( selector, this, true ), "not", selector );
+				return this.pushStack( avt_jQuery_1_3_2_av3.multiFilter( selector, this, true ), "not", selector );
 			else
-				selector = avt_jQuery_1_3_2.multiFilter( selector, this );
+				selector = avt_jQuery_1_3_2_av3.multiFilter( selector, this );
 
 		var isArrayLike = selector.length && selector[selector.length - 1] !== undefined && !selector.nodeType;
 		return this.filter(function() {
-			return isArrayLike ? avt_jQuery_1_3_2.inArray( this, selector ) < 0 : this != selector;
+			return isArrayLike ? avt_jQuery_1_3_2_av3.inArray( this, selector ) < 0 : this != selector;
 		});
 	},
 
 	add: function( selector ) {
-		return this.pushStack( avt_jQuery_1_3_2.unique( avt_jQuery_1_3_2.merge(
+		return this.pushStack( avt_jQuery_1_3_2_av3.unique( avt_jQuery_1_3_2_av3.merge(
 			this.get(),
 			typeof selector === "string" ?
-				avt_jQuery_1_3_2( selector ) :
-				avt_jQuery_1_3_2.makeArray( selector )
+				avt_jQuery_1_3_2_av3( selector ) :
+				avt_jQuery_1_3_2_av3.makeArray( selector )
 		)));
 	},
 
 	is: function( selector ) {
-		return !!selector && avt_jQuery_1_3_2.multiFilter( selector, this ).length > 0;
+		return !!selector && avt_jQuery_1_3_2_av3.multiFilter( selector, this ).length > 0;
 	},
 
 	hasClass: function( selector ) {
@@ -411,11 +411,11 @@ avt_jQuery_1_3_2.fn = avt_jQuery_1_3_2.prototype = {
 			var elem = this[0];
 
 			if ( elem ) {
-				if( avt_jQuery_1_3_2.nodeName( elem, 'option' ) )
+				if( avt_jQuery_1_3_2_av3.nodeName( elem, 'option' ) )
 					return (elem.attributes.value || {}).specified ? elem.value : elem.text;
 				
 				// We need to handle select boxes special
-				if ( avt_jQuery_1_3_2.nodeName( elem, "select" ) ) {
+				if ( avt_jQuery_1_3_2_av3.nodeName( elem, "select" ) ) {
 					var index = elem.selectedIndex,
 						values = [],
 						options = elem.options,
@@ -431,7 +431,7 @@ avt_jQuery_1_3_2.fn = avt_jQuery_1_3_2.prototype = {
 
 						if ( option.selected ) {
 							// Get the specifc value for the option
-							value = avt_jQuery_1_3_2(option).val();
+							value = avt_jQuery_1_3_2_av3(option).val();
 
 							// We don't need an array for one selects
 							if ( one )
@@ -460,16 +460,16 @@ avt_jQuery_1_3_2.fn = avt_jQuery_1_3_2.prototype = {
 			if ( this.nodeType != 1 )
 				return;
 
-			if ( avt_jQuery_1_3_2.isArray(value) && /radio|checkbox/.test( this.type ) )
-				this.checked = (avt_jQuery_1_3_2.inArray(this.value, value) >= 0 ||
-					avt_jQuery_1_3_2.inArray(this.name, value) >= 0);
+			if ( avt_jQuery_1_3_2_av3.isArray(value) && /radio|checkbox/.test( this.type ) )
+				this.checked = (avt_jQuery_1_3_2_av3.inArray(this.value, value) >= 0 ||
+					avt_jQuery_1_3_2_av3.inArray(this.name, value) >= 0);
 
-			else if ( avt_jQuery_1_3_2.nodeName( this, "select" ) ) {
-				var values = avt_jQuery_1_3_2.makeArray(value);
+			else if ( avt_jQuery_1_3_2_av3.nodeName( this, "select" ) ) {
+				var values = avt_jQuery_1_3_2_av3.makeArray(value);
 
-				avt_jQuery_1_3_2( "option", this ).each(function(){
-					this.selected = (avt_jQuery_1_3_2.inArray( this.value, values ) >= 0 ||
-						avt_jQuery_1_3_2.inArray( this.text, values ) >= 0);
+				avt_jQuery_1_3_2_av3( "option", this ).each(function(){
+					this.selected = (avt_jQuery_1_3_2_av3.inArray( this.value, values ) >= 0 ||
+						avt_jQuery_1_3_2_av3.inArray( this.text, values ) >= 0);
 				});
 
 				if ( !values.length )
@@ -483,7 +483,7 @@ avt_jQuery_1_3_2.fn = avt_jQuery_1_3_2.prototype = {
 	html: function( value ) {
 		return value === undefined ?
 			(this[0] ?
-				this[0].innerHTML.replace(/ avt_jQuery_1_3_2\d+="(?:\d+|null)"/g, "") :
+				this[0].innerHTML.replace(/ avt_jQuery_1_3_2_av3\d+="(?:\d+|null)"/g, "") :
 				null) :
 			this.empty().append( value );
 	},
@@ -502,7 +502,7 @@ avt_jQuery_1_3_2.fn = avt_jQuery_1_3_2.prototype = {
 	},
 
 	map: function( callback ) {
-		return this.pushStack( avt_jQuery_1_3_2.map(this, function(elem, i){
+		return this.pushStack( avt_jQuery_1_3_2_av3.map(this, function(elem, i){
 			return callback.call( elem, i, elem );
 		}));
 	},
@@ -514,7 +514,7 @@ avt_jQuery_1_3_2.fn = avt_jQuery_1_3_2.prototype = {
 	domManip: function( args, table, callback ) {
 		if ( this[0] ) {
 			var fragment = (this[0].ownerDocument || this[0]).createDocumentFragment(),
-				scripts = avt_jQuery_1_3_2.clean( args, (this[0].ownerDocument || this[0]), fragment ),
+				scripts = avt_jQuery_1_3_2_av3.clean( args, (this[0].ownerDocument || this[0]), fragment ),
 				first = fragment.firstChild;
 
 			if ( first )
@@ -523,13 +523,13 @@ avt_jQuery_1_3_2.fn = avt_jQuery_1_3_2.prototype = {
 							fragment.cloneNode(true) : fragment );
 		
 			if ( scripts )
-				avt_jQuery_1_3_2.each( scripts, evalScript );
+				avt_jQuery_1_3_2_av3.each( scripts, evalScript );
 		}
 
 		return this;
 		
 		function root( elem, cur ) {
-			return table && avt_jQuery_1_3_2.nodeName(elem, "table") && avt_jQuery_1_3_2.nodeName(cur, "tr") ?
+			return table && avt_jQuery_1_3_2_av3.nodeName(elem, "table") && avt_jQuery_1_3_2_av3.nodeName(cur, "tr") ?
 				(elem.getElementsByTagName("tbody")[0] ||
 				elem.appendChild(elem.ownerDocument.createElement("tbody"))) :
 				elem;
@@ -537,19 +537,19 @@ avt_jQuery_1_3_2.fn = avt_jQuery_1_3_2.prototype = {
 	}
 };
 
-// Give the init function the avt_jQuery_1_3_2 prototype for later instantiation
-avt_jQuery_1_3_2.fn.init.prototype = avt_jQuery_1_3_2.fn;
+// Give the init function the avt_jQuery_1_3_2_av3 prototype for later instantiation
+avt_jQuery_1_3_2_av3.fn.init.prototype = avt_jQuery_1_3_2_av3.fn;
 
 function evalScript( i, elem ) {
 	if ( elem.src )
-		avt_jQuery_1_3_2.ajax({
+		avt_jQuery_1_3_2_av3.ajax({
 			url: elem.src,
 			async: false,
 			dataType: "script"
 		});
 
 	else
-		avt_jQuery_1_3_2.globalEval( elem.text || elem.textContent || elem.innerHTML || "" );
+		avt_jQuery_1_3_2_av3.globalEval( elem.text || elem.textContent || elem.innerHTML || "" );
 
 	if ( elem.parentNode )
 		elem.parentNode.removeChild( elem );
@@ -559,7 +559,7 @@ function now(){
 	return +new Date;
 }
 
-avt_jQuery_1_3_2.extend = avt_jQuery_1_3_2.fn.extend = function() {
+avt_jQuery_1_3_2_av3.extend = avt_jQuery_1_3_2_av3.fn.extend = function() {
 	// copy reference to target object
 	var target = arguments[0] || {}, i = 1, length = arguments.length, deep = false, options;
 
@@ -572,10 +572,10 @@ avt_jQuery_1_3_2.extend = avt_jQuery_1_3_2.fn.extend = function() {
 	}
 
 	// Handle case when target is a string or something (possible in deep copy)
-	if ( typeof target !== "object" && !avt_jQuery_1_3_2.isFunction(target) )
+	if ( typeof target !== "object" && !avt_jQuery_1_3_2_av3.isFunction(target) )
 		target = {};
 
-	// extend avt_jQuery_1_3_2 itself if only one argument is passed
+	// extend avt_jQuery_1_3_2_av3 itself if only one argument is passed
 	if ( length == i ) {
 		target = this;
 		--i;
@@ -594,7 +594,7 @@ avt_jQuery_1_3_2.extend = avt_jQuery_1_3_2.fn.extend = function() {
 
 				// Recurse if we're merging object values
 				if ( deep && copy && typeof copy === "object" && !copy.nodeType )
-					target[ name ] = avt_jQuery_1_3_2.extend( deep, 
+					target[ name ] = avt_jQuery_1_3_2_av3.extend( deep, 
 						// Never move original objects, clone them
 						src || ( copy.length != null ? [ ] : { } )
 					, copy );
@@ -615,14 +615,14 @@ var	exclude = /z-?index|font-?weight|opacity|zoom|line-?height/i,
 	defaultView = document.defaultView || {},
 	toString = Object.prototype.toString;
 
-avt_jQuery_1_3_2.extend({
+avt_jQuery_1_3_2_av3.extend({
 	noConflict: function( deep ) {
 		window.$ = _$;
 
 		if ( deep )
-			window.avt_jQuery_1_3_2 = _avt_jQuery_1_3_2;
+			window.avt_jQuery_1_3_2_av3 = _avt_jQuery_1_3_2_av3;
 
-		return avt_jQuery_1_3_2;
+		return avt_jQuery_1_3_2_av3;
 	},
 
 	// See test/unit/core.js for details concerning isFunction.
@@ -639,7 +639,7 @@ avt_jQuery_1_3_2.extend({
 	// check if an element is in a (or is an) XML document
 	isXMLDoc: function( elem ) {
 		return elem.nodeType === 9 && elem.documentElement.nodeName !== "HTML" ||
-			!!elem.ownerDocument && avt_jQuery_1_3_2.isXMLDoc( elem.ownerDocument );
+			!!elem.ownerDocument && avt_jQuery_1_3_2_av3.isXMLDoc( elem.ownerDocument );
 	},
 
 	// Evalulates a script in a global context
@@ -651,7 +651,7 @@ avt_jQuery_1_3_2.extend({
 				script = document.createElement("script");
 
 			script.type = "text/javascript";
-			if ( avt_jQuery_1_3_2.support.scriptEval )
+			if ( avt_jQuery_1_3_2_av3.support.scriptEval )
 				script.appendChild( document.createTextNode( data ) );
 			else
 				script.text = data;
@@ -697,7 +697,7 @@ avt_jQuery_1_3_2.extend({
 
 	prop: function( elem, value, type, i, name ) {
 		// Handle executable functions
-		if ( avt_jQuery_1_3_2.isFunction( value ) )
+		if ( avt_jQuery_1_3_2_av3.isFunction( value ) )
 			value = value.call( elem, i );
 
 		// Handle passing in a number to a CSS property
@@ -709,8 +709,8 @@ avt_jQuery_1_3_2.extend({
 	className: {
 		// internal only, use addClass("class")
 		add: function( elem, classNames ) {
-			avt_jQuery_1_3_2.each((classNames || "").split(/\s+/), function(i, className){
-				if ( elem.nodeType == 1 && !avt_jQuery_1_3_2.className.has( elem.className, className ) )
+			avt_jQuery_1_3_2_av3.each((classNames || "").split(/\s+/), function(i, className){
+				if ( elem.nodeType == 1 && !avt_jQuery_1_3_2_av3.className.has( elem.className, className ) )
 					elem.className += (elem.className ? " " : "") + className;
 			});
 		},
@@ -719,15 +719,15 @@ avt_jQuery_1_3_2.extend({
 		remove: function( elem, classNames ) {
 			if (elem.nodeType == 1)
 				elem.className = classNames !== undefined ?
-					avt_jQuery_1_3_2.grep(elem.className.split(/\s+/), function(className){
-						return !avt_jQuery_1_3_2.className.has( classNames, className );
+					avt_jQuery_1_3_2_av3.grep(elem.className.split(/\s+/), function(className){
+						return !avt_jQuery_1_3_2_av3.className.has( classNames, className );
 					}).join(" ") :
 					"";
 		},
 
 		// internal only, use hasClass("class")
 		has: function( elem, className ) {
-			return elem && avt_jQuery_1_3_2.inArray( className, (elem.className || elem).toString().split(/\s+/) ) > -1;
+			return elem && avt_jQuery_1_3_2_av3.inArray( className, (elem.className || elem).toString().split(/\s+/) ) > -1;
 		}
 	},
 
@@ -757,33 +757,33 @@ avt_jQuery_1_3_2.extend({
 				if ( extra === "border" )
 					return;
 
-				avt_jQuery_1_3_2.each( which, function() {
+				avt_jQuery_1_3_2_av3.each( which, function() {
 					if ( !extra )
-						val -= parseFloat(avt_jQuery_1_3_2.curCSS( elem, "padding" + this, true)) || 0;
+						val -= parseFloat(avt_jQuery_1_3_2_av3.curCSS( elem, "padding" + this, true)) || 0;
 					if ( extra === "margin" )
-						val += parseFloat(avt_jQuery_1_3_2.curCSS( elem, "margin" + this, true)) || 0;
+						val += parseFloat(avt_jQuery_1_3_2_av3.curCSS( elem, "margin" + this, true)) || 0;
 					else
-						val -= parseFloat(avt_jQuery_1_3_2.curCSS( elem, "border" + this + "Width", true)) || 0;
+						val -= parseFloat(avt_jQuery_1_3_2_av3.curCSS( elem, "border" + this + "Width", true)) || 0;
 				});
 			}
 
 			if ( elem.offsetWidth !== 0 )
 				getWH();
 			else
-				avt_jQuery_1_3_2.swap( elem, props, getWH );
+				avt_jQuery_1_3_2_av3.swap( elem, props, getWH );
 
 			return Math.max(0, Math.round(val));
 		}
 
-		return avt_jQuery_1_3_2.curCSS( elem, name, force );
+		return avt_jQuery_1_3_2_av3.curCSS( elem, name, force );
 	},
 
 	curCSS: function( elem, name, force ) {
 		var ret, style = elem.style;
 
 		// We need to handle opacity special in IE
-		if ( name == "opacity" && !avt_jQuery_1_3_2.support.opacity ) {
-			ret = avt_jQuery_1_3_2.attr( style, "opacity" );
+		if ( name == "opacity" && !avt_jQuery_1_3_2_av3.support.opacity ) {
+			ret = avt_jQuery_1_3_2_av3.attr( style, "opacity" );
 
 			return ret == "" ?
 				"1" :
@@ -861,7 +861,7 @@ avt_jQuery_1_3_2.extend({
 
 		var ret = [], scripts = [], div = context.createElement("div");
 
-		avt_jQuery_1_3_2.each(elems, function(i, elem){
+		avt_jQuery_1_3_2_av3.each(elems, function(i, elem){
 			if ( typeof elem === "number" )
 				elem += '';
 
@@ -902,7 +902,7 @@ avt_jQuery_1_3_2.extend({
 					[ 2, "<table><tbody></tbody><colgroup>", "</colgroup></table>" ] ||
 
 					// IE can't serialize <link> and <script> tags normally
-					!avt_jQuery_1_3_2.support.htmlSerialize &&
+					!avt_jQuery_1_3_2_av3.support.htmlSerialize &&
 					[ 1, "div<div>", "</div>" ] ||
 
 					[ 0, "", "" ];
@@ -915,7 +915,7 @@ avt_jQuery_1_3_2.extend({
 					div = div.lastChild;
 
 				// Remove IE's autoinserted <tbody> from table fragments
-				if ( !avt_jQuery_1_3_2.support.tbody ) {
+				if ( !avt_jQuery_1_3_2_av3.support.tbody ) {
 
 					// String was a <table>, *may* have spurious <tbody>
 					var hasBody = /<tbody/i.test(elem),
@@ -928,32 +928,32 @@ avt_jQuery_1_3_2.extend({
 							[];
 
 					for ( var j = tbody.length - 1; j >= 0 ; --j )
-						if ( avt_jQuery_1_3_2.nodeName( tbody[ j ], "tbody" ) && !tbody[ j ].childNodes.length )
+						if ( avt_jQuery_1_3_2_av3.nodeName( tbody[ j ], "tbody" ) && !tbody[ j ].childNodes.length )
 							tbody[ j ].parentNode.removeChild( tbody[ j ] );
 
 					}
 
 				// IE completely kills leading whitespace when innerHTML is used
-				if ( !avt_jQuery_1_3_2.support.leadingWhitespace && /^\s/.test( elem ) )
+				if ( !avt_jQuery_1_3_2_av3.support.leadingWhitespace && /^\s/.test( elem ) )
 					div.insertBefore( context.createTextNode( elem.match(/^\s*/)[0] ), div.firstChild );
 				
-				elem = avt_jQuery_1_3_2.makeArray( div.childNodes );
+				elem = avt_jQuery_1_3_2_av3.makeArray( div.childNodes );
 			}
 
 			if ( elem.nodeType )
 				ret.push( elem );
 			else
-				ret = avt_jQuery_1_3_2.merge( ret, elem );
+				ret = avt_jQuery_1_3_2_av3.merge( ret, elem );
 
 		});
 
 		if ( fragment ) {
 			for ( var i = 0; ret[i]; i++ ) {
-				if ( avt_jQuery_1_3_2.nodeName( ret[i], "script" ) && (!ret[i].type || ret[i].type.toLowerCase() === "text/javascript") ) {
+				if ( avt_jQuery_1_3_2_av3.nodeName( ret[i], "script" ) && (!ret[i].type || ret[i].type.toLowerCase() === "text/javascript") ) {
 					scripts.push( ret[i].parentNode ? ret[i].parentNode.removeChild( ret[i] ) : ret[i] );
 				} else {
 					if ( ret[i].nodeType === 1 )
-						ret.splice.apply( ret, [i + 1, 0].concat(avt_jQuery_1_3_2.makeArray(ret[i].getElementsByTagName("script"))) );
+						ret.splice.apply( ret, [i + 1, 0].concat(avt_jQuery_1_3_2_av3.makeArray(ret[i].getElementsByTagName("script"))) );
 
 					fragment.appendChild( ret[i] );
 				}
@@ -970,12 +970,12 @@ avt_jQuery_1_3_2.extend({
 		if (!elem || elem.nodeType == 3 || elem.nodeType == 8)
 			return undefined;
 
-		var notxml = !avt_jQuery_1_3_2.isXMLDoc( elem ),
+		var notxml = !avt_jQuery_1_3_2_av3.isXMLDoc( elem ),
 			// Whether we are setting (or getting)
 			set = value !== undefined;
 
 		// Try to normalize/fix the name
-		name = notxml && avt_jQuery_1_3_2.props[ name ] || name;
+		name = notxml && avt_jQuery_1_3_2_av3.props[ name ] || name;
 
 		// Only do all the following if this is a node (faster for style)
 		// IE elem.getAttribute passes even for style
@@ -993,14 +993,14 @@ avt_jQuery_1_3_2.extend({
 			if ( name in elem && notxml && !special ) {
 				if ( set ){
 					// We can't allow the type property to be changed (since it causes problems in IE)
-					if ( name == "type" && avt_jQuery_1_3_2.nodeName( elem, "input" ) && elem.parentNode )
+					if ( name == "type" && avt_jQuery_1_3_2_av3.nodeName( elem, "input" ) && elem.parentNode )
 						throw "type property can't be changed";
 
 					elem[ name ] = value;
 				}
 
 				// browsers index elements by id/name on forms, give priority to attributes.
-				if( avt_jQuery_1_3_2.nodeName( elem, "form" ) && elem.getAttributeNode(name) )
+				if( avt_jQuery_1_3_2_av3.nodeName( elem, "form" ) && elem.getAttributeNode(name) )
 					return elem.getAttributeNode( name ).nodeValue;
 
 				// elem.tabIndex doesn't always return the correct value when it hasn't been explicitly set
@@ -1019,14 +1019,14 @@ avt_jQuery_1_3_2.extend({
 				return elem[ name ];
 			}
 
-			if ( !avt_jQuery_1_3_2.support.style && notxml &&  name == "style" )
-				return avt_jQuery_1_3_2.attr( elem.style, "cssText", value );
+			if ( !avt_jQuery_1_3_2_av3.support.style && notxml &&  name == "style" )
+				return avt_jQuery_1_3_2_av3.attr( elem.style, "cssText", value );
 
 			if ( set )
 				// convert the value to a string (all browsers do this but IE) see #1070
 				elem.setAttribute( name, "" + value );
 
-			var attr = !avt_jQuery_1_3_2.support.hrefNormalized && notxml && special
+			var attr = !avt_jQuery_1_3_2_av3.support.hrefNormalized && notxml && special
 					// Some attributes require a special call on IE
 					? elem.getAttribute( name, 2 )
 					: elem.getAttribute( name );
@@ -1038,7 +1038,7 @@ avt_jQuery_1_3_2.extend({
 		// elem is actually elem.style ... set the style
 
 		// IE uses filters for opacity
-		if ( !avt_jQuery_1_3_2.support.opacity && name == "opacity" ) {
+		if ( !avt_jQuery_1_3_2_av3.support.opacity && name == "opacity" ) {
 			if ( set ) {
 				// IE has trouble with opacity if it does not have layout
 				// Force it by setting the zoom level
@@ -1074,7 +1074,7 @@ avt_jQuery_1_3_2.extend({
 		if( array != null ){
 			var i = array.length;
 			// The window, strings (and functions) also have 'length'
-			if( i == null || typeof array === "string" || avt_jQuery_1_3_2.isFunction(array) || array.setInterval )
+			if( i == null || typeof array === "string" || avt_jQuery_1_3_2_av3.isFunction(array) || array.setInterval )
 				ret[0] = array;
 			else
 				while( i )
@@ -1099,7 +1099,7 @@ avt_jQuery_1_3_2.extend({
 		var i = 0, elem, pos = first.length;
 		// Also, we need to make sure that the correct elements are being returned
 		// (IE returns comment nodes in a '*' query)
-		if ( !avt_jQuery_1_3_2.support.getAll ) {
+		if ( !avt_jQuery_1_3_2_av3.support.getAll ) {
 			while ( (elem = second[ i++ ]) != null )
 				if ( elem.nodeType != 8 )
 					first[ pos++ ] = elem;
@@ -1117,7 +1117,7 @@ avt_jQuery_1_3_2.extend({
 		try {
 
 			for ( var i = 0, length = array.length; i < length; i++ ) {
-				var id = avt_jQuery_1_3_2.data( array[ i ] );
+				var id = avt_jQuery_1_3_2_av3.data( array[ i ] );
 
 				if ( !done[ id ] ) {
 					done[ id ] = true;
@@ -1160,14 +1160,14 @@ avt_jQuery_1_3_2.extend({
 	}
 });
 
-// Use of avt_jQuery_1_3_2.browser is deprecated.
+// Use of avt_jQuery_1_3_2_av3.browser is deprecated.
 // It's included for backwards compatibility and plugins,
 // although they should work to migrate away.
 
 var userAgent = navigator.userAgent.toLowerCase();
 
 // Figure out what browser is being used
-avt_jQuery_1_3_2.browser = {
+avt_jQuery_1_3_2_av3.browser = {
 	version: (userAgent.match( /.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/ ) || [0,'0'])[1],
 	safari: /webkit/.test( userAgent ),
 	opera: /opera/.test( userAgent ),
@@ -1175,40 +1175,40 @@ avt_jQuery_1_3_2.browser = {
 	mozilla: /mozilla/.test( userAgent ) && !/(compatible|webkit)/.test( userAgent )
 };
 
-avt_jQuery_1_3_2.each({
+avt_jQuery_1_3_2_av3.each({
 	parent: function(elem){return elem.parentNode;},
-	parents: function(elem){return avt_jQuery_1_3_2.dir(elem,"parentNode");},
-	next: function(elem){return avt_jQuery_1_3_2.nth(elem,2,"nextSibling");},
-	prev: function(elem){return avt_jQuery_1_3_2.nth(elem,2,"previousSibling");},
-	nextAll: function(elem){return avt_jQuery_1_3_2.dir(elem,"nextSibling");},
-	prevAll: function(elem){return avt_jQuery_1_3_2.dir(elem,"previousSibling");},
-	siblings: function(elem){return avt_jQuery_1_3_2.sibling(elem.parentNode.firstChild,elem);},
-	children: function(elem){return avt_jQuery_1_3_2.sibling(elem.firstChild);},
-	contents: function(elem){return avt_jQuery_1_3_2.nodeName(elem,"iframe")?elem.contentDocument||elem.contentWindow.document:avt_jQuery_1_3_2.makeArray(elem.childNodes);}
+	parents: function(elem){return avt_jQuery_1_3_2_av3.dir(elem,"parentNode");},
+	next: function(elem){return avt_jQuery_1_3_2_av3.nth(elem,2,"nextSibling");},
+	prev: function(elem){return avt_jQuery_1_3_2_av3.nth(elem,2,"previousSibling");},
+	nextAll: function(elem){return avt_jQuery_1_3_2_av3.dir(elem,"nextSibling");},
+	prevAll: function(elem){return avt_jQuery_1_3_2_av3.dir(elem,"previousSibling");},
+	siblings: function(elem){return avt_jQuery_1_3_2_av3.sibling(elem.parentNode.firstChild,elem);},
+	children: function(elem){return avt_jQuery_1_3_2_av3.sibling(elem.firstChild);},
+	contents: function(elem){return avt_jQuery_1_3_2_av3.nodeName(elem,"iframe")?elem.contentDocument||elem.contentWindow.document:avt_jQuery_1_3_2_av3.makeArray(elem.childNodes);}
 }, function(name, fn){
-	avt_jQuery_1_3_2.fn[ name ] = function( selector ) {
-		var ret = avt_jQuery_1_3_2.map( this, fn );
+	avt_jQuery_1_3_2_av3.fn[ name ] = function( selector ) {
+		var ret = avt_jQuery_1_3_2_av3.map( this, fn );
 
 		if ( selector && typeof selector == "string" )
-			ret = avt_jQuery_1_3_2.multiFilter( selector, ret );
+			ret = avt_jQuery_1_3_2_av3.multiFilter( selector, ret );
 
-		return this.pushStack( avt_jQuery_1_3_2.unique( ret ), name, selector );
+		return this.pushStack( avt_jQuery_1_3_2_av3.unique( ret ), name, selector );
 	};
 });
 
-avt_jQuery_1_3_2.each({
+avt_jQuery_1_3_2_av3.each({
 	appendTo: "append",
 	prependTo: "prepend",
 	insertBefore: "before",
 	insertAfter: "after",
 	replaceAll: "replaceWith"
 }, function(name, original){
-	avt_jQuery_1_3_2.fn[ name ] = function( selector ) {
-		var ret = [], insert = avt_jQuery_1_3_2( selector );
+	avt_jQuery_1_3_2_av3.fn[ name ] = function( selector ) {
+		var ret = [], insert = avt_jQuery_1_3_2_av3( selector );
 
 		for ( var i = 0, l = insert.length; i < l; i++ ) {
 			var elems = (i > 0 ? this.clone(true) : this).get();
-			avt_jQuery_1_3_2.fn[ original ].apply( avt_jQuery_1_3_2(insert[i]), elems );
+			avt_jQuery_1_3_2_av3.fn[ original ].apply( avt_jQuery_1_3_2_av3(insert[i]), elems );
 			ret = ret.concat( elems );
 		}
 
@@ -1216,33 +1216,33 @@ avt_jQuery_1_3_2.each({
 	};
 });
 
-avt_jQuery_1_3_2.each({
+avt_jQuery_1_3_2_av3.each({
 	removeAttr: function( name ) {
-		avt_jQuery_1_3_2.attr( this, name, "" );
+		avt_jQuery_1_3_2_av3.attr( this, name, "" );
 		if (this.nodeType == 1)
 			this.removeAttribute( name );
 	},
 
 	addClass: function( classNames ) {
-		avt_jQuery_1_3_2.className.add( this, classNames );
+		avt_jQuery_1_3_2_av3.className.add( this, classNames );
 	},
 
 	removeClass: function( classNames ) {
-		avt_jQuery_1_3_2.className.remove( this, classNames );
+		avt_jQuery_1_3_2_av3.className.remove( this, classNames );
 	},
 
 	toggleClass: function( classNames, state ) {
 		if( typeof state !== "boolean" )
-			state = !avt_jQuery_1_3_2.className.has( this, classNames );
-		avt_jQuery_1_3_2.className[ state ? "add" : "remove" ]( this, classNames );
+			state = !avt_jQuery_1_3_2_av3.className.has( this, classNames );
+		avt_jQuery_1_3_2_av3.className[ state ? "add" : "remove" ]( this, classNames );
 	},
 
 	remove: function( selector ) {
-		if ( !selector || avt_jQuery_1_3_2.filter( selector, [ this ] ).length ) {
+		if ( !selector || avt_jQuery_1_3_2_av3.filter( selector, [ this ] ).length ) {
 			// Prevent memory leaks
-			avt_jQuery_1_3_2( "*", this ).add([this]).each(function(){
-				avt_jQuery_1_3_2.event.remove(this);
-				avt_jQuery_1_3_2.removeData(this);
+			avt_jQuery_1_3_2_av3( "*", this ).add([this]).each(function(){
+				avt_jQuery_1_3_2_av3.event.remove(this);
+				avt_jQuery_1_3_2_av3.removeData(this);
 			});
 			if (this.parentNode)
 				this.parentNode.removeChild( this );
@@ -1251,25 +1251,25 @@ avt_jQuery_1_3_2.each({
 
 	empty: function() {
 		// Remove element nodes and prevent memory leaks
-		avt_jQuery_1_3_2(this).children().remove();
+		avt_jQuery_1_3_2_av3(this).children().remove();
 
 		// Remove any remaining nodes
 		while ( this.firstChild )
 			this.removeChild( this.firstChild );
 	}
 }, function(name, fn){
-	avt_jQuery_1_3_2.fn[ name ] = function(){
+	avt_jQuery_1_3_2_av3.fn[ name ] = function(){
 		return this.each( fn, arguments );
 	};
 });
 
 // Helper function used by the dimensions and offset modules
 function num(elem, prop) {
-	return elem[0] && parseInt( avt_jQuery_1_3_2.curCSS(elem[0], prop, true), 10 ) || 0;
+	return elem[0] && parseInt( avt_jQuery_1_3_2_av3.curCSS(elem[0], prop, true), 10 ) || 0;
 }
-var expando = "avt_jQuery_1_3_2" + now(), uuid = 0, windowData = {};
+var expando = "avt_jQuery_1_3_2_av3" + now(), uuid = 0, windowData = {};
 
-avt_jQuery_1_3_2.extend({
+avt_jQuery_1_3_2_av3.extend({
 	cache: {},
 
 	data: function( elem, name, data ) {
@@ -1285,16 +1285,16 @@ avt_jQuery_1_3_2.extend({
 
 		// Only generate the data cache if we're
 		// trying to access or manipulate it
-		if ( name && !avt_jQuery_1_3_2.cache[ id ] )
-			avt_jQuery_1_3_2.cache[ id ] = {};
+		if ( name && !avt_jQuery_1_3_2_av3.cache[ id ] )
+			avt_jQuery_1_3_2_av3.cache[ id ] = {};
 
 		// Prevent overriding the named cache with undefined values
 		if ( data !== undefined )
-			avt_jQuery_1_3_2.cache[ id ][ name ] = data;
+			avt_jQuery_1_3_2_av3.cache[ id ][ name ] = data;
 
 		// Return the named cache data, or the ID for the element
 		return name ?
-			avt_jQuery_1_3_2.cache[ id ][ name ] :
+			avt_jQuery_1_3_2_av3.cache[ id ][ name ] :
 			id;
 	},
 
@@ -1307,18 +1307,18 @@ avt_jQuery_1_3_2.extend({
 
 		// If we want to remove a specific section of the element's data
 		if ( name ) {
-			if ( avt_jQuery_1_3_2.cache[ id ] ) {
+			if ( avt_jQuery_1_3_2_av3.cache[ id ] ) {
 				// Remove the section of cache data
-				delete avt_jQuery_1_3_2.cache[ id ][ name ];
+				delete avt_jQuery_1_3_2_av3.cache[ id ][ name ];
 
 				// If we've removed all the data, remove the element's cache
 				name = "";
 
-				for ( name in avt_jQuery_1_3_2.cache[ id ] )
+				for ( name in avt_jQuery_1_3_2_av3.cache[ id ] )
 					break;
 
 				if ( !name )
-					avt_jQuery_1_3_2.removeData( elem );
+					avt_jQuery_1_3_2_av3.removeData( elem );
 			}
 
 		// Otherwise, we want to remove all of the element's data
@@ -1334,7 +1334,7 @@ avt_jQuery_1_3_2.extend({
 			}
 
 			// Completely remove the data cache
-			delete avt_jQuery_1_3_2.cache[ id ];
+			delete avt_jQuery_1_3_2_av3.cache[ id ];
 		}
 	},
 	queue: function( elem, type, data ) {
@@ -1342,10 +1342,10 @@ avt_jQuery_1_3_2.extend({
 	
 			type = (type || "fx") + "queue";
 	
-			var q = avt_jQuery_1_3_2.data( elem, type );
+			var q = avt_jQuery_1_3_2_av3.data( elem, type );
 	
-			if ( !q || avt_jQuery_1_3_2.isArray(data) )
-				q = avt_jQuery_1_3_2.data( elem, type, avt_jQuery_1_3_2.makeArray(data) );
+			if ( !q || avt_jQuery_1_3_2_av3.isArray(data) )
+				q = avt_jQuery_1_3_2_av3.data( elem, type, avt_jQuery_1_3_2_av3.makeArray(data) );
 			else if( data )
 				q.push( data );
 	
@@ -1354,7 +1354,7 @@ avt_jQuery_1_3_2.extend({
 	},
 
 	dequeue: function( elem, type ){
-		var queue = avt_jQuery_1_3_2.queue( elem, type ),
+		var queue = avt_jQuery_1_3_2_av3.queue( elem, type ),
 			fn = queue.shift();
 		
 		if( !type || type === "fx" )
@@ -1365,7 +1365,7 @@ avt_jQuery_1_3_2.extend({
 	}
 });
 
-avt_jQuery_1_3_2.fn.extend({
+avt_jQuery_1_3_2_av3.fn.extend({
 	data: function( key, value ){
 		var parts = key.split(".");
 		parts[1] = parts[1] ? "." + parts[1] : "";
@@ -1374,20 +1374,20 @@ avt_jQuery_1_3_2.fn.extend({
 			var data = this.triggerHandler("getData" + parts[1] + "!", [parts[0]]);
 
 			if ( data === undefined && this.length )
-				data = avt_jQuery_1_3_2.data( this[0], key );
+				data = avt_jQuery_1_3_2_av3.data( this[0], key );
 
 			return data === undefined && parts[1] ?
 				this.data( parts[0] ) :
 				data;
 		} else
 			return this.trigger("setData" + parts[1] + "!", [parts[0], value]).each(function(){
-				avt_jQuery_1_3_2.data( this, key, value );
+				avt_jQuery_1_3_2_av3.data( this, key, value );
 			});
 	},
 
 	removeData: function( key ){
 		return this.each(function(){
-			avt_jQuery_1_3_2.removeData( this, key );
+			avt_jQuery_1_3_2_av3.removeData( this, key );
 		});
 	},
 	queue: function(type, data){
@@ -1397,10 +1397,10 @@ avt_jQuery_1_3_2.fn.extend({
 		}
 
 		if ( data === undefined )
-			return avt_jQuery_1_3_2.queue( this[0], type );
+			return avt_jQuery_1_3_2_av3.queue( this[0], type );
 
 		return this.each(function(){
-			var queue = avt_jQuery_1_3_2.queue( this, type, data );
+			var queue = avt_jQuery_1_3_2_av3.queue( this, type, data );
 			
 			 if( type == "fx" && queue.length == 1 )
 				queue[0].call(this);
@@ -1408,7 +1408,7 @@ avt_jQuery_1_3_2.fn.extend({
 	},
 	dequeue: function(type){
 		return this.each(function(){
-			avt_jQuery_1_3_2.dequeue( this, type );
+			avt_jQuery_1_3_2_av3.dequeue( this, type );
 		});
 	}
 });/*!
@@ -2362,10 +2362,10 @@ var posProcess = function(selector, context){
 };
 
 // EXPOSE
-avt_jQuery_1_3_2.find = Sizzle;
-avt_jQuery_1_3_2.filter = Sizzle.filter;
-avt_jQuery_1_3_2.expr = Sizzle.selectors;
-avt_jQuery_1_3_2.expr[":"] = avt_jQuery_1_3_2.expr.filters;
+avt_jQuery_1_3_2_av3.find = Sizzle;
+avt_jQuery_1_3_2_av3.filter = Sizzle.filter;
+avt_jQuery_1_3_2_av3.expr = Sizzle.selectors;
+avt_jQuery_1_3_2_av3.expr[":"] = avt_jQuery_1_3_2_av3.expr.filters;
 
 Sizzle.selectors.filters.hidden = function(elem){
 	return elem.offsetWidth === 0 || elem.offsetHeight === 0;
@@ -2376,12 +2376,12 @@ Sizzle.selectors.filters.visible = function(elem){
 };
 
 Sizzle.selectors.filters.animated = function(elem){
-	return avt_jQuery_1_3_2.grep(avt_jQuery_1_3_2.timers, function(fn){
+	return avt_jQuery_1_3_2_av3.grep(avt_jQuery_1_3_2_av3.timers, function(fn){
 		return elem === fn.elem;
 	}).length;
 };
 
-avt_jQuery_1_3_2.multiFilter = function( expr, elems, not ) {
+avt_jQuery_1_3_2_av3.multiFilter = function( expr, elems, not ) {
 	if ( not ) {
 		expr = ":not(" + expr + ")";
 	}
@@ -2389,7 +2389,7 @@ avt_jQuery_1_3_2.multiFilter = function( expr, elems, not ) {
 	return Sizzle.matches(expr, elems);
 };
 
-avt_jQuery_1_3_2.dir = function( elem, dir ){
+avt_jQuery_1_3_2_av3.dir = function( elem, dir ){
 	var matched = [], cur = elem[dir];
 	while ( cur && cur != document ) {
 		if ( cur.nodeType == 1 )
@@ -2399,7 +2399,7 @@ avt_jQuery_1_3_2.dir = function( elem, dir ){
 	return matched;
 };
 
-avt_jQuery_1_3_2.nth = function(cur, result, dir, elem){
+avt_jQuery_1_3_2_av3.nth = function(cur, result, dir, elem){
 	result = result || 1;
 	var num = 0;
 
@@ -2410,7 +2410,7 @@ avt_jQuery_1_3_2.nth = function(cur, result, dir, elem){
 	return cur;
 };
 
-avt_jQuery_1_3_2.sibling = function(n, elem){
+avt_jQuery_1_3_2_av3.sibling = function(n, elem){
 	var r = [];
 
 	for ( ; n; n = n.nextSibling ) {
@@ -2431,7 +2431,7 @@ window.Sizzle = Sizzle;
  * Many of the ideas behind this code originated from
  * Dean Edwards' addEvent library.
  */
-avt_jQuery_1_3_2.event = {
+avt_jQuery_1_3_2_av3.event = {
 
 	// Bind an event to an element
 	// Original by Dean Edwards
@@ -2461,12 +2461,12 @@ avt_jQuery_1_3_2.event = {
 		}
 
 		// Init the element's event structure
-		var events = avt_jQuery_1_3_2.data(elem, "events") || avt_jQuery_1_3_2.data(elem, "events", {}),
-			handle = avt_jQuery_1_3_2.data(elem, "handle") || avt_jQuery_1_3_2.data(elem, "handle", function(){
+		var events = avt_jQuery_1_3_2_av3.data(elem, "events") || avt_jQuery_1_3_2_av3.data(elem, "events", {}),
+			handle = avt_jQuery_1_3_2_av3.data(elem, "handle") || avt_jQuery_1_3_2_av3.data(elem, "handle", function(){
 				// Handle the second event of a trigger and when
 				// an event is called after a page has unloaded
-				return typeof avt_jQuery_1_3_2 !== "undefined" && !avt_jQuery_1_3_2.event.triggered ?
-					avt_jQuery_1_3_2.event.handle.apply(arguments.callee.elem, arguments) :
+				return typeof avt_jQuery_1_3_2_av3 !== "undefined" && !avt_jQuery_1_3_2_av3.event.triggered ?
+					avt_jQuery_1_3_2_av3.event.handle.apply(arguments.callee.elem, arguments) :
 					undefined;
 			});
 		// Add elem as a property of the handle function
@@ -2475,8 +2475,8 @@ avt_jQuery_1_3_2.event = {
 		handle.elem = elem;
 
 		// Handle multiple events separated by a space
-		// avt_jQuery_1_3_2(...).bind("mouseover mouseout", fn);
-		avt_jQuery_1_3_2.each(types.split(/\s+/), function(index, type) {
+		// avt_jQuery_1_3_2_av3(...).bind("mouseover mouseout", fn);
+		avt_jQuery_1_3_2_av3.each(types.split(/\s+/), function(index, type) {
 			// Namespaced event handlers
 			var namespaces = type.split(".");
 			type = namespaces.shift();
@@ -2485,8 +2485,8 @@ avt_jQuery_1_3_2.event = {
 			// Get the current list of functions bound to this event
 			var handlers = events[type];
 			
-			if ( avt_jQuery_1_3_2.event.specialAll[type] )
-				avt_jQuery_1_3_2.event.specialAll[type].setup.call(elem, data, namespaces);
+			if ( avt_jQuery_1_3_2_av3.event.specialAll[type] )
+				avt_jQuery_1_3_2_av3.event.specialAll[type].setup.call(elem, data, namespaces);
 
 			// Init the event handler queue
 			if (!handlers) {
@@ -2495,7 +2495,7 @@ avt_jQuery_1_3_2.event = {
 				// Check for a special event handler
 				// Only use addEventListener/attachEvent if the special
 				// events handler returns false
-				if ( !avt_jQuery_1_3_2.event.special[type] || avt_jQuery_1_3_2.event.special[type].setup.call(elem, data, namespaces) === false ) {
+				if ( !avt_jQuery_1_3_2_av3.event.special[type] || avt_jQuery_1_3_2_av3.event.special[type].setup.call(elem, data, namespaces) === false ) {
 					// Bind the global event handler to the element
 					if (elem.addEventListener)
 						elem.addEventListener(type, handle, false);
@@ -2508,7 +2508,7 @@ avt_jQuery_1_3_2.event = {
 			handlers[handler.guid] = handler;
 
 			// Keep track of which events have been used, for global triggering
-			avt_jQuery_1_3_2.event.global[type] = true;
+			avt_jQuery_1_3_2_av3.event.global[type] = true;
 		});
 
 		// Nullify elem to prevent memory leaks in IE
@@ -2524,7 +2524,7 @@ avt_jQuery_1_3_2.event = {
 		if ( elem.nodeType == 3 || elem.nodeType == 8 )
 			return;
 
-		var events = avt_jQuery_1_3_2.data(elem, "events"), ret, index;
+		var events = avt_jQuery_1_3_2_av3.data(elem, "events"), ret, index;
 
 		if ( events ) {
 			// Unbind all events for the element
@@ -2539,8 +2539,8 @@ avt_jQuery_1_3_2.event = {
 				}
 
 				// Handle multiple events seperated by a space
-				// avt_jQuery_1_3_2(...).unbind("mouseover mouseout", fn);
-				avt_jQuery_1_3_2.each(types.split(/\s+/), function(index, type){
+				// avt_jQuery_1_3_2_av3(...).unbind("mouseover mouseout", fn);
+				avt_jQuery_1_3_2_av3.each(types.split(/\s+/), function(index, type){
 					// Namespaced event handlers
 					var namespaces = type.split(".");
 					type = namespaces.shift();
@@ -2558,17 +2558,17 @@ avt_jQuery_1_3_2.event = {
 								if ( namespace.test(events[type][handle].type) )
 									delete events[type][handle];
 									
-						if ( avt_jQuery_1_3_2.event.specialAll[type] )
-							avt_jQuery_1_3_2.event.specialAll[type].teardown.call(elem, namespaces);
+						if ( avt_jQuery_1_3_2_av3.event.specialAll[type] )
+							avt_jQuery_1_3_2_av3.event.specialAll[type].teardown.call(elem, namespaces);
 
 						// remove generic event handler if no more handlers exist
 						for ( ret in events[type] ) break;
 						if ( !ret ) {
-							if ( !avt_jQuery_1_3_2.event.special[type] || avt_jQuery_1_3_2.event.special[type].teardown.call(elem, namespaces) === false ) {
+							if ( !avt_jQuery_1_3_2_av3.event.special[type] || avt_jQuery_1_3_2_av3.event.special[type].teardown.call(elem, namespaces) === false ) {
 								if (elem.removeEventListener)
-									elem.removeEventListener(type, avt_jQuery_1_3_2.data(elem, "handle"), false);
+									elem.removeEventListener(type, avt_jQuery_1_3_2_av3.data(elem, "handle"), false);
 								else if (elem.detachEvent)
-									elem.detachEvent("on" + type, avt_jQuery_1_3_2.data(elem, "handle"));
+									elem.detachEvent("on" + type, avt_jQuery_1_3_2_av3.data(elem, "handle"));
 							}
 							ret = null;
 							delete events[type];
@@ -2580,10 +2580,10 @@ avt_jQuery_1_3_2.event = {
 			// Remove the expando if it's no longer used
 			for ( ret in events ) break;
 			if ( !ret ) {
-				var handle = avt_jQuery_1_3_2.data( elem, "handle" );
+				var handle = avt_jQuery_1_3_2_av3.data( elem, "handle" );
 				if ( handle ) handle.elem = null;
-				avt_jQuery_1_3_2.removeData( elem, "events" );
-				avt_jQuery_1_3_2.removeData( elem, "handle" );
+				avt_jQuery_1_3_2_av3.removeData( elem, "events" );
+				avt_jQuery_1_3_2_av3.removeData( elem, "handle" );
 			}
 		}
 	},
@@ -2595,12 +2595,12 @@ avt_jQuery_1_3_2.event = {
 
 		if( !bubbling ){
 			event = typeof event === "object" ?
-				// avt_jQuery_1_3_2.Event object
+				// avt_jQuery_1_3_2_av3.Event object
 				event[expando] ? event :
 				// Object literal
-				avt_jQuery_1_3_2.extend( avt_jQuery_1_3_2.Event(type), event ) :
+				avt_jQuery_1_3_2_av3.extend( avt_jQuery_1_3_2_av3.Event(type), event ) :
 				// Just the event type (string)
-				avt_jQuery_1_3_2.Event(type);
+				avt_jQuery_1_3_2_av3.Event(type);
 
 			if ( type.indexOf("!") >= 0 ) {
 				event.type = type = type.slice(0, -1);
@@ -2613,9 +2613,9 @@ avt_jQuery_1_3_2.event = {
 				event.stopPropagation();
 				// Only trigger if we've ever bound an event for it
 				if ( this.global[type] )
-					avt_jQuery_1_3_2.each( avt_jQuery_1_3_2.cache, function(){
+					avt_jQuery_1_3_2_av3.each( avt_jQuery_1_3_2_av3.cache, function(){
 						if ( this.events && this.events[type] )
-							avt_jQuery_1_3_2.event.trigger( event, data, this.handle.elem );
+							avt_jQuery_1_3_2_av3.event.trigger( event, data, this.handle.elem );
 					});
 			}
 
@@ -2630,23 +2630,23 @@ avt_jQuery_1_3_2.event = {
 			event.target = elem;
 			
 			// Clone the incoming data, if any
-			data = avt_jQuery_1_3_2.makeArray(data);
+			data = avt_jQuery_1_3_2_av3.makeArray(data);
 			data.unshift( event );
 		}
 
 		event.currentTarget = elem;
 
 		// Trigger the event, it is assumed that "handle" is a function
-		var handle = avt_jQuery_1_3_2.data(elem, "handle");
+		var handle = avt_jQuery_1_3_2_av3.data(elem, "handle");
 		if ( handle )
 			handle.apply( elem, data );
 
 		// Handle triggering native .onfoo handlers (and on links since we don't call .click() for links)
-		if ( (!elem[type] || (avt_jQuery_1_3_2.nodeName(elem, 'a') && type == "click")) && elem["on"+type] && elem["on"+type].apply( elem, data ) === false )
+		if ( (!elem[type] || (avt_jQuery_1_3_2_av3.nodeName(elem, 'a') && type == "click")) && elem["on"+type] && elem["on"+type].apply( elem, data ) === false )
 			event.result = false;
 
 		// Trigger the native events (except for clicks on links)
-		if ( !bubbling && elem[type] && !event.isDefaultPrevented() && !(avt_jQuery_1_3_2.nodeName(elem, 'a') && type == "click") ) {
+		if ( !bubbling && elem[type] && !event.isDefaultPrevented() && !(avt_jQuery_1_3_2_av3.nodeName(elem, 'a') && type == "click") ) {
 			this.triggered = true;
 			try {
 				elem[ type ]();
@@ -2659,7 +2659,7 @@ avt_jQuery_1_3_2.event = {
 		if ( !event.isPropagationStopped() ) {
 			var parent = elem.parentNode || elem.ownerDocument;
 			if ( parent )
-				avt_jQuery_1_3_2.event.trigger(event, data, parent, true);
+				avt_jQuery_1_3_2_av3.event.trigger(event, data, parent, true);
 		}
 	},
 
@@ -2667,7 +2667,7 @@ avt_jQuery_1_3_2.event = {
 		// returned undefined or false
 		var all, handlers;
 
-		event = arguments[0] = avt_jQuery_1_3_2.event.fix( event || window.event );
+		event = arguments[0] = avt_jQuery_1_3_2_av3.event.fix( event || window.event );
 		event.currentTarget = this;
 		
 		// Namespaced event handlers
@@ -2679,7 +2679,7 @@ avt_jQuery_1_3_2.event = {
 		
 		var namespace = RegExp("(^|\\.)" + namespaces.slice().sort().join(".*\\.") + "(\\.|$)");
 
-		handlers = ( avt_jQuery_1_3_2.data(this, "events") || {} )[event.type];
+		handlers = ( avt_jQuery_1_3_2_av3.data(this, "events") || {} )[event.type];
 
 		for ( var j in handlers ) {
 			var handler = handlers[j];
@@ -2717,7 +2717,7 @@ avt_jQuery_1_3_2.event = {
 		// store a copy of the original event object
 		// and "clone" to set read-only properties
 		var originalEvent = event;
-		event = avt_jQuery_1_3_2.Event( originalEvent );
+		event = avt_jQuery_1_3_2_av3.Event( originalEvent );
 
 		for ( var i = this.props.length, prop; i; ){
 			prop = this.props[ --i ];
@@ -2778,29 +2778,29 @@ avt_jQuery_1_3_2.event = {
 	specialAll: {
 		live: {
 			setup: function( selector, namespaces ){
-				avt_jQuery_1_3_2.event.add( this, namespaces[0], liveHandler );
+				avt_jQuery_1_3_2_av3.event.add( this, namespaces[0], liveHandler );
 			},
 			teardown:  function( namespaces ){
 				if ( namespaces.length ) {
 					var remove = 0, name = RegExp("(^|\\.)" + namespaces[0] + "(\\.|$)");
 					
-					avt_jQuery_1_3_2.each( (avt_jQuery_1_3_2.data(this, "events").live || {}), function(){
+					avt_jQuery_1_3_2_av3.each( (avt_jQuery_1_3_2_av3.data(this, "events").live || {}), function(){
 						if ( name.test(this.type) )
 							remove++;
 					});
 					
 					if ( remove < 1 )
-						avt_jQuery_1_3_2.event.remove( this, namespaces[0], liveHandler );
+						avt_jQuery_1_3_2_av3.event.remove( this, namespaces[0], liveHandler );
 				}
 			}
 		}
 	}
 };
 
-avt_jQuery_1_3_2.Event = function( src ){
+avt_jQuery_1_3_2_av3.Event = function( src ){
 	// Allow instantiation without the 'new' keyword
 	if( !this.preventDefault )
-		return new avt_jQuery_1_3_2.Event(src);
+		return new avt_jQuery_1_3_2_av3.Event(src);
 	
 	// Event object
 	if( src && src.type ){
@@ -2825,9 +2825,9 @@ function returnTrue(){
 	return true;
 }
 
-// avt_jQuery_1_3_2.Event is based on DOM3 Events as specified by the ECMAScript Language Binding
+// avt_jQuery_1_3_2_av3.Event is based on DOM3 Events as specified by the ECMAScript Language Binding
 // http://www.w3.org/TR/2003/WD-DOM-Level-3-Events-20030331/ecma-script-binding.html
-avt_jQuery_1_3_2.Event.prototype = {
+avt_jQuery_1_3_2_av3.Event.prototype = {
 	preventDefault: function() {
 		this.isDefaultPrevented = returnTrue;
 
@@ -2861,7 +2861,7 @@ avt_jQuery_1_3_2.Event.prototype = {
 	isImmediatePropagationStopped: returnFalse
 };
 // Checks if an event happened on an element within another element
-// Used in avt_jQuery_1_3_2.event.special.mouseenter and mouseleave handlers
+// Used in avt_jQuery_1_3_2_av3.event.special.mouseenter and mouseleave handlers
 var withinElement = function(event) {
 	// Check if mouse(over|out) are still within the same parent element
 	var parent = event.relatedTarget;
@@ -2874,59 +2874,59 @@ var withinElement = function(event) {
 		// set the correct event type
 		event.type = event.data;
 		// handle event if we actually just moused on to a non sub-element
-		avt_jQuery_1_3_2.event.handle.apply( this, arguments );
+		avt_jQuery_1_3_2_av3.event.handle.apply( this, arguments );
 	}
 };
 	
-avt_jQuery_1_3_2.each({ 
+avt_jQuery_1_3_2_av3.each({ 
 	mouseover: 'mouseenter', 
 	mouseout: 'mouseleave'
 }, function( orig, fix ){
-	avt_jQuery_1_3_2.event.special[ fix ] = {
+	avt_jQuery_1_3_2_av3.event.special[ fix ] = {
 		setup: function(){
-			avt_jQuery_1_3_2.event.add( this, orig, withinElement, fix );
+			avt_jQuery_1_3_2_av3.event.add( this, orig, withinElement, fix );
 		},
 		teardown: function(){
-			avt_jQuery_1_3_2.event.remove( this, orig, withinElement );
+			avt_jQuery_1_3_2_av3.event.remove( this, orig, withinElement );
 		}
 	};			   
 });
 
-avt_jQuery_1_3_2.fn.extend({
+avt_jQuery_1_3_2_av3.fn.extend({
 	bind: function( type, data, fn ) {
 		return type == "unload" ? this.one(type, data, fn) : this.each(function(){
-			avt_jQuery_1_3_2.event.add( this, type, fn || data, fn && data );
+			avt_jQuery_1_3_2_av3.event.add( this, type, fn || data, fn && data );
 		});
 	},
 
 	one: function( type, data, fn ) {
-		var one = avt_jQuery_1_3_2.event.proxy( fn || data, function(event) {
-			avt_jQuery_1_3_2(this).unbind(event, one);
+		var one = avt_jQuery_1_3_2_av3.event.proxy( fn || data, function(event) {
+			avt_jQuery_1_3_2_av3(this).unbind(event, one);
 			return (fn || data).apply( this, arguments );
 		});
 		return this.each(function(){
-			avt_jQuery_1_3_2.event.add( this, type, one, fn && data);
+			avt_jQuery_1_3_2_av3.event.add( this, type, one, fn && data);
 		});
 	},
 
 	unbind: function( type, fn ) {
 		return this.each(function(){
-			avt_jQuery_1_3_2.event.remove( this, type, fn );
+			avt_jQuery_1_3_2_av3.event.remove( this, type, fn );
 		});
 	},
 
 	trigger: function( type, data ) {
 		return this.each(function(){
-			avt_jQuery_1_3_2.event.trigger( type, data, this );
+			avt_jQuery_1_3_2_av3.event.trigger( type, data, this );
 		});
 	},
 
 	triggerHandler: function( type, data ) {
 		if( this[0] ){
-			var event = avt_jQuery_1_3_2.Event(type);
+			var event = avt_jQuery_1_3_2_av3.Event(type);
 			event.preventDefault();
 			event.stopPropagation();
-			avt_jQuery_1_3_2.event.trigger( event, data, this[0] );
+			avt_jQuery_1_3_2_av3.event.trigger( event, data, this[0] );
 			return event.result;
 		}		
 	},
@@ -2937,9 +2937,9 @@ avt_jQuery_1_3_2.fn.extend({
 
 		// link all the functions, so any of them can unbind this click handler
 		while( i < args.length )
-			avt_jQuery_1_3_2.event.proxy( fn, args[i++] );
+			avt_jQuery_1_3_2_av3.event.proxy( fn, args[i++] );
 
-		return this.click( avt_jQuery_1_3_2.event.proxy( fn, function(event) {
+		return this.click( avt_jQuery_1_3_2_av3.event.proxy( fn, function(event) {
 			// Figure out which function to execute
 			this.lastToggle = ( this.lastToggle || 0 ) % i;
 
@@ -2960,29 +2960,29 @@ avt_jQuery_1_3_2.fn.extend({
 		bindReady();
 
 		// If the DOM is already ready
-		if ( avt_jQuery_1_3_2.isReady )
+		if ( avt_jQuery_1_3_2_av3.isReady )
 			// Execute the function immediately
-			fn.call( document, avt_jQuery_1_3_2 );
+			fn.call( document, avt_jQuery_1_3_2_av3 );
 
 		// Otherwise, remember the function for later
 		else
 			// Add the function to the wait list
-			avt_jQuery_1_3_2.readyList.push( fn );
+			avt_jQuery_1_3_2_av3.readyList.push( fn );
 
 		return this;
 	},
 	
 	live: function( type, fn ){
-		var proxy = avt_jQuery_1_3_2.event.proxy( fn );
+		var proxy = avt_jQuery_1_3_2_av3.event.proxy( fn );
 		proxy.guid += this.selector + type;
 
-		avt_jQuery_1_3_2(document).bind( liveConvert(type, this.selector), this.selector, proxy );
+		avt_jQuery_1_3_2_av3(document).bind( liveConvert(type, this.selector), this.selector, proxy );
 
 		return this;
 	},
 	
 	die: function( type, fn ){
-		avt_jQuery_1_3_2(document).unbind( liveConvert(type, this.selector), fn ? { guid: fn.guid + this.selector + type } : null );
+		avt_jQuery_1_3_2_av3(document).unbind( liveConvert(type, this.selector), fn ? { guid: fn.guid + this.selector + type } : null );
 		return this;
 	}
 });
@@ -2992,19 +2992,19 @@ function liveHandler( event ){
 		stop = true,
 		elems = [];
 
-	avt_jQuery_1_3_2.each(avt_jQuery_1_3_2.data(this, "events").live || [], function(i, fn){
+	avt_jQuery_1_3_2_av3.each(avt_jQuery_1_3_2_av3.data(this, "events").live || [], function(i, fn){
 		if ( check.test(fn.type) ) {
-			var elem = avt_jQuery_1_3_2(event.target).closest(fn.data)[0];
+			var elem = avt_jQuery_1_3_2_av3(event.target).closest(fn.data)[0];
 			if ( elem )
 				elems.push({ elem: elem, fn: fn });
 		}
 	});
 
 	elems.sort(function(a,b) {
-		return avt_jQuery_1_3_2.data(a.elem, "closest") - avt_jQuery_1_3_2.data(b.elem, "closest");
+		return avt_jQuery_1_3_2_av3.data(a.elem, "closest") - avt_jQuery_1_3_2_av3.data(b.elem, "closest");
 	});
 	
-	avt_jQuery_1_3_2.each(elems, function(){
+	avt_jQuery_1_3_2_av3.each(elems, function(){
 		if ( this.fn.call(this.elem, event, this.fn.data) === false )
 			return (stop = false);
 	});
@@ -3016,29 +3016,29 @@ function liveConvert(type, selector){
 	return ["live", type, selector.replace(/\./g, "`").replace(/ /g, "|")].join(".");
 }
 
-avt_jQuery_1_3_2.extend({
+avt_jQuery_1_3_2_av3.extend({
 	isReady: false,
 	readyList: [],
 	// Handle when the DOM is ready
 	ready: function() {
 		// Make sure that the DOM is not already loaded
-		if ( !avt_jQuery_1_3_2.isReady ) {
+		if ( !avt_jQuery_1_3_2_av3.isReady ) {
 			// Remember that the DOM is ready
-			avt_jQuery_1_3_2.isReady = true;
+			avt_jQuery_1_3_2_av3.isReady = true;
 
 			// If there are functions bound, to execute
-			if ( avt_jQuery_1_3_2.readyList ) {
+			if ( avt_jQuery_1_3_2_av3.readyList ) {
 				// Execute all of them
-				avt_jQuery_1_3_2.each( avt_jQuery_1_3_2.readyList, function(){
-					this.call( document, avt_jQuery_1_3_2 );
+				avt_jQuery_1_3_2_av3.each( avt_jQuery_1_3_2_av3.readyList, function(){
+					this.call( document, avt_jQuery_1_3_2_av3 );
 				});
 
 				// Reset the list of functions
-				avt_jQuery_1_3_2.readyList = null;
+				avt_jQuery_1_3_2_av3.readyList = null;
 			}
 
 			// Trigger any bound ready events
-			avt_jQuery_1_3_2(document).triggerHandler("ready");
+			avt_jQuery_1_3_2_av3(document).triggerHandler("ready");
 		}
 	}
 });
@@ -3054,7 +3054,7 @@ function bindReady(){
 		// Use the handy event callback
 		document.addEventListener( "DOMContentLoaded", function(){
 			document.removeEventListener( "DOMContentLoaded", arguments.callee, false );
-			avt_jQuery_1_3_2.ready();
+			avt_jQuery_1_3_2_av3.ready();
 		}, false );
 
 	// If IE event model is used
@@ -3064,14 +3064,14 @@ function bindReady(){
 		document.attachEvent("onreadystatechange", function(){
 			if ( document.readyState === "complete" ) {
 				document.detachEvent( "onreadystatechange", arguments.callee );
-				avt_jQuery_1_3_2.ready();
+				avt_jQuery_1_3_2_av3.ready();
 			}
 		});
 
 		// If IE and not an iframe
 		// continually check to see if the document is ready
 		if ( document.documentElement.doScroll && window == window.top ) (function(){
-			if ( avt_jQuery_1_3_2.isReady ) return;
+			if ( avt_jQuery_1_3_2_av3.isReady ) return;
 
 			try {
 				// If IE is used, use the trick by Diego Perini
@@ -3083,20 +3083,20 @@ function bindReady(){
 			}
 
 			// and execute any waiting functions
-			avt_jQuery_1_3_2.ready();
+			avt_jQuery_1_3_2_av3.ready();
 		})();
 	}
 
 	// A fallback to window.onload, that will always work
-	avt_jQuery_1_3_2.event.add( window, "load", avt_jQuery_1_3_2.ready );
+	avt_jQuery_1_3_2_av3.event.add( window, "load", avt_jQuery_1_3_2_av3.ready );
 }
 
-avt_jQuery_1_3_2.each( ("blur,focus,load,resize,scroll,unload,click,dblclick," +
+avt_jQuery_1_3_2_av3.each( ("blur,focus,load,resize,scroll,unload,click,dblclick," +
 	"mousedown,mouseup,mousemove,mouseover,mouseout,mouseenter,mouseleave," +
 	"change,select,submit,keydown,keypress,keyup,error").split(","), function(i, name){
 
 	// Handle event binding
-	avt_jQuery_1_3_2.fn[name] = function(fn){
+	avt_jQuery_1_3_2_av3.fn[name] = function(fn){
 		return fn ? this.bind(name, fn) : this.trigger(name);
 	};
 });
@@ -3104,15 +3104,15 @@ avt_jQuery_1_3_2.each( ("blur,focus,load,resize,scroll,unload,click,dblclick," +
 // Prevent memory leaks in IE
 // And prevent errors on refresh with events like mouseover in other browsers
 // Window isn't included so as not to unbind existing unload events
-avt_jQuery_1_3_2( window ).bind( 'unload', function(){ 
-	for ( var id in avt_jQuery_1_3_2.cache )
+avt_jQuery_1_3_2_av3( window ).bind( 'unload', function(){ 
+	for ( var id in avt_jQuery_1_3_2_av3.cache )
 		// Skip the window
-		if ( id != 1 && avt_jQuery_1_3_2.cache[ id ].handle )
-			avt_jQuery_1_3_2.event.remove( avt_jQuery_1_3_2.cache[ id ].handle.elem );
+		if ( id != 1 && avt_jQuery_1_3_2_av3.cache[ id ].handle )
+			avt_jQuery_1_3_2_av3.event.remove( avt_jQuery_1_3_2_av3.cache[ id ].handle.elem );
 }); 
 (function(){
 
-	avt_jQuery_1_3_2.support = {};
+	avt_jQuery_1_3_2_av3.support = {};
 
 	var root = document.documentElement,
 		script = document.createElement("script"),
@@ -3130,7 +3130,7 @@ avt_jQuery_1_3_2( window ).bind( 'unload', function(){
 		return;
 	}
 
-	avt_jQuery_1_3_2.support = {
+	avt_jQuery_1_3_2_av3.support = {
 		// IE strips leading whitespace when .innerHTML is used
 		leadingWhitespace: div.firstChild.nodeType == 3,
 		
@@ -3180,7 +3180,7 @@ avt_jQuery_1_3_2( window ).bind( 'unload', function(){
 	// tag with appendChild/createTextNode
 	// (IE doesn't support this, fails, and uses .text instead)
 	if ( window[ id ] ) {
-		avt_jQuery_1_3_2.support.scriptEval = true;
+		avt_jQuery_1_3_2_av3.support.scriptEval = true;
 		delete window[ id ];
 	}
 
@@ -3190,7 +3190,7 @@ avt_jQuery_1_3_2( window ).bind( 'unload', function(){
 		div.attachEvent("onclick", function(){
 			// Cloning a node shouldn't copy over any
 			// bound event handlers (IE does this)
-			avt_jQuery_1_3_2.support.noCloneEvent = false;
+			avt_jQuery_1_3_2_av3.support.noCloneEvent = false;
 			div.detachEvent("onclick", arguments.callee);
 		});
 		div.cloneNode(true).fireEvent("onclick");
@@ -3198,19 +3198,19 @@ avt_jQuery_1_3_2( window ).bind( 'unload', function(){
 
 	// Figure out if the W3C box model works as expected
 	// document.body must exist before we can do this
-	avt_jQuery_1_3_2(function(){
+	avt_jQuery_1_3_2_av3(function(){
 		var div = document.createElement("div");
 		div.style.width = div.style.paddingLeft = "1px";
 
 		document.body.appendChild( div );
-		avt_jQuery_1_3_2.boxModel = avt_jQuery_1_3_2.support.boxModel = div.offsetWidth === 2;
+		avt_jQuery_1_3_2_av3.boxModel = avt_jQuery_1_3_2_av3.support.boxModel = div.offsetWidth === 2;
 		document.body.removeChild( div ).style.display = 'none';
 	});
 })();
 
-var styleFloat = avt_jQuery_1_3_2.support.cssFloat ? "cssFloat" : "styleFloat";
+var styleFloat = avt_jQuery_1_3_2_av3.support.cssFloat ? "cssFloat" : "styleFloat";
 
-avt_jQuery_1_3_2.props = {
+avt_jQuery_1_3_2_av3.props = {
 	"for": "htmlFor",
 	"class": "className",
 	"float": styleFloat,
@@ -3222,9 +3222,9 @@ avt_jQuery_1_3_2.props = {
 	rowspan: "rowSpan",
 	tabindex: "tabIndex"
 };
-avt_jQuery_1_3_2.fn.extend({
+avt_jQuery_1_3_2_av3.fn.extend({
 	// Keep a copy of the old load
-	_load: avt_jQuery_1_3_2.fn.load,
+	_load: avt_jQuery_1_3_2_av3.fn.load,
 
 	load: function( url, params, callback ) {
 		if ( typeof url !== "string" )
@@ -3242,21 +3242,21 @@ avt_jQuery_1_3_2.fn.extend({
 		// If the second parameter was provided
 		if ( params )
 			// If it's a function
-			if ( avt_jQuery_1_3_2.isFunction( params ) ) {
+			if ( avt_jQuery_1_3_2_av3.isFunction( params ) ) {
 				// We assume that it's the callback
 				callback = params;
 				params = null;
 
 			// Otherwise, build a param string
 			} else if( typeof params === "object" ) {
-				params = avt_jQuery_1_3_2.param( params );
+				params = avt_jQuery_1_3_2_av3.param( params );
 				type = "POST";
 			}
 
 		var self = this;
 
 		// Request the remote document
-		avt_jQuery_1_3_2.ajax({
+		avt_jQuery_1_3_2_av3.ajax({
 			url: url,
 			type: type,
 			dataType: "html",
@@ -3267,7 +3267,7 @@ avt_jQuery_1_3_2.fn.extend({
 					// See if a selector was specified
 					self.html( selector ?
 						// Create a dummy div to hold the results
-						avt_jQuery_1_3_2("<div/>")
+						avt_jQuery_1_3_2_av3("<div/>")
 							// inject the contents of the document in, removing the scripts
 							// to avoid any 'Permission Denied' errors in IE
 							.append(res.responseText.replace(/<script(.|\s)*?\/script>/g, ""))
@@ -3286,11 +3286,11 @@ avt_jQuery_1_3_2.fn.extend({
 	},
 
 	serialize: function() {
-		return avt_jQuery_1_3_2.param(this.serializeArray());
+		return avt_jQuery_1_3_2_av3.param(this.serializeArray());
 	},
 	serializeArray: function() {
 		return this.map(function(){
-			return this.elements ? avt_jQuery_1_3_2.makeArray(this.elements) : this;
+			return this.elements ? avt_jQuery_1_3_2_av3.makeArray(this.elements) : this;
 		})
 		.filter(function(){
 			return this.name && !this.disabled &&
@@ -3298,10 +3298,10 @@ avt_jQuery_1_3_2.fn.extend({
 					/text|hidden|password|search/i.test(this.type));
 		})
 		.map(function(i, elem){
-			var val = avt_jQuery_1_3_2(this).val();
+			var val = avt_jQuery_1_3_2_av3(this).val();
 			return val == null ? null :
-				avt_jQuery_1_3_2.isArray(val) ?
-					avt_jQuery_1_3_2.map( val, function(val, i){
+				avt_jQuery_1_3_2_av3.isArray(val) ?
+					avt_jQuery_1_3_2_av3.map( val, function(val, i){
 						return {name: elem.name, value: val};
 					}) :
 					{name: elem.name, value: val};
@@ -3310,24 +3310,24 @@ avt_jQuery_1_3_2.fn.extend({
 });
 
 // Attach a bunch of functions for handling common AJAX events
-avt_jQuery_1_3_2.each( "ajaxStart,ajaxStop,ajaxComplete,ajaxError,ajaxSuccess,ajaxSend".split(","), function(i,o){
-	avt_jQuery_1_3_2.fn[o] = function(f){
+avt_jQuery_1_3_2_av3.each( "ajaxStart,ajaxStop,ajaxComplete,ajaxError,ajaxSuccess,ajaxSend".split(","), function(i,o){
+	avt_jQuery_1_3_2_av3.fn[o] = function(f){
 		return this.bind(o, f);
 	};
 });
 
 var jsc = now();
 
-avt_jQuery_1_3_2.extend({
+avt_jQuery_1_3_2_av3.extend({
   
 	get: function( url, data, callback, type ) {
 		// shift arguments if data argument was ommited
-		if ( avt_jQuery_1_3_2.isFunction( data ) ) {
+		if ( avt_jQuery_1_3_2_av3.isFunction( data ) ) {
 			callback = data;
 			data = null;
 		}
 
-		return avt_jQuery_1_3_2.ajax({
+		return avt_jQuery_1_3_2_av3.ajax({
 			type: "GET",
 			url: url,
 			data: data,
@@ -3337,20 +3337,20 @@ avt_jQuery_1_3_2.extend({
 	},
 
 	getScript: function( url, callback ) {
-		return avt_jQuery_1_3_2.get(url, null, callback, "script");
+		return avt_jQuery_1_3_2_av3.get(url, null, callback, "script");
 	},
 
 	getJSON: function( url, data, callback ) {
-		return avt_jQuery_1_3_2.get(url, data, callback, "json");
+		return avt_jQuery_1_3_2_av3.get(url, data, callback, "json");
 	},
 
 	post: function( url, data, callback, type ) {
-		if ( avt_jQuery_1_3_2.isFunction( data ) ) {
+		if ( avt_jQuery_1_3_2_av3.isFunction( data ) ) {
 			callback = data;
 			data = {};
 		}
 
-		return avt_jQuery_1_3_2.ajax({
+		return avt_jQuery_1_3_2_av3.ajax({
 			type: "POST",
 			url: url,
 			data: data,
@@ -3360,7 +3360,7 @@ avt_jQuery_1_3_2.extend({
 	},
 
 	ajaxSetup: function( settings ) {
-		avt_jQuery_1_3_2.extend( avt_jQuery_1_3_2.ajaxSettings, settings );
+		avt_jQuery_1_3_2_av3.extend( avt_jQuery_1_3_2_av3.ajaxSettings, settings );
 	},
 
 	ajaxSettings: {
@@ -3378,7 +3378,7 @@ avt_jQuery_1_3_2.extend({
 		*/
 		// Create the request object; Microsoft failed to properly
 		// implement the XMLHttpRequest in IE7, so we use the ActiveXObject when it is available
-		// This function can be overriden by calling avt_jQuery_1_3_2.ajaxSetup
+		// This function can be overriden by calling avt_jQuery_1_3_2_av3.ajaxSetup
 		xhr:function(){
 			return window.ActiveXObject ? new ActiveXObject("Microsoft.XMLHTTP") : new XMLHttpRequest();
 		},
@@ -3398,14 +3398,14 @@ avt_jQuery_1_3_2.extend({
 	ajax: function( s ) {
 		// Extend the settings, but re-extend 's' so that it can be
 		// checked again later (in the test suite, specifically)
-		s = avt_jQuery_1_3_2.extend(true, s, avt_jQuery_1_3_2.extend(true, {}, avt_jQuery_1_3_2.ajaxSettings, s));
+		s = avt_jQuery_1_3_2_av3.extend(true, s, avt_jQuery_1_3_2_av3.extend(true, {}, avt_jQuery_1_3_2_av3.ajaxSettings, s));
 
 		var jsonp, jsre = /=\?(&|$)/g, status, data,
 			type = s.type.toUpperCase();
 
 		// convert data if not already a string
 		if ( s.data && s.processData && typeof s.data !== "string" )
-			s.data = avt_jQuery_1_3_2.param(s.data);
+			s.data = avt_jQuery_1_3_2_av3.param(s.data);
 
 		// Handle JSONP Parameter Callbacks
 		if ( s.dataType == "jsonp" ) {
@@ -3463,8 +3463,8 @@ avt_jQuery_1_3_2.extend({
 		}
 
 		// Watch for a new set of requests
-		if ( s.global && ! avt_jQuery_1_3_2.active++ )
-			avt_jQuery_1_3_2.event.trigger( "ajaxStart" );
+		if ( s.global && ! avt_jQuery_1_3_2_av3.active++ )
+			avt_jQuery_1_3_2_av3.event.trigger( "ajaxStart" );
 
 		// Matches an absolute URL, and saves the domain
 		var parts = /^(\w+:)?\/\/([^\/?#]+)/.exec( s.url );
@@ -3526,7 +3526,7 @@ avt_jQuery_1_3_2.extend({
 			// Set the If-Modified-Since header, if ifModified mode.
 			if ( s.ifModified )
 				xhr.setRequestHeader("If-Modified-Since",
-					avt_jQuery_1_3_2.lastModified[s.url] || "Thu, 01 Jan 1970 00:00:00 GMT" );
+					avt_jQuery_1_3_2_av3.lastModified[s.url] || "Thu, 01 Jan 1970 00:00:00 GMT" );
 
 			// Set header so the called script knows that it's an XMLHttpRequest
 			xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
@@ -3540,27 +3540,27 @@ avt_jQuery_1_3_2.extend({
 		// Allow custom headers/mimetypes and early abort
 		if ( s.beforeSend && s.beforeSend(xhr, s) === false ) {
 			// Handle the global AJAX counter
-			if ( s.global && ! --avt_jQuery_1_3_2.active )
-				avt_jQuery_1_3_2.event.trigger( "ajaxStop" );
+			if ( s.global && ! --avt_jQuery_1_3_2_av3.active )
+				avt_jQuery_1_3_2_av3.event.trigger( "ajaxStop" );
 			// close opended socket
 			xhr.abort();
 			return false;
 		}
 
 		if ( s.global )
-			avt_jQuery_1_3_2.event.trigger("ajaxSend", [xhr, s]);
+			avt_jQuery_1_3_2_av3.event.trigger("ajaxSend", [xhr, s]);
 
 		// Wait for a response to come back
 		var onreadystatechange = function(isTimeout){
-			// The request was aborted, clear the interval and decrement avt_jQuery_1_3_2.active
+			// The request was aborted, clear the interval and decrement avt_jQuery_1_3_2_av3.active
 			if (xhr.readyState == 0) {
 				if (ival) {
 					// clear poll interval
 					clearInterval(ival);
 					ival = null;
 					// Handle the global AJAX counter
-					if ( s.global && ! --avt_jQuery_1_3_2.active )
-						avt_jQuery_1_3_2.event.trigger( "ajaxStop" );
+					if ( s.global && ! --avt_jQuery_1_3_2_av3.active )
+						avt_jQuery_1_3_2_av3.event.trigger( "ajaxStop" );
 				}
 			// The transfer is complete and the data is available, or the request timed out
 			} else if ( !requestDone && xhr && (xhr.readyState == 4 || isTimeout == "timeout") ) {
@@ -3573,15 +3573,15 @@ avt_jQuery_1_3_2.extend({
 				}
 
 				status = isTimeout == "timeout" ? "timeout" :
-					!avt_jQuery_1_3_2.httpSuccess( xhr ) ? "error" :
-					s.ifModified && avt_jQuery_1_3_2.httpNotModified( xhr, s.url ) ? "notmodified" :
+					!avt_jQuery_1_3_2_av3.httpSuccess( xhr ) ? "error" :
+					s.ifModified && avt_jQuery_1_3_2_av3.httpNotModified( xhr, s.url ) ? "notmodified" :
 					"success";
 
 				if ( status == "success" ) {
 					// Watch for, and catch, XML document parse errors
 					try {
 						// process the data (runs the xml through httpData regardless of callback)
-						data = avt_jQuery_1_3_2.httpData( xhr, s.dataType, s );
+						data = avt_jQuery_1_3_2_av3.httpData( xhr, s.dataType, s );
 					} catch(e) {
 						status = "parsererror";
 					}
@@ -3596,13 +3596,13 @@ avt_jQuery_1_3_2.extend({
 					} catch(e) {} // swallow exception thrown by FF if header is not available
 
 					if ( s.ifModified && modRes )
-						avt_jQuery_1_3_2.lastModified[s.url] = modRes;
+						avt_jQuery_1_3_2_av3.lastModified[s.url] = modRes;
 
 					// JSONP handles its own success callback
 					if ( !jsonp )
 						success();
 				} else
-					avt_jQuery_1_3_2.handleError(s, xhr, status);
+					avt_jQuery_1_3_2_av3.handleError(s, xhr, status);
 
 				// Fire the complete handlers
 				complete();
@@ -3633,7 +3633,7 @@ avt_jQuery_1_3_2.extend({
 		try {
 			xhr.send(s.data);
 		} catch(e) {
-			avt_jQuery_1_3_2.handleError(s, xhr, null, e);
+			avt_jQuery_1_3_2_av3.handleError(s, xhr, null, e);
 		}
 
 		// firefox 1.5 doesn't fire statechange for sync requests
@@ -3647,7 +3647,7 @@ avt_jQuery_1_3_2.extend({
 
 			// Fire the global callback
 			if ( s.global )
-				avt_jQuery_1_3_2.event.trigger( "ajaxSuccess", [xhr, s] );
+				avt_jQuery_1_3_2_av3.event.trigger( "ajaxSuccess", [xhr, s] );
 		}
 
 		function complete(){
@@ -3657,11 +3657,11 @@ avt_jQuery_1_3_2.extend({
 
 			// The request was completed
 			if ( s.global )
-				avt_jQuery_1_3_2.event.trigger( "ajaxComplete", [xhr, s] );
+				avt_jQuery_1_3_2_av3.event.trigger( "ajaxComplete", [xhr, s] );
 
 			// Handle the global AJAX counter
-			if ( s.global && ! --avt_jQuery_1_3_2.active )
-				avt_jQuery_1_3_2.event.trigger( "ajaxStop" );
+			if ( s.global && ! --avt_jQuery_1_3_2_av3.active )
+				avt_jQuery_1_3_2_av3.event.trigger( "ajaxStop" );
 		}
 
 		// return XMLHttpRequest to allow aborting the request etc.
@@ -3674,7 +3674,7 @@ avt_jQuery_1_3_2.extend({
 
 		// Fire the global callback
 		if ( s.global )
-			avt_jQuery_1_3_2.event.trigger( "ajaxError", [xhr, s, e] );
+			avt_jQuery_1_3_2_av3.event.trigger( "ajaxError", [xhr, s, e] );
 	},
 
 	// Counter for holding the number of active queries
@@ -3696,7 +3696,7 @@ avt_jQuery_1_3_2.extend({
 			var xhrRes = xhr.getResponseHeader("Last-Modified");
 
 			// Firefox always returns 200. check Last-Modified date
-			return xhr.status == 304 || xhrRes == avt_jQuery_1_3_2.lastModified[url];
+			return xhr.status == 304 || xhrRes == avt_jQuery_1_3_2_av3.lastModified[url];
 		} catch(e){}
 		return false;
 	},
@@ -3719,7 +3719,7 @@ avt_jQuery_1_3_2.extend({
 
 			// If the type is "script", eval it in global context
 			if ( type == "script" )
-				avt_jQuery_1_3_2.globalEval( data );
+				avt_jQuery_1_3_2_av3.globalEval( data );
 
 			// Get the JavaScript object, if JSON is used.
 			if ( type == "json" )
@@ -3740,9 +3740,9 @@ avt_jQuery_1_3_2.extend({
 
 		// If an array was passed in, assume that it is an array
 		// of form elements
-		if ( avt_jQuery_1_3_2.isArray(a) || a.avt_jQuery_1_3_2 )
+		if ( avt_jQuery_1_3_2_av3.isArray(a) || a.avt_jQuery_1_3_2_av3 )
 			// Serialize the form elements
-			avt_jQuery_1_3_2.each( a, function(){
+			avt_jQuery_1_3_2_av3.each( a, function(){
 				add( this.name, this.value );
 			});
 
@@ -3751,12 +3751,12 @@ avt_jQuery_1_3_2.extend({
 			// Serialize the key/values
 			for ( var j in a )
 				// If the value is an array then the key names need to be repeated
-				if ( avt_jQuery_1_3_2.isArray(a[j]) )
-					avt_jQuery_1_3_2.each( a[j], function(){
+				if ( avt_jQuery_1_3_2_av3.isArray(a[j]) )
+					avt_jQuery_1_3_2_av3.each( a[j], function(){
 						add( j, this );
 					});
 				else
-					add( j, avt_jQuery_1_3_2.isFunction(a[j]) ? a[j]() : a[j] );
+					add( j, avt_jQuery_1_3_2_av3.isFunction(a[j]) ? a[j]() : a[j] );
 
 		// Return the resulting serialization
 		return s.join("&").replace(/%20/g, "+");
@@ -3776,29 +3776,29 @@ var elemdisplay = {},
 
 function genFx( type, num ){
 	var obj = {};
-	avt_jQuery_1_3_2.each( fxAttrs.concat.apply([], fxAttrs.slice(0,num)), function(){
+	avt_jQuery_1_3_2_av3.each( fxAttrs.concat.apply([], fxAttrs.slice(0,num)), function(){
 		obj[ this ] = type;
 	});
 	return obj;
 }
 
-avt_jQuery_1_3_2.fn.extend({
+avt_jQuery_1_3_2_av3.fn.extend({
 	show: function(speed,callback){
 		if ( speed ) {
 			return this.animate( genFx("show", 3), speed, callback);
 		} else {
 			for ( var i = 0, l = this.length; i < l; i++ ){
-				var old = avt_jQuery_1_3_2.data(this[i], "olddisplay");
+				var old = avt_jQuery_1_3_2_av3.data(this[i], "olddisplay");
 				
 				this[i].style.display = old || "";
 				
-				if ( avt_jQuery_1_3_2.css(this[i], "display") === "none" ) {
+				if ( avt_jQuery_1_3_2_av3.css(this[i], "display") === "none" ) {
 					var tagName = this[i].tagName, display;
 					
 					if ( elemdisplay[ tagName ] ) {
 						display = elemdisplay[ tagName ];
 					} else {
-						var elem = avt_jQuery_1_3_2("<" + tagName + " />").appendTo("body");
+						var elem = avt_jQuery_1_3_2_av3("<" + tagName + " />").appendTo("body");
 						
 						display = elem.css("display");
 						if ( display === "none" )
@@ -3809,14 +3809,14 @@ avt_jQuery_1_3_2.fn.extend({
 						elemdisplay[ tagName ] = display;
 					}
 					
-					avt_jQuery_1_3_2.data(this[i], "olddisplay", display);
+					avt_jQuery_1_3_2_av3.data(this[i], "olddisplay", display);
 				}
 			}
 
 			// Set the display of the elements in a second loop
 			// to avoid the constant reflow
 			for ( var i = 0, l = this.length; i < l; i++ ){
-				this[i].style.display = avt_jQuery_1_3_2.data(this[i], "olddisplay") || "";
+				this[i].style.display = avt_jQuery_1_3_2_av3.data(this[i], "olddisplay") || "";
 			}
 			
 			return this;
@@ -3828,9 +3828,9 @@ avt_jQuery_1_3_2.fn.extend({
 			return this.animate( genFx("hide", 3), speed, callback);
 		} else {
 			for ( var i = 0, l = this.length; i < l; i++ ){
-				var old = avt_jQuery_1_3_2.data(this[i], "olddisplay");
+				var old = avt_jQuery_1_3_2_av3.data(this[i], "olddisplay");
 				if ( !old && old !== "none" )
-					avt_jQuery_1_3_2.data(this[i], "olddisplay", avt_jQuery_1_3_2.css(this[i], "display"));
+					avt_jQuery_1_3_2_av3.data(this[i], "olddisplay", avt_jQuery_1_3_2_av3.css(this[i], "display"));
 			}
 
 			// Set the display of the elements in a second loop
@@ -3844,17 +3844,17 @@ avt_jQuery_1_3_2.fn.extend({
 	},
 
 	// Save the old toggle function
-	_toggle: avt_jQuery_1_3_2.fn.toggle,
+	_toggle: avt_jQuery_1_3_2_av3.fn.toggle,
 
 	toggle: function( fn, fn2 ){
 		var bool = typeof fn === "boolean";
 
-		return avt_jQuery_1_3_2.isFunction(fn) && avt_jQuery_1_3_2.isFunction(fn2) ?
+		return avt_jQuery_1_3_2_av3.isFunction(fn) && avt_jQuery_1_3_2_av3.isFunction(fn2) ?
 			this._toggle.apply( this, arguments ) :
 			fn == null || bool ?
 				this.each(function(){
-					var state = bool ? fn : avt_jQuery_1_3_2(this).is(":hidden");
-					avt_jQuery_1_3_2(this)[ state ? "show" : "hide" ]();
+					var state = bool ? fn : avt_jQuery_1_3_2_av3(this).is(":hidden");
+					avt_jQuery_1_3_2_av3(this)[ state ? "show" : "hide" ]();
 				}) :
 				this.animate(genFx("toggle", 3), fn, fn2);
 	},
@@ -3864,12 +3864,12 @@ avt_jQuery_1_3_2.fn.extend({
 	},
 
 	animate: function( prop, speed, easing, callback ) {
-		var optall = avt_jQuery_1_3_2.speed(speed, easing, callback);
+		var optall = avt_jQuery_1_3_2_av3.speed(speed, easing, callback);
 
 		return this[ optall.queue === false ? "each" : "queue" ](function(){
 		
-			var opt = avt_jQuery_1_3_2.extend({}, optall), p,
-				hidden = this.nodeType == 1 && avt_jQuery_1_3_2(this).is(":hidden"),
+			var opt = avt_jQuery_1_3_2_av3.extend({}, optall), p,
+				hidden = this.nodeType == 1 && avt_jQuery_1_3_2_av3(this).is(":hidden"),
 				self = this;
 	
 			for ( p in prop ) {
@@ -3878,7 +3878,7 @@ avt_jQuery_1_3_2.fn.extend({
 
 				if ( ( p == "height" || p == "width" ) && this.style ) {
 					// Store display property
-					opt.display = avt_jQuery_1_3_2.css(this, "display");
+					opt.display = avt_jQuery_1_3_2_av3.css(this, "display");
 
 					// Make sure that nothing sneaks out
 					opt.overflow = this.style.overflow;
@@ -3888,10 +3888,10 @@ avt_jQuery_1_3_2.fn.extend({
 			if ( opt.overflow != null )
 				this.style.overflow = "hidden";
 
-			opt.curAnim = avt_jQuery_1_3_2.extend({}, prop);
+			opt.curAnim = avt_jQuery_1_3_2_av3.extend({}, prop);
 
-			avt_jQuery_1_3_2.each( prop, function(name, val){
-				var e = new avt_jQuery_1_3_2.fx( self, opt, name );
+			avt_jQuery_1_3_2_av3.each( prop, function(name, val){
+				var e = new avt_jQuery_1_3_2_av3.fx( self, opt, name );
 
 				if ( /toggle|show|hide/.test(val) )
 					e[ val == "toggle" ? hidden ? "show" : "hide" : val ]( prop );
@@ -3926,7 +3926,7 @@ avt_jQuery_1_3_2.fn.extend({
 	},
 
 	stop: function(clearQueue, gotoEnd){
-		var timers = avt_jQuery_1_3_2.timers;
+		var timers = avt_jQuery_1_3_2_av3.timers;
 
 		if (clearQueue)
 			this.queue([]);
@@ -3952,37 +3952,37 @@ avt_jQuery_1_3_2.fn.extend({
 });
 
 // Generate shortcuts for custom animations
-avt_jQuery_1_3_2.each({
+avt_jQuery_1_3_2_av3.each({
 	slideDown: genFx("show", 1),
 	slideUp: genFx("hide", 1),
 	slideToggle: genFx("toggle", 1),
 	fadeIn: { opacity: "show" },
 	fadeOut: { opacity: "hide" }
 }, function( name, props ){
-	avt_jQuery_1_3_2.fn[ name ] = function( speed, callback ){
+	avt_jQuery_1_3_2_av3.fn[ name ] = function( speed, callback ){
 		return this.animate( props, speed, callback );
 	};
 });
 
-avt_jQuery_1_3_2.extend({
+avt_jQuery_1_3_2_av3.extend({
 
 	speed: function(speed, easing, fn) {
 		var opt = typeof speed === "object" ? speed : {
 			complete: fn || !fn && easing ||
-				avt_jQuery_1_3_2.isFunction( speed ) && speed,
+				avt_jQuery_1_3_2_av3.isFunction( speed ) && speed,
 			duration: speed,
-			easing: fn && easing || easing && !avt_jQuery_1_3_2.isFunction(easing) && easing
+			easing: fn && easing || easing && !avt_jQuery_1_3_2_av3.isFunction(easing) && easing
 		};
 
-		opt.duration = avt_jQuery_1_3_2.fx.off ? 0 : typeof opt.duration === "number" ? opt.duration :
-			avt_jQuery_1_3_2.fx.speeds[opt.duration] || avt_jQuery_1_3_2.fx.speeds._default;
+		opt.duration = avt_jQuery_1_3_2_av3.fx.off ? 0 : typeof opt.duration === "number" ? opt.duration :
+			avt_jQuery_1_3_2_av3.fx.speeds[opt.duration] || avt_jQuery_1_3_2_av3.fx.speeds._default;
 
 		// Queueing
 		opt.old = opt.complete;
 		opt.complete = function(){
 			if ( opt.queue !== false )
-				avt_jQuery_1_3_2(this).dequeue();
-			if ( avt_jQuery_1_3_2.isFunction( opt.old ) )
+				avt_jQuery_1_3_2_av3(this).dequeue();
+			if ( avt_jQuery_1_3_2_av3.isFunction( opt.old ) )
 				opt.old.call( this );
 		};
 
@@ -4011,14 +4011,14 @@ avt_jQuery_1_3_2.extend({
 
 });
 
-avt_jQuery_1_3_2.fx.prototype = {
+avt_jQuery_1_3_2_av3.fx.prototype = {
 
 	// Simple function for setting a style value
 	update: function(){
 		if ( this.options.step )
 			this.options.step.call( this.elem, this.now, this );
 
-		(avt_jQuery_1_3_2.fx.step[this.prop] || avt_jQuery_1_3_2.fx.step._default)( this );
+		(avt_jQuery_1_3_2_av3.fx.step[this.prop] || avt_jQuery_1_3_2_av3.fx.step._default)( this );
 
 		// Set display property to block for height/width animations
 		if ( ( this.prop == "height" || this.prop == "width" ) && this.elem.style )
@@ -4030,8 +4030,8 @@ avt_jQuery_1_3_2.fx.prototype = {
 		if ( this.elem[this.prop] != null && (!this.elem.style || this.elem.style[this.prop] == null) )
 			return this.elem[ this.prop ];
 
-		var r = parseFloat(avt_jQuery_1_3_2.css(this.elem, this.prop, force));
-		return r && r > -10000 ? r : parseFloat(avt_jQuery_1_3_2.curCSS(this.elem, this.prop)) || 0;
+		var r = parseFloat(avt_jQuery_1_3_2_av3.css(this.elem, this.prop, force));
+		return r && r > -10000 ? r : parseFloat(avt_jQuery_1_3_2_av3.curCSS(this.elem, this.prop)) || 0;
 	},
 
 	// Start an animation from one number to another
@@ -4050,9 +4050,9 @@ avt_jQuery_1_3_2.fx.prototype = {
 
 		t.elem = this.elem;
 
-		if ( t() && avt_jQuery_1_3_2.timers.push(t) && !timerId ) {
+		if ( t() && avt_jQuery_1_3_2_av3.timers.push(t) && !timerId ) {
 			timerId = setInterval(function(){
-				var timers = avt_jQuery_1_3_2.timers;
+				var timers = avt_jQuery_1_3_2_av3.timers;
 
 				for ( var i = 0; i < timers.length; i++ )
 					if ( !timers[i]() )
@@ -4069,7 +4069,7 @@ avt_jQuery_1_3_2.fx.prototype = {
 	// Simple 'show' function
 	show: function(){
 		// Remember where we started, so that we can go back to it later
-		this.options.orig[this.prop] = avt_jQuery_1_3_2.attr( this.elem.style, this.prop );
+		this.options.orig[this.prop] = avt_jQuery_1_3_2_av3.attr( this.elem.style, this.prop );
 		this.options.show = true;
 
 		// Begin the animation
@@ -4078,13 +4078,13 @@ avt_jQuery_1_3_2.fx.prototype = {
 		this.custom(this.prop == "width" || this.prop == "height" ? 1 : 0, this.cur());
 
 		// Start by showing the element
-		avt_jQuery_1_3_2(this.elem).show();
+		avt_jQuery_1_3_2_av3(this.elem).show();
 	},
 
 	// Simple 'hide' function
 	hide: function(){
 		// Remember where we started, so that we can go back to it later
-		this.options.orig[this.prop] = avt_jQuery_1_3_2.attr( this.elem.style, this.prop );
+		this.options.orig[this.prop] = avt_jQuery_1_3_2_av3.attr( this.elem.style, this.prop );
 		this.options.hide = true;
 
 		// Begin the animation
@@ -4114,18 +4114,18 @@ avt_jQuery_1_3_2.fx.prototype = {
 
 					// Reset the display
 					this.elem.style.display = this.options.display;
-					if ( avt_jQuery_1_3_2.css(this.elem, "display") == "none" )
+					if ( avt_jQuery_1_3_2_av3.css(this.elem, "display") == "none" )
 						this.elem.style.display = "block";
 				}
 
 				// Hide the element if the "hide" operation was done
 				if ( this.options.hide )
-					avt_jQuery_1_3_2(this.elem).hide();
+					avt_jQuery_1_3_2_av3(this.elem).hide();
 
 				// Reset the properties, if the item has been hidden or shown
 				if ( this.options.hide || this.options.show )
 					for ( var p in this.options.curAnim )
-						avt_jQuery_1_3_2.attr(this.elem.style, p, this.options.orig[p]);
+						avt_jQuery_1_3_2_av3.attr(this.elem.style, p, this.options.orig[p]);
 					
 				// Execute the complete function
 				this.options.complete.call( this.elem );
@@ -4137,7 +4137,7 @@ avt_jQuery_1_3_2.fx.prototype = {
 			this.state = n / this.options.duration;
 
 			// Perform the easing function, defaults to swing
-			this.pos = avt_jQuery_1_3_2.easing[this.options.easing || (avt_jQuery_1_3_2.easing.swing ? "swing" : "linear")](this.state, n, 0, 1, this.options.duration);
+			this.pos = avt_jQuery_1_3_2_av3.easing[this.options.easing || (avt_jQuery_1_3_2_av3.easing.swing ? "swing" : "linear")](this.state, n, 0, 1, this.options.duration);
 			this.now = this.start + ((this.end - this.start) * this.pos);
 
 			// Perform the next step of the animation
@@ -4149,7 +4149,7 @@ avt_jQuery_1_3_2.fx.prototype = {
 
 };
 
-avt_jQuery_1_3_2.extend( avt_jQuery_1_3_2.fx, {
+avt_jQuery_1_3_2_av3.extend( avt_jQuery_1_3_2_av3.fx, {
 	speeds:{
 		slow: 600,
  		fast: 200,
@@ -4159,7 +4159,7 @@ avt_jQuery_1_3_2.extend( avt_jQuery_1_3_2.fx, {
 	step: {
 
 		opacity: function(fx){
-			avt_jQuery_1_3_2.attr(fx.elem.style, "opacity", fx.now);
+			avt_jQuery_1_3_2_av3.attr(fx.elem.style, "opacity", fx.now);
 		},
 
 		_default: function(fx){
@@ -4171,20 +4171,20 @@ avt_jQuery_1_3_2.extend( avt_jQuery_1_3_2.fx, {
 	}
 });
 if ( document.documentElement["getBoundingClientRect"] )
-	avt_jQuery_1_3_2.fn.offset = function() {
+	avt_jQuery_1_3_2_av3.fn.offset = function() {
 		if ( !this[0] ) return { top: 0, left: 0 };
-		if ( this[0] === this[0].ownerDocument.body ) return avt_jQuery_1_3_2.offset.bodyOffset( this[0] );
+		if ( this[0] === this[0].ownerDocument.body ) return avt_jQuery_1_3_2_av3.offset.bodyOffset( this[0] );
 		var box  = this[0].getBoundingClientRect(), doc = this[0].ownerDocument, body = doc.body, docElem = doc.documentElement,
 			clientTop = docElem.clientTop || body.clientTop || 0, clientLeft = docElem.clientLeft || body.clientLeft || 0,
-			top  = box.top  + (self.pageYOffset || avt_jQuery_1_3_2.boxModel && docElem.scrollTop  || body.scrollTop ) - clientTop,
-			left = box.left + (self.pageXOffset || avt_jQuery_1_3_2.boxModel && docElem.scrollLeft || body.scrollLeft) - clientLeft;
+			top  = box.top  + (self.pageYOffset || avt_jQuery_1_3_2_av3.boxModel && docElem.scrollTop  || body.scrollTop ) - clientTop,
+			left = box.left + (self.pageXOffset || avt_jQuery_1_3_2_av3.boxModel && docElem.scrollLeft || body.scrollLeft) - clientLeft;
 		return { top: top, left: left };
 	};
 else 
-	avt_jQuery_1_3_2.fn.offset = function() {
+	avt_jQuery_1_3_2_av3.fn.offset = function() {
 		if ( !this[0] ) return { top: 0, left: 0 };
-		if ( this[0] === this[0].ownerDocument.body ) return avt_jQuery_1_3_2.offset.bodyOffset( this[0] );
-		avt_jQuery_1_3_2.offset.initialized || avt_jQuery_1_3_2.offset.initialize();
+		if ( this[0] === this[0].ownerDocument.body ) return avt_jQuery_1_3_2_av3.offset.bodyOffset( this[0] );
+		avt_jQuery_1_3_2_av3.offset.initialized || avt_jQuery_1_3_2_av3.offset.initialize();
 
 		var elem = this[0], offsetParent = elem.offsetParent, prevOffsetParent = elem,
 			doc = elem.ownerDocument, computedStyle, docElem = doc.documentElement,
@@ -4197,12 +4197,12 @@ else
 			top -= elem.scrollTop, left -= elem.scrollLeft;
 			if ( elem === offsetParent ) {
 				top += elem.offsetTop, left += elem.offsetLeft;
-				if ( avt_jQuery_1_3_2.offset.doesNotAddBorder && !(avt_jQuery_1_3_2.offset.doesAddBorderForTableAndCells && /^t(able|d|h)$/i.test(elem.tagName)) )
+				if ( avt_jQuery_1_3_2_av3.offset.doesNotAddBorder && !(avt_jQuery_1_3_2_av3.offset.doesAddBorderForTableAndCells && /^t(able|d|h)$/i.test(elem.tagName)) )
 					top  += parseInt( computedStyle.borderTopWidth,  10) || 0,
 					left += parseInt( computedStyle.borderLeftWidth, 10) || 0;
 				prevOffsetParent = offsetParent, offsetParent = elem.offsetParent;
 			}
-			if ( avt_jQuery_1_3_2.offset.subtractsBorderForOverflowNotVisible && computedStyle.overflow !== "visible" )
+			if ( avt_jQuery_1_3_2_av3.offset.subtractsBorderForOverflowNotVisible && computedStyle.overflow !== "visible" )
 				top  += parseInt( computedStyle.borderTopWidth,  10) || 0,
 				left += parseInt( computedStyle.borderLeftWidth, 10) || 0;
 			prevComputedStyle = computedStyle;
@@ -4219,7 +4219,7 @@ else
 		return { top: top, left: left };
 	};
 
-avt_jQuery_1_3_2.offset = {
+avt_jQuery_1_3_2_av3.offset = {
 	initialize: function() {
 		if ( this.initialized ) return;
 		var body = document.body, container = document.createElement('div'), innerDiv, checkDiv, table, td, rules, prop, bodyMarginTop = body.style.marginTop,
@@ -4247,17 +4247,17 @@ avt_jQuery_1_3_2.offset = {
 	},
 
 	bodyOffset: function(body) {
-		avt_jQuery_1_3_2.offset.initialized || avt_jQuery_1_3_2.offset.initialize();
+		avt_jQuery_1_3_2_av3.offset.initialized || avt_jQuery_1_3_2_av3.offset.initialize();
 		var top = body.offsetTop, left = body.offsetLeft;
-		if ( avt_jQuery_1_3_2.offset.doesNotIncludeMarginInBodyOffset )
-			top  += parseInt( avt_jQuery_1_3_2.curCSS(body, 'marginTop',  true), 10 ) || 0,
-			left += parseInt( avt_jQuery_1_3_2.curCSS(body, 'marginLeft', true), 10 ) || 0;
+		if ( avt_jQuery_1_3_2_av3.offset.doesNotIncludeMarginInBodyOffset )
+			top  += parseInt( avt_jQuery_1_3_2_av3.curCSS(body, 'marginTop',  true), 10 ) || 0,
+			left += parseInt( avt_jQuery_1_3_2_av3.curCSS(body, 'marginLeft', true), 10 ) || 0;
 		return { top: top, left: left };
 	}
 };
 
 
-avt_jQuery_1_3_2.fn.extend({
+avt_jQuery_1_3_2_av3.fn.extend({
 	position: function() {
 		var left = 0, top = 0, results;
 
@@ -4291,18 +4291,18 @@ avt_jQuery_1_3_2.fn.extend({
 
 	offsetParent: function() {
 		var offsetParent = this[0].offsetParent || document.body;
-		while ( offsetParent && (!/^body|html$/i.test(offsetParent.tagName) && avt_jQuery_1_3_2.css(offsetParent, 'position') == 'static') )
+		while ( offsetParent && (!/^body|html$/i.test(offsetParent.tagName) && avt_jQuery_1_3_2_av3.css(offsetParent, 'position') == 'static') )
 			offsetParent = offsetParent.offsetParent;
-		return avt_jQuery_1_3_2(offsetParent);
+		return avt_jQuery_1_3_2_av3(offsetParent);
 	}
 });
 
 
 // Create scrollLeft and scrollTop methods
-avt_jQuery_1_3_2.each( ['Left', 'Top'], function(i, name) {
+avt_jQuery_1_3_2_av3.each( ['Left', 'Top'], function(i, name) {
 	var method = 'scroll' + name;
 	
-	avt_jQuery_1_3_2.fn[ method ] = function(val) {
+	avt_jQuery_1_3_2_av3.fn[ method ] = function(val) {
 		if (!this[0]) return null;
 
 		return val !== undefined ?
@@ -4311,8 +4311,8 @@ avt_jQuery_1_3_2.each( ['Left', 'Top'], function(i, name) {
 			this.each(function() {
 				this == window || this == document ?
 					window.scrollTo(
-						!i ? val : avt_jQuery_1_3_2(window).scrollLeft(),
-						 i ? val : avt_jQuery_1_3_2(window).scrollTop()
+						!i ? val : avt_jQuery_1_3_2_av3(window).scrollLeft(),
+						 i ? val : avt_jQuery_1_3_2_av3(window).scrollTop()
 					) :
 					this[ method ] = val;
 			}) :
@@ -4320,35 +4320,35 @@ avt_jQuery_1_3_2.each( ['Left', 'Top'], function(i, name) {
 			// Return the scroll offset
 			this[0] == window || this[0] == document ?
 				self[ i ? 'pageYOffset' : 'pageXOffset' ] ||
-					avt_jQuery_1_3_2.boxModel && document.documentElement[ method ] ||
+					avt_jQuery_1_3_2_av3.boxModel && document.documentElement[ method ] ||
 					document.body[ method ] :
 				this[0][ method ];
 	};
 });
 // Create innerHeight, innerWidth, outerHeight and outerWidth methods
-avt_jQuery_1_3_2.each([ "Height", "Width" ], function(i, name){
+avt_jQuery_1_3_2_av3.each([ "Height", "Width" ], function(i, name){
 
 	var tl = i ? "Left"  : "Top",  // top or left
 		br = i ? "Right" : "Bottom", // bottom or right
 		lower = name.toLowerCase();
 
 	// innerHeight and innerWidth
-	avt_jQuery_1_3_2.fn["inner" + name] = function(){
+	avt_jQuery_1_3_2_av3.fn["inner" + name] = function(){
 		return this[0] ?
-			avt_jQuery_1_3_2.css( this[0], lower, false, "padding" ) :
+			avt_jQuery_1_3_2_av3.css( this[0], lower, false, "padding" ) :
 			null;
 	};
 
 	// outerHeight and outerWidth
-	avt_jQuery_1_3_2.fn["outer" + name] = function(margin) {
+	avt_jQuery_1_3_2_av3.fn["outer" + name] = function(margin) {
 		return this[0] ?
-			avt_jQuery_1_3_2.css( this[0], lower, false, margin ? "margin" : "border" ) :
+			avt_jQuery_1_3_2_av3.css( this[0], lower, false, margin ? "margin" : "border" ) :
 			null;
 	};
 	
 	var type = name.toLowerCase();
 
-	avt_jQuery_1_3_2.fn[ type ] = function( size ) {
+	avt_jQuery_1_3_2_av3.fn[ type ] = function( size ) {
 		// Get window width or height
 		return this[0] == window ?
 			// Everyone else use document.documentElement or document.body depending on Quirks vs Standards mode
@@ -4367,7 +4367,7 @@ avt_jQuery_1_3_2.each([ "Height", "Width" ], function(i, name){
 				// Get or set width or height on the element
 				size === undefined ?
 					// Get width or height on the element
-					(this.length ? avt_jQuery_1_3_2.css( this[0], type ) : null) :
+					(this.length ? avt_jQuery_1_3_2_av3.css( this[0], type ) : null) :
 
 					// Set the width or height on the element (default to pixels if value is unitless)
 					this.css( type, typeof size === "string" ? size : size + "px" );
@@ -4376,4 +4376,4 @@ avt_jQuery_1_3_2.each([ "Height", "Width" ], function(i, name){
 });
 })();
 
-avt_jQuery_1_3_2.noConflict();
+avt_jQuery_1_3_2_av3.noConflict();

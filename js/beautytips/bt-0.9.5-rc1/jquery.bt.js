@@ -94,7 +94,7 @@ avt_jQuery_1_3_2_av3.bt = {version: '0.9.5-rc1'};
     return this.each(function(index) {
   
       var opts = avt_jQuery_1_3_2_av3.extend(false, avt_jQuery_1_3_2_av3.bt.defaults, avt_jQuery_1_3_2_av3.bt.options, options);
-  
+
       // clean up the options
       opts.spikeLength = numb(opts.spikeLength);
       opts.spikeGirth = numb(opts.spikeGirth);
@@ -364,10 +364,19 @@ avt_jQuery_1_3_2_av3.bt = {version: '0.9.5-rc1'};
         }
         
         // create the tip content div, populate it, and style it
-        var $text = $('<div class="bt-content"></div>').append(content).css({padding: opts.padding, position: 'absolute', width: (opts.shrinkToFit ? 'auto' : opts.width), zIndex: opts.textzIndex, left: shadowShiftX, top: shadowShiftY}).css(opts.cssStyles);
+        var $text = $('<div class="bt-content"></div>').append(content).css({padding: opts.padding, position: 'absolute', width: (opts.shrinkToFit ? 'auto' : opts.width), zIndex: opts.textzIndex, left: shadowShiftX, top: shadowShiftY});
+        if (typeof(opts.cssStyles) == "string") {
+            if ($text.attr("style") == null)
+                $text.attr("style") = opts.cssStyles;
+            else
+                $text.attr("style", $text.attr("style") + ";" + opts.cssStyles);
+        } else {
+            $text.css(opts.cssStyles);
+        }
+            
         // create the wrapping box which contains text and canvas
         // put the content in it, style it, and append it to the same offset parent as the target
-        var $box = $('<div class="bt-wrapper"></div>').append($text).addClass(opts.cssClass).css({position: 'absolute', width: opts.width, zIndex: opts.wrapperzIndex, visibility:'hidden'}).appendTo(offsetParent);
+        var $box = $('<div class="bt-wrapper"></div>').append($text).addClass(opts.cssClass).css({position: 'absolute', width: opts.width, zIndex: opts.wrapperzIndex, visibility:'hidden', textAlign: 'left'}).appendTo(offsetParent);
         
         // use bgiframe to get around z-index problems in IE6
         // http://plugins.avt_jQuery_1_3_2_av3.com/project/bgiframe
@@ -1205,7 +1214,7 @@ avt_jQuery_1_3_2_av3.bt = {version: '0.9.5-rc1'};
     
     preHide:          function(box){},       // function to run before popup is removed
     hideTip:          function(box, callback) {
-                        $(box).hide();
+                        try { $(box).hide(); } catch (e) {}
                         callback();   // you MUST call "callback" at the end of your animations
                       },
     postHide:         function(){},          // function to run after popup is removed

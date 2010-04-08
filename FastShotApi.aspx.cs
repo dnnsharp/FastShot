@@ -77,7 +77,8 @@ namespace avt.FastShot
                     "image", ResolveUrl(item.ImageUrl), true,
                     "image_w", item.ImageWidth, false,
                     "image_h", item.ImageHeight, false,
-                    "order", viewOrder++, false
+                    "order", viewOrder++, false,
+                    "tplParams", item.TplParams, true
                 );
             }
             rb.EndObject("");
@@ -104,7 +105,7 @@ namespace avt.FastShot
             }
 
             FastShotController fsCtrl = new FastShotController();
-            int id = fsCtrl.AddItem(api.Module.ModuleID, title, desc, thumbUrl, imageUrl, -1, string.IsNullOrEmpty(thumbUrl));
+            int id = fsCtrl.AddItem(api.Module.ModuleID, title, desc, thumbUrl, imageUrl, -1, string.IsNullOrEmpty(thumbUrl), api.OptionalParameter<string>("tplParams", ""));
             ItemInfo item = fsCtrl.GetItemById(id);
             rb.WriteObject(item.ItemId.ToString(),
                     "id", item.ItemId, false,
@@ -116,7 +117,8 @@ namespace avt.FastShot
                     "image", ResolveUrl(item.ImageUrl), true,
                     "image_w", item.ImageWidth, false,
                     "image_h", item.ImageHeight, false,
-                    "order", item.ViewOrder, false
+                    "order", item.ViewOrder, false,
+                    "tplParams", item.TplParams, true
                 );
         }
 
@@ -128,7 +130,7 @@ namespace avt.FastShot
 
             FastShotController fsCtrl = new FastShotController();
             ItemInfo item = fsCtrl.GetItemById(id);
-            fsCtrl.UpdateItem(id, api.Module.ModuleID, title, desc, item.AutoGenerateThumb ? "" : item.ThumbnailUrl, item.ImageUrl, item.ViewOrder, item.AutoGenerateThumb, item.ImageWidth, item.ImageHeight, item.ThumbWidth, item.ThumbHeight, item.FileTime);
+            fsCtrl.UpdateItem(id, api.Module.ModuleID, title, desc, item.AutoGenerateThumb ? "" : item.ThumbnailUrl, item.ImageUrl, item.ViewOrder, item.AutoGenerateThumb, item.ImageWidth, item.ImageHeight, item.ThumbWidth, item.ThumbHeight, item.FileTime, api.OptionalParameter<string>("tplParams", ""));
 
             rb.WriteObject("response", "success", "true", false);
         }
@@ -174,7 +176,7 @@ namespace avt.FastShot
             if (parentFolder.Length > 0 && parentFolder[parentFolder.Length - 1] != '\\')
                 parentFolder += '\\';
 
-            DirectoryInfo dirInfo = new DirectoryInfo(PortalSettings.HomeDirectoryMapPath + parentFolder);
+            DirectoryInfo dirInfo = new DirectoryInfo(api.Portal.HomeDirectoryMapPath + parentFolder);
             rb.BeginArray("folders");
             foreach (DirectoryInfo folder in dirInfo.GetDirectories()) {
                 bool hasChildren = false;
@@ -192,7 +194,7 @@ namespace avt.FastShot
             if (parentFolder.Length > 0 && parentFolder[parentFolder.Length - 1] != '\\')
                 parentFolder += '\\';
 
-            DirectoryInfo dirInfo = new DirectoryInfo(PortalSettings.HomeDirectoryMapPath + parentFolder);
+            DirectoryInfo dirInfo = new DirectoryInfo(api.Portal.HomeDirectoryMapPath + parentFolder);
             rb.BeginArray("files");
             Dictionary<string, bool> ext = new Dictionary<string, bool>();
             ext[".jpg"] = true; ext[".jpeg"] = true; ext[".gif"] = true; 
@@ -235,6 +237,7 @@ namespace avt.FastShot
             public delegate void HandlerProc(AvtApi api, IResponseBuilder rb);
 
             ModuleInfo _mod;
+            PortalInfo _portal;
             private HttpContext _httpContext;
             private Dictionary<string, HandlerProc> _procs;
             private IResponseBuilder _rb;
@@ -284,6 +287,8 @@ namespace avt.FastShot
                     if (_mod == null || _mod.ModuleID <= 0) {
                         throw new Exception();
                     }
+                    PortalController portalCtrl = new PortalController();
+                    _portal = portalCtrl.GetPortal(_mod.PortalID);
                 } catch (Exception ex) {
                     _httpContext.Response.Write(_rb.Error("Invalid module!", false));
                     throw new Exception();
@@ -294,7 +299,7 @@ namespace avt.FastShot
             }
 
             public ModuleInfo Module { get { return _mod; } }
-
+            public PortalInfo Portal { get { return _portal; } }
 
             public void RegisterFn(string fn, HandlerProc handler)
             {

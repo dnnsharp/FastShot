@@ -383,11 +383,12 @@ avt.fs.studio = {
         var _props = avt.fs.$(".propsRoot:first");
         _props.find(".wizerror").hide();
         var _item = avt.fs.items[itemRoot.find(".itemId").text()];
-        _props.find(".itemId").text(_item.id)
-        _props.find(".propsItemName").val(_item.title)
-        _props.find(".propsItemDesc").val(_item.desc)
-        _props.find(".propsItemImage").text(_item.image)
-        _props.find(".propsItemThumb").text(_item.thumb)
+        _props.find(".itemId").text(_item.id);
+        _props.find(".propsItemName").val(_item.title);
+        _props.find(".propsItemDesc").val(_item.desc);
+        _props.find(".propsItemImage").text(_item.image);
+        _props.find(".propsItemThumb").text(_item.thumb);
+        _props.find(".propsItemParams").val(_item.tplParams);
         _props.show();
         avt.fs.$("#helpTabs").tabs("select", 0);
         
@@ -537,7 +538,8 @@ avt.fs.studio = {
             fn: "edit_item",
             id: id,
             title: title,
-            desc: desc
+            desc: desc,
+            tplParams: avt.fs.$.trim(_c.find(".propsItemParams").val())
         }, function(data){
                 avt.fs.studio.loading(false);
                 if (data.error) {

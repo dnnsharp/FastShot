@@ -231,6 +231,15 @@ a.inst_list_link:hover, a.inst_list_link:active {
     color: #424242;
 }
 
+.wizTextInputMedium {
+    border: 1px solid #727272;
+    width: 220px;
+    font-size: 12px;
+    padding: 2px;
+    color: #424242;
+}
+
+
 .wizTextInputLarge {
     border: 1px solid #bdbdbd; 
     width: 300px;

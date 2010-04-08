@@ -1,0 +1,272 @@
+
+.fsGalleriffic_black {
+    background-color: #000000;
+    border: 1px solid #222222;
+}
+
+.fsGalleriffic_black div {
+    color: #f9f9f9;
+}
+
+.fsGalleriffic_black .fsgNavC {
+    
+}
+
+
+.fsGalleriffic_black .fsgNavOuterC {
+    border-bottom: 1px solid #424242;
+    padding: 4px;
+    background-color: #000000;
+}
+
+
+.fsGalleriffic_black div.fsgContent {
+	display: none;
+	clear: both;
+    
+    padding: 4px;
+}
+
+.fsGalleriffic_black div.fsgContent a, .fsGalleriffic_black div.navigation a {
+	text-decoration: none;
+    color: #FF7700;
+}
+.fsGalleriffic_black div.fsgContent a:hover, .fsGalleriffic_black div.fsgContent a:active {
+	text-decoration: underline;
+}
+
+.fsGalleriffic_black div.navigation a.pageLink {
+	height: 77px;
+	line-height: 77px;
+}
+
+.fsGalleriffic_black div.controls {
+	margin-top: 5px;
+	height: 23px;
+}
+.fsGalleriffic_black div.controls a {
+	padding: 5px;
+}
+.fsGalleriffic_black div.ss-controls {
+	float: left;
+}
+.fsGalleriffic_black div.nav-controls {
+	float: right;
+}
+
+.fsGalleriffic_black div.slideshow-container {
+    width: 60%;
+}
+
+
+.fsGalleriffic_black div.loader,
+.fsGalleriffic_black div.slideshow a.advance-link {
+	width: 100%; /* This should be set to be at least the width of the largest image in the slideshow with padding */
+}
+
+.fsGalleriffic_black div.loader,
+.fsGalleriffic_black div.slideshow a.advance-link,
+.fsGalleriffic_black div.caption-container {
+	/*height: 502px; /* This should be set to be at least the height of the largest image in the slideshow with padding */	
+}
+
+.fsGalleriffic_black div.slideshow-container {
+	position: relative;
+	clear: both;
+	float: left;
+}
+
+.fsGalleriffic_black div.loader {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-image: url('images/loader.gif');
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.fsGalleriffic_black div.slideshow span.image-wrapper {
+	display: block;
+	position: absolute;
+	top: 30px;
+	left: 0;
+}
+.fsGalleriffic_black div.slideshow a.advance-link {
+	display: block;
+	/*line-height: 502px; /* This should be set to be at least the height of the largest image in the slideshow with padding */
+	text-align: center;
+    white-space: pre;
+}
+
+.fsGalleriffic_black div.slideshow a.advance-link img {
+    width: 100%;
+    height: auto;
+}
+
+.fsGalleriffic_black div.slideshow a.advance-link:hover,
+.fsGalleriffic_black div.slideshow a.advance-link:active,
+.fsGalleriffic_black div.slideshow a.advance-link:visited {
+	text-decoration: none;
+}
+.fsGalleriffic_black div.slideshow a.advance-link:focus {
+	outline: none;
+}
+
+.fsGalleriffic_black div.slideshow img {
+	border-style: solid;
+	border-width: 1px;
+}
+.fsGalleriffic_black div.caption-container {
+	float: right;
+	position: relative;
+	margin-top: 30px;
+}
+.fsGalleriffic_black span.image-caption {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.fsGalleriffic_black div.caption-container, span.image-caption {
+	width: 334px;
+}
+
+.fsGalleriffic_black div.caption {
+	padding: 0 12px 0 0;
+}
+
+.fsGalleriffic_black div.image-title {
+	font-weight: bold;
+	font-size: 1.4em;
+}
+.fsGalleriffic_black div.image-desc {
+	line-height: 1.3em;
+	padding-top: 12px;
+}
+.fsGalleriffic_black div.download {
+	margin-top: 8px;
+}
+.fsGalleriffic_black div.photo-index {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	padding: 0 0 6px 0;
+}
+.fsGalleriffic_black div.fsgNavC {
+	float: left;
+	position: relative;
+	left: 50%;
+}
+.fsGalleriffic_black div.navigation {
+	float: left;
+	position: relative;
+	left: -50%;
+}
+.fsGalleriffic_black div.navigation a.pageLink {
+	display: block;
+	position: relative;
+	float: left;
+	margin: 2px;
+	width: 16px;
+	background-position:center center;
+	background-repeat:no-repeat;
+}
+.fsGalleriffic_black div.navigation a.pageLink:focus {
+	outline: none;
+}
+
+.fsGalleriffic_black ul.fsgThumbsC {
+	position: relative;
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+.fsGalleriffic_black ul.fsgThumbsC li {
+	float: left;
+	padding: 0;
+	margin: 2px;
+	list-style: none;
+}
+.fsGalleriffic_black a.thumb {
+	padding: 1px;
+	display: block;
+}
+.fsGalleriffic_black a.thumb:focus {
+	outline: none;
+}
+.fsGalleriffic_black ul.fsgThumbsC img {
+	border: none;
+	display: block;
+}
+.fsGalleriffic_black div.pagination {
+	clear: both;
+	position: relative;
+	left: -50%;
+}
+.fsGalleriffic_black div.pagination a, div.pagination span.current, div.pagination span.ellipsis {
+	position: relative;
+	display: block;
+	float: left;
+	margin-right: 2px;
+	padding: 4px 7px 2px 7px;
+	border: 1px solid #ccc;
+}
+.fsGalleriffic_black div.pagination a:hover {
+	text-decoration: none;
+}
+.fsGalleriffic_black div.pagination span.current {
+	font-weight: bold;
+}
+.fsGalleriffic_black div.pagination span.ellipsis {
+	border: none;
+	padding: 5px 0 3px 2px;
+}
+
+.fsGalleriffic_black div.gallery-gutter {
+	clear: both;
+	padding-bottom: 20px;
+}
+
+
+
+
+.fsGalleriffic_black div.caption-container {
+	color: #111;
+}
+.fsGalleriffic_black div.image-title {
+	font-weight: bold;
+	font-size: 1.4em;
+}
+.fsGalleriffic_black div.image-desc {
+	line-height: 1.3em;
+	padding-top: 12px;
+}
+.fsGalleriffic_black div.download {
+	margin-top: 8px;
+}
+.fsGalleriffic_black div.photo-index {
+	color: #d2d2d2;
+}
+.fsGalleriffic_black div.navigation a.prev {
+	background-image: url(prevPageArrow.gif);
+}
+.fsGalleriffic_black div.navigation a.next {
+	background-image: url(nextPageArrow.gif);
+}
+.fsGalleriffic_black div.loader {
+	background-image: url(loader.gif);
+}
+.fsGalleriffic_black div.slideshow img {
+	border-color: #ccc;
+}
+.fsGalleriffic_black ul.fsgThumbsC li.selected a.thumb {
+	background: #000;
+}
+.fsGalleriffic_black div.pagination a:hover {
+	background-color: #eee;
+}
+.fsGalleriffic_black div.pagination span.current {
+	background-color: #000;
+	border-color: #000;
+	color: #fff;
+}

@@ -129,7 +129,12 @@ namespace avt.FastShot
                             if (System.IO.Path.GetFileName(dir)[0] == '.') {
                                 continue;
                             }
-                            templates.Add(JsonEncode(System.IO.Path.GetFileName(dir)));
+                            foreach (string subDir in System.IO.Directory.GetDirectories(dir)) {
+                                if (System.IO.Path.GetFileName(subDir)[0] == '.') {
+                                    continue;
+                                }
+                                templates.Add(JsonEncode(System.IO.Path.GetFileName(dir) + "/" + System.IO.Path.GetFileName(subDir)));
+                            }
                         }
 
                         AJAX.RegisterScriptManager();

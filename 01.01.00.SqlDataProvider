@@ -1,0 +1,279 @@
+﻿-- DROP EVERYTHING
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}avtFastShot_ModuleImages_{objectQualifier}Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
+ALTER TABLE {databaseOwner}[{objectQualifier}avtFastShot_ModuleImages]  DROP CONSTRAINT [FK_{objectQualifier}avtFastShot_ModuleImages_{objectQualifier}Modules]
+GO
+
+
+IF  EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}avtFastShot_GetItemById]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}avtFastShot_GetItemById]
+GO
+IF  EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}avtFastShot_GetItems]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}avtFastShot_GetItems]
+GO
+IF  EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}avtFastShot_DeleteItem]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}avtFastShot_DeleteItem]
+GO
+IF  EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}avtFastShot_InsertItem]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}avtFastShot_InsertItem]
+GO
+IF  EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}avtFastShot_UpdateViewOrder]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}avtFastShot_UpdateViewOrder]
+GO
+IF  EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}avtFastShot_UpdateItem]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}avtFastShot_UpdateItem]
+GO
+
+
+IF  EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}avtFastShot_ModuleImages]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
+DROP TABLE {databaseOwner}[{objectQualifier}avtFastShot_ModuleImages]
+GO
+
+
+
+
+
+
+
+
+
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+
+CREATE procedure {databaseOwner}[{objectQualifier}avtFastShot_GetItemById]
+
+@ItemID				int
+
+as
+
+SELECT * FROM {objectQualifier}avtFastShot_ModuleImages WHERE ItemID = @ItemID
+
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE {databaseOwner}[{objectQualifier}avtFastShot_ModuleImages](
+	[ModuleId] [int] NOT NULL,
+	[ItemId] [int] IDENTITY(1,1) NOT NULL,
+	[Title] [nvarchar](256) NOT NULL,
+	[Description] [ntext] NULL,
+	[ThumbnailUrl] [nvarchar](256) NOT NULL,
+	[ImageUrl] [nvarchar](256) NOT NULL,
+	[ViewOrder] [int] NOT NULL,
+ CONSTRAINT [PK_{objectQualifier}avtFastShot_ModuleImages] PRIMARY KEY CLUSTERED 
+(
+	[ItemId] ASC
+)
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE procedure {databaseOwner}[{objectQualifier}avtFastShot_GetItems]
+
+@ModuleID				int
+
+as
+
+SELECT * FROM {objectQualifier}avtFastShot_ModuleImages WHERE ModuleID = @ModuleID
+	ORDER BY ViewOrder
+GO
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+
+
+CREATE procedure {databaseOwner}[{objectQualifier}avtFastShot_DeleteItem]
+
+	@ItemID		int
+
+as
+	UPDATE {objectQualifier}avtFastShot_ModuleImages 
+		SET
+			ViewOrder = ViewOrder -1
+		WHERE ViewOrder > (SELECT ViewOrder FROM {objectQualifier}avtFastShot_ModuleImages WHERE ItemID = @ItemID)
+
+	DELETE FROM {objectQualifier}avtFastShot_ModuleImages WHERE ItemID = @ItemID
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE procedure {databaseOwner}[{objectQualifier}avtFastShot_InsertItem]
+
+	@ModuleId		int,
+	@Title			nvarchar(256),
+	@Description	ntext,
+	@ThumbnailUrl	nvarchar(256),
+	@ImageUrl		nvarchar(256),
+	@ViewOrder      int
+
+as
+
+IF @ViewOrder < 0 -- append at the end
+BEGIN
+	SET @ViewOrder = (SELECT MAX(ViewOrder) FROM {objectQualifier}avtFastShot_ModuleImages) - (-1)
+END
+
+IF @ViewOrder IS NULL
+BEGIN
+	SET @ViewOrder = 0
+END
+
+IF  (SELECT MAX(ViewOrder) FROM {objectQualifier}avtFastShot_ModuleImages) < @ViewOrder
+BEGIN
+	SET @ViewOrder = ((SELECT MAX(ViewOrder) FROM {objectQualifier}avtFastShot_ModuleImages) - (-1))
+END
+
+UPDATE {objectQualifier}avtFastShot_ModuleImages 
+		SET ViewOrder = ViewOrder - (-1)
+		WHERE ViewOrder >= @ViewOrder
+
+
+INSERT INTO {databaseOwner}{objectQualifier}avtFastShot_ModuleImages (ModuleID, Title, Description, ThumbnailUrl, ImageUrl, ViewOrder)
+	VALUES (@ModuleId, @Title, @Description, @ThumbnailUrl, @ImageUrl, @ViewOrder)
+
+
+SELECT SCOPE_IDENTITY()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE procedure {databaseOwner}[{objectQualifier}avtFastShot_UpdateViewOrder]
+
+@ItemID			int,
+@ViewOrder      int
+as
+
+
+DECLARE @currentViewOrder int
+DECLARE @maxViewOrder int
+
+SELECT @currentViewOrder = ViewOrder FROM {objectQualifier}avtFastShot_ModuleImages  WHERE ItemId = @ItemId
+SELECT @maxViewOrder = MAX(ViewOrder) FROM {objectQualifier}avtFastShot_ModuleImages
+
+IF @currentViewOrder = @ViewOrder RETURN
+
+IF @ViewOrder < 0 SET @ViewOrder = 0
+IF @ViewOrder > @maxViewOrder SET @ViewOrder = @maxViewOrder
+
+IF  @ViewOrder < @currentViewOrder
+BEGIN
+	UPDATE {objectQualifier}avtFastShot_ModuleImages 
+	SET ViewOrder = ViewOrder - (-1)
+	WHERE ViewOrder >= @ViewOrder AND ViewOrder < @currentViewOrder
+END
+ELSE
+BEGIN
+	UPDATE {objectQualifier}avtFastShot_ModuleImages 
+	SET ViewOrder = ViewOrder - 1
+	WHERE ViewOrder <= @ViewOrder AND ViewOrder > @currentViewOrder
+END
+
+UPDATE {objectQualifier}avtFastShot_ModuleImages 
+	SET  ViewOrder = @ViewOrder
+	WHERE ItemID = @ItemID
+
+
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE procedure {databaseOwner}[{objectQualifier}avtFastShot_UpdateItem]
+
+@ItemID			int,
+@ModuleId		int,
+@Title			nvarchar(256),
+@Description	ntext,
+@ThumbnailUrl		nvarchar(256),
+@ImageUrl			nvarchar(256),
+@ViewOrder      int
+as
+
+
+EXEC {objectQualifier}avtFastShot_UpdateViewOrder @ItemID , @ViewOrder
+
+UPDATE {objectQualifier}avtFastShot_ModuleImages 
+	SET  
+		Title = @Title,
+		ModuleId = @ModuleId, 
+		Description = @Description
+
+	WHERE ItemID = @ItemID
+
+IF LEN(@ThumbnailUrl) > 0
+	UPDATE {objectQualifier}avtFastShot_ModuleImages SET ThumbnailUrl = @ThumbnailUrl WHERE ItemID = @ItemID
+
+IF LEN(@ImageUrl) > 0
+	UPDATE {objectQualifier}avtFastShot_ModuleImages SET ImageUrl = @ImageUrl WHERE ItemID = @ItemID
+
+
+
