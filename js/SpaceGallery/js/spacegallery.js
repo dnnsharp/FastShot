@@ -22,10 +22,13 @@
 			},
 			
 			animated: false,
+            
+            initHeight: false,
 			
 			//position images
 			positionImages: function(el) {
 				var top = 0;
+                var maxHeight = 0;
 				EYE.spacegallery.animated = false;
 				$(el)
 					.find('a')
@@ -35,6 +38,10 @@
 						.removeAttr('height')
 						.each(function(nr){
 							var newWidth = this.spacegallery.origWidth - (this.spacegallery.origWidth - this.spacegallery.origWidth * el.spacegalleryCfg.minScale) * el.spacegalleryCfg.asins[nr];
+                            if (2*el.spacegalleryCfg.tops[nr] + this.height > maxHeight) {
+                                maxHeight = 2*el.spacegalleryCfg.tops[nr] + this.height;
+                            }
+                            
 							$(this)
 								.css({
 									top: el.spacegalleryCfg.tops[nr] + 'px',
@@ -49,7 +56,11 @@
 							this.spacegallery.increment = el.spacegalleryCfg.asins[nr] - this.spacegallery.next;
 							this.spacegallery.current = el.spacegalleryCfg.asins[nr];
 							this.spacegallery.width = newWidth;
-						})
+						});
+                if (EYE.spacegallery.initHeight === false) {
+                    $(el).height(maxHeight);
+                    EYE.spacegallery.initHeight = true;
+                }
 			},
 			
 			//animate to nex image

@@ -85,7 +85,7 @@ namespace avt.FastShot
         {
             get
             {
-                if (AutoGenerateThumb || string.IsNullOrEmpty(_ThumbUrl)) {
+                if (AutoGenerateThumb && (string.IsNullOrEmpty(_ThumbUrl) || _ThumbUrl == "-")) {
                     FastShotController fsCtrl = new FastShotController();
                     _ThumbUrl = fsCtrl.GenerateThumb(this);
                 } else {
@@ -102,6 +102,7 @@ namespace avt.FastShot
                             }
                             System.Drawing.Image thumbImg = ctrl.LoadImageFromURL(url);
                             ctrl.UpdateItem(_ItemId, _ModuleId, _ItemTitle, _ItemDescription, _ThumbUrl, _ImageUrl, _ViewOrder, _AutoGenerateThumb, _ImageWidth, _ImageHeight, thumbImg.Width, thumbImg.Height, _FileTime, _TplParams);
+                            thumbImg.Dispose();
                         } catch {
                             // set to -1 to flag error?
                             ctrl.UpdateItem(_ItemId, _ModuleId, _ItemTitle, _ItemDescription, _ThumbUrl, _ImageUrl, _ViewOrder, _AutoGenerateThumb, _ImageWidth, _ImageHeight, -1, -1, _FileTime, _TplParams);

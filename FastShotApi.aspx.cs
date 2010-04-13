@@ -161,10 +161,33 @@ namespace avt.FastShot
             int thumb_w = api.OptionalParameter<int>("thumb_w", 0);
             int thumb_h = api.OptionalParameter<int>("thumb_h", 0);
 
+            FastShotSettings fsSettings = new FastShotSettings();
+            fsSettings.Load(api.Module.ModuleID);
+
             ModuleController modCtrl = new ModuleController();
             modCtrl.UpdateModuleSetting(api.Module.ModuleID, "template", template);
             modCtrl.UpdateModuleSetting(api.Module.ModuleID, "thumb_width", thumb_w.ToString());
             modCtrl.UpdateModuleSetting(api.Module.ModuleID, "thumb_height", thumb_h.ToString());
+
+            //Response.Write(fsSettings.ThumbHeight);
+            //Response.Write(thumb_h);
+
+            //Response.Write(fsSettings.ThumbWidth);
+            //Response.Write(thumb_w);
+
+            if (fsSettings.ThumbHeight != thumb_h || fsSettings.ThumbWidth != thumb_w) {
+                // reset all thumbnails
+                FastShotController fsCtrl = new FastShotController();
+                //fsCtrl.ClearCache();
+                List<ItemInfo> items = fsCtrl.GetItems(api.Module.ModuleID);
+                foreach (ItemInfo item in items) {
+                    if (item.AutoGenerateThumb) {
+                        fsCtrl.UpdateItem(item.ItemId, item.ModuleId, item.Title, item.Description, "-", item.ImageUrl, item.ViewOrder, item.AutoGenerateThumb, item.ImageWidth, item.ImageHeight, -1, -1, item.FileTime, item.TplParams);
+                    }
+                }
+            }
+            
+            
 
             rb.WriteObject("response", "success", "true", false);
         }

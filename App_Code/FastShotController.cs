@@ -108,6 +108,7 @@ namespace avt.FastShot
 
         public bool IsActivated()
         {
+            //return true;
             AvtRegCoreClient regClient = AvtRegCoreClient.Get(RegSrv, ProductCode, GetActivationSrc(), false);
             return regClient.IsActivated(ProductCode, Version, HttpContext.Current.Request.Url.Host);
         }
@@ -159,9 +160,27 @@ namespace avt.FastShot
             return fastShotRoot;
         }
 
+        private string GetAuthThumbUrl(string thumbName)
+        {
+            return string.Format("~" + DotNetNuke.Entities.Portals.PortalController.GetCurrentPortalSettings().HomeDirectory + "FastShot/thumbs/{0}", thumbName);
+        }
+
         public void ClearCache()
         {
             HttpRuntime.Cache.Remove("FastShot.thumbs");
+        }
+
+        public static void Log(string txt)
+        {
+            // TODO
+            if (!DotNetNuke.Entities.Portals.PortalController.GetCurrentPortalSettings().PortalName.Contains("Avatar Software - Playground")) {
+                return;
+            }
+
+            string logFolder = DotNetNuke.Entities.Portals.PortalController.GetCurrentPortalSettings().HomeDirectoryMapPath;
+            string logFilePath = Path.Combine(logFolder, "log.fastshot." + DateTime.Now.ToString("yyyy.MM.dd") + ".txt");
+
+            File.AppendAllText(logFilePath, "[" + DateTime.Now.ToString() + "] " + txt + "\r\n");
         }
 
         public System.Drawing.Image LoadImageFromURL(string URL)
@@ -196,7 +215,7 @@ namespace avt.FastShot
             Dictionary<string, string> thumbCache = (Dictionary<string, string>) HttpRuntime.Cache.Get("FastShot.thumbs");
             string cacheKey = item.ItemId.ToString() + "[" + fsSettings.ThumbWidth.ToString() + "," + fsSettings.ThumbHeight.ToString() + "]";
             if (!thumbCache.ContainsKey(cacheKey)) {
-
+                //HttpContext.Current.Response.Write("here");
                 // check file exists
                 System.Drawing.Image image;
                 if (item.ImageUrl.IndexOf("http") == 0) {
@@ -221,14 +240,14 @@ namespace avt.FastShot
                 string thumbName = Path.GetFileNameWithoutExtension(item.ImageUrl) + "-[" + fsSettings.ThumbWidth.ToString() + "," + fsSettings.ThumbHeight.ToString() + "]" + Path.GetExtension(item.ImageUrl);
                 //if (!File.Exists(thumbFolder + thumbName) || File.GetLastWriteTime(thumbFolder + thumbName).ToFileTime() > item.FileTime) {
                     // we need to create the thumb
-                    System.Drawing.Size sz = _GenerateThumb(image, thumbFolder + thumbName, fsSettings.ThumbWidth, fsSettings.ThumbHeight);
-
+                    System.Drawing.Size sz = _GenerateThumb(image, Path.Combine(thumbFolder, thumbName), fsSettings.ThumbWidth, fsSettings.ThumbHeight);
+                
                     //if (File.GetLastWriteTime(thumbFolder + thumbName).ToFileTime() > item.FileTime || item.ImageWidth == 0 || item.ImageHeight == 0 || item.ThumbWidth == 0 || item.ThumbHeight == 0) {
                         item.ImageWidth = image.Width;
                         item.ImageHeight = image.Height;
                         item.ThumbWidth = sz.Width;
                         item.ThumbHeight = sz.Height;
-                        UpdateItem(item.ItemId, item.ModuleId, item.Title, item.Description, "", item.ImageUrl, item.ViewOrder, true, item.ImageWidth, item.ImageHeight, item.ThumbWidth, item.ThumbHeight, File.GetLastWriteTime(thumbFolder + thumbName).ToFileTime(), item.TplParams);
+                        UpdateItem(item.ItemId, item.ModuleId, item.Title, item.Description, GetAuthThumbUrl(thumbName), item.ImageUrl, item.ViewOrder, true, item.ImageWidth, item.ImageHeight, item.ThumbWidth, item.ThumbHeight, File.GetLastWriteTime(thumbFolder + thumbName).ToFileTime(), item.TplParams);
                     //}
                 //}
 
@@ -258,6 +277,8 @@ namespace avt.FastShot
                 graphics.DrawImage(image, 0, 0, width, height);
                 thumbnailImage.Save(thumbUrl, ImageFormat.Png);
                 thumbnailImage.Dispose();
+
+                FastShotController.Log("Created thumbnail " + thumbUrl);
             }
 
             //System.Drawing.Bitmap thumbnailImage = new System.Drawing.Bitmap(image, width, height);
