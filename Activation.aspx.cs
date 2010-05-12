@@ -32,7 +32,7 @@ namespace avt.FastShot
 {
 
 
-    public partial class ActivationWnd : PageBase
+    public partial class ActivationWnd : System.Web.UI.Page // PageBase
     {
         public event EventHandler OnActivateSuccess
         {
@@ -43,9 +43,10 @@ namespace avt.FastShot
 
         protected void Page_Init(Object Sender, EventArgs args)
         {
+            PortalSettings portalSettings = DotNetNuke.Entities.Portals.PortalController.GetCurrentPortalSettings();
 
             // check that user has rights
-            if (!PortalSecurity.IsInRole(PortalSettings.AdministratorRoleName)) {
+            if (!PortalSecurity.IsInRole(portalSettings.AdministratorRoleName)) {
                 Response.Write("Access denied!");
                 Response.End();
             }

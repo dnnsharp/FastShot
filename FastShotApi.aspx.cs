@@ -29,7 +29,7 @@ using System.IO;
 
 namespace avt.FastShot
 {
-    public partial class FastShotApi : DotNetNuke.Framework.CDefault
+    public partial class FastShotApi : System.Web.UI.Page // DotNetNuke.Framework.CDefault
     {
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -223,12 +223,14 @@ namespace avt.FastShot
             ext[".jpg"] = true; ext[".jpeg"] = true; ext[".gif"] = true; 
             ext[".png"] = true;ext[".bmp"] = true;
 
+            PortalSettings portalSettings = DotNetNuke.Entities.Portals.PortalController.GetCurrentPortalSettings();
+
             foreach (FileInfo file in dirInfo.GetFiles()) {
-                if (ext.ContainsKey(file.Extension))
+                if (ext.ContainsKey(file.Extension.ToLower()))
                     rb.WriteObject("folder", 
                         "name", file.Name, true, 
                         "path", (parentFolder.Substring(1) + file.Name).Replace('\\', '/'), true,
-                        "absoluteUrl", PortalSettings.HomeDirectory + (parentFolder.Substring(1) + file.Name).Replace('\\', '/'),true
+                        "absoluteUrl", portalSettings.HomeDirectory + (parentFolder.Substring(1) + Server.UrlEncode(file.Name)).Replace('\\', '/'),true
                     );
             }
             rb.EndArray("files");

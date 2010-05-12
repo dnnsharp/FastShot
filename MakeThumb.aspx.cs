@@ -23,7 +23,7 @@ using DotNetNuke.Security.Permissions;
 
 namespace avt.FastShot
 {
-    public partial class MakeThumb : DotNetNuke.Framework.CDefault
+    public partial class MakeThumb : System.Web.UI.Page // DotNetNuke.Framework.CDefault
     {
         private void Page_Load(object sender, System.EventArgs e)
         {

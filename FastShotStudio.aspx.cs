@@ -29,7 +29,7 @@ using System.IO;
 
 namespace avt.FastShot
 {
-    public partial class FastShotStudio : DotNetNuke.Framework.CDefault
+    public partial class FastShotStudio : System.Web.UI.Page // DotNetNuke.Framework.CDefault
     {
         protected PortalInfo _portal = null;
 
@@ -55,6 +55,8 @@ namespace avt.FastShot
             // validate module
             // load module
             ModuleInfo _mod = null;
+            PortalSettings portalSettings = DotNetNuke.Entities.Portals.PortalController.GetCurrentPortalSettings();
+
             try {
                 ModuleController modCtrl = new ModuleController();
                 int mid = Convert.ToInt32(Request.Params["mid"]);
@@ -83,7 +85,7 @@ namespace avt.FastShot
                         if (parentFolder.Length > 0 && parentFolder[parentFolder.Length - 1] != '\\')
                             parentFolder += '\\';
 
-                        string path = PortalSettings.HomeDirectoryMapPath + parentFolder + Path.GetFileName(Request.Files[0].FileName);
+                        string path = portalSettings.HomeDirectoryMapPath + parentFolder + Path.GetFileName(Request.Files[0].FileName);
                         if (File.Exists(path)) {
                             if (cbUploadOverwrite.Checked) {
                                 File.Delete(path);
