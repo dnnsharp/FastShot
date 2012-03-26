@@ -31,8 +31,6 @@ namespace avt.FastShot
 {
     public partial class FastShotStudio : System.Web.UI.Page // DotNetNuke.Framework.CDefault
     {
-        protected PortalInfo _portal = null;
-
         protected void Page_Init(object sender, EventArgs e)
         {
             Response.Cache.SetExpires(DateTime.UtcNow.AddDays(-1));
@@ -40,7 +38,6 @@ namespace avt.FastShot
             Response.Cache.SetRevalidation(HttpCacheRevalidation.AllCaches);
             Response.Cache.SetCacheability(HttpCacheability.NoCache);
             Response.Cache.SetNoStore();
-
 
             if (!DotNetNuke.Entities.Users.UserController.GetCurrentUserInfo().IsInRole(DotNetNuke.Entities.Portals.PortalController.GetCurrentPortalSettings().AdministratorRoleName)) {
                 Response.Write("Access denied!");
@@ -139,13 +136,12 @@ namespace avt.FastShot
                             }
                         }
 
-                        AJAX.RegisterScriptManager();
-                        ScriptManager.RegisterStartupScript(this, GetType(), "initSettings", "avt.fs.settings = {mid: " + fsSettings.ModuleId.ToString() + ", title: '" + JsonEncode(mod.ModuleTitle) + "', template: '" + JsonEncode(fsSettings.Template) + "', thumb_w: " + fsSettings.ThumbWidth + ", thumb_h: " + fsSettings.ThumbHeight + "};", true);
-                        ScriptManager.RegisterStartupScript(this, GetType(), "initTemplates", "avt.fs.templates = [\"" + string.Join("\",\"", templates.ToArray()) + "\"];", true);
-                        ScriptManager.RegisterStartupScript(this, GetType(), "initReturnUrl", "avt.fs.returnUrl = \""+ DotNetNuke.Common.Globals.NavigateURL(mod.TabID) +"\";", true);
+                        Page.ClientScript.RegisterStartupScript(GetType(), "initSettings", "avt.fs.settings = {mid: " + fsSettings.ModuleId.ToString() + ", title: '" + JsonEncode(mod.ModuleTitle) + "', template: '" + JsonEncode(fsSettings.Template) + "', thumb_w: " + fsSettings.ThumbWidth + ", thumb_h: " + fsSettings.ThumbHeight + "};", true);
+                        Page.ClientScript.RegisterStartupScript(GetType(), "initTemplates", "avt.fs.templates = [\"" + string.Join("\",\"", templates.ToArray()) + "\"];", true);
+                        Page.ClientScript.RegisterStartupScript(GetType(), "initReturnUrl", "avt.fs.returnUrl = \"" + DotNetNuke.Common.Globals.NavigateURL(mod.TabID) + "\";", true);
                         
                     } catch {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "initSettings", "avt.fs.settings = {mid: -1, title = 'Invalid Module'};", true);
+                        Page.ClientScript.RegisterStartupScript(GetType(), "initSettings", "avt.fs.settings = {mid: -1, title = 'Invalid Module'};", true);
                     }
 
                     FastShotController fsCtrl = new FastShotController();

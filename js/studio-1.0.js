@@ -8,6 +8,7 @@ avt.fs.fb = {
         avt.fs.$.get(avt.fs.apiUrl, { 
             format: "json",
             mid: avt.fs.mid,
+            alias: avt.fs.palias,
             fn: "get_folders",
             pdir: pdir
         }, function(data){
@@ -76,6 +77,7 @@ avt.fs.fb = {
             avt.fs.$.get(avt.fs.apiUrl, { 
                 format: "json",
                 mid: avt.fs.mid,
+                alias: avt.fs.palias,
                 fn: "get_files",
                 pdir: pdir
             }, function(data){
@@ -137,6 +139,7 @@ avt.fs.fb = {
         avt.fs.$.get(avt.fs.apiUrl, { 
             format: "json",
             mid: avt.fs.mid,
+            alias: avt.fs.palias,
             fn: "del_file",
             path: fileObj.attr("rel")
         }, function(data){
@@ -278,6 +281,7 @@ avt.fs.studio = {
         avt.fs.$.get(avt.fs.apiUrl, { 
             format: "json",
             mid: avt.fs.mid,
+            alias: avt.fs.palias,
             fn: "list_items" 
         }, function(data){
                 avt.fs.studio.loading(false);
@@ -313,6 +317,7 @@ avt.fs.studio = {
         avt.fs.$.get(avt.fs.apiUrl, { 
             format: "json",
             mid: avt.fs.mid,
+            alias: avt.fs.palias,
             fn: "clear_cache" 
         }, function(data){
                 avt.fs.studio.loading(false);
@@ -483,6 +488,7 @@ avt.fs.studio = {
         avt.fs.$.post(avt.fs.apiUrl, { 
             format: "json",
             mid: avt.fs.mid,
+            alias: avt.fs.palias,
             fn: "add_item",
             title: title,
             desc: avt.fs.$.trim(_c.find("#newItem_Desc").val()),
@@ -535,6 +541,7 @@ avt.fs.studio = {
         avt.fs.$.post(avt.fs.apiUrl, { 
             format: "json",
             mid: avt.fs.mid,
+            alias: avt.fs.palias,
             fn: "edit_item",
             id: id,
             title: title,
@@ -570,6 +577,7 @@ avt.fs.studio = {
         avt.fs.$.post(avt.fs.apiUrl, { 
             format: "json",
             mid: avt.fs.mid,
+            alias: avt.fs.palias,
             fn: "order_items",
             ids: ids.join(",")
         }, function(data){
@@ -602,6 +610,7 @@ avt.fs.studio = {
         avt.fs.$.post(avt.fs.apiUrl, { 
             format: "json",
             mid: avt.fs.mid,
+            alias: avt.fs.palias,
             fn: "del_items",
             ids: ids.join(",")
         }, function(data){
@@ -640,6 +649,7 @@ avt.fs.studio = {
         avt.fs.$.post(avt.fs.apiUrl, { 
             format: "json",
             mid: avt.fs.mid,
+            alias: avt.fs.palias,
             fn: "update_settings",
             template: template,
             thumb_w: thumb_w,

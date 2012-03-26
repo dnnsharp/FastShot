@@ -6,7 +6,7 @@
     <div runat = "server" id = "itemContainer"></div>
 
     <div id = "pnlSettings" runat = "server" style = "clear: both;">
-        <a href = "<%=TemplateSourceDirectory %>/FastShotStudio.aspx?mid=<%=ModuleId %>">
+        <a href = "<%=TemplateSourceDirectory %>/FastShotStudio.aspx?mid=<%=ModuleId %>&alias=<%= PortalSettings.PortalAlias.HTTPAlias %>">
             <img src = '<%=TemplateSourceDirectory %>/res/fastshot_small.png' border = "0" style = "margin-right: 2px;" align = "absmiddle" class = "pngFix" height = "20" />
             FastShot Studio &gt;
         </a>

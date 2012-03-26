@@ -43,8 +43,6 @@ namespace avt.FastShot
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-
             if (PortalSettings.UserMode == DotNetNuke.Entities.Portals.PortalSettings.Mode.Edit &&
                 PortalSecurity.HasNecessaryPermission(SecurityAccessLevel.Edit, PortalSettings, ModuleConfiguration)) {
                 pnlSettings.Visible = true;

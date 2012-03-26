@@ -159,7 +159,7 @@
        avt.fs.modRoot = '<%= TemplateSourceDirectory[TemplateSourceDirectory.Length - 1] == '/' ? TemplateSourceDirectory : TemplateSourceDirectory + "/" %>';
        avt.fs.apiUrl = avt.fs.modRoot + "FastShotApi.aspx";
        avt.fs.mid = <%= Request.QueryString["mid"] %>;
-
+       avt.fs.palias = "<%= Request.QueryString["alias"] %>";
 
         avt.fs.studio.init();
 

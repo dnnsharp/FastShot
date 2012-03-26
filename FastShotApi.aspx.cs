@@ -1,31 +1,11 @@
 using System;
-using System.Web;
 using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Xml;
-using System.Xml.Xsl;
-using System.Xml.XPath;
-using System.Text.RegularExpressions;
-
-using DotNetNuke;
-using DotNetNuke.Framework;
-using DotNetNuke.Entities.Tabs;
-using DotNetNuke.Entities.Modules;
-using DotNetNuke.Entities.Modules.Actions;
-using DotNetNuke.Security;
-using DotNetNuke.Security.Permissions;
-using DotNetNuke.Entities.Users;
-using System.Net;
-using DotNetNuke.Entities.Portals;
-using System.Data;
-using System.Data.SqlClient;
-using DotNetNuke.Services.Search;
-using System.Text;
-using Microsoft.ApplicationBlocks.Data;
 using System.IO;
+using System.Text;
+using System.Web;
+using DotNetNuke.Entities.Modules;
+using DotNetNuke.Entities.Portals;
 
 namespace avt.FastShot
 {
