@@ -1,0 +1,116 @@
+﻿-- Add AutoGenerateThumb column
+ALTER TABLE {databaseOwner}[{objectQualifier}avtFastShot_ModuleImages] ADD AutoGenerateThumb int NOT NULL DEFAULT ((1))
+GO
+
+
+-- create activations table
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+IF NOT EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}avtActivations]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+CREATE TABLE {databaseOwner}[{objectQualifier}avtActivations](
+	[ActivationCode] [nvarchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[RegistrationCode] [nvarchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[Host] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[ProductCode] [nvarchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[IsPrimary] [int] NOT NULL,
+	[BaseActivationCode] [nvarchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+    CONSTRAINT [PK_{objectQualifier}avtActivations] PRIMARY KEY CLUSTERED 
+    (
+        [ActivationCode] ASC
+    )
+) ON [PRIMARY]
+END
+GO
+
+-- update procedure UpdateItem
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+ALTER procedure {databaseOwner}[{objectQualifier}avtFastShot_UpdateItem]
+
+@ItemID			int,
+@ModuleId		int,
+@Title			nvarchar(256),
+@Description	nvarchar(MAX),
+@ThumbnailUrl		nvarchar(256),
+@ImageUrl			nvarchar(256),
+@ViewOrder      int,
+@autoGenerateThumb int
+as
+
+
+EXEC {objectQualifier}avtFastShot_UpdateViewOrder @ItemID , @ViewOrder
+
+UPDATE {objectQualifier}avtFastShot_ModuleImages 
+	SET  
+		Title = @Title,
+		ModuleId = @ModuleId, 
+		Description = @Description,
+		AutoGenerateThumb = @autoGenerateThumb
+	WHERE ItemID = @ItemID
+
+IF LEN(@ThumbnailUrl) > 0
+	UPDATE {objectQualifier}avtFastShot_ModuleImages SET ThumbnailUrl = @ThumbnailUrl WHERE ItemID = @ItemID
+
+IF LEN(@ImageUrl) > 0
+	UPDATE {objectQualifier}avtFastShot_ModuleImages SET ImageUrl = @ImageUrl WHERE ItemID = @ItemID
+
+
+
+GO
+
+-- update procedure InsertItem
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+ALTER procedure {databaseOwner}[{objectQualifier}avtFastShot_InsertItem]
+
+	@ModuleId		int,
+	@Title			nvarchar(256),
+	@Description	ntext,
+	@ThumbnailUrl	nvarchar(256),
+	@ImageUrl		nvarchar(256),
+	@ViewOrder      int,
+	@autoGenerateThumb int
+
+as
+
+IF @ViewOrder < 0 OR @ViewOrder IS NULL -- append at the end
+BEGIN
+	SET @ViewOrder = (SELECT MAX(ViewOrder) FROM {objectQualifier}avtFastShot_ModuleImages) - (-1)
+END
+
+IF @ViewOrder IS NULL
+BEGIN
+	SET @ViewOrder = 0
+END
+
+IF  (SELECT MAX(ViewOrder) FROM {objectQualifier}avtFastShot_ModuleImages) < @ViewOrder
+BEGIN
+	SET @ViewOrder = ((SELECT MAX(ViewOrder) FROM {objectQualifier}avtFastShot_ModuleImages) - (-1))
+END
+
+UPDATE {objectQualifier}avtFastShot_ModuleImages 
+		SET ViewOrder = ViewOrder - (-1)
+		WHERE ViewOrder >= @ViewOrder
+
+
+INSERT INTO {databaseOwner}[{objectQualifier}avtFastShot_ModuleImages] (ModuleID, Title, Description, ThumbnailUrl, ImageUrl, ViewOrder, AutoGenerateThumb)
+	VALUES (@ModuleId, @Title, @Description, @ThumbnailUrl, @ImageUrl, @ViewOrder, @autoGenerateThumb)
+
+
+SELECT SCOPE_IDENTITY()
+
+GO
