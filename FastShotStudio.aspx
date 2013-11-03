@@ -468,7 +468,6 @@ var layoutSettings_Outer = {
         <li><div style = "padding: 4px 4px 4px 22px;" onclick = "avt.fs.studio.clearCache();" class = "btn_reindex tooltip_hover" title = "FastShot is caching thumbnails and settings. Click here to have cache cleared."> Clear Cache</div></li>
         <li><div style = "padding: 4px 4px 4px 22px;" onclick = "window.location = avt.fs.returnUrl;" class = "btn_return tooltip_hover" title = "Click here to return to previous page."> Back</div></li>
         <li id="tbarPinSidebar"  style = "float: right; margin-right: 4px;"><div class = "btn_help" style = "padding: 4px 4px 4px 22px;">Help</div></li>
-        <li style = "float: right; margin-right: 4px;"><div style = " padding: 4px 4px 4px 22px;" class = "btn_activate" runat = "server" id = "btnActivate">Activate</div></li>
     </ul>
 </div>
 

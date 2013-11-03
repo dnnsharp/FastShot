@@ -115,25 +115,6 @@ namespace avt.FastShot
         }
 
 
-        public override void AddActivation(string activationCode, string registrationCode, string host, string productCode, bool IsPrimary, string baseActivationCode)
-        {
-            string tbl = DatabaseOwner + ObjectQualifier + "avtActivations";
-            SqlHelper.ExecuteNonQuery(_connectionString, CommandType.Text, "IF NOT EXISTS (SELECT * FROM " + tbl + " WHERE ActivationCode = '" + activationCode + "') INSERT INTO " + tbl + " VALUES('" + activationCode + "','" + registrationCode + "','" + host + "','" + productCode + "'," + (IsPrimary ? "1" : "0") + ",'" + baseActivationCode + "')");
-        }
-
-        public override IDataReader GetActivations(string productCode, string host)
-        {
-            string tbl = DatabaseOwner + ObjectQualifier + "avtActivations";
-            return SqlHelper.ExecuteReader(_connectionString, CommandType.Text, "SELECT * FROM " + tbl + " WHERE ProductCode = '" + productCode + "' AND Host = '" + host + "'");
-        }
-
-        public override IDataReader GetAllActivations(string productCode)
-        {
-            string tbl = DatabaseOwner + ObjectQualifier + "avtActivations";
-            return SqlHelper.ExecuteReader(_connectionString, CommandType.Text, "SELECT * FROM " + tbl + " WHERE ProductCode = '" + productCode + "'");
-        }
-
-
         #endregion
 
     }

@@ -20,34 +20,6 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
-CREATE TABLE {databaseOwner}[{objectQualifier}avtFastShot_Activations](
-	[RegistrationCode] [nvarchar](100) NOT NULL,
-	[Host] [nvarchar](255) NOT NULL,
-	[ActivationCode] [nvarchar](1024) NOT NULL,
-	[ProductKey] [nvarchar](1024) NOT NULL,
-	[BaseProductCode] [nvarchar](50) NOT NULL,
-	[BaseProductVersion] [nvarchar](50) NOT NULL,
- CONSTRAINT [PK_{objectQualifier}avtFastShot_Activations] PRIMARY KEY CLUSTERED 
-(
-	[RegistrationCode] ASC,
-	[Host] ASC
-)
-) ON [PRIMARY]
-
-GO
-
-
-set ANSI_NULLS ON
-set QUOTED_IDENTIFIER ON
-go
-
-
-
-
-
-
-
-
 ALTER procedure {databaseOwner}[{objectQualifier}avtFastShot_UpdateItem]
 
 @ItemID			int,

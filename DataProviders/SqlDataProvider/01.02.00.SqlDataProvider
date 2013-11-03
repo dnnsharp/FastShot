@@ -3,28 +3,9 @@ ALTER TABLE {databaseOwner}[{objectQualifier}avtFastShot_ModuleImages] ADD AutoG
 GO
 
 
--- create activations table
-
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
-GO
-
-IF NOT EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}avtActivations]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
-BEGIN
-CREATE TABLE {databaseOwner}[{objectQualifier}avtActivations](
-	[ActivationCode] [nvarchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-	[RegistrationCode] [nvarchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-	[Host] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-	[ProductCode] [nvarchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-	[IsPrimary] [int] NOT NULL,
-	[BaseActivationCode] [nvarchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    CONSTRAINT [PK_{objectQualifier}avtActivations] PRIMARY KEY CLUSTERED 
-    (
-        [ActivationCode] ASC
-    )
-) ON [PRIMARY]
-END
 GO
 
 -- update procedure UpdateItem

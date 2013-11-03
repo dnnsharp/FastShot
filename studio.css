@@ -175,11 +175,6 @@ a.inst_list_link:hover, a.inst_list_link:active {
 }
 
 
-.btn_activate{
-    background-image: url(res/icon_securityroles_16px.gif);
-    background-repeat: no-repeat;
-    background-position: 0px 3px;
-}
 .list_tokens li {
     list-style-image: url(res/red_bullet.gif)
 }

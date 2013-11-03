@@ -1,35 +1,17 @@
+using DotNetNuke.Entities.Modules;
+using DotNetNuke.Entities.Portals;
 using System;
-using System.Web;
 using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Xml;
-using System.Xml.Xsl;
-using System.Xml.XPath;
-using System.Text.RegularExpressions;
-
-using DotNetNuke;
-using DotNetNuke.Framework;
-using DotNetNuke.Entities.Tabs;
-using DotNetNuke.Entities.Modules;
-using DotNetNuke.Entities.Modules.Actions;
-using DotNetNuke.Security;
-using DotNetNuke.Security.Permissions;
-using DotNetNuke.Entities.Users;
-using System.Net;
-using DotNetNuke.Entities.Portals;
-using System.Data;
-using System.Data.SqlClient;
-using DotNetNuke.Services.Search;
-using System.Text;
-using Microsoft.ApplicationBlocks.Data;
 using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Web;
+using System.Web.UI;
 
 namespace avt.FastShot
 {
-    public partial class FastShotStudio : System.Web.UI.Page // DotNetNuke.Framework.CDefault
+    public partial class FastShotStudio : System.Web.UI.Page 
     {
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -143,61 +125,9 @@ namespace avt.FastShot
                     } catch {
                         Page.ClientScript.RegisterStartupScript(GetType(), "initSettings", "avt.fs.settings = {mid: -1, title = 'Invalid Module'};", true);
                     }
-
-                    FastShotController fsCtrl = new FastShotController();
-                    if (fsCtrl.IsActivated()) {
-                        btnActivate.Visible = false;
-                    } else {
-                        btnActivate.Attributes["onclick"] = "window.location='" + TemplateSourceDirectory + "/Activation.aspx?rurl=" + Server.UrlEncode(Request.Url.OriginalString) + "';";
-                    }
                 }
             }
 
-            //AJAX.RegisterScriptManager();
-            //SearchBoostController sbCtrl = new SearchBoostController();
-            //PortalController portalCtrl = new PortalController();
-
-            //// init instances
-            //if (DotNetNuke.Entities.Users.UserController.GetCurrentUserInfo().IsSuperUser) {
-            //    ScriptManager.RegisterStartupScript(this, GetType(), "initInstAll", "avt.sb.inst = " + GetInstAllJson() + "; avt.sb.inst.byPortal = {};", true);
-            //    foreach (PortalInfo portaInfo in portalCtrl.GetPortals()) {
-            //        ScriptManager.RegisterStartupScript(this, GetType(), "initInstP" + portaInfo.PortalID.ToString(), "avt.sb.inst.byPortal[" + portaInfo.PortalID.ToString() + "] = {caption: '"+ portaInfo.PortalName +" (Id: "+ portaInfo.PortalID.ToString() +")', data: " + GetInstJson(portaInfo.PortalID) + "};", true);
-            //    }
-            //} else {
-            //    ScriptManager.RegisterStartupScript(this, GetType(), "initInstAll", "avt.sb.inst = " + GetInstAllJson(DotNetNuke.Entities.Portals.PortalController.GetCurrentPortalSettings().PortalId) + ";", true);
-            //}
-
-            //// init instances on current portal
-            //ScriptManager.RegisterStartupScript(this, GetType(), "initInstC", "avt.sb.inst.cPortal = " + GetInstJson(DotNetNuke.Entities.Portals.PortalController.GetCurrentPortalSettings().PortalId) + ";", true);
-
-            //// init custom rules
-            //ScriptManager.RegisterStartupScript(this, GetType(), "initSearchTargets", "avt.sb.targets = " + GetRulesJson() + ";", true);
-
-            //// set return url
-            //if (Request.UrlReferrer != null && !string.IsNullOrEmpty(Request.UrlReferrer.ToString()) && !Request.UrlReferrer.ToString().Contains("SearchBoostStudio.aspx") && !Request.UrlReferrer.ToString().Contains("/avt.SearchBoost/Activation.aspx")) {
-            //    ScriptManager.RegisterStartupScript(this, GetType(), "initReturnUrl", "avt.sb.returnUrl = '" + Request.UrlReferrer.ToString() + "';", true);
-            //} else {
-            //    ScriptManager.RegisterStartupScript(this, GetType(), "initReturnUrl", "avt.sb.returnUrl = '" + HttpRuntime.AppDomainAppVirtualPath + "';", true);
-            //}
-
-            //// set if superuser
-            //if (DotNetNuke.Entities.Users.UserController.GetCurrentUserInfo().IsSuperUser) {
-            //    ScriptManager.RegisterStartupScript(this, GetType(), "initSuperUSer", "avt.sb.isSuperUser = true;", true);
-            //}
-
-            //// check if we need to load an instance on startup
-            //if (!string.IsNullOrEmpty(Request.QueryString["iinst"])) {
-            //    SearchInstance searchInst = sbCtrl.GetInstance(Request.QueryString["iinst"]);
-            //    if (searchInst != null) {
-            //        ScriptManager.RegisterStartupScript(this, GetType(), "initCurrentInstance", "avt.sb.current = '" + Request.QueryString["iinst"] + "';", true);
-            //    }
-            //}
-
-            //if (sbCtrl.IsActivated()) {
-            //    btnActivate.Visible = false;
-            //} else {
-            //    btnActivate.Attributes["onclick"] = "window.location='" + TemplateSourceDirectory + "/Activation.aspx?rurl=" + Server.UrlEncode(Request.Url.OriginalString) + "';";
-            //}
         }
 
 

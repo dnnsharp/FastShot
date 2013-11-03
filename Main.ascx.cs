@@ -59,13 +59,6 @@ namespace avt.FastShot
             FastShotSettings FsSettings = new FastShotSettings();
             FsSettings.Load(ModuleId);
 
-            bool isActivated = false;
-            try {
-                isActivated = fShotCtrl.IsActivated();
-            } catch (System.Net.WebException) {
-                isActivated = false;
-            }
-
             List<ItemInfo> items = fShotCtrl.GetItems(ModuleId);
 
             StringBuilder strXML = new StringBuilder();
@@ -77,23 +70,6 @@ namespace avt.FastShot
             Writer.WriteStartElement("fastshot");
             Writer.WriteElementString("root", TemplateSourceDirectory + "/");
             Writer.WriteElementString("mid", ModuleId.ToString());
-
-
-            if (!isActivated) {
-                Random rand = new Random();
-                if (rand.Next(0, 20) == 1) {
-                    items = new List<ItemInfo>();
-                    items.Add(new ItemInfo() {
-                        ImageUrl = "http://www.avatar-soft.ro/portals/0/product_logo/fastshot_large.png",
-                        ThumbnailUrl = "http://www.avatar-soft.ro/portals/0/product_logo/fastshot_medium.png",
-                        Title = "FastShot Demo",
-                        Description = "This copy of FastShot is not activated! Visit <a href = 'http://www.avatar-soft.ro' style = 'font-weight: bold;'>www.avatar-soft.ro</a> to read more about FastShot.",
-                        ThumbWidth = 115,
-                        ThumbHeight = 110,
-                        AutoGenerateThumb = false
-                    });
-                }
-            }
 
             int maxThumbWidth = 0;
             int maxThumbHeight = 0;

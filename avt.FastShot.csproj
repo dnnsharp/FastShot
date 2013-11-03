@@ -19,12 +19,16 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\debug\</OutputPath>
+    <OutputPath>..\..\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -42,10 +46,12 @@
   <ItemGroup>
     <Reference Include="DotNetNuke">
       <HintPath>lib\DotNetNuke.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.ApplicationBlocks.Data, Version=2.0.0.0, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\bin\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -56,13 +62,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Activation.aspx.cs">
-      <DependentUpon>Activation.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Activation.aspx.designer.cs">
-      <DependentUpon>Activation.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Model\DataProvider.cs" />
     <Compile Include="Model\FastShotController.cs" />
     <Compile Include="Model\ImageInfo.cs" />
@@ -724,7 +723,6 @@
     <Content Include="module.css" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Activation.aspx" />
     <Content Include="SkinObject_PatchModule.ascx" />
     <Content Include="FastShotApi.aspx" />
     <Content Include="FastShotStudio.aspx" />
@@ -735,6 +733,11 @@
     <Folder Include="App_LocalResources\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DataProviders\SqlDataProvider\01.01.00.SqlDataProvider" />
+    <Content Include="DataProviders\SqlDataProvider\01.02.00.SqlDataProvider" />
+    <Content Include="DataProviders\SqlDataProvider\01.04.00.SqlDataProvider" />
+    <Content Include="DataProviders\SqlDataProvider\01.05.00.SqlDataProvider" />
+    <Content Include="DataProviders\SqlDataProvider\Uninstall.SqlDataProvider" />
     <None Include="js\beautytips\bt-0.9.5-rc1\DEMO\demofiles\logo.psd" />
     <None Include="js\beautytips\bt-0.9.5-rc1\other_libs\bgiframe_2.1.1\META.json" />
     <None Include="js\beautytips\bt-0.9.5-rc1\other_libs\excanvas_r3\AUTHORS" />
