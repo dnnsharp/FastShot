@@ -1,6 +1,4 @@
-﻿
-
-using System;
+﻿using System;
 using DotNetNuke;
 using System.Data;
 using System.Web.UI.WebControls;
@@ -39,11 +37,6 @@ namespace avt.FastShot
         public abstract IDataReader GetItems(int moduleId);
         public abstract IDataReader GetItemById(int itemId);
         public abstract void DeleteItem(int itemId);
-
-
-        public abstract void AddActivation(string activationCode, string registrationCode, string host, string productCode, bool IsPrimary, string baseActivationCode);
-        public abstract IDataReader GetActivations(string productCode, string host);
-        public abstract IDataReader GetAllActivations(string productCode);
 
 
     }
