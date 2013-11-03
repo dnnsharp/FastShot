@@ -449,7 +449,7 @@ var layoutSettings_Outer = {
 <div class="ui-layout-north">
     <div class="header" style = "text-align: left; padding: 4px; font-size: 16px;">
         <div style = "float: right; font-size: 11px; text-align: right;">
-            <span style = "">build <b><%= avt.FastShot.FastShotController.VersionAll%></b></span>
+            <span style = "">build <b><%= avt.FastShot.FastShotController.Build%></b></span>
             by <a href = "http://www.avatar-soft.ro">Avatar Software</a>
         </div>
         <div class = "load_maker_vis" style = "float: left; visibility: visible; margin: 1px 3px 0 0;">

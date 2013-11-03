@@ -7,7 +7,7 @@
       <modulename>avt.FastShot</modulename>
       <description>
       </description>
-      <version>01.05.00</version>
+      <version>01.06.00</version>
       <businesscontrollerclass>avt.FastShot.FastShotController</businesscontrollerclass>
       <resourcefile>Resources.zip</resourcefile>
       <modules>
@@ -38,9 +38,6 @@
         </file>
         <file>
           <name>FastShotStudio.aspx</name>
-        </file>
-        <file>
-          <name>Activation.aspx</name>
         </file>
         <file>
           <name>FastShotApi.aspx</name>

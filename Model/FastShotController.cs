@@ -1,43 +1,17 @@
-
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
-using System.Xml;
-using System.Web;
-using System.Web.Configuration;
-using System.Net;
-using System.Web.UI.WebControls;
-using System.Xml.Xsl;
-using System.Xml.XPath;
-using System.Text;
-using Microsoft.ApplicationBlocks.Data;
-using System.Security.Cryptography;
-
-using DotNetNuke;
-using DotNetNuke.Common;
-using DotNetNuke.Common.Lists;
-using DotNetNuke.Common.Utilities;
-using DotNetNuke.Entities.Tabs;
 using DotNetNuke.Entities.Modules;
-using DotNetNuke.Entities.Portals;
-using DotNetNuke.Services.Search;
 using DotNetNuke.Entities.Users;
-using DotNetNuke.Security;
-using DotNetNuke.Security.Permissions;
-using DotNetNuke.Security.Roles;
-using System.IO;
-using System.Text.RegularExpressions;
+using DotNetNuke.Framework;
+using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
-using System.Reflection;
 using System.Globalization;
-using System.Web.UI;
-using DotNetNuke.Framework;
-
+using System.IO;
+using System.Net;
+using System.Reflection;
+using System.Web;
+using System.Xml;
 
 namespace avt.FastShot
 {
@@ -49,52 +23,12 @@ namespace avt.FastShot
 
     public class FastShotController
     {
-
-        private string _objectQualifier;
-        private string _databaseOwner;
-
-        static public string RegSrv = "http://www.avatar-soft.ro/DesktopModules/avt.RegCore4/Api.aspx";
-
-        static public string ProductCode = "FSHOT";
-        static public string Version = "1.5";
-        static public string VersionAll = "1.5.0";
-        static public string Build = VersionAll + "_001";
-
-        static public string DocSrv = RegSrv + "?cmd=doc&product=" + ProductCode + "&version=" + Version;
-        static public string BuyLink = RegSrv + "?cmd=buy&product=" + ProductCode + "&version=" + Version;
-
-        static public string ProductKey = "<RSAKeyValue><Modulus>zkBeCaywWL1J38zEmy7+0gysKNb0EwikvxRThOSvHOcLKD/qF4GIwldf+7LS3sFEFlnCGjRq+bOmWfYhogre2er+NWjmWXuCxaHvnYg9DH1KJyE0sGg5hzkaRLxZe54fnHYmwt/HP/frOY7rWut97ZQMBhItX0JNaMwGlYgVxGk=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>";
-
+        static public string Build = "1.6.0";
 
         public FastShotController()
         {
-            // Read the configuration specific information for this provider
-            DotNetNuke.Framework.Providers.ProviderConfiguration _providerConfiguration = DotNetNuke.Framework.Providers.ProviderConfiguration.GetProviderConfiguration("data");
-            DotNetNuke.Framework.Providers.Provider objProvider = (DotNetNuke.Framework.Providers.Provider)_providerConfiguration.Providers[_providerConfiguration.DefaultProvider];
-
-            // Read the attributes for this provider
-            //Get Connection string from web.config
-            string _connectionString = DotNetNuke.Common.Utilities.Config.GetConnectionString();
-
-            if (_connectionString == "") {
-                // Use connection string specified in provider
-                _connectionString = objProvider.Attributes["connectionString"];
-            }
-
-            string _providerPath = objProvider.Attributes["providerPath"];
-
-            _objectQualifier = objProvider.Attributes["objectQualifier"];
-            if (_objectQualifier != "" & _objectQualifier.EndsWith("_") == false) {
-                _objectQualifier += "_";
-            }
-
-            _databaseOwner = objProvider.Attributes["databaseOwner"];
-            if (_databaseOwner != "" & _databaseOwner.EndsWith(".") == false) {
-                _databaseOwner += ".";
-            }
+           
         }
-
-
 
         public int AddItem(int moduleId, string title, string description, string thumbUrl, string imageUrl, int viewOrder, bool autoGenerateThumb, string tplParams)
         {
