@@ -436,9 +436,7 @@ var layoutSettings_Outer = {
         <div id="tabs-help-links" style = "padding: 8px; padding-bottom: 4px; font-size: 12px;">
             <ul class = "links_list">
                 <li><a href = "http://www.avatar-soft.ro/Products/FastShot/tabid/143/Default.aspx">Product Homepage</a></li>
-                <li><a href = "<%= avt.FastShot.FastShotController.DocSrv %>">Documentation</a></li>
                 <li><a href = "http://www.avatar-soft.ro/Support/Forums/tabid/99/Default.aspx">Forums</a></li>
-                <li><a href = "<%= avt.FastShot.FastShotController.BuyLink %>">Purchase</a></li>
             </ul>
         </div>
     </div>
